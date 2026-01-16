@@ -1,0 +1,13 @@
+IT Security Policy
+
+Purpose:
+This document defines basic IT security principles for ACME Systems GmbH.
+
+Key Rules:
+1. All systems must use strong authentication.
+2. Sensitive data must be stored encrypted.
+3. Access rights are granted based on roles.
+4. Security incidents must be reported immediately.
+
+Responsibility:
+Final responsibility lies with the human system owner.

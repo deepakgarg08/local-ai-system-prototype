@@ -1,0 +1,17 @@
+Employee Onboarding Guide
+
+Welcome to ACME Systems GmbH.
+
+Step 1: Account Setup
+- Receive login credentials
+- Change initial password
+
+Step 2: System Access
+- Review assigned roles
+- Request additional access if required
+
+Step 3: Security Awareness
+- Complete mandatory security training
+- Review IT security policy
+
+For questions, contact your supervisor.

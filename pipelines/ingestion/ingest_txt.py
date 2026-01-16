@@ -1,0 +1,106 @@
+import json
+import hashlib
+from pathlib import Path
+from datetime import datetime
+import uuid
+
+RAW_DIR = Path("data/raw")
+OUT_DIR = Path("data/processed")
+OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+files = []
+documents = []
+sections = []
+statuses = []
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def now():
+    return datetime.utcnow().isoformat()
+
+
+def ingest_txt(path: Path, category: str):
+    file_id = sha256(path)
+
+    files.append({
+        "file_id": file_id,
+        "path": str(path),
+        "filename": path.name,
+        "extension": ".txt",
+        "category": category,
+        "size_bytes": path.stat().st_size,
+        "last_modified": path.stat().st_mtime,
+        "checksum_sha256": file_id,
+    })
+
+    document_id = str(uuid.uuid4())
+
+    documents.append({
+        "document_id": document_id,
+        "file_id": file_id,
+        "document_name": path.stem,
+        "document_type": "other",
+        "category": category,
+        "version": None,
+        "language": "en",
+        "source_system": "local_fs",
+        "ingested_at": now(),
+    })
+
+    lines = path.read_text(encoding="utf-8").splitlines()
+    current_title = None
+    buffer = []
+    order = 0
+
+    for line in lines + [""]:
+        if line.strip() and not line.startswith(" "):
+            if buffer:
+                sections.append({
+                    "section_id": str(uuid.uuid4()),
+                    "document_id": document_id,
+                    "section_title": current_title,
+                    "section_path": current_title,
+                    "order_index": order,
+                    "text": "\n".join(buffer).strip(),
+                    "page_start": None,
+                    "page_end": None,
+                    "paragraph_start": None,
+                    "paragraph_end": None,
+                    "char_start": 0,
+                    "char_end": len("\n".join(buffer)),
+                })
+                order += 1
+                buffer = []
+
+            current_title = line.strip()
+        else:
+            buffer.append(line)
+
+    statuses.append({
+        "entity_type": "document",
+        "entity_id": document_id,
+        "status": "success",
+        "messages": [],
+        "timestamp": now(),
+    })
+
+
+def main():
+    for category_dir in RAW_DIR.iterdir():
+        if not category_dir.is_dir():
+            continue
+
+        for txt in category_dir.rglob("*.txt"):
+            ingest_txt(txt, category_dir.name)
+
+    (OUT_DIR / "files.json").write_text(json.dumps(files, indent=2))
+    (OUT_DIR / "documents.json").write_text(json.dumps(documents, indent=2))
+    (OUT_DIR / "sections.json").write_text(json.dumps(sections, indent=2))
+    (OUT_DIR / "ingestion_status.json").write_text(json.dumps(statuses, indent=2))
+
+
+if __name__ == "__main__":
+    main()

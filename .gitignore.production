@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# All data (production safety)
+data/raw/
+data/processed/
+data/indexes/
+
+# Models & vectors
+models/
+vectorstores/
+
+# Logs
+logs/
+
+# OS
+.DS_Store
+
+
+
+# How You’d Switch to Production (Later)
+
+# When needed:
+
+# mv .gitignore.production .gitignore
+# git rm -r --cached data/
+# git commit -m "Switch to production gitignore (remove data from repo)"
+
+
+# Clean, explicit, auditable.

@@ -1,0 +1,52 @@
+[
+  {
+    "file_id": "1604a192462976e6c76870b4cfd73983e43b1a94c931ac983e7e5beaafdeac21",
+    "path": "data/raw/contracts/service_agreement.txt",
+    "filename": "service_agreement.txt",
+    "extension": ".txt",
+    "category": "contracts",
+    "size_bytes": 387,
+    "last_modified": 1768564630.7559664,
+    "checksum_sha256": "1604a192462976e6c76870b4cfd73983e43b1a94c931ac983e7e5beaafdeac21"
+  },
+  {
+    "file_id": "c2a10becba29ed581579dd5b4d9e492e315c1acde004eb88a006ff7078b74935",
+    "path": "data/raw/knowledge/company_overview.txt",
+    "filename": "company_overview.txt",
+    "extension": ".txt",
+    "category": "knowledge",
+    "size_bytes": 339,
+    "last_modified": 1768564630.7559664,
+    "checksum_sha256": "c2a10becba29ed581579dd5b4d9e492e315c1acde004eb88a006ff7078b74935"
+  },
+  {
+    "file_id": "43649fbfb6d888b9fa00aec993e9eadd8595c601b40e691fb00bed501cb47dda",
+    "path": "data/raw/knowledge/it_security_policy.txt",
+    "filename": "it_security_policy.txt",
+    "extension": ".txt",
+    "category": "knowledge",
+    "size_bytes": 375,
+    "last_modified": 1768564630.7559664,
+    "checksum_sha256": "43649fbfb6d888b9fa00aec993e9eadd8595c601b40e691fb00bed501cb47dda"
+  },
+  {
+    "file_id": "defd349ba7b5e884f251c085ce62ff8e70760497197b9f21ad6ec2657394c4ef",
+    "path": "data/raw/specs/erp_system_spec.txt",
+    "filename": "erp_system_spec.txt",
+    "extension": ".txt",
+    "category": "specs",
+    "size_bytes": 412,
+    "last_modified": 1768564630.7559664,
+    "checksum_sha256": "defd349ba7b5e884f251c085ce62ff8e70760497197b9f21ad6ec2657394c4ef"
+  },
+  {
+    "file_id": "149cf8711a7e10923bb679a71a1ea181ddc7d640da5df1a8d0327130a230d9e9",
+    "path": "data/raw/training/onboarding_guide.txt",
+    "filename": "onboarding_guide.txt",
+    "extension": ".txt",
+    "category": "training",
+    "size_bytes": 357,
+    "last_modified": 1768564630.7559664,
+    "checksum_sha256": "149cf8711a7e10923bb679a71a1ea181ddc7d640da5df1a8d0327130a230d9e9"
+  }
+]

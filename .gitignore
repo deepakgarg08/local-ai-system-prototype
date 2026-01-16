@@ -3,17 +3,19 @@ __pycache__/
 *.pyc
 .venv/
 
-# Data
-data/raw/*
-data/processed/*
-data/indexes/*
+# Allow sample data
+# (only small, fake, educational files)
+# Nothing ignored here intentionally
 
-# Models & vectors
-models/*
-vectorstores/*
+# Indexes (generated later)
+data/indexes/
+
+# Models & vector stores (never commit)
+models/
+vectorstores/
 
 # Logs
-logs/*
+logs/
 
 # OS
 .DS_Store

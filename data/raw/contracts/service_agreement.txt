@@ -1,0 +1,18 @@
+Service Agreement
+
+Parties:
+Service Provider: ACME Systems GmbH
+Client: Example Client Ltd.
+
+Contract Start Date: 01.01.2024
+Contract Duration: 24 months
+
+Termination:
+Either party may terminate the contract with 3 months written notice.
+
+Obligations:
+- Provider delivers agreed services.
+- Client provides required information.
+
+Governing Law:
+This agreement is governed by German law.

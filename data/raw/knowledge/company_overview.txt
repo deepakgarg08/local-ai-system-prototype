@@ -1,0 +1,17 @@
+Company Overview
+
+ACME Systems GmbH is a fictional enterprise used for internal AI system testing.
+
+Mission:
+Deliver reliable, secure, and scalable enterprise software solutions.
+
+Core Values:
+- Quality and reliability
+- Data protection and compliance
+- Continuous improvement
+
+Departments:
+- Engineering
+- Sales
+- Accounting
+- Operations
