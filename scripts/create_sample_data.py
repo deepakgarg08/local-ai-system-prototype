@@ -1,0 +1,112 @@
+# This script creates sample .txt data files for the Local AI System prototype
+# matching the previously defined folder structure and realistic enterprise-style content.
+
+from pathlib import Path
+
+base = Path("../data/raw")
+
+files = {
+    "knowledge/company_overview.txt": """Company Overview
+
+ACME Systems GmbH is a fictional enterprise used for internal AI system testing.
+
+Mission:
+Deliver reliable, secure, and scalable enterprise software solutions.
+
+Core Values:
+- Quality and reliability
+- Data protection and compliance
+- Continuous improvement
+
+Departments:
+- Engineering
+- Sales
+- Accounting
+- Operations
+""",
+
+    "knowledge/it_security_policy.txt": """IT Security Policy
+
+Purpose:
+This document defines basic IT security principles for ACME Systems GmbH.
+
+Key Rules:
+1. All systems must use strong authentication.
+2. Sensitive data must be stored encrypted.
+3. Access rights are granted based on roles.
+4. Security incidents must be reported immediately.
+
+Responsibility:
+Final responsibility lies with the human system owner.
+""",
+
+    "contracts/service_agreement.txt": """Service Agreement
+
+Parties:
+Service Provider: ACME Systems GmbH
+Client: Example Client Ltd.
+
+Contract Start Date: 01.01.2024
+Contract Duration: 24 months
+
+Termination:
+Either party may terminate the contract with 3 months written notice.
+
+Obligations:
+- Provider delivers agreed services.
+- Client provides required information.
+
+Governing Law:
+This agreement is governed by German law.
+""",
+
+    "specs/erp_system_spec.txt": """ERP System Functional Specification
+Version: 1.2
+Release Date: 15.06.2024
+
+1. Introduction
+This document describes the functional requirements of the ERP system.
+
+2. User Management
+- User creation
+- Role assignment
+- Permission checks
+
+3. Accounting Module
+- Invoice creation
+- Payment tracking
+- Audit logging
+
+4. Reporting
+- Monthly reports
+- Export functionality
+
+All changes must be approved by management.
+""",
+
+    "training/onboarding_guide.txt": """Employee Onboarding Guide
+
+Welcome to ACME Systems GmbH.
+
+Step 1: Account Setup
+- Receive login credentials
+- Change initial password
+
+Step 2: System Access
+- Review assigned roles
+- Request additional access if required
+
+Step 3: Security Awareness
+- Complete mandatory security training
+- Review IT security policy
+
+For questions, contact your supervisor.
+"""
+}
+
+for rel_path, content in files.items():
+    path = base / rel_path
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(content, encoding="utf-8")
+
+list(files.keys())
