@@ -2,6 +2,8 @@
 
 This repository contains a small-scale prototype of a fully local AI system.
 
+“A local, privacy-preserving AI knowledge system that enhances human decision-making through structured enterprise data.”
+
 Goals:
 - Understand full AI system pipelines end-to-end
 - Practice enterprise-style architecture locally
