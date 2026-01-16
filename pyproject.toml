@@ -19,3 +19,8 @@ dependencies = [
     "typing-extensions==4.15.0",
     "typing-inspection==0.4.2",
 ]
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["llms*", "pipelines*"]
