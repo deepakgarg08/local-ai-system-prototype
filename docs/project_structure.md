@@ -15,3 +15,13 @@ local-ai-system-prototype/
 ├── scripts/         → admin / utility scripts
 ├── tests/           → test scaffolding
 └── logs/            → runtime & audit logs
+
+
+A. Core & Runtime
+B. Data Ingestion & Parsing
+C. Text Processing & Chunking
+D. Embeddings
+E. Vector Storage
+F. LLM Inference
+G. Application & Interface
+H. Utilities & Tooling
