@@ -149,34 +149,23 @@ def ingest_txt(path: Path, category: str):
         "ingested_at": now(),
     })
 
-    lines = path.read_text(encoding="utf-8").splitlines()
-    current_title = None
-    buffer = []
-    order = 0
+       text = path.read_text(encoding="utf-8").strip()
 
-    for line in lines + [""]:
-        if line.strip() and not line.startswith(" "):
-            if buffer:
-                sections.append({
-                    "section_id": str(uuid.uuid4()),
-                    "document_id": document_id,
-                    "section_title": current_title,
-                    "section_path": current_title,
-                    "order_index": order,
-                    "text": "\n".join(buffer).strip(),
-                    "page_start": None,
-                    "page_end": None,
-                    "paragraph_start": None,
-                    "paragraph_end": None,
-                    "char_start": 0,
-                    "char_end": len("\n".join(buffer)),
-                })
-                order += 1
-                buffer = []
-
-            current_title = line.strip()
-        else:
-            buffer.append(line)
+    if text:
+        sections.append({
+            "section_id": str(uuid.uuid4()),
+            "document_id": document_id,
+            "section_title": path.stem,
+            "section_path": path.stem,
+            "order_index": 0,
+            "text": text,
+            "page_start": None,
+            "page_end": None,
+            "paragraph_start": None,
+            "paragraph_end": None,
+            "char_start": 0,
+            "char_end": len(text),
+        })
 
     statuses.append({
         "entity_type": "document",
