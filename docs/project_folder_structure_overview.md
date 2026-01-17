@@ -1,3 +1,56 @@
+local-ai-system-prototype/
+│
+├── docs/                     → architecture notes, design decisions, step-by-step docs
+│                              (source of truth for system design)
+│
+├── data/
+│   ├── raw/                  → original input documents (PDF, DOCX, TXT)
+│                              (never modified after ingestion)
+│   ├── processed/            → cleaned, normalized, and chunked text
+│                              (output of ingestion + chunking pipelines)
+│   └── indexes/              → build-time artifacts for retrieval
+│                              (FAISS index files, chunks.json, metadata snapshots)
+│
+├── llms/                     → LLM capability layer (CORE INFRASTRUCTURE)
+│   ├── base.py               → abstract BaseLLM contract (single source of truth)
+│   └── ollama.py             → local LLM implementation using Ollama
+│                              (real inference, no placeholders)
+│
+├── pipelines/                → execution pipelines (build-time + query-time)
+│   ├── indexing/             → offline pipelines to build embeddings and indexes
+│   ├── query/                → runtime query pipelines (retrieval, prompt assembly)
+│   │   └── retriever.py      → retrieves relevant chunks from vector index
+│   └── llm/                  → temporary execution/tests related to LLM usage
+│                              (consumes llms/, does not define LLMs)
+│
+├── models/                   → local model files (future)
+│                              (downloaded LLMs, embedding models, weights)
+│
+├── vectorstores/             → semantic storage backends (future)
+│                              (FAISS, hybrid search, BM25 + vectors)
+│
+├── app/                      → application layer (future)
+│                              (API server, UI, request handling)
+│
+├── configs/                  → configuration & environment settings (future)
+│                              (model selection, paths, runtime toggles)
+│
+├── scripts/                  → admin and utility scripts (future)
+│                              (rebuild index, health checks, maintenance tasks)
+│
+├── tests/                    → test scaffolding
+│                              (unit, integration, retrieval-quality tests)
+│
+├── logs/                     → runtime and audit logs
+│                              (query traces, errors, performance metrics)
+│
+├── pyproject.toml            → project metadata, dependencies, packaging config
+├── README.md                 → project overview and usage instructions
+└── .venv/                    → Python virtual environment (local, not committed)
+
+
+
+
 docs/
 ├── README.md
 │

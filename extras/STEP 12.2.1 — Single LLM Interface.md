@@ -12,7 +12,7 @@ No future features, no speculation.
 
 ---
 
-# STEP 12.2 — Unified LLM Interface
+# STEP 12.2 — Single LLM Interface
 
 **(Summary + File Generation + Code)**
 

@@ -1,3 +1,118 @@
+What This Project Is
+
+This project is a local-first Retrieval-Augmented Generation (RAG) system, built incrementally from scratch with a strong emphasis on:
+
+clean architecture
+
+explicit separation of concerns
+
+local execution (no mandatory cloud dependency)
+
+debuggability and observability
+
+The system is designed to:
+
+Ingest documents
+
+Build semantic indexes offline
+
+Retrieve relevant context at query time
+
+Generate answers using pluggable LLM backends
+
+Current State (As of Now)
+
+The system currently has three fully real components:
+
+1. Indexing (Build-Time)
+
+Documents live in data/raw/
+
+Offline pipelines clean, chunk, embed, and index them
+
+Artifacts are written to data/indexes/ (e.g. FAISS index, chunks.json)
+
+2. Retrieval (Query-Time)
+
+Queries use vector similarity to retrieve relevant chunks
+
+Retrieval reads from build-time artifacts only
+
+No index rebuilding occurs during queries
+
+3. Local LLM Integration
+
+A real local LLM backend is implemented using Ollama
+
+The LLM interface is defined in llms/base.py
+
+A concrete implementation (OllamaLLM) lives in llms/ollama.py
+
+No placeholders or mock responses are used
+
+Architectural Principles
+
+Capabilities vs orchestration
+
+llms/ defines LLM capabilities
+
+pipelines/ orchestrates workflows
+
+Minimal contracts first
+
+LLMs expose a minimal generate(prompt: str) -> str interface
+
+Complexity (routing, agents, tools) is added only when required
+
+Fail loudly, not silently
+
+Query pipelines expect indexes to exist
+
+Missing build artifacts are treated as errors, not auto-fixed
+
+What Is Intentionally NOT Implemented Yet
+
+The following are explicitly deferred and not part of the current system:
+
+online / hosted LLM APIs
+
+LLM routing or fallback logic
+
+agents or tool-using loops
+
+UI or API server
+
+configuration-driven model switching
+
+These will be introduced step-by-step once the core system is stable.
+
+Mental Model to Use
+
+Think of the system as:
+
+Offline phase:
+  documents → chunks → embeddings → index
+
+
+Online phase:
+  query → retrieve context → assemble prompt → LLM → answer
+
+Everything in the codebase aligns to this model.
+
+How to Continue From Here
+
+Future steps will:
+
+add a unified LLM router (local + online)
+
+make model selection config-driven
+
+connect retrieval + LLM into an end-to-end RAG runner
+
+Until then, the focus is correctness, clarity, and clean boundaries.
+
+This primer is intentionally short, explicit, and architecture-focused so that any new LLM session can immediately reason about the project without guessing.
+
 # Project Directory Layout
 
 This document defines the **canonical directory structure** of the project and explains the **responsibility of each folder**. It is intended to provide immediate context to new contributors or new LLM prompt sessions.
