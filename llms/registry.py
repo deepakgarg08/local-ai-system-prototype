@@ -2,18 +2,22 @@
 
 from llms.base import BaseLLM
 from llms.ollama import OllamaLLM
+from llms.openai import OpenAILLM
+from configs.runtime import load_llm_config
 
-DEFAULT_OLLAMA_MODEL = "deepseek-coder:6.7b"
 def get_llm() -> BaseLLM:
     """
     Unified entry point for obtaining an LLM instance.
 
-    Current behavior:
-        - Always returns a local Ollama-backed LLM.
-
-    Design notes:
-        - Pipelines must never import concrete LLM implementations directly.
-        - This function is the single choke point for future model selection.
-        - Any failure here should be explicit and loud.
+    Selection is config-driven and explicit.
     """
-    return OllamaLLM(model=DEFAULT_OLLAMA_MODEL)
+    cfg = load_llm_config()
+
+    if cfg.provider == "ollama":
+        return OllamaLLM(model=cfg.model)
+
+    if cfg.provider == "openai":
+        return OpenAILLM(model=cfg.model)
+
+    # Defensive (should be unreachable)
+    raise RuntimeError(f"Unhandled LLM provider: {cfg.provider}")

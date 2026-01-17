@@ -17,7 +17,7 @@ from llms.registry import get_llm
 llm = get_llm()
 
 response = llm.generate(
-    "Explain what a vector database is in one concise paragraph."
+    "Explain in 50 words why Python sucks?"
 )
 
 print(response)
