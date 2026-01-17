@@ -12,3 +12,8 @@ Goals:
 
 Status:
 - Step 1: Project bootstrap and structure
+
+
+## Versions
+
+- [v0.1 — Initial End-to-End RAG](docs/v0.1.md)
