@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 .venv/
+.env
 
 local_ai_system_prototype.egg-info
 # Allow sample data
