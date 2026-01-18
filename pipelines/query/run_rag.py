@@ -10,7 +10,7 @@ from pipelines.confidence.models import ConfidenceReport, RetrievalEvidence
 from pipelines.confidence.scorer import score_confidence
 from llms.registry import get_llm
 from pipelines.query.relevance import MIN_SIMILARITY_THRESHOLD
-
+from configs.retrieval import CORPUS_PROFILE  # STEP 17: corpus-aware behavior
 
 
 @dataclass
@@ -81,18 +81,29 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
         for e in evidence
     ]
 
-    # 6. Assemble prompt (LLM never sees confidence or scores)
+    # 6. STEP 17 — Decide whether extractive-only mode is required
+    # Small corpus + limited evidence increases hallucination risk,
+    # especially for smaller / weaker LLMs.
+    total_tokens = sum(len(c["text"].split()) for c in context_chunks)
+    extractive_only = False
+
+    if CORPUS_PROFILE == "small":
+        if len(context_chunks) == 1 or total_tokens < 80:
+            extractive_only = True
+
+    # 7. Assemble prompt (LLM never sees confidence or scores)
     prompt = assemble_prompt(
         query=query,
         context_chunks=context_chunks,
         system_instruction=None,
+        extractive_only=extractive_only,
     )
 
-    # 7. Generate answer
+    # 8. Generate answer
     llm = get_llm()
     answer = llm.generate(prompt)
 
-    # 8. Return structured, explainable result
+    # 9. Return structured, explainable result
     return RAGResult(
         query=query,
         answer=answer,
