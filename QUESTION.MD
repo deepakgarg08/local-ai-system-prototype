@@ -28,3 +28,4 @@ context engineering
 
 need to add separate file where any type of online llm can be connected via api, option of connecting must be there 
 
+NEED TO ADD MULTIPLE LLMS CONFIG, LIKE CLAUDE, GEMINI, MISTRAL, QWEN (ONLINE)

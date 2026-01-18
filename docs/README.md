@@ -35,3 +35,10 @@ local-ai-system-prototype/
 ├── pyproject.toml
 ├── README.md
 └── .gitignore
+
+
+tests/
+├── unit/            # pure logic, deterministic
+├── retrieval/       # embeddings + vector store
+├── query/           # RAG wiring (mocked LLM)
+├── llm_integration/ # REAL LLM (later, optional)

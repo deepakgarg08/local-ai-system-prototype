@@ -76,8 +76,8 @@ def retrieve_context_with_scores(
             continue
 
         # For normalized vectors:
-        # cosine_similarity = 1 - distance
-        similarity = 1.0 - float(distance)
+        # cosine_similarity = distance
+        similarity = float(distance)
 
         chunk_text = _chunks[idx]["text"]
         results.append((chunk_text, similarity))

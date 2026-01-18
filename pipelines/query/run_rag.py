@@ -27,6 +27,11 @@ def run_rag(query: str, top_k: int = 4) -> str:
     # 1. Retrieve context with similarity scores
     retrieved = retrieve_context_with_scores(query, k=top_k)
 
+    # for debugging similarity scores
+    # for text, score in retrieved:
+    #     print(f"[DEBUG] similarity={score:.3f} | {text[:80]}...")
+
+
     # 2. Enforce grounding
     if not is_context_relevant(retrieved):
         return (
