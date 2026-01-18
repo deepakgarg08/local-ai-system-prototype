@@ -10,10 +10,10 @@ Goals:
 - No cloud dependencies
 - Human-in-the-loop by design
 
-Status:
-- Step 1: Project bootstrap and structure
-
 
 ## Versions
-
 - [v0.1 — Initial End-to-End RAG](docs/v0.1.md)
+
+## Test COde
+To test the code pipeline, command `uv run python -m scripts.run_query`
+[scrips/](scripts/run_query.py)

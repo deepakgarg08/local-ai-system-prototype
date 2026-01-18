@@ -4,7 +4,7 @@ __pycache__/
 .venv/
 .env
 
-local_ai_system_prototype.egg-info
+local_ai_system_prototype.egg-info/
 # Allow sample data
 # (only small, fake, educational files)
 # Nothing ignored here intentionally
