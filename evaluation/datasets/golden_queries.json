@@ -1,0 +1,18 @@
+[
+  {
+    "id": "Q1",
+    "query": "What is the purpose of the FAISS index?"
+  },
+  {
+    "id": "Q2",
+    "query": "How does chunking work in the system?"
+  },
+  {
+    "id": "Q3",
+    "query": "what is the company IT security policy?"
+  },
+    {
+    "id": "Q4",
+    "query": "what is the company Termination policy?"
+  }
+]

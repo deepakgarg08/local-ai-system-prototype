@@ -9,6 +9,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from typing import List, Tuple
 from pipelines.confidence.scorer import score_confidence
+from typing import List, Dict
 
 # Base project directory
 BASE_DIR = Path(__file__).resolve().parents[2]
@@ -82,5 +83,50 @@ def retrieve_context_with_scores(
 
         chunk_text = _chunks[idx]["text"]
         results.append((chunk_text, similarity))
+
+    return results
+
+def retrieve_context_structured(
+    query: str,
+    k: int = 4,
+) -> List[Dict[str, str]]:
+    """
+    Structured retrieval for evaluation (STEP 18).
+
+    Returns:
+        [
+            {
+                "id": str,
+                "text": str
+            },
+            ...
+        ]
+    """
+
+    # Embed query
+    query_embedding = _embedding_model.encode(
+        [query],
+        normalize_embeddings=True,
+    )
+
+    distances, indices = _index.search(
+        np.array(query_embedding, dtype="float32"),
+        k,
+    )
+
+    results: List[Dict[str, str]] = []
+
+    for idx in indices[0]:
+        if idx == -1:
+            continue
+
+        chunk = _chunks[idx]
+
+        results.append(
+            {
+                "id": chunk["chunk_id"],
+                "text": chunk["text"],
+            }
+        )
 
     return results
