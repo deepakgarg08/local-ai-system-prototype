@@ -1,4 +1,5 @@
-import pytest
+# tests/query/test_run_rag_grounding.py
+
 from unittest.mock import Mock, patch
 
 from pipelines.query.run_rag import run_rag
@@ -8,7 +9,7 @@ def test_run_rag_blocks_on_irrelevant_context():
     """
     If retrieved context is irrelevant,
     run_rag must NOT call the LLM and must
-    return a deterministic 'I don't know'.
+    return answer=None with confidence=none.
     """
 
     with patch(
@@ -28,13 +29,14 @@ def test_run_rag_blocks_on_irrelevant_context():
         # LLM must NEVER be called
         mock_get_llm.assert_not_called()
 
-        assert "I don't know" in result
+        assert result.answer is None
+        assert result.confidence.confidence_level in {"low", "medium"}
 
 
 def test_run_rag_calls_llm_on_relevant_context():
     """
     If context is relevant, run_rag must
-    call the LLM exactly once.
+    call the LLM exactly once and return an answer.
     """
 
     with patch(
@@ -57,4 +59,5 @@ def test_run_rag_calls_llm_on_relevant_context():
         mock_get_llm.assert_called_once()
         fake_llm.generate.assert_called_once()
 
-        assert result == "grounded answer"
+        assert result.answer == "grounded answer"
+        assert result.confidence.confidence_level in {"low", "medium", "high"}

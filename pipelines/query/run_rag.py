@@ -1,24 +1,45 @@
 # pipelines/query/run_rag.py
 
 from typing import List, Dict
+from dataclasses import dataclass
 
 from pipelines.query.retriever import retrieve_context_with_scores
 from pipelines.query.relevance import is_context_relevant
 from pipelines.prompting.assemble_prompt import assemble_prompt
+from pipelines.confidence.models import ConfidenceReport, RetrievalEvidence
+from pipelines.confidence.scorer import score_confidence
 from llms.registry import get_llm
+from pipelines.query.relevance import MIN_SIMILARITY_THRESHOLD
 
 
-def run_rag(query: str, top_k: int = 4) -> str:
+
+@dataclass
+class RAGResult:
     """
-    End-to-end RAG execution WITH grounding enforcement.
+    Structured result returned by the RAG pipeline.
+
+    - answer: generated answer or None if blocked
+    - confidence: deterministic confidence assessment
+    - sources: retrieval evidence used for generation
+    """
+    answer: str | None
+    confidence: ConfidenceReport
+    sources: list[RetrievalEvidence]
+
+
+def run_rag(query: str, top_k: int = 4) -> RAGResult:
+    """
+    End-to-end RAG execution WITH grounding, confidence, and explainability.
 
     Flow:
         query
           → retrieve_context_with_scores
-          → relevance check
+          → build retrieval evidence
+          → grounding and confidence scoring
+          → relevance (grounding) check
           → assemble_prompt
           → unified LLM
-          → answer
+          → structured RAGResult
     """
 
     if not query or not query.strip():
@@ -27,32 +48,51 @@ def run_rag(query: str, top_k: int = 4) -> str:
     # 1. Retrieve context with similarity scores
     retrieved = retrieve_context_with_scores(query, k=top_k)
 
-    # for debugging similarity scores
-    # for text, score in retrieved:
-    #     print(f"[DEBUG] similarity={score:.3f} | {text[:80]}...")
-
-
-    # 2. Enforce grounding
-    if not is_context_relevant(retrieved):
-        return (
-            "I don't know. "
-            "The available documents do not contain "
-            "relevant information to answer this question."
+    # 2. Build retrieval evidence objects (STEP 15)
+    evidence: list[RetrievalEvidence] = [
+        RetrievalEvidence(
+            chunk_id=f"chunk_{i}",
+            source_document="unknown",  # filled later when metadata is available
+            similarity_score=score,
+            chunk_text=text,
         )
-
-    # 3. Strip scores before prompt assembly
-    context_chunks: List[Dict] = [
-        {"text": text}
-        for text, _ in retrieved
+        for i, (text, score) in enumerate(retrieved)
     ]
 
-    # 4. Assemble prompt
+    # 3. Compute deterministic confidence BEFORE LLM call
+    confidence = score_confidence(
+        evidence=evidence,
+        similarity_threshold=MIN_SIMILARITY_THRESHOLD
+    )
+
+    # 4. Enforce grounding (hard gate)
+    if not is_context_relevant(retrieved):
+        return RAGResult(
+            answer=None,
+            confidence=confidence,
+            sources=[]
+        )
+
+    # 5. Prepare context for prompt assembly (strip metadata)
+    context_chunks: List[Dict] = [
+        {"text": e.chunk_text}
+        for e in evidence
+    ]
+
+    # 6. Assemble prompt (LLM never sees confidence or scores)
     prompt = assemble_prompt(
         query=query,
         context_chunks=context_chunks,
         system_instruction=None,
     )
 
-    # 5. Generate answer
+    # 7. Generate answer
     llm = get_llm()
-    return llm.generate(prompt)
+    answer = llm.generate(prompt)
+
+    # 8. Return structured, explainable result
+    return RAGResult(
+        answer=answer,
+        confidence=confidence,
+        sources=evidence
+    )

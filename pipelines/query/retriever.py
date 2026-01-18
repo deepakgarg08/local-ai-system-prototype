@@ -8,6 +8,7 @@ import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from typing import List, Tuple
+from pipelines.confidence.scorer import score_confidence
 
 # Base project directory
 BASE_DIR = Path(__file__).resolve().parents[2]
