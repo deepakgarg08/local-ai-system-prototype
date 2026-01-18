@@ -24,3 +24,19 @@ dependencies = [
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["llms*", "pipelines*"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+]
+
+# comment below DeprecationWarning in production
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+# [tool.pytest.ini_options]
+# filterwarnings = [
+#     "ignore:.*SwigPy.*:DeprecationWarning",
+# ]
