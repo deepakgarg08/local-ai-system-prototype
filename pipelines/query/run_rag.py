@@ -22,6 +22,7 @@ class RAGResult:
     - confidence: deterministic confidence assessment
     - sources: retrieval evidence used for generation
     """
+    query: str
     answer: str | None
     confidence: ConfidenceReport
     sources: list[RetrievalEvidence]
@@ -68,6 +69,7 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
     # 4. Enforce grounding (hard gate)
     if not is_context_relevant(retrieved):
         return RAGResult(
+            query=query,
             answer=None,
             confidence=confidence,
             sources=[]
@@ -92,6 +94,7 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
 
     # 8. Return structured, explainable result
     return RAGResult(
+        query=query,
         answer=answer,
         confidence=confidence,
         sources=evidence
