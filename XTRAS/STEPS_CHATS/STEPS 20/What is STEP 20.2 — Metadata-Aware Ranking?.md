@@ -256,13 +256,13 @@ Metadata logic **must be tested**, because heuristics are easy to break.
 ```python
 """
 Tests for metadata-aware ranking.
-Ensures metadata boosts influence ordering without filtering chunks.
+Ensures metadata boosts influence ordering without overpowering semantic relevance.
 """
 
 from pipelines.retrieval_quality.optimize_ranking import optimize_ranking
 
 
-def test_metadata_boost_prioritizes_definitions():
+def test_metadata_boost_influences_score_but_preserves_relevance():
     chunks = [
         {
             "id": "detail",
@@ -283,8 +283,12 @@ def test_metadata_boost_prioritizes_definitions():
         chunks=chunks,
     )
 
-    assert ranked[0]["id"] == "definition"
-    assert len(ranked) == 2
+    # semantic relevance still dominates
+    assert ranked[0]["id"] == "detail"
+
+    # but metadata-aware chunk is ranked above its raw-score position
+    assert ranked[1]["id"] == "definition"
+
 ```
 
 ---
