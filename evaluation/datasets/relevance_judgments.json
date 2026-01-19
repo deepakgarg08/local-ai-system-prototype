@@ -4,3 +4,28 @@
   "Q3": ["7be955b0-252b-4828-b5c8-c6fae3fd24e1"],
   "Q4": ["a36c46a6-82da-4e30-b589-be4d98c1c2c5"]
 }
+
+
+// What “Create a Few Golden Questions” Actually Means
+
+// It does NOT mean:
+
+// adding hundreds of questions
+
+// mapping every document
+
+// recreating a knowledge base
+
+// It means:
+
+// 5–20 representative questions
+
+// covering:
+
+// critical business facts
+
+// common queries
+
+// edge cases you care about
+
+// These questions become your new benchmark.

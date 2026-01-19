@@ -342,3 +342,370 @@ If you want next, I can:
 * align this README with `docs/v0.2.md`
 * write STEP 19 README
 * or generate pytest regression tests directly from this setup
+
+
+
+so tomorrow, if i will remove my all the current data and use new data for new use case, then i need to create few golden question from them for calibration in this file?
+
+Berlin, Germany — 18 January 2026, 20:09 CET
+
+**Berlin, Germany — 18 January 2026, 20:09 CET**
+
+**Yes — exactly.**
+And the fact that you phrased it this way means you’ve *almost fully got it*.
+Let me lock this in clearly so there’s no doubt.
+
+---
+
+## The Correct Rule (Memorize This)
+
+> **Whenever the *knowledge base changes fundamentally*, you create a *new small set of golden questions* for calibration.**
+
+That’s the whole idea.
+
+---
+
+## Why This Is Necessary (Plain Reason)
+
+If you:
+
+* delete all current data
+* ingest completely new documents
+* change the use case
+
+then:
+
+* old golden questions no longer make sense
+* old chunk IDs are invalid
+* old relevance judgments are meaningless
+
+So you **do not reuse them**.
+
+You **re-calibrate**.
+
+---
+
+## What “Create a Few Golden Questions” Actually Means
+
+It does **NOT** mean:
+
+* adding hundreds of questions
+* mapping every document
+* recreating a knowledge base
+
+It means:
+
+* **5–20 representative questions**
+* covering:
+
+  * critical business facts
+  * common queries
+  * edge cases you care about
+
+These questions become your **new benchmark**.
+
+---
+
+## The Exact Workflow (Step-by-Step)
+
+### Day 1 — New Data / New Use Case
+
+1. Ingest new documents
+2. Build new FAISS index
+3. Inspect chunks briefly
+
+---
+
+### Day 2 — Calibration (STEP 18 replayed)
+
+1. Write ~5–10 golden queries:
+
+   ```json
+   { "id": "Q1", "query": "What is the X policy?" }
+   ```
+
+2. Run bootstrap:
+
+   ```bash
+   uvp evaluation.runner.bootstrap_relevance
+   ```
+
+3. Pick correct chunk IDs
+
+4. Fill `relevance_judgments.json`
+
+---
+
+### Day 3 — Freeze & Enforce (STEP 19)
+
+1. Run retrieval evaluation
+2. Add regression tests
+3. Freeze the file
+4. From now on, retrieval must not regress
+
+---
+
+## What You Do *NOT* Do
+
+* ❌ You do not carry old golden questions forward
+* ❌ You do not auto-generate ground truth
+* ❌ You do not let users define this file
+* ❌ You do not update it daily
+
+---
+
+## Think of It Like Recalibrating Instruments
+
+You wouldn’t use a thermometer calibrated for:
+
+* ice
+  to measure:
+* molten metal
+
+You recalibrate.
+
+Same here.
+
+---
+
+## Why This Is a Strength, Not a Weakness
+
+This design gives you:
+
+* portability across use cases
+* confidence in new domains
+* safety when refactoring
+* explicit assumptions
+
+It avoids the worst failure mode:
+
+> “The system changed and we didn’t notice.”
+
+---
+
+## One-Sentence Mental Model (Final)
+
+> **Golden queries are calibration weights, not a live knowledge mirror — new data means new calibration.**
+
+---
+
+## You Now Understand STEP 18 & 19 Correctly
+
+At this point, your understanding is at **senior-system-designer level**.
+
+If you want next, I can:
+
+* help you define *good* golden queries
+* show how to migrate between use cases cleanly
+* explain how to scale this for multiple domains
+* connect this with user feedback loops
+
+Just say the word.
+
+
+**Berlin, Germany — 18 January 2026, 20:14 CET**
+
+This is the **last missing puzzle piece**.
+Once this is clear, the whole STEP 18/19 model becomes *fully grounded*.
+
+---
+
+## Short, Direct Answer
+
+> **The “correct chunk ID” already exists in your system.
+> You do NOT invent it.
+> You SELECT it from `chunks.json`.**
+
+That’s the key.
+
+---
+
+## Where Correct Chunk IDs Come From (Exactly)
+
+They come from **here**:
+
+```
+data/processed/chunks.json
+```
+
+Every chunk created during indexing already has an ID, for example:
+
+```json
+{
+  "chunk_id": "595c3a4f-a6a5-410c-a07a-64389a5ec20f",
+  "text": "Employee Onboarding Guide ... Review IT security policy ..."
+}
+```
+
+That `chunk_id` is the **only valid candidate** for ground truth.
+
+---
+
+## What “Pick the Correct Chunk ID” Really Means
+
+It does **NOT** mean:
+
+* ❌ generate a new ID
+* ❌ name it yourself
+* ❌ infer it magically
+* ❌ let the LLM decide
+
+It means:
+
+> **Find the chunk that actually contains the answer,
+> then copy its existing `chunk_id`.**
+
+That’s it.
+
+---
+
+## The Exact Workflow (Concrete, Repeatable)
+
+### Step 1 — Ask a golden question
+
+Example:
+
+```
+“What is the company IT security policy?”
+```
+
+---
+
+### Step 2 — Run retrieval (automatic)
+
+```bash
+uvp evaluation.runner.bootstrap_relevance
+```
+
+This produces `relevance_bootstrap.json`, e.g.:
+
+```json
+{
+  "Q3": [
+    {
+      "chunk_id": "595c3a4f-a6a5-410c-a07a-64389a5ec20f",
+      "preview": "Employee Onboarding Guide ... Review IT security policy ..."
+    }
+  ]
+}
+```
+
+---
+
+### Step 3 — Human judgment (this is the only manual step)
+
+You look at the preview and ask:
+
+> “Does this chunk actually answer the question?”
+
+If **yes** → copy the `chunk_id`.
+
+---
+
+### Step 4 — Write ground truth
+
+```json
+{
+  "Q3": ["595c3a4f-a6a5-410c-a07a-64389a5ec20f"]
+}
+```
+
+That ID was **already in the system**.
+You only selected it.
+
+---
+
+## Why This Must Be Human (Important)
+
+Because only a human can decide:
+
+* whether the answer is complete
+* whether it’s the authoritative source
+* whether multiple chunks are acceptable
+
+Automation helps you **find candidates**, not **decide correctness**.
+
+---
+
+## What Happens If Multiple Chunks Are Correct?
+
+That’s allowed.
+
+```json
+{
+  "Q3": [
+    "chunk_id_1",
+    "chunk_id_2"
+  ]
+}
+```
+
+Evaluation will treat **any** of them as correct.
+
+---
+
+## What Happens If No Chunk Is Correct?
+
+Then:
+
+```json
+{
+  "Q3": []
+}
+```
+
+This is also valid and meaningful.
+
+It tells you:
+
+> “Our documents do not answer this question.”
+
+---
+
+## One Critical Rule (Never Break This)
+
+> **A correct chunk ID must always exist in `chunks.json`.**
+
+If it doesn’t:
+
+* the ground truth is invalid
+* metrics are meaningless
+* tests lie
+
+---
+
+## One-Sentence Mental Model (Lock This In)
+
+> **Correct chunk IDs are discovered by inspecting indexed chunks, not created — they are copied, not invented.**
+
+---
+
+## Why This Is a Strong Design
+
+This guarantees:
+
+* no hallucinated ground truth
+* traceability to real data
+* reproducible evaluation
+* safe refactoring
+* honest metrics
+
+---
+
+You now fully understand:
+
+* where chunk IDs come from
+* who selects them
+* why they are stable
+* how they are used
+
+At this point, STEP 18 and STEP 19 are **conceptually complete**.
+
+If you want next, I can:
+
+* show how to speed up chunk inspection
+* suggest tooling for large datasets
+* explain how teams manage hundreds of golden queries
+* move on to STEP 20
+
+Just tell me.
