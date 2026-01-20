@@ -1,12 +1,26 @@
-from pipelines.query.retriever import retrieve_context
-from pipelines.query.run_rag import run_rag
+from pipelines.query.run_rag import run_rag, RAGResult
+from tests.fakes.fake_llm import FakeLLM
 
 
-def test_retrieve_context_contract():
-    result = retrieve_context("test query", k=2)
-    assert isinstance(result, list)
+def test_run_rag_returns_structured_result(monkeypatch):
+    """
+    Public contract test:
+    run_rag must return a structured RAGResult object,
+    not raw strings or ad-hoc dictionaries.
+    """
 
+    fake_llm = FakeLLM(answer="safe answer")
 
-def test_run_rag_returns_string():
-    answer = run_rag("What is this system?")
-    assert isinstance(answer, str)
+    # Ensure run_rag does not touch real environment / registry
+    monkeypatch.setattr(
+        "pipelines.query.run_rag.get_llm",
+        lambda: fake_llm,
+    )
+
+    result = run_rag("What is this system?")
+
+    assert isinstance(result, RAGResult)
+    assert result.query == "What is this system?"
+    assert hasattr(result, "answer")
+    assert hasattr(result, "confidence")
+    assert hasattr(result, "sources")
