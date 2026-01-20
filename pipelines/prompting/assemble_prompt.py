@@ -1,4 +1,5 @@
-# pipelines/prompting/assemble_prompt.py
+# Assembles the final prompt sent to the LLM.
+# Renders retrieved context with optional rerank scores to expose evidence strength.
 
 from typing import List, Dict, Optional
 
@@ -34,12 +35,12 @@ def assemble_prompt(
 
     system_instruction = system_instruction or DEFAULT_SYSTEM_INSTRUCTION
 
-    # ---- instruction selection (THIS IS THE KEY CHANGE) ----
+    # ---- instruction selection ----
     instructions = BASE_INSTRUCTION
     if extractive_only:
         instructions += EXTRACTIVE_INSTRUCTION
 
-    # ---- context rendering ----
+    # ---- context rendering (STEP 20.4: score-aware) ----
     if not context_chunks:
         context_block = "No relevant context was retrieved."
     else:
@@ -48,9 +49,12 @@ def assemble_prompt(
             text = chunk.get("text", "").strip()
             source = chunk.get("source", "unknown")
             chunk_id = chunk.get("chunk_id", "n/a")
+            rerank_score = chunk.get("rerank_score", "n/a")
 
             context_block_lines.append(
-                f"[{idx}] (source: {source}, chunk: {chunk_id})\n{text}"
+                f"[{idx}] "
+                f"(source: {source}, chunk: {chunk_id}, rerank_score: {rerank_score})\n"
+                f"{text}"
             )
 
         context_block = "\n\n".join(context_block_lines)
@@ -73,6 +77,5 @@ QUESTION:
     return prompt
 
 
-# Extractive constraint refers to a, often automated, process of identifying, 
-# defining, and lifting constraints—or limitations—from a data source, system, 
-# or process to ensure that generated outputs or solutions adhere to specific rules.
+# Extractive constraint refers to a controlled generation mode where the model
+# is restricted to lifting or paraphrasing content strictly from provided sources.
