@@ -11,7 +11,7 @@ from pipelines.confidence.scorer import score_confidence
 from llms.registry import get_llm
 from pipelines.query.relevance import MIN_SIMILARITY_THRESHOLD
 from configs.retrieval import CORPUS_PROFILE  # STEP 17: corpus-aware behavior
-
+from pipelines.gating.gate import is_answer_allowed
 
 @dataclass
 class RAGResult:

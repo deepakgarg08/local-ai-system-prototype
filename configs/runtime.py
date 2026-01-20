@@ -10,6 +10,20 @@ class LLMConfig:
     model: str
 
 
+def _get_float_env(name: str, default: float) -> float:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    try:
+        return float(value)
+    except ValueError:
+        raise RuntimeError(f"{name} must be a float, got: {value}")
+
+
+# STEP 20.5 — policy-level threshold for answer gating
+RERANK_MIN_SCORE: float = _get_float_env("RERANK_MIN_SCORE", 0.5)
+
+
 def load_llm_config() -> LLMConfig:
     """
     Load LLM configuration from environment variables.
