@@ -709,3 +709,29 @@ If you want next, I can:
 * move on to STEP 20
 
 Just tell me.
+
+
+
+// What “Create a Few Golden Questions” Actually Means
+
+// It does NOT mean:
+
+// adding hundreds of questions
+
+// mapping every document
+
+// recreating a knowledge base
+
+// It means:
+
+// 5–20 representative questions
+
+// covering:
+
+// critical business facts
+
+// common queries
+
+// edge cases you care about
+
+// These questions become your new benchmark.

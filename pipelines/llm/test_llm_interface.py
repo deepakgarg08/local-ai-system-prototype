@@ -12,12 +12,22 @@
 
 # pipelines/llm/test_llm_interface.py
 
+import pytest
 from llms.registry import get_llm
 
-llm = get_llm()
 
-response = llm.generate(
-    "Explain in 50 words why Python sucks?"
-)
+def test_get_llm_fails_without_provider(monkeypatch):
+    monkeypatch.delenv("LLM_PROVIDER", raising=False)
 
-print(response)
+    with pytest.raises(RuntimeError):
+        get_llm()
+
+
+def test_get_llm_constructs_llm_object(monkeypatch):
+    monkeypatch.setenv("LLM_PROVIDER", "ollama")
+    monkeypatch.setenv("LLM_MODEL", "dummy-model")
+
+    llm = get_llm()
+
+    # We only assert construction, not connectivity
+    assert llm is not None
