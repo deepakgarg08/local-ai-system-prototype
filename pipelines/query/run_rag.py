@@ -30,17 +30,66 @@ from configs.retrieval import CORPUS_PROFILE  # STEP 17: corpus-aware behavior
 @dataclass
 class RAGResult:
     """
-    Structured result returned by the RAG pipeline.
+    End-to-end RAG execution WITH grounding, confidence, and explainability.
 
-    This object is intentionally explicit and explainable.
-    Nothing is hidden inside free-form text.
+    =========================
+    TEXT-ONLY BY DESIGN
+    =========================
+    This pipeline operates exclusively on TEXT.
 
-    Fields:
-        query      : original user query
-        answer     : generated answer, or None if blocked by gating
-        confidence : deterministic confidence assessment (pre-LLM)
-        sources    : retrieval evidence used for grounding & explainability
+    - Inputs: human-written text queries
+    - Corpus: text chunks only
+    - Retrieval: text embeddings
+    - Context: plain text
+    - Output: generated text
+
+    No images, audio, video, spreadsheets, or structured databases
+    are processed or interpreted at any stage.
+
+    =========================
+    HUMAN-IN-THE-LOOP BOUNDARIES
+    =========================
+
+    HUMAN — BEFORE EXECUTION
+    ------------------------
+    - Formulates the query
+    - Defines intent, scope, and precision
+    - Bears responsibility for ambiguity in the question
+
+    SYSTEM — AUTOMATED EXECUTION
+    ----------------------------
+    - Retrieval, ranking, confidence scoring, gating,
+      prompt assembly, and generation are fully automated
+    - No human intervention is possible inside this function
+
+    HUMAN — AFTER EXECUTION
+    -----------------------
+    - Reviews the answer (if any)
+    - Validates correctness against source documents
+    - Decides whether to accept, refine, or discard the result
+    - Retains full responsibility for decisions and actions
+
+    =========================
+    ARCHITECTURAL GUARANTEES
+    =========================
+    - Retrieval happens before any LLM call
+    - Confidence is computed deterministically (pre-LLM)
+    - LLM never sees similarity scores or confidence
+    - Multiple hard gates prevent hallucinations
+    - Output is always structured and explainable
+
+    High-level flow:
+        Human query (text)
+          → retrieve_context_with_scores
+          → build RetrievalEvidence
+          → score confidence (deterministic)
+          → relevance gate (pre-LLM)
+          → assemble_prompt (text-only)
+          → LLM.generate (text-only)
+          → answer-level gate (post-LLM)
+          → RAGResult
     """
+        
     query: str
     answer: str | None
     confidence: ConfidenceReport
@@ -117,8 +166,10 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
 
     # ---------------------------------------------------------------------
     # 5. Prepare context for prompt assembly
-    #    Strip all metadata — the LLM only sees clean text
+    #    TEXT-ONLY GUARANTEE:
+    #    All metadata is stripped. The LLM receives plain text only.
     # ---------------------------------------------------------------------
+
     context_chunks: List[Dict] = [
         {"text": e.chunk_text}
         for e in evidence

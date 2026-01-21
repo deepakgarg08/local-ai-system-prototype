@@ -18,12 +18,12 @@ print(os.getenv("LLM_PROVIDER"))
 from pipelines.query.run_rag import run_rag
 
 def main() -> None:
-    query = "Who won the FIFA world cup in 2014?"
-    query = "what is the termination condition from the company"
-    query = "Explain the theory of relativity in simple terms."
-    query = "Why not to join acm company?"
-    query = "what are company policies"
-    # query = input("Enter your question: ")
+    # query = "Who won the FIFA world cup in 2014?"
+    # query = "what is the termination condition from the company"
+    # query = "Explain the theory of relativity in simple terms."
+    # query = "Why not to join acm company?"
+    # query = "what are company policies"
+    query = input("Enter your question: ")
 
     result = run_rag(query, top_k=4)
 
