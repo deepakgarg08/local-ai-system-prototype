@@ -3,6 +3,9 @@
 from typing import List, Dict
 from dataclasses import dataclass
 
+# --- Query normalization for spelling ---
+from pipelines.query.normalize import normalize_query
+
 # --- Retrieval & relevance ---
 from pipelines.query.retriever import retrieve_context_with_scores
 from pipelines.query.relevance import (
@@ -127,7 +130,9 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
     # 1. Retrieve context WITH similarity scores
     #    (scores are used internally only, never exposed to the LLM)
     # ---------------------------------------------------------------------
-    retrieved = retrieve_context_with_scores(query, k=top_k)
+
+    normalized_query = normalize_query(query)
+    retrieved = retrieve_context_with_scores(normalized_query, k=top_k)
 
     # ---------------------------------------------------------------------
     # 2. Build retrieval evidence objects (STEP 15)

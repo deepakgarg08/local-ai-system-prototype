@@ -66,8 +66,9 @@ def main() -> None:
                 f"[{i}] "
                 f"score={src.similarity_score:.3f} | "
                 f"document={src.source_document} | "
-                f"text={src.chunk_text[:120]}..."
+                f"text={src.chunk_text[:500]}..."
             )
+            # print(c["text"]) # for debugging chunk text
 
 
 if __name__ == "__main__":
