@@ -17,8 +17,8 @@ data/indexes/
 models/
 vectorstores/
 
-# Logs
-logs/
+# Logs, comment it in the production 
+# logs/
 
 # OS
 .DS_Store

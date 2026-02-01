@@ -29,6 +29,8 @@ from llms.registry import get_llm
 # --- Configuration ---
 from configs.retrieval import CORPUS_PROFILE  # STEP 17: corpus-aware behavior
 
+# --- Telemetry ---
+from telemetry.confidence_logger import emit_confidence_event
 
 @dataclass
 class RAGResult:
@@ -126,115 +128,142 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
     if not query or not query.strip():
         raise ValueError("Query must be a non-empty string")
 
+    answer: str | None = None
+    llm_backend: str | None = None
+
     # ---------------------------------------------------------------------
     # 1. Retrieve context WITH similarity scores
     #    (scores are used internally only, never exposed to the LLM)
     # ---------------------------------------------------------------------
+    try:
+        normalized_query = normalize_query(query)
+        retrieved = retrieve_context_with_scores(normalized_query, k=top_k)
 
-    normalized_query = normalize_query(query)
-    retrieved = retrieve_context_with_scores(normalized_query, k=top_k)
+        # ---------------------------------------------------------------------
+        # 2. Build retrieval evidence objects (STEP 15)
+        #    This creates a structured, explainable representation of retrieval
+        # ---------------------------------------------------------------------
+        evidence: list[RetrievalEvidence] = [
+            RetrievalEvidence(
+                chunk_id=f"chunk_{i}",
+                source_document="unknown",  # placeholder until metadata pipeline
+                similarity_score=score,
+                chunk_text=text,
+            )
+            for i, (text, score) in enumerate(retrieved)
+        ]
 
-    # ---------------------------------------------------------------------
-    # 2. Build retrieval evidence objects (STEP 15)
-    #    This creates a structured, explainable representation of retrieval
-    # ---------------------------------------------------------------------
-    evidence: list[RetrievalEvidence] = [
-        RetrievalEvidence(
-            chunk_id=f"chunk_{i}",
-            source_document="unknown",  # placeholder until metadata pipeline
-            similarity_score=score,
-            chunk_text=text,
+        # ---------------------------------------------------------------------
+        # 3. Compute deterministic confidence BEFORE any LLM call
+        #    This ensures confidence cannot be influenced by the model
+        # ---------------------------------------------------------------------
+        confidence = score_confidence(
+            evidence=evidence,
+            similarity_threshold=MIN_SIMILARITY_THRESHOLD,
         )
-        for i, (text, score) in enumerate(retrieved)
-    ]
 
-    # ---------------------------------------------------------------------
-    # 3. Compute deterministic confidence BEFORE any LLM call
-    #    This ensures confidence cannot be influenced by the model
-    # ---------------------------------------------------------------------
-    confidence = score_confidence(
-        evidence=evidence,
-        similarity_threshold=MIN_SIMILARITY_THRESHOLD,
-    )
+        # ---------------------------------------------------------------------
+        # 4. Enforce grounding via relevance gate (hard stop, pre-LLM)
+        #    If retrieval is weak, the LLM is never called
+        # ---------------------------------------------------------------------
+        if not is_context_relevant(retrieved):
+            return RAGResult(
+                query=query,
+                answer=None,
+                confidence=confidence,
+                sources=[],
+            )
 
-    # ---------------------------------------------------------------------
-    # 4. Enforce grounding via relevance gate (hard stop, pre-LLM)
-    #    If retrieval is weak, the LLM is never called
-    # ---------------------------------------------------------------------
-    if not is_context_relevant(retrieved):
-        return RAGResult(
+        # ---------------------------------------------------------------------
+        # 5. Prepare context for prompt assembly
+        #    TEXT-ONLY GUARANTEE:
+        #    All metadata is stripped. The LLM receives plain text only.
+        # ---------------------------------------------------------------------
+
+        context_chunks: List[Dict] = [
+            {"text": e.chunk_text}
+            for e in evidence
+        ]
+
+        # ---------------------------------------------------------------------
+        # 6. STEP 17 — Decide whether extractive-only mode is required
+        #
+        # Rationale:
+        # - Small corpus + low evidence → higher hallucination risk
+        # - Force extractive answers in these cases
+        # ---------------------------------------------------------------------
+        total_tokens = sum(len(c["text"].split()) for c in context_chunks)
+        extractive_only = False
+
+        if CORPUS_PROFILE == "small":
+            if len(context_chunks) == 1 or total_tokens < 80:
+                extractive_only = True
+
+        # ---------------------------------------------------------------------
+        # 7. Assemble the final prompt
+        #    The LLM never sees confidence, similarity scores, or gating logic
+        # ---------------------------------------------------------------------
+        prompt = assemble_prompt(
             query=query,
-            answer=None,
+            context_chunks=context_chunks,
+            system_instruction=None,
+            extractive_only=extractive_only,
+        )
+
+        # ---------------------------------------------------------------------
+        # 8. Generate answer using the unified LLM interface
+        # ---------------------------------------------------------------------
+        llm = get_llm()
+        llm_backend = llm.__class__.__name__
+        answer = llm.generate(prompt)
+
+
+        # ---------------------------------------------------------------------
+        # 9. Enforce answer-level gate (STEP 20)
+        #
+        # This is a post-generation safety check.
+        # Even with good retrieval, the answer itself may be unsafe.
+        # ---------------------------------------------------------------------
+        if not is_answer_allowed(
+            answer=answer,
             confidence=confidence,
-            sources=[],
-        )
+            extractive_only=extractive_only,
+        ):
+            answer = None
+            return RAGResult(
+                query=query,
+                answer=None,
+                confidence=confidence,
+                sources=evidence,
+            )
 
-    # ---------------------------------------------------------------------
-    # 5. Prepare context for prompt assembly
-    #    TEXT-ONLY GUARANTEE:
-    #    All metadata is stripped. The LLM receives plain text only.
-    # ---------------------------------------------------------------------
-
-    context_chunks: List[Dict] = [
-        {"text": e.chunk_text}
-        for e in evidence
-    ]
-
-    # ---------------------------------------------------------------------
-    # 6. STEP 17 — Decide whether extractive-only mode is required
-    #
-    # Rationale:
-    # - Small corpus + low evidence → higher hallucination risk
-    # - Force extractive answers in these cases
-    # ---------------------------------------------------------------------
-    total_tokens = sum(len(c["text"].split()) for c in context_chunks)
-    extractive_only = False
-
-    if CORPUS_PROFILE == "small":
-        if len(context_chunks) == 1 or total_tokens < 80:
-            extractive_only = True
-
-    # ---------------------------------------------------------------------
-    # 7. Assemble the final prompt
-    #    The LLM never sees confidence, similarity scores, or gating logic
-    # ---------------------------------------------------------------------
-    prompt = assemble_prompt(
-        query=query,
-        context_chunks=context_chunks,
-        system_instruction=None,
-        extractive_only=extractive_only,
-    )
-
-    # ---------------------------------------------------------------------
-    # 8. Generate answer using the unified LLM interface
-    # ---------------------------------------------------------------------
-    llm = get_llm()
-    answer = llm.generate(prompt)
-
-    # ---------------------------------------------------------------------
-    # 9. Enforce answer-level gate (STEP 20)
-    #
-    # This is a post-generation safety check.
-    # Even with good retrieval, the answer itself may be unsafe.
-    # ---------------------------------------------------------------------
-    if not is_answer_allowed(
-        answer=answer,
-        confidence=confidence,
-        extractive_only=extractive_only,
-    ):
+        # ---------------------------------------------------------------------
+        # 10. Return structured, grounded, explainable result
+        # ---------------------------------------------------------------------
         return RAGResult(
             query=query,
-            answer=None,
+            answer=answer,
             confidence=confidence,
             sources=evidence,
         )
+    except Exception as e:
+        # Log the exception (placeholder for actual logging)
+        print(f"Error during RAG execution: {e}")
+    finally:
+        emit_confidence_event({
+            "query": query,
+            "normalized_query": normalized_query,
+            "confidence_level": confidence.confidence_level,
+            "rationale": confidence.rationale,
+            "answer_type": "IDK" if answer is None else "ANSWER",
+            "retrieval_stats": {
+                "top_k": top_k,
+                "num_chunks": len(evidence) if "evidence" in locals() else 0,
+                "min_similarity": min(
+                    (e.similarity_score for e in evidence),
+                    default=None,
+                ) if "evidence" in locals() else None,
+            },
+            "model_backend": llm_backend
 
-    # ---------------------------------------------------------------------
-    # 10. Return structured, grounded, explainable result
-    # ---------------------------------------------------------------------
-    return RAGResult(
-        query=query,
-        answer=answer,
-        confidence=confidence,
-        sources=evidence,
-    )
+        })
