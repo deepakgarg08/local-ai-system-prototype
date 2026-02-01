@@ -130,6 +130,7 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
 
     answer: str | None = None
     llm_backend: str | None = None
+    execution_status = "OK"
 
     # ---------------------------------------------------------------------
     # 1. Retrieve context WITH similarity scores
@@ -249,6 +250,9 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
     except Exception as e:
         # Log the exception (placeholder for actual logging)
         print(f"Error during RAG execution: {e}")
+        execution_status = "ERROR"
+        raise
+
     finally:
         emit_confidence_event({
             "query": query,
@@ -264,6 +268,7 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
                     default=None,
                 ) if "evidence" in locals() else None,
             },
-            "model_backend": llm_backend
+            "model_backend": llm_backend,
+            "execution_status": execution_status,
 
         })
