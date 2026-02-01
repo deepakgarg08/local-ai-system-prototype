@@ -16,3 +16,7 @@ confidence-calibration:
 	python -m analysis.confidence_telemetry_analysis
 	@echo ">>> PART 3: calibrating thresholds"
 	python -m analysis.confidence_threshold_calibration
+
+test:
+	pytest
+	python -m tools.log_validation

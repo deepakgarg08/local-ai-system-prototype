@@ -4,14 +4,20 @@ from statistics import mean
 from collections import defaultdict
 
 
-LOG_DIR = Path("logs/confidence")
+LOG_DIR = Path("logs/confidence/runtime")
 
 
 def load_events():
     events = []
     for file in sorted(LOG_DIR.glob("*.jsonl")):
         for line in file.read_text().splitlines():
-            events.append(json.loads(line))
+            e = json.loads(line)
+
+            # ⛔ HARD GUARD: ignore test / mock telemetry
+            if e.get("model_backend") in {"Mock", "FakeLLM"}:
+                continue
+
+            events.append(e)
     return events
 
 
@@ -22,9 +28,57 @@ def main():
         print("No telemetry events found.")
         return
 
-    # --------------------------------------------------
-    # Separate answer types
-    # --------------------------------------------------
+    result = analyze_thresholds(events)
+
+    print("=" * 60)
+    print("STEP 23 — THRESHOLD CALIBRATION")
+    print("=" * 60)
+
+    print(f"\nTotal events: {result['total_events']}")
+    print(f"Answered: {result['answered']}")
+    print(f"IDK: {result['idk']}")
+
+    if not result["similarity_stats"]:
+        print("\nNot enough diversity to calibrate thresholds.")
+        return
+
+    print("\nSimilarity statistics:")
+    print(
+        f"  ANSWER  avg min_similarity: "
+        f"{result['similarity_stats']['answer_avg']:.3f}"
+    )
+    print(
+        f"  IDK     avg min_similarity: "
+        f"{result['similarity_stats']['idk_avg']:.3f}"
+    )
+
+    print("\nCandidate thresholds:")
+    for t in result["candidate_thresholds"]:
+        false_answers = sum(
+            1 for e in events
+            if e.get("answer_type") == "ANSWER"
+            and e.get("retrieval_stats", {}).get("min_similarity", 0) < t
+        )
+        false_idks = sum(
+            1 for e in events
+            if e.get("answer_type") != "ANSWER"
+            and e.get("retrieval_stats", {}).get("min_similarity", 0) >= t
+        )
+
+        print(
+            f"  t={t:.2f} | "
+            f"ANSWER below t: {false_answers:3d} | "
+            f"IDK above t: {false_idks:3d}"
+        )
+
+    print("\nRecommended threshold(s):", result["recommended_thresholds"])
+    if not result["recommended_thresholds"]:
+        print("  No safe threshold found — corpus quality may be insufficient.")
+
+    print("\nCalibration complete.")
+
+
+def analyze_thresholds(events: list[dict]) -> dict:
     answered = []
     idk = []
 
@@ -33,63 +87,40 @@ def main():
         if sim is None:
             continue
 
-        if e["answer_type"] == "ANSWER":
+        if e.get("answer_type") == "ANSWER":
             answered.append(sim)
         else:
             idk.append(sim)
 
-    print("=" * 60)
-    print("STEP 23 — THRESHOLD CALIBRATION")
-    print("=" * 60)
-
-    print(f"\nTotal events: {len(events)}")
-    print(f"Answered: {len(answered)}")
-    print(f"IDK: {len(idk)}")
+    result = {
+        "total_events": len(events),
+        "answered": len(answered),
+        "idk": len(idk),
+        "similarity_stats": {},
+        "candidate_thresholds": [],
+        "recommended_thresholds": [],
+    }
 
     if not answered or not idk:
-        print("\nNot enough diversity to calibrate thresholds.")
-        return
+        return result
 
-    # --------------------------------------------------
-    # Basic statistics
-    # --------------------------------------------------
-    print("\nSimilarity statistics:")
-    print(f"  ANSWER  avg min_similarity: {mean(answered):.3f}")
-    print(f"  IDK     avg min_similarity: {mean(idk):.3f}")
+    result["similarity_stats"] = {
+        "answer_avg": mean(answered),
+        "idk_avg": mean(idk),
+    }
 
-    # --------------------------------------------------
-    # Candidate threshold search
-    # --------------------------------------------------
-    candidates = [round(x, 2) for x in [i / 100 for i in range(20, 90, 5)]]
+    candidates = [round(i / 100, 2) for i in range(20, 90, 5)]
+    result["candidate_thresholds"] = candidates
 
-    print("\nCandidate thresholds:")
-    for t in candidates:
-        false_answers = sum(1 for s in answered if s < t)
-        false_idks = sum(1 for s in idk if s >= t)
-
-        print(
-            f"  t={t:.2f} | "
-            f"ANSWER below t: {false_answers:3d} | "
-            f"IDK above t: {false_idks:3d}"
-        )
-
-    # --------------------------------------------------
-    # Recommendation heuristic
-    # --------------------------------------------------
     safe_thresholds = [
         t for t in candidates
         if sum(1 for s in answered if s < t) <= max(1, len(answered) * 0.05)
     ]
 
-    print("\nRecommended threshold(s):", safe_thresholds)
-    if safe_thresholds:
-        for t in safe_thresholds[:3]:
-            print(f"  ≥ {t:.2f}")
-    else:
-        print("  No safe threshold found — corpus quality may be insufficient.")
-
-    print("\nCalibration complete.")
+    result["recommended_thresholds"] = safe_thresholds
+    return result
 
 
 if __name__ == "__main__":
+
     main()

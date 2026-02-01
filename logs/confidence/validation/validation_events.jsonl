@@ -1,0 +1,1 @@
+{"event_type": "validation", "stage": "confidence_threshold_calibration", "status": "PASS", "details": {"tests": ["schema", "safety", "edge_cases"]}, "logged_at": "2026-02-01T16:21:05.797867Z"}
