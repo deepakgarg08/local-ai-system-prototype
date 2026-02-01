@@ -1,0 +1,9 @@
+FROM rag-base
+
+WORKDIR /app
+
+# Copy only what indexer needs
+COPY pipelines ./pipelines
+COPY configs ./configs
+
+CMD ["python", "-m", "pipelines.indexing.build_index"]

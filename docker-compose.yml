@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+
+  rag-indexer:
+    image: rag-indexer
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.indexer
+    volumes:
+      - ./data:/app/data:Z
+    profiles: # this won't show in image unless the profile is disabled/commented out, currently not showing
+      - index 
+
+  rag-runtime:
+    image: rag-runtime
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.runtime
+    volumes:
+      - ./data:/app/data:Z
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
+
+   # for production deployment, uncomment the following lines
+    # restart: unless-stopped
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: "6.0"
+    #       memory: 8G
+
+  rag-api:
+    image: rag-runtime
+    command: ["uvicorn", "app.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./data:/app/data:Z
+    env_file:
+      - .env
+
+  rag-web:
+    image: rag-runtime
+    command: [
+      "streamlit", "run", "app/web/app.py",
+      "--server.address=0.0.0.0",
+      "--server.port=8501"
+    ]
+    ports:
+      - "127.0.0.1:8501:8501"
+    volumes:
+      - ./data:/app/data:Z
+    env_file:
+      - .env

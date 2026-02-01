@@ -1,0 +1,14 @@
+FROM rag-base
+
+WORKDIR /app
+
+COPY pipelines ./pipelines
+COPY llms ./llms
+COPY configs ./configs
+COPY app ./app
+
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+
+# Default = CLI (safe fallback)
+CMD ["python", "-m", "app.cli.main"]

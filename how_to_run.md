@@ -1,99 +1,164 @@
-**Berlin, Germany — 20 January 2026, 20:33 CET**
+**Berlin, Germany — 21 January 2026, 13:22 CET**
+## Overview
 
-Good catch — and thanks for the clarification 👍
-You’re right: **`uv` is the package / environment manager**, and the `run.md` should reflect that.
+This project can be run in **two supported ways**:
 
-### What I attempted
+1. **Local (uv-based)** — for development and debugging
+2. **Docker (recommended)** — for reproducible, deployment-like execution
 
-I tried to **surgically update the existing `run.md` in the canvas** to:
-
-* replace `python -m venv` → `uv venv`
-* replace `pip install` → `uv pip install`
-* mark `uv` explicitly in the **TL;DR** and **Environment Setup** sections
-
-The automated patch failed due to regex matching issues in the canvas tool (nothing you did wrong).
+Both use the **same codebase and architecture**.
 
 ---
 
-## What you should do (simple & safe)
-
-Please make the following **manual edits** in `run.md`.
-These are **exact replacements** and keep the document fully STEP 20.9-compatible.
-
----
-
-### 1️⃣ TL;DR — Quick Start (replace entire block)
+## TL;DR — Quick Start (Docker – Recommended)
 
 ```bash
-# 1. Create & activate virtual environment (uv)
+# 1. Build base image (dependencies)
+docker build -f docker/Dockerfile.base -t rag-base .
+
+# 2. Build all runtime images
+docker compose build
+
+# 3. Build the vector index (offline, one-time or on data change)
+docker compose --profile index run --rm rag-indexer
+
+# 4. Run CLI interface
+docker compose run --rm rag-runtime
+```
+
+---
+
+## TL;DR — Quick Start (Local / uv)
+
+```bash
+# 1. Create & activate virtual environment
 uv venv .venv
 source .venv/bin/activate
 
-# 2. Install dependencies (uv)
-uv pip install -r requirements.txt
+# 2. Install dependencies
+uv pip install -e .
 
-# 3. Configure LLM (example: local Ollama)
-export LLM_PROVIDER=ollama
-export LLM_MODEL=llama3
+# 3. Configure LLM
+export LLM_PROVIDER=openai
+export LLM_MODEL=gpt-4o-mini
+export OPENAI_API_KEY=sk-...
 
-# 4. Build index (one-time, offline)
+# 4. Build index (offline)
 python -m pipelines.indexing.build_index
 
-# 5. Run a local test query (recommended entry point)
-python scripts/run_query.py
+# 5. Run CLI
+python -m app.cli.main
 ```
 
 ---
 
-### 2️⃣ Section 3.1 — Create a Virtual Environment
+## Docker-Based Execution (Canonical)
 
-Change heading and commands to:
+### Prerequisites
 
-````md
-### 3.1 Create a Virtual Environment (uv)
+* Docker ≥ 25
+* Docker Compose v2
+* `.env` file present at project root
+
+Example `.env`:
+
+```env
+LLM_PROVIDER=openai
+LLM_MODEL=gpt-4o-mini
+OPENAI_API_KEY=sk-...
+```
+
+---
+
+### 1️⃣ Build Images
 
 ```bash
-uv venv .venv
-source .venv/bin/activate
-````
+docker build -f docker/Dockerfile.base -t rag-base .
+docker compose build
+```
 
-````
+* `rag-base` installs all dependencies once
+* Other images reuse it
 
 ---
 
-### 3️⃣ Section 3.2 — Install Dependencies
-
-Change to:
-
-```md
-### 3.2 Install Dependencies (uv)
+### 2️⃣ Build / Update Index (Offline)
 
 ```bash
-uv pip install -r requirements.txt
-````
+docker compose --profile index run --rm rag-indexer
+```
 
-(or `uv pip install -e .` if using `pyproject.toml`)
+This will:
 
+* read documents from `data/raw/`
+* generate embeddings
+* write FAISS index to `data/indexes/`
+
+Run this **only when documents change**.
+
+---
+
+### 3️⃣ Run Interfaces
+
+#### CLI
+
+```bash
+docker compose run --rm rag-runtime
 ```
 
 ---
 
-## Why this is the **correct final state**
+#### API
 
-- ✅ Matches your actual tooling (`uv`)
-- ✅ Faster, reproducible installs
-- ✅ Clear to reviewers / auditors
-- ✅ Still purely **runtime-agnostic**
-- ✅ No architectural or freeze violations
+```bash
+docker compose up rag-api
+```
+
+Then open:
+
+```
+http://127.0.0.1:8000/docs
+```
 
 ---
 
-## One-line confirmation (for STEP 20.9)
+#### Web UI (Streamlit)
 
-> Dependency management and virtual environments are handled via **uv**, with `scripts/run_query.py` as the local execution entry point.
-
-If you want, next I can:
-- re-emit the **full corrected `run.md`** as a single paste
-- add a **CI-friendly uv section**
-- or add a **“Why uv” rationale** for reviewers
+```bash
+docker compose up rag-web
 ```
+
+Then open:
+
+```
+http://127.0.0.1:8501
+```
+
+---
+
+## Notes on Architecture
+
+* **Docker images never contain data or secrets**
+* All persistent state lives in `data/`
+* `.env` is injected at runtime via Docker Compose
+* Indexing and querying are strictly separated
+
+This mirrors a **production-grade local deployment**.
+
+---
+
+## When to Use Which Mode
+
+| Mode   | Use case                           |
+| ------ | ---------------------------------- |
+| `uv`   | development, debugging             |
+| Docker | reproducibility, demos, deployment |
+| CLI    | single-user workflows              |
+| API    | programmatic access                |
+| Web    | human-facing UI                    |
+
+---
+
+## One-Line Summary
+
+> The system can be run either locally via **uv** or reproducibly via **Docker**, with Docker being the recommended path for deployment-like usage.
