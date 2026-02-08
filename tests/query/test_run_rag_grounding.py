@@ -30,8 +30,7 @@ def test_run_rag_blocks_on_irrelevant_context():
         mock_get_llm.assert_not_called()
 
         assert result.answer is None
-        assert result.confidence.confidence_level in {"low", "medium"}
-
+        assert result.confidence.confidence_level == "none"
 
 def test_run_rag_calls_llm_on_relevant_context():
     """
@@ -61,3 +60,36 @@ def test_run_rag_calls_llm_on_relevant_context():
 
         assert result.answer == "grounded answer"
         assert result.confidence.confidence_level in {"low", "medium", "high"}
+
+
+def test_run_rag_blocks_on_irrelevant_context():
+    """
+    If retrieved context is irrelevant,
+    run_rag must NOT call the LLM and must
+    return answer=None with confidence=none.
+    """
+
+    with patch(
+        "pipelines.query.run_rag.retrieve_context_with_scores"
+    ) as mock_retrieve, patch(
+        "pipelines.query.run_rag.get_llm"
+    ) as mock_get_llm:
+
+        mock_retrieve.return_value = [
+            ("irrelevant text", 0.12),
+            ("still irrelevant", 0.18),
+        ]
+
+        result = run_rag("some question")
+
+        mock_get_llm.assert_not_called()
+
+        assert result.answer is None
+        assert result.confidence.confidence_level == "none"
+
+        # 🔒 STEP 25: IDK must be explainable
+        stats = result.confidence.retrieval_stats
+        assert "num_chunks" in stats
+        assert "max_similarity" in stats
+        assert stats.get("relevance_gate") == "FAILED"
+

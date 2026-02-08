@@ -168,6 +168,15 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
         #    If retrieval is weak, the LLM is never called
         # ---------------------------------------------------------------------
         if not is_context_relevant(retrieved):
+            confidence = ConfidenceReport(
+                confidence_level="none",
+                rationale=["Insufficient relevant context retrieved"],
+                retrieval_stats={
+                        "num_chunks": len(retrieved),
+                        "max_similarity": max((s for _, s in retrieved), default=None),
+                        "relevance_gate": "FAILED",
+                    },
+                )
             return RAGResult(
                 query=query,
                 answer=None,
@@ -245,7 +254,7 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
             query=query,
             answer=answer,
             confidence=confidence,
-            sources=evidence,
+            sources=evidence
         )
     except Exception as e:
         # Log the exception (placeholder for actual logging)
