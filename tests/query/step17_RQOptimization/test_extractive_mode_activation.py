@@ -5,7 +5,7 @@ from unittest.mock import Mock
 from pipelines.query.run_rag import run_rag
 
 
-def test_extractive_mode_activated_for_small_corpus_single_chunk(monkeypatch):
+def test_extractive_mode_activated_for_small_corpus_single_chunk(monkeypatch, real_retrieval_item,):
     """
     STEP 17:
     Small corpus + single short chunk → extractive-only mode must be used.
@@ -14,7 +14,7 @@ def test_extractive_mode_activated_for_small_corpus_single_chunk(monkeypatch):
     # Mock retriever: single strong but short chunk
     monkeypatch.setattr(
         "pipelines.query.run_rag.retrieve_context_with_scores",
-        lambda *args, **kwargs: [("Short but relevant paragraph.", 0.92)],
+        lambda *args, **kwargs: [real_retrieval_item],
     )
 
     # Mock LLM to capture prompt

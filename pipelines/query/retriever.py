@@ -40,7 +40,7 @@ def retrieve_context(query: str, k: int = 4) -> List[str]:
     Returns ONLY text chunks.
     """
     scored = retrieve_context_with_scores(query, k)
-    return [text for text, _ in scored]
+    return [item["text"] for item in scored]
 
 
 def retrieve_context_with_scores(
@@ -52,8 +52,13 @@ def retrieve_context_with_scores(
 
     Returns:
         [
-            (chunk_text, similarity_score),
-            ...
+         {
+            "chunk_id": "...",
+            "section_id": "...",
+            "document_id": "...",
+            "text": "...",
+            "similarity": 0.82,
+            }
         ]
 
     similarity_score ∈ [-1, 1]
@@ -82,7 +87,14 @@ def retrieve_context_with_scores(
         similarity = float(distance)
 
         chunk_text = _chunks[idx]["text"]
-        results.append((chunk_text, similarity))
+        # results.append((chunk_text, similarity))
+        results.append({
+            "chunk_id": _chunks[idx]["chunk_id"],
+            "similarity": similarity,
+            "text": _chunks[idx]["text"],
+            "section_id": _chunks[idx]["section_id"],
+            "document_id": _chunks[idx]["document_id"],
+        })
 
     return results
 

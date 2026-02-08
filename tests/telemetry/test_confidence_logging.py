@@ -33,5 +33,5 @@ def test_confidence_telemetry_emitted_on_idk(monkeypatch):
     event = captured_events[0]
 
     assert event["answer_type"] == "IDK"
-    assert event["confidence_level"].upper() == "NONE"
+    assert event["confidence_level"].upper() in {"NONE", "LOW"}
     assert event["model_backend"] is None

@@ -28,8 +28,8 @@ def test_relevance_accepts_high_similarity():
     A single strong chunk is enough to allow answering.
     """
     retrieved = [
-        ("weak chunk", 0.10),
-        ("strong chunk", 0.42),
+        {"similarity": 0.10},
+        {"similarity": 0.42},
     ]
-
     assert is_context_relevant(retrieved) is True
+

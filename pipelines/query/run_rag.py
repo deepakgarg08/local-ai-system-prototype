@@ -33,7 +33,9 @@ from configs.retrieval import CORPUS_PROFILE  # STEP 17: corpus-aware behavior
 from telemetry.confidence_logger import emit_confidence_event
 
 import uuid
-query_id = str(uuid.uuid4())
+from data.registry import CHUNKS, SECTIONS, DOCUMENTS, FILES
+
+
 
 @dataclass
 class RAGResult:
@@ -103,7 +105,6 @@ class RAGResult:
     confidence: ConfidenceReport
     sources: list[RetrievalEvidence]
 
-
 def run_rag(query: str, top_k: int = 4) -> RAGResult:
     """
     End-to-end RAG execution WITH grounding, confidence, and explainability.
@@ -127,6 +128,7 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
           → RAGResult
     """
 
+
     # --- Basic input validation ---
     if not query or not query.strip():
         raise ValueError("Query must be a non-empty string")
@@ -134,6 +136,10 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
     answer: str | None = None
     llm_backend: str | None = None
     execution_status = "OK"
+    query_id = str(uuid.uuid4())
+    confidence = None
+    evidence = []
+    normalized_query = None
 
     # ---------------------------------------------------------------------
     # 1. Retrieve context WITH similarity scores
@@ -142,20 +148,34 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
     try:
         normalized_query = normalize_query(query)
         retrieved = retrieve_context_with_scores(normalized_query, k=top_k)
-
+        print(f"Retrieved {len(retrieved)} chunks with scores: {retrieved}")
         # ---------------------------------------------------------------------
         # 2. Build retrieval evidence objects (STEP 15)
         #    This creates a structured, explainable representation of retrieval
         # ---------------------------------------------------------------------
-        evidence: list[RetrievalEvidence] = [
-            RetrievalEvidence(
-                chunk_id=f"chunk_{i}",
-                source_document="unknown",  # placeholder until metadata pipeline
-                similarity_score=score,
-                chunk_text=text,
+
+        evidence: list[RetrievalEvidence] = []
+
+        for item in retrieved:
+            chunk = CHUNKS[item["chunk_id"]]
+            section = SECTIONS[chunk["section_id"]]
+            document = DOCUMENTS[chunk["document_id"]]
+            file = FILES[document["file_id"]]
+
+            evidence.append(
+                RetrievalEvidence(
+                    chunk_id=chunk["chunk_id"],
+                    source_document=document["document_name"],
+                    similarity_score=item["similarity"],
+                    chunk_text=chunk["text"],
+                    section_title=section["section_title"],
+                    section_path=section["section_path"],
+                    file_path=file["path"],
+                )
             )
-            for i, (text, score) in enumerate(retrieved)
-        ]
+        
+        print(document["document_name"], section["section_title"])
+
 
         # ---------------------------------------------------------------------
         # 3. Compute deterministic confidence BEFORE any LLM call
@@ -172,15 +192,16 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
         # ---------------------------------------------------------------------
         if not is_context_relevant(retrieved):
             confidence = ConfidenceReport(
-                confidence_level="none",
+                confidence_level=confidence.confidence_level if confidence else None,
                 rationale=["Insufficient relevant context retrieved"],
                 retrieval_stats={
                         "num_chunks": len(retrieved),
-                        "max_similarity": max((s for _, s in retrieved), default=None),
+                        "max_similarity": max((item["similarity"] for item in retrieved), default=None),
                         "relevance_gate": "FAILED",
                     },
                 )
             return RAGResult(
+
                 query=query,
                 answer=None,
                 confidence=confidence,
@@ -271,8 +292,8 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
             "query_id": query_id,
             "query": query,
             "normalized_query": normalized_query,
-            "confidence_level": confidence.confidence_level,
-            "rationale": confidence.rationale,
+            "confidence_level": confidence.confidence_level if confidence else None,
+            "rationale": confidence.rationale if confidence else None,
             "answer_type": "IDK" if answer is None else "ANSWER",
             "retrieval_stats": {
                 "top_k": top_k,

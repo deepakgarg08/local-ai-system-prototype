@@ -3,7 +3,7 @@
 from pipelines.query.run_rag import run_rag
 
 
-def test_llm_not_called_when_grounding_fails(monkeypatch):
+def test_llm_not_called_when_grounding_fails(monkeypatch, real_retrieval_item):
     """
     STEP 17 regression test:
     If grounding fails, the LLM must never be called.
@@ -12,7 +12,7 @@ def test_llm_not_called_when_grounding_fails(monkeypatch):
     # Mock retriever to return irrelevant content
     monkeypatch.setattr(
         "pipelines.query.run_rag.retrieve_context_with_scores",
-        lambda *args, **kwargs: [("irrelevant text", 0.01)],
+        lambda *args, **kwargs: [real_retrieval_item],
     )
 
     # Force grounding failure

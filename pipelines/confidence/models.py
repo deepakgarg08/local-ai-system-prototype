@@ -1,7 +1,7 @@
 # pipelines/confidence/models.py
 
 from dataclasses import dataclass
-from typing import Literal
+from typing import Literal, Optional
 
 @dataclass
 class RetrievalEvidence:
@@ -9,6 +9,10 @@ class RetrievalEvidence:
     source_document: str
     similarity_score: float
     chunk_text: str
+    # NEW (STEP 29 – provenance)
+    section_title: Optional[str] = None
+    section_path: Optional[str] = None
+    file_path: Optional[str] = None
 
 @dataclass
 class ConfidenceReport:

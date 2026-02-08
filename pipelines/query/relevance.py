@@ -24,9 +24,13 @@ def is_context_relevant(
     - At least ONE chunk must exceed the threshold
     """
 
-    if not retrieved_chunks:
+    scores = [
+            item.get("similarity")
+            for item in retrieved_chunks
+            if isinstance(item, dict)
+        ]
+
+    if not scores:
         return False
 
-    best_score = max(score for _, score in retrieved_chunks)
-
-    return best_score >= MIN_SIMILARITY_THRESHOLD
+    return max(scores) >= MIN_SIMILARITY_THRESHOLD
