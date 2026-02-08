@@ -1,0 +1,5 @@
+timestamp,model,eval_rate_tps,prompt_eval_rate_tps,response_tokens,total_duration_sec
+2026-02-08 13:36:03,smollm:135m,8.77,147.35,997,113.9
+2026-02-08 13:36:37,smollm2:latest,23.54,497.96,263,11.29
+2026-02-08 13:37:18,deepseek-coder:6.7b,10.33,489.46,141,13.84
+2026-02-08 13:37:48,deepseek-coder-tuned:latest,13.73,219.93,111,8.26
