@@ -32,6 +32,9 @@ from configs.retrieval import CORPUS_PROFILE  # STEP 17: corpus-aware behavior
 # --- Telemetry ---
 from telemetry.confidence_logger import emit_confidence_event
 
+import uuid
+query_id = str(uuid.uuid4())
+
 @dataclass
 class RAGResult:
     """
@@ -264,6 +267,8 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
 
     finally:
         emit_confidence_event({
+            "event_type": "rag_outcome",
+            "query_id": query_id,
             "query": query,
             "normalized_query": normalized_query,
             "confidence_level": confidence.confidence_level,
