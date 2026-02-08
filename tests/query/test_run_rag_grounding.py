@@ -4,7 +4,6 @@ from unittest.mock import Mock, patch
 
 from pipelines.query.run_rag import run_rag
 
-
 def test_run_rag_blocks_on_irrelevant_context():
     """
     If retrieved context is irrelevant,

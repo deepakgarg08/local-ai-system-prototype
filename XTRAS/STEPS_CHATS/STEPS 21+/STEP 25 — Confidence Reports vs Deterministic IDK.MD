@@ -331,3 +331,96 @@ With STEP 25:
 
 If you want, the natural next step is **STEP 26 — Confidence calibration & offline evaluation**, where these confidence signals finally start influencing system tuning (not runtime decisions).
 
+
+**Berlin, Germany — 1 February 2026, 17:09 CET**
+
+---
+
+## **STEP 25 — Explainer Wiring (Summary)**
+
+This final part of STEP 25 ensures that **uncertainty is not only computed, but clearly explained** — especially when the system refuses to answer.
+
+---
+
+### **What Changed in the Explainer**
+
+The explainer (`build_explanation()` in `pipelines/confidence/explainer.py`) was upgraded to **explicitly consume `retrieval_stats`** from `ConfidenceReport`.
+
+Before:
+
+* Explanations were based only on:
+
+  * `confidence_level`
+  * number of retrieved chunks
+* Different failure modes produced similar explanations
+
+After:
+
+* Explanations are grounded in **structured retrieval facts**, including:
+
+  * `relevance_gate` (e.g. `"FAILED"`)
+  * `num_chunks`
+  * `max_similarity`
+
+This makes explanations **specific, truthful, and auditable**.
+
+---
+
+### **IDK Is Now Explicitly Explainable**
+
+When the system returns IDK (`answer=None`, `confidence_level="none"`):
+
+* The explainer checks `retrieval_stats["relevance_gate"]`
+* If it failed, the explanation clearly states:
+
+  * no sufficiently relevant internal information was found
+  * the system therefore did not generate an answer
+
+IDK is no longer a silent or generic failure.
+
+---
+
+### **Answered Responses Are Contextualized**
+
+For non-IDK responses, the explainer now:
+
+* Reports how many chunks were used
+* Mentions how many internal documents contributed
+* Flags weak semantic similarity when applicable
+* Always includes a human-in-the-loop warning
+
+This makes **confidence levels interpretable**, not just labels.
+
+---
+
+### **What the Explainer Does *Not* Do**
+
+* It does **not** influence gating or decisions
+* It does **not** introduce thresholds
+* It does **not** inspect LLM output
+* It does **not** change system behavior
+
+The explainer is **purely explanatory**, by design.
+
+---
+
+### **Why This Matters**
+
+This wiring completes STEP 25 by ensuring:
+
+* Every refusal is explainable
+* Every answer is transparent
+* Telemetry and audits can trace *why* the system acted as it did
+* STEP 26 calibration has reliable, structured inputs
+
+In short:
+
+> **STEP 25 is not complete until uncertainty is both computed *and* explained.**
+
+---
+
+### **One-Line Takeaway**
+
+> **The explainer now turns retrieval statistics into clear, human-readable explanations without influencing decisions, completing STEP 25’s transparency and auditability guarantees.**
+
+You’re now fully ready to move into **STEP 26 — Offline calibration**, where these stats finally begin to influence behavior *outside* the runtime path.
