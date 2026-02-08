@@ -40,6 +40,12 @@ def main():
 
             if answer.answer:
                 print(answer.answer)
+
+                if answer.sources:
+                    print("\nSources:")
+                    from app.cli.format_sources import format_sources
+                    print(format_sources(answer.sources))
+
             else:
                 print("No sufficiently grounded answer found.")
 
