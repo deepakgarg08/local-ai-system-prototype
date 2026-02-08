@@ -1,25 +1,30 @@
-from pipelines.confidence.calibrate import ConfidenceLevel
+# pipelines/prompting/confidence_prompt.py
+
+from typing import Literal
 
 
-def confidence_instruction(confidence: ConfidenceLevel) -> str:
-    """
-    Returns an instruction string that subtly guides the LLM's tone
-    without revealing numeric confidence or allowing self-assessment.
-    """
-
-    if confidence == ConfidenceLevel.HIGH:
+def confidence_instruction(
+    confidence_level: Literal["high", "medium", "low", "none"]
+) -> str:
+    if confidence_level == "low":
         return (
-            "The retrieved context is strong and unambiguous. "
-            "Answer clearly and directly, citing the provided information."
+            "The following answer may be weakly supported. "
+            "Avoid speculation and prefer extractive phrasing."
         )
 
-    if confidence == ConfidenceLevel.MEDIUM:
+    if confidence_level == "medium":
         return (
-            "The retrieved context is partially relevant. "
-            "Answer carefully and avoid overgeneralization."
+            "The following answer is moderately supported "
+            "by the available documents."
         )
 
+    if confidence_level == "high":
+        return (
+            "The following answer is well supported "
+            "by the available documents."
+        )
+
+    # "none" → IDK
     return (
-        "The retrieved context is weak or limited. "
-        "Do not speculate. If the context is insufficient, say that explicitly."
+        "No sufficient information is available to answer the question."
     )
