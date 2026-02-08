@@ -1,0 +1,11 @@
+# configs/versions/v2026_02_08.yaml
+version: v2026_02_08
+
+retrieval:
+  min_similarity_threshold: 0.30
+
+corpus:
+  profile: small
+
+generation:
+  extractive_min_tokens: 80

@@ -1,5 +1,6 @@
-from pipelines.query.run_rag import run_rag
+# tests/telemetry/test_confidence_logging.py
 
+from pipelines.query.run_rag import run_rag
 
 def test_confidence_telemetry_emitted_on_idk(monkeypatch):
     """

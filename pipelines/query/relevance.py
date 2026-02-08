@@ -7,8 +7,11 @@ from typing import List, Tuple
 # Conservative default.
 # With MiniLM embeddings, cosine similarity above ~0.30
 # usually indicates semantic overlap.
-MIN_SIMILARITY_THRESHOLD = 0.30
+from configs.loader import load_active_config
 
+config = load_active_config()
+MIN_SIMILARITY_THRESHOLD = config["retrieval"]["min_similarity_threshold"]
+print(f"Using MIN_SIMILARITY_THRESHOLD pipelines/query/relevance.py: {MIN_SIMILARITY_THRESHOLD}")
 
 def is_context_relevant(
     retrieved_chunks: List[Tuple[str, float]]
