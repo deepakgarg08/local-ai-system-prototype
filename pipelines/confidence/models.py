@@ -19,3 +19,4 @@ class ConfidenceReport:
     confidence_level: Literal["high", "medium", "low", "none"]
     rationale: list[str]
     retrieval_stats: dict
+    confidence_score: Optional[float] = None  # internal support score (NOT probability)
