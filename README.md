@@ -1,19 +1,47 @@
-# Local AI System – Prototype
+**Berlin, Germany — 14 February 2026, 14:29 CET**
 
-This repository contains a small-scale prototype of a fully local AI system.
+Here is a **very small, GitHub-friendly `README.md`** version:
 
-“A local, privacy-preserving AI knowledge system that enhances human decision-making through structured enterprise data.”
+---
 
-Goals:
-- Understand full AI system pipelines end-to-end
-- Practice enterprise-style architecture locally
-- No cloud dependencies
-- Human-in-the-loop by design
+# Local AI System Prototype
 
+Local-first Retrieval-Augmented Generation (RAG) system built from scratch with clean architecture and explicit grounding control.
 
-## Versions
-- [v0.1 — Initial End-to-End RAG](docs/v0.1.md)
+## Overview
 
-## Test COde
-To test the code pipeline, command `uv run python -m scripts.run_query`
-[scrips/](scripts/run_query.py)
+This project implements:
+
+* Offline document indexing (chunking + embeddings + FAISS)
+* Query-time retrieval pipeline
+* Structured prompt assembly
+* Pluggable LLM backends (local & remote)
+* Environment-based configuration
+
+## Architecture
+
+**Build-time**
+
+```
+documents → chunks → embeddings → FAISS index
+```
+
+**Query-time**
+
+```
+query → retrieve context → assemble prompt → LLM → answer
+```
+
+## Current Version
+
+* End-to-end RAG pipeline working
+* No grounding enforcement yet
+* Retrieval always returns top-k
+* Designed for future similarity gating and confidence scoring
+
+## Goals
+
+* Document-grounded answers
+* Local-first deployment
+* Human-in-the-loop governance
+* Enterprise-ready extensibility

@@ -1,0 +1,286 @@
+local-ai-system-prototype/
+├── analysis
+│   ├── recommendations
+│   │   └── threshold_recommendation.json
+│   ├── __init__.py
+│   ├── confidence_telemetry_analysis.py
+│   ├── confidence_threshold_calibration.py
+│   ├── gate_drift_monitor.py
+│   ├── gate_threshold_calibration.py
+│   ├── MANUAL_ENTRYPOINTS_DOCUMENTATION.md
+│   ├── manual_entrypoints_report.json
+│   └── system_file_purposes.json
+├── app
+│   ├── api
+│   │   ├── __init__.py
+│   │   └── main.py
+│   ├── cli
+│   │   ├── __init__.py
+│   │   ├── format_sources.py
+│   │   └── main.py
+│   ├── web
+│   │   ├── __init__.py
+│   │   └── app.py
+│   └── __init__.py
+├── configs
+│   ├── history
+│   │   └── threshold_changes.json
+│   ├── versions
+│   │   ├── v2026_02_08.yaml
+│   │   └── v2026_02_14_162456.yaml
+│   ├── __init__.py
+│   ├── active.yaml
+│   ├── CHANGELOG.md
+│   ├── loader.py
+│   ├── retrieval.py
+│   ├── retrieval_quality.py
+│   └── runtime.py
+├── data
+│   ├── processed
+│   │   ├── chunks.json
+│   │   ├── documents.json
+│   │   ├── files.json
+│   │   ├── ingestion_status.json
+│   │   └── sections.json
+│   ├── raw
+│   │   ├── contracts
+│   │   │   └── service_agreement.txt
+│   │   ├── knowledge
+│   │   │   ├── company_overview.txt
+│   │   │   └── it_security_policy.txt
+│   │   ├── specs
+│   │   │   └── erp_system_spec.txt
+│   │   ├── training
+│   │   │   └── onboarding_guide.txt
+│   │   └── total+combined_data.txt
+│   └── registry.py
+├── docker
+│   ├── Dockerfile.base
+│   ├── Dockerfile.indexer
+│   └── Dockerfile.runtime
+├── docs
+│   ├── project_ongoing_history
+│   │   ├── X
+│   │   │   ├── project_description_in_detail.md
+│   │   │   ├── project_folder_structure_overview.md
+│   │   │   ├── project_overview_1to13_steps.md
+│   │   │   ├── project_structure.md
+│   │   │   └── query_lifecycle.md
+│   │   └── X+
+│   │       ├── instruction.md
+│   │       ├── new_window_prompt.md
+│   │       ├── PROJECT_OVERVIEW_TILL_STEP14.MD
+│   │       └── roadmap step 21 onwards overview.md
+│   ├── architecture_hygiene.md
+│   ├── project_context_handoff_14feb2026.md
+│   ├── project_info.md
+│   ├── README.md
+│   ├── v0.1.md
+│   ├── V2.0 Completion.md
+│   ├── v2.0.2.md
+│   └── v2.0.28_freeze.md
+├── evaluation
+│   ├── datasets
+│   │   ├── __init__.py
+│   │   ├── golden_queries.json
+│   │   ├── README.md
+│   │   ├── relevance_bootstrap.json
+│   │   └── relevance_judgments.json
+│   ├── metrics
+│   │   ├── __init__.py
+│   │   ├── mrr.py
+│   │   ├── precision.py
+│   │   └── recall.py
+│   ├── reports
+│   │   └── retrieval_metrics.json
+│   ├── runner
+│   │   ├── __init__.py
+│   │   ├── bootstrap_relevance.py
+│   │   ├── humaninloop_bootstrap_relevance.md
+│   │   └── run_retrieval_eval.py
+│   ├── __init__.py
+│   └── run_confidence_calibration_set.py
+├── experiments
+│   └── step20_retrieval_quality
+│       ├── baseline_vs_rerank.py
+│       ├── chunk_size_sweep.py
+│       ├── hybrid_eval.py
+│       └── README.md
+├── llms
+│   ├── __init__.py
+│   ├── base.py
+│   ├── check_llm_working.py
+│   ├── llmReadme.md
+│   ├── ollama.py
+│   ├── openai.py
+│   └── registry.py
+├── logs
+│   ├── confidence
+│   │   ├── runtime
+│   │   │   ├── 2026-02-01.jsonl
+│   │   │   └── 2026-02-08.jsonl
+│   │   └── validation
+│   │       └── validation_events.jsonl
+│   └── rag_events.jsonl
+├── observability
+│   ├── __init__.py
+│   ├── logger.py
+│   └── schema.py
+├── pipelines
+│   ├── chunking
+│   │   ├── __init__.py
+│   │   └── chunk_sections.py
+│   ├── confidence
+│   │   ├── __init__.py
+│   │   ├── calibrate.py
+│   │   ├── explainer.py
+│   │   ├── models.py
+│   │   └── scorer.py
+│   ├── embeddings
+│   │   ├── __init__.py
+│   │   ├── embedder.py
+│   │   └── indexer.py
+│   ├── feedback
+│   │   ├── models.py
+│   │   └── store.py
+│   ├── gating
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── gate.py
+│   │   └── score_gate.py
+│   ├── indexing
+│   │   ├── __init__.py
+│   │   └── build_index.py
+│   ├── ingestion
+│   │   ├── __init__.py
+│   │   └── ingest_txt.py
+│   ├── llm
+│   │   ├── __init__.py
+│   │   └── test_llm_interface.py
+│   ├── orchestration
+│   ├── output
+│   │   └── format_answer.py
+│   ├── prompting
+│   │   ├── __init__.py
+│   │   ├── assemble_prompt.py
+│   │   ├── confidence_prompt.py
+│   │   ├── prompt_builder.py
+│   │   └── test_prompting.py
+│   ├── query
+│   │   ├── fallbacks
+│   │   ├── validation
+│   │   ├── __init__.py
+│   │   ├── eligibility.py
+│   │   ├── llm_ollama.py
+│   │   ├── normalize.py
+│   │   ├── prompt_builder.py
+│   │   ├── relevance.py
+│   │   ├── retriever.py
+│   │   └── run_rag.py
+│   ├── reranking
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── cross_encoder.py
+│   │   └── rerank.py
+│   ├── retrieval
+│   │   ├── __init__.py
+│   │   ├── faiss_search.py
+│   │   ├── scoring.py
+│   │   └── search.py
+│   ├── retrieval_quality
+│   │   ├── hybrid
+│   │   │   ├── __init__.py
+│   │   │   ├── bm25.py
+│   │   │   └── hybrid_merge.py
+│   │   ├── rerankers
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── baseline_reranker.py
+│   │   │   ├── cross_encoder.py
+│   │   │   └── llm_reranker.py
+│   │   ├── scoring
+│   │   │   ├── __init__.py
+│   │   │   └── metadata_boost.py
+│   │   ├── __init__.py
+│   │   └── optimize_ranking.py
+│   ├── sectioning
+│   ├── __init__.py
+│   ├── README.MD
+│   └── run_rag_once.py
+├── reports
+│   └── execution_report_20260214_181633.json
+├── scripts
+│   ├── __init__.py
+│   ├── cleanup_empty_folders.py
+│   ├── create_sample_data.py
+│   ├── run_all_manual_tasks.py
+│   ├── run_query.py
+│   └── run_query_debug_script.py
+├── telemetry
+│   ├── __init__.py
+│   ├── confidence_logger.py
+│   └── validation_logger.py
+├── tests
+│   ├── analysis
+│   │   ├── test_confidence_threshold_edge_cases.py
+│   │   ├── test_confidence_threshold_safety.py
+│   │   └── test_confidence_threshold_schema.py
+│   ├── architecture_hygiene
+│   │   ├── test_answer_gating.py
+│   │   ├── test_layer_boundaries.py
+│   │   └── test_public_contracts.py
+│   ├── confidence
+│   │   └── test_confidence_calibration.py
+│   ├── fakes
+│   │   └── fake_llm.py
+│   ├── gating
+│   │   └── test_score_gate.py
+│   ├── output
+│   │   └── test_answer_formatting.py
+│   ├── prompting
+│   │   └── test_confidence_prompt.py
+│   ├── query
+│   │   ├── fallbacks
+│   │   ├── step17_RQOptimization
+│   │   │   ├── __init__.py
+│   │   │   ├── README.md
+│   │   │   ├── test_extractive_mode_activation.py
+│   │   │   ├── test_prompt_assembly_extractive.py
+│   │   │   └── test_safety_regression.py
+│   │   ├── test_relevance.py
+│   │   └── test_run_rag_grounding.py
+│   ├── reranking
+│   │   └── test_cross_encoder_reranker.py
+│   ├── retrieval
+│   │   └── test_retrieval_regression.py
+│   ├── retrieval_quality
+│   │   ├── test_baseline_reranker.py
+│   │   ├── test_hybrid_merge.py
+│   │   ├── test_metadata_boost.py
+│   │   ├── test_metadata_boosting.py
+│   │   └── test_reranking_stability.py
+│   ├── telemetry
+│   │   ├── test_confidence_logging.py
+│   │   └── test_validation_logger.py
+│   ├── __init__.py
+│   └── conftest.py
+├── tools
+│   ├── check_llm_health.py
+│   ├── detect_manual_entrypoints.py
+│   ├── generate_entrypoint_docs.py
+│   ├── generate_folder_structure.py
+│   ├── log_validation.py
+│   ├── promote_threshold.py
+│   └── run_confidence_calibration.py
+├── utils
+├── .gitignore
+├── .gitignore.production
+├── .python-version
+├── docker-compose.yml
+├── docker_run.md
+├── how_to_run.md
+├── Makefile
+├── project_structure.txt
+├── pyproject.toml
+├── README.md
+└── uv.lock
