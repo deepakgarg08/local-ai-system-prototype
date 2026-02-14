@@ -3,7 +3,7 @@
 import json
 import hashlib
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 import uuid
 
 RAW_DIR = Path("data/raw")
@@ -21,7 +21,7 @@ def sha256(path: Path) -> str:
 
 
 def now():
-    return datetime.utcnow().isoformat()
+    return datetime.now(timezone.utc).isoformat()
 
 
 def ingest_txt(path: Path, category: str):

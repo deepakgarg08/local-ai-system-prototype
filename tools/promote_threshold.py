@@ -91,7 +91,7 @@ def update_history(from_version, to_version, old_threshold, new_threshold):
         history = []
 
     history.append({
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "from_version": from_version,
         "to_version": to_version,
         "old_threshold": old_threshold,

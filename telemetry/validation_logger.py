@@ -1,7 +1,7 @@
 # telemetry/validation_logger.py
 
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from configs.loader import load_active_config
 config = load_active_config()
@@ -23,7 +23,7 @@ def emit_validation_event(
         "status": status,              # PASS / FAIL
         "details": details or {},
         "config_version": config["version"],
-        "logged_at": datetime.utcnow().isoformat() + "Z",
+        "logged_at": datetime.now(timezone.utc).isoformat()
     }
 
     with LOG_FILE.open("a") as f:

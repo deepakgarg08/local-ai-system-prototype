@@ -29,9 +29,6 @@ from llms.registry import get_llm
 # --- Configuration ---
 from configs.retrieval import CORPUS_PROFILE  # STEP 17: corpus-aware behavior
 
-# --- Telemetry ---
-from telemetry.confidence_logger import emit_confidence_event
-
 import uuid
 from data.registry import CHUNKS, SECTIONS, DOCUMENTS, FILES
 
@@ -40,6 +37,9 @@ from data.registry import CHUNKS, SECTIONS, DOCUMENTS, FILES
 import time
 from observability.schema import build_rag_event
 from observability.logger import log_event
+
+# --- Confidence telemetry (existing fine-grained events) ---
+from telemetry.confidence_projection import emit_confidence_projection
 
 @dataclass
 class RAGResult:
@@ -370,7 +370,7 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
         # ---------------------------------------------------------
         # Existing fine-grained confidence telemetry (keep it)
         # ---------------------------------------------------------
-        emit_confidence_event({
+        emit_confidence_projection({
             "event_type": "rag_outcome",
             "query_id": query_id,
             "query": query,

@@ -3,7 +3,7 @@
 from dataclasses import dataclass
 from typing import Optional, Dict, Any
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 def build_rag_event(
@@ -21,7 +21,7 @@ def build_rag_event(
 
     return {
         "event_id": str(uuid.uuid4()),
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "query": {
             "raw": raw_query,
             "normalized": normalized_query,

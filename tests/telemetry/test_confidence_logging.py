@@ -16,7 +16,7 @@ def test_confidence_telemetry_emitted_on_idk(monkeypatch):
 
     # Patch telemetry emission at the correct import location
     monkeypatch.setattr(
-        "pipelines.query.run_rag.emit_confidence_event",
+        "pipelines.query.run_rag.emit_confidence_projection",
         fake_emit,
     )
 
