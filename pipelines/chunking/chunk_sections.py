@@ -1,9 +1,8 @@
 import json
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
-from pytz import timezone
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_ROOT / "data" / "processed"
@@ -11,6 +10,7 @@ DATA_DIR = PROJECT_ROOT / "data" / "processed"
 SECTIONS_PATH = DATA_DIR / "sections.json"
 OUT_PATH = DATA_DIR / "chunks.json"
 
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 TARGET_CHARS = 1000
 OVERLAP_CHARS = 150

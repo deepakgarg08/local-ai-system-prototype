@@ -1,57 +1,57 @@
 [
   {
-    "document_id": "0773ee4b-23bc-4fd2-856c-072414cc70db",
-    "file_id": "1604a192462976e6c76870b4cfd73983e43b1a94c931ac983e7e5beaafdeac21",
-    "document_name": "service_agreement",
+    "document_id": "ede62026-91d0-4f10-ad1b-a158202de561",
+    "file_id": "7cb43c7930e6c2bfeed9c02adc2db1f6c33ff8c7fbd1e48e41815a364e1d9c98",
+    "document_name": "2602.11581v1",
     "document_type": "other",
-    "category": "contracts",
+    "category": "pdf",
     "version": null,
     "language": "en",
     "source_system": "local_fs",
-    "ingested_at": "2026-01-16T13:02:54.208753"
+    "ingested_at": "2026-02-14T22:16:39.911709+00:00"
   },
   {
-    "document_id": "eeafe5dc-424e-4458-8ee1-7ebcf21bfb78",
-    "file_id": "c2a10becba29ed581579dd5b4d9e492e315c1acde004eb88a006ff7078b74935",
-    "document_name": "company_overview",
+    "document_id": "059f76ca-82dc-40e5-be95-c81259816ee0",
+    "file_id": "fe0479c03aeede1ed13af051b59fa031b465168bfff8e75e8de76960003d8be2",
+    "document_name": "2602.11671v1",
     "document_type": "other",
-    "category": "knowledge",
+    "category": "pdf",
     "version": null,
     "language": "en",
     "source_system": "local_fs",
-    "ingested_at": "2026-01-16T13:02:54.208948"
+    "ingested_at": "2026-02-14T22:16:39.913179+00:00"
   },
   {
-    "document_id": "a5e5a4fa-e4e0-4871-bca4-a29b26e893d9",
-    "file_id": "43649fbfb6d888b9fa00aec993e9eadd8595c601b40e691fb00bed501cb47dda",
-    "document_name": "it_security_policy",
+    "document_id": "b47e4879-48f6-4e14-9f46-63123ec0aaa9",
+    "file_id": "6df71dc3c50bc880299ba7e209e185f6f8d4d01dd90d2e3f83978dae33e12334",
+    "document_name": "2602.11746v1",
     "document_type": "other",
-    "category": "knowledge",
+    "category": "pdf",
     "version": null,
     "language": "en",
     "source_system": "local_fs",
-    "ingested_at": "2026-01-16T13:02:54.209049"
+    "ingested_at": "2026-02-14T22:16:39.915902+00:00"
   },
   {
-    "document_id": "d069bf16-6e14-4d95-98f2-ad8de1004d9c",
-    "file_id": "defd349ba7b5e884f251c085ce62ff8e70760497197b9f21ad6ec2657394c4ef",
-    "document_name": "erp_system_spec",
+    "document_id": "1f6eb610-83e7-4c4e-9d02-64c75b81a233",
+    "file_id": "6df71dc3c50bc880299ba7e209e185f6f8d4d01dd90d2e3f83978dae33e12334",
+    "document_name": "RAG1",
     "document_type": "other",
-    "category": "specs",
+    "category": "pdf",
     "version": null,
     "language": "en",
     "source_system": "local_fs",
-    "ingested_at": "2026-01-16T13:02:54.209484"
+    "ingested_at": "2026-02-14T22:16:39.918736+00:00"
   },
   {
-    "document_id": "c573439e-98d0-49a1-b6d2-b1d9400ac47c",
-    "file_id": "149cf8711a7e10923bb679a71a1ea181ddc7d640da5df1a8d0327130a230d9e9",
-    "document_name": "onboarding_guide",
+    "document_id": "3129f45b-d096-45d6-999d-59241da96703",
+    "file_id": "9809913449dc45dd6c7e286c256c141662d2c90507968ab58ecefdbe83d39369",
+    "document_name": "RAG2",
     "document_type": "other",
-    "category": "training",
+    "category": "pdf",
     "version": null,
     "language": "en",
     "source_system": "local_fs",
-    "ingested_at": "2026-01-16T13:02:54.209973"
+    "ingested_at": "2026-02-14T22:16:39.920837+00:00"
   }
 ]

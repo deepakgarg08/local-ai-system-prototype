@@ -1,52 +1,52 @@
 [
   {
-    "file_id": "1604a192462976e6c76870b4cfd73983e43b1a94c931ac983e7e5beaafdeac21",
-    "path": "data/raw/contracts/service_agreement.txt",
-    "filename": "service_agreement.txt",
+    "file_id": "7cb43c7930e6c2bfeed9c02adc2db1f6c33ff8c7fbd1e48e41815a364e1d9c98",
+    "path": "data/raw/pdf/rag_papers/2602.11581v1.txt",
+    "filename": "2602.11581v1.txt",
     "extension": ".txt",
-    "category": "contracts",
-    "size_bytes": 387,
-    "last_modified": 1768564630.7559664,
-    "checksum_sha256": "1604a192462976e6c76870b4cfd73983e43b1a94c931ac983e7e5beaafdeac21"
+    "category": "pdf",
+    "size_bytes": 74008,
+    "last_modified": 1771105121.0172582,
+    "checksum_sha256": "7cb43c7930e6c2bfeed9c02adc2db1f6c33ff8c7fbd1e48e41815a364e1d9c98"
   },
   {
-    "file_id": "c2a10becba29ed581579dd5b4d9e492e315c1acde004eb88a006ff7078b74935",
-    "path": "data/raw/knowledge/company_overview.txt",
-    "filename": "company_overview.txt",
+    "file_id": "fe0479c03aeede1ed13af051b59fa031b465168bfff8e75e8de76960003d8be2",
+    "path": "data/raw/pdf/rag_papers/2602.11671v1.txt",
+    "filename": "2602.11671v1.txt",
     "extension": ".txt",
-    "category": "knowledge",
-    "size_bytes": 339,
-    "last_modified": 1768564630.7559664,
-    "checksum_sha256": "c2a10becba29ed581579dd5b4d9e492e315c1acde004eb88a006ff7078b74935"
+    "category": "pdf",
+    "size_bytes": 87843,
+    "last_modified": 1771105121.2342584,
+    "checksum_sha256": "fe0479c03aeede1ed13af051b59fa031b465168bfff8e75e8de76960003d8be2"
   },
   {
-    "file_id": "43649fbfb6d888b9fa00aec993e9eadd8595c601b40e691fb00bed501cb47dda",
-    "path": "data/raw/knowledge/it_security_policy.txt",
-    "filename": "it_security_policy.txt",
+    "file_id": "6df71dc3c50bc880299ba7e209e185f6f8d4d01dd90d2e3f83978dae33e12334",
+    "path": "data/raw/pdf/rag_papers/2602.11746v1.txt",
+    "filename": "2602.11746v1.txt",
     "extension": ".txt",
-    "category": "knowledge",
-    "size_bytes": 375,
-    "last_modified": 1768564630.7559664,
-    "checksum_sha256": "43649fbfb6d888b9fa00aec993e9eadd8595c601b40e691fb00bed501cb47dda"
+    "category": "pdf",
+    "size_bytes": 120056,
+    "last_modified": 1771105121.4062583,
+    "checksum_sha256": "6df71dc3c50bc880299ba7e209e185f6f8d4d01dd90d2e3f83978dae33e12334"
   },
   {
-    "file_id": "defd349ba7b5e884f251c085ce62ff8e70760497197b9f21ad6ec2657394c4ef",
-    "path": "data/raw/specs/erp_system_spec.txt",
-    "filename": "erp_system_spec.txt",
+    "file_id": "6df71dc3c50bc880299ba7e209e185f6f8d4d01dd90d2e3f83978dae33e12334",
+    "path": "data/raw/pdf/rag_papers/RAG1.txt",
+    "filename": "RAG1.txt",
     "extension": ".txt",
-    "category": "specs",
-    "size_bytes": 412,
-    "last_modified": 1768564630.7559664,
-    "checksum_sha256": "defd349ba7b5e884f251c085ce62ff8e70760497197b9f21ad6ec2657394c4ef"
+    "category": "pdf",
+    "size_bytes": 120056,
+    "last_modified": 1771105121.5842586,
+    "checksum_sha256": "6df71dc3c50bc880299ba7e209e185f6f8d4d01dd90d2e3f83978dae33e12334"
   },
   {
-    "file_id": "149cf8711a7e10923bb679a71a1ea181ddc7d640da5df1a8d0327130a230d9e9",
-    "path": "data/raw/training/onboarding_guide.txt",
-    "filename": "onboarding_guide.txt",
+    "file_id": "9809913449dc45dd6c7e286c256c141662d2c90507968ab58ecefdbe83d39369",
+    "path": "data/raw/pdf/rag_papers/RAG2.txt",
+    "filename": "RAG2.txt",
     "extension": ".txt",
-    "category": "training",
-    "size_bytes": 357,
-    "last_modified": 1768564630.7559664,
-    "checksum_sha256": "149cf8711a7e10923bb679a71a1ea181ddc7d640da5df1a8d0327130a230d9e9"
+    "category": "pdf",
+    "size_bytes": 58898,
+    "last_modified": 1771105121.6572585,
+    "checksum_sha256": "9809913449dc45dd6c7e286c256c141662d2c90507968ab58ecefdbe83d39369"
   }
 ]
