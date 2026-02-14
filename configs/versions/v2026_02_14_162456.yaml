@@ -1,0 +1,7 @@
+version: v2026_02_14_162456
+retrieval:
+  min_similarity_threshold: 0.33
+corpus:
+  profile: small
+generation:
+  extractive_min_tokens: 80

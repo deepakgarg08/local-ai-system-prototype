@@ -1,0 +1,23 @@
+[
+  {
+    "timestamp": "...",
+    "from_version": "v2026_02_08",
+    "to_version": "v2026_02_15",
+    "old_threshold": 0.3,
+    "new_threshold": 0.34
+  },
+  {
+    "timestamp": "2026-02-14T16:13:32.817446",
+    "from_version": "v2026_02_08",
+    "to_version": "v2026_02_14",
+    "old_threshold": 0.3,
+    "new_threshold": 0.35
+  },
+  {
+    "timestamp": "2026-02-14T16:24:56.264772",
+    "from_version": "v2026_02_14",
+    "to_version": "v2026_02_14_162456",
+    "old_threshold": 0.35,
+    "new_threshold": 0.33
+  }
+]
