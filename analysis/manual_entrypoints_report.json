@@ -1,0 +1,98 @@
+[
+  {
+    "path": "llms/check_llm_working.py",
+    "category": "other"
+  },
+  {
+    "path": "pipelines/run_rag_once.py",
+    "category": "pipeline"
+  },
+  {
+    "path": "pipelines/chunking/chunk_sections.py",
+    "category": "pipeline"
+  },
+  {
+    "path": "pipelines/indexing/build_index.py",
+    "category": "pipeline"
+  },
+  {
+    "path": "pipelines/ingestion/ingest_txt.py",
+    "category": "pipeline"
+  },
+  {
+    "path": "pipelines/prompting/prompt_builder.py",
+    "category": "pipeline"
+  },
+  {
+    "path": "pipelines/retrieval/faiss_search.py",
+    "category": "pipeline"
+  },
+  {
+    "path": "pipelines/retrieval/scoring.py",
+    "category": "pipeline"
+  },
+  {
+    "path": "scripts/cleanup_empty_folders.py",
+    "category": "runtime_script"
+  },
+  {
+    "path": "scripts/run_query.py",
+    "category": "runtime_script"
+  },
+  {
+    "path": "scripts/run_query_debug_script.py",
+    "category": "runtime_script"
+  },
+  {
+    "path": "tools/check_llm_health.py",
+    "category": "admin"
+  },
+  {
+    "path": "tools/detect_manual_entrypoints.py",
+    "category": "admin"
+  },
+  {
+    "path": "tools/promote_threshold.py",
+    "category": "admin"
+  },
+  {
+    "path": "tools/run_confidence_calibration.py",
+    "category": "admin"
+  },
+  {
+    "path": "XTRAS/OLD_DISCARDED/checkllmspeed.py",
+    "category": "archived"
+  },
+  {
+    "path": "XTRAS/OLD_DISCARDED/run_query.py",
+    "category": "archived"
+  },
+  {
+    "path": "analysis/confidence_telemetry_analysis.py",
+    "category": "analysis"
+  },
+  {
+    "path": "analysis/confidence_threshold_calibration.py",
+    "category": "analysis"
+  },
+  {
+    "path": "analysis/gate_drift_monitor.py",
+    "category": "analysis"
+  },
+  {
+    "path": "analysis/gate_threshold_calibration.py",
+    "category": "analysis"
+  },
+  {
+    "path": "app/cli/main.py",
+    "category": "runtime_entry"
+  },
+  {
+    "path": "evaluation/run_confidence_calibration_set.py",
+    "category": "evaluation"
+  },
+  {
+    "path": "evaluation/runner/run_retrieval_eval.py",
+    "category": "evaluation"
+  }
+]

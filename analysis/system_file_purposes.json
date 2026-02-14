@@ -1,0 +1,158 @@
+{
+  "extended_file_documentation": [
+    {
+      "path": "llms/check_llm_working.py",
+      "layer": "infrastructure_validation",
+      "purpose": "Quick validation script to verify LLM backend connectivity and response correctness.",
+      "why_manual_entries_required": "Backend model names and environment configuration must be explicitly tested to avoid silent runtime failures.",
+      "risk_if_misconfigured": "False assumption that LLM works; production failures later."
+    },
+    {
+      "path": "pipelines/run_rag_once.py",
+      "layer": "orchestration",
+      "purpose": "Single-shot execution wrapper for running retrieval + prompt + LLM without CLI layer.",
+      "why_manual_entries_required": "Used for deterministic testing and debugging outside production entrypoints.",
+      "risk_if_misconfigured": "Bypasses gating logic or debug instrumentation."
+    },
+    {
+      "path": "pipelines/chunking/chunk_sections.py",
+      "layer": "offline_indexing",
+      "purpose": "Transforms raw documents into semantically meaningful chunks.",
+      "why_manual_entries_required": "Chunk size, overlap, and section logic directly affect recall and hallucination risk.",
+      "risk_if_misconfigured": "Poor retrieval precision and degraded grounding."
+    },
+    {
+      "path": "pipelines/indexing/build_index.py",
+      "layer": "offline_indexing",
+      "purpose": "Creates FAISS vector index from embeddings.",
+      "why_manual_entries_required": "Embedding model compatibility and index rebuild decisions must be explicitly controlled.",
+      "risk_if_misconfigured": "Index corruption or embedding drift."
+    },
+    {
+      "path": "pipelines/ingestion/ingest_txt.py",
+      "layer": "offline_ingestion",
+      "purpose": "Loads raw text files into ingestion pipeline.",
+      "why_manual_entries_required": "Data curation must be deliberate for compliance and data quality.",
+      "risk_if_misconfigured": "Garbage data in → hallucination out."
+    },
+    {
+      "path": "pipelines/prompting/prompt_builder.py",
+      "layer": "prompt_policy",
+      "purpose": "Constructs structured prompts enforcing context-only answers.",
+      "why_manual_entries_required": "Prompt defines compliance and grounding policy explicitly.",
+      "risk_if_misconfigured": "Model answers from parametric memory."
+    },
+    {
+      "path": "pipelines/retrieval/faiss_search.py",
+      "layer": "retrieval",
+      "purpose": "Performs vector similarity search against FAISS index.",
+      "why_manual_entries_required": "Top-k and scoring logic require explicit control.",
+      "risk_if_misconfigured": "Always returns irrelevant context."
+    },
+    {
+      "path": "pipelines/retrieval/scoring.py",
+      "layer": "retrieval_validation",
+      "purpose": "Applies similarity thresholding and gating logic.",
+      "why_manual_entries_required": "Threshold promotion must be deliberate and calibrated.",
+      "risk_if_misconfigured": "Either hallucination leaks or over-blocking."
+    },
+    {
+      "path": "scripts/cleanup_empty_folders.py",
+      "layer": "maintenance",
+      "purpose": "Filesystem hygiene utility.",
+      "why_manual_entries_required": "Prevents clutter in index/data directories.",
+      "risk_if_misconfigured": "Accidental data deletion."
+    },
+    {
+      "path": "scripts/run_query.py",
+      "layer": "runtime_execution",
+      "purpose": "Production query execution script.",
+      "why_manual_entries_required": "Defines stable runtime entry for batch execution.",
+      "risk_if_misconfigured": "Skips safety layers."
+    },
+    {
+      "path": "scripts/run_query_debug_script.py",
+      "layer": "debugging",
+      "purpose": "Verbose execution for inspection of intermediate outputs.",
+      "why_manual_entries_required": "Allows inspection of retrieval scores and prompt structure.",
+      "risk_if_misconfigured": "Debug leakage into production."
+    },
+    {
+      "path": "tools/check_llm_health.py",
+      "layer": "admin_tools",
+      "purpose": "Monitors LLM availability and latency.",
+      "why_manual_entries_required": "Infrastructure must be observable.",
+      "risk_if_misconfigured": "Silent degradation."
+    },
+    {
+      "path": "tools/detect_manual_entrypoints.py",
+      "layer": "governance",
+      "purpose": "Detects bypassed gating paths.",
+      "why_manual_entries_required": "Prevents architectural drift.",
+      "risk_if_misconfigured": "Shadow entrypoints bypass safety."
+    },
+    {
+      "path": "tools/promote_threshold.py",
+      "layer": "threshold_governance",
+      "purpose": "Promotes calibrated similarity thresholds to production.",
+      "why_manual_entries_required": "Threshold must be consciously approved.",
+      "risk_if_misconfigured": "System-wide hallucination spike."
+    },
+    {
+      "path": "tools/run_confidence_calibration.py",
+      "layer": "confidence_layer",
+      "purpose": "Executes confidence calibration runs.",
+      "why_manual_entries_required": "Confidence is statistical; requires explicit dataset selection.",
+      "risk_if_misconfigured": "False trust signals."
+    },
+    {
+      "path": "analysis/confidence_telemetry_analysis.py",
+      "layer": "observability",
+      "purpose": "Analyzes live confidence distribution.",
+      "why_manual_entries_required": "Detects production drift.",
+      "risk_if_misconfigured": "Unnoticed degradation."
+    },
+    {
+      "path": "analysis/confidence_threshold_calibration.py",
+      "layer": "calibration",
+      "purpose": "Computes optimal confidence thresholds.",
+      "why_manual_entries_required": "Requires human evaluation of false positive vs false negative tradeoff.",
+      "risk_if_misconfigured": "Overblocking or hallucination."
+    },
+    {
+      "path": "analysis/gate_drift_monitor.py",
+      "layer": "drift_detection",
+      "purpose": "Monitors retrieval score distribution drift.",
+      "why_manual_entries_required": "Embeddings shift over time.",
+      "risk_if_misconfigured": "Threshold becomes invalid silently."
+    },
+    {
+      "path": "analysis/gate_threshold_calibration.py",
+      "layer": "calibration",
+      "purpose": "Evaluates retrieval score gating thresholds.",
+      "why_manual_entries_required": "Retrieval characteristics vary by dataset.",
+      "risk_if_misconfigured": "Loss of grounding reliability."
+    },
+    {
+      "path": "app/cli/main.py",
+      "layer": "official_entrypoint",
+      "purpose": "Primary CLI interface for interacting with the RAG system.",
+      "why_manual_entries_required": "Defines stable, controlled runtime entrypoint.",
+      "risk_if_misconfigured": "Fragmented execution paths."
+    },
+    {
+      "path": "evaluation/run_confidence_calibration_set.py",
+      "layer": "evaluation",
+      "purpose": "Runs structured evaluation dataset for confidence validation.",
+      "why_manual_entries_required": "Evaluation datasets must be curated manually.",
+      "risk_if_misconfigured": "Invalid calibration."
+    },
+    {
+      "path": "evaluation/runner/run_retrieval_eval.py",
+      "layer": "evaluation",
+      "purpose": "Measures retrieval precision/recall metrics.",
+      "why_manual_entries_required": "Ground truth must be explicitly defined.",
+      "risk_if_misconfigured": "False sense of retrieval quality."
+    }
+  ]
+}
