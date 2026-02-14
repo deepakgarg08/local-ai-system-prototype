@@ -35,7 +35,11 @@ from telemetry.confidence_logger import emit_confidence_event
 import uuid
 from data.registry import CHUNKS, SECTIONS, DOCUMENTS, FILES
 
+# --- Observability schema for RAG events ---
 
+import time
+from observability.schema import build_rag_event
+from observability.logger import log_event
 
 @dataclass
 class RAGResult:
@@ -287,6 +291,85 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
         raise
 
     finally:
+        # ---------------------------------------------------------
+        # STEP 30 — Decision-Level Structured Observability
+        # ---------------------------------------------------------
+
+        # --- Retrieval summary ---
+        num_chunks = len(evidence) if evidence else 0
+        similarities = [e.similarity_score for e in evidence] if evidence else []
+
+        max_similarity = max(similarities) if similarities else None
+        min_similarity = min(similarities) if similarities else None
+        avg_similarity = (
+            sum(similarities) / len(similarities)
+            if similarities else None
+        )
+
+        retrieval_stats = {
+            "top_k": top_k,
+            "num_chunks_returned": num_chunks,
+            "max_similarity": max_similarity,
+            "min_similarity": min_similarity,
+            "avg_similarity": avg_similarity,
+            "similarity_threshold": MIN_SIMILARITY_THRESHOLD,
+            "vector_db": "role_based_index",  # adjust if needed
+        }
+
+        relevance_passed = (
+            max_similarity is not None
+            and max_similarity >= MIN_SIMILARITY_THRESHOLD
+        )
+
+        relevance_gate = {
+            "passed": relevance_passed,
+            "reason": (
+                "max_similarity_above_threshold"
+                if relevance_passed
+                else "insufficient_similarity"
+            ),
+        }
+
+        # --- LLM summary ---
+        llm_stats = {
+            "backend": llm_backend,
+            "called": answer is not None,
+        }
+
+        # --- Confidence summary ---
+        confidence_summary = {
+            "level": confidence.confidence_level if confidence else None,
+            "score": max_similarity,
+            "method": "deterministic_retrieval_weighted",
+        }
+
+        # --- Final result classification ---
+        result_summary = {
+            "answer_type": (
+                "IDK_RELEVANCE_FAILED"
+                if not relevance_passed
+                else ("IDK_POST_GATE" if answer is None else "GROUNDING_BASED")
+            ),
+            "status": execution_status,
+        }
+
+        event = build_rag_event(
+            raw_query=query,
+            normalized_query=normalized_query,
+            user_role="unknown",   # add real role later when auth exists
+            session_id=query_id,
+            retrieval_stats=retrieval_stats,
+            relevance_gate=relevance_gate,
+            llm_stats=llm_stats,
+            confidence=confidence_summary,
+            result=result_summary,
+        )
+
+        log_event(event)
+
+        # ---------------------------------------------------------
+        # Existing fine-grained confidence telemetry (keep it)
+        # ---------------------------------------------------------
         emit_confidence_event({
             "event_type": "rag_outcome",
             "query_id": query_id,
@@ -297,13 +380,10 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
             "answer_type": "IDK" if answer is None else "ANSWER",
             "retrieval_stats": {
                 "top_k": top_k,
-                "num_chunks": len(evidence) if "evidence" in locals() else 0,
-                "min_similarity": min(
-                    (e.similarity_score for e in evidence),
-                    default=None,
-                ) if "evidence" in locals() else None,
+                "num_chunks": num_chunks,
+                "min_similarity": min_similarity,
             },
             "model_backend": llm_backend,
             "execution_status": execution_status,
-
         })
+

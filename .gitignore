@@ -21,4 +21,4 @@ vectorstores/
 # logs/
 
 # OS
-.DS_Store
+.DS_Storelogs/
