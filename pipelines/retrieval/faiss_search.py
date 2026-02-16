@@ -2,8 +2,7 @@ from pathlib import Path
 import faiss
 import json
 import numpy as np
-from sentence_transformers import SentenceTransformer
-
+from pipelines.embeddings.embedder import Embedder
 # --------------------------------------------------
 # Project-root–anchored paths (CORRECT WAY)
 # --------------------------------------------------
@@ -19,9 +18,7 @@ METADATA_PATH = INDEX_DIR / "metadata.json"
 # --------------------------------------------------
 # Embedding model (MUST match indexing)
 # --------------------------------------------------
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-model = SentenceTransformer(EMBEDDING_MODEL)
-
+_embedder = Embedder()
 
 def load_faiss():
     index = faiss.read_index(str(FAISS_INDEX_PATH))
@@ -31,13 +28,10 @@ def load_faiss():
 
     return index, metadata
 
-# STEP 9B — Embed the User Query
+# STEP 9B — Embed the User Query, updated in step 33
 def embed_query(query: str) -> np.ndarray:
-    vec = model.encode(
-        [query],
-        normalize_embeddings=True
-    )
-    return vec.astype("float32")
+    vec = _embedder.embed([query])
+    return np.array(vec, dtype="float32")
 
 
 def search(query: str, top_k: int = 5):

@@ -34,7 +34,7 @@
       "query_id": "Q6",
       "precision@5": 0.2,
       "recall@5": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
     },
     {
       "query_id": "Q7",
@@ -52,7 +52,7 @@
       "query_id": "Q9",
       "precision@5": 0.2,
       "recall@5": 1.0,
-      "mrr": 0.3333333333333333
+      "mrr": 0.2
     },
     {
       "query_id": "Q10",
@@ -100,7 +100,7 @@
       "query_id": "Q17",
       "precision@5": 0.6,
       "recall@5": 1.0,
-      "mrr": 1.0
+      "mrr": 0.3333333333333333
     },
     {
       "query_id": "Q18",
@@ -136,13 +136,13 @@
       "query_id": "Q23",
       "precision@5": 0.2,
       "recall@5": 1.0,
-      "mrr": 0.3333333333333333
+      "mrr": 1.0
     },
     {
       "query_id": "Q24",
       "precision@5": 0.6,
       "recall@5": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
     },
     {
       "query_id": "Q25",
@@ -154,7 +154,7 @@
       "query_id": "Q26",
       "precision@5": 0.4,
       "recall@5": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
     },
     {
       "query_id": "Q27",
@@ -184,7 +184,7 @@
       "query_id": "Q31",
       "precision@5": 0.8,
       "recall@5": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
     },
     {
       "query_id": "Q32",
@@ -196,7 +196,7 @@
       "query_id": "Q33",
       "precision@5": 0.4,
       "recall@5": 1.0,
-      "mrr": 0.5
+      "mrr": 0.3333333333333333
     },
     {
       "query_id": "Q34",
@@ -226,7 +226,7 @@
       "query_id": "Q38",
       "precision@5": 0.2,
       "recall@5": 1.0,
-      "mrr": 1.0
+      "mrr": 0.5
     },
     {
       "query_id": "Q39",
@@ -274,7 +274,7 @@
       "query_id": "Q46",
       "precision@5": 0.4,
       "recall@5": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
     },
     {
       "query_id": "Q47",
@@ -304,7 +304,7 @@
       "query_id": "Q51",
       "precision@5": 0.2,
       "recall@5": 1.0,
-      "mrr": 0.25
+      "mrr": 0.5
     },
     {
       "query_id": "Q52",
@@ -316,13 +316,13 @@
       "query_id": "Q53",
       "precision@5": 0.4,
       "recall@5": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
     },
     {
       "query_id": "Q54",
       "precision@5": 0.2,
       "recall@5": 1.0,
-      "mrr": 0.2
+      "mrr": 0.25
     },
     {
       "query_id": "Q55",
@@ -352,13 +352,13 @@
       "query_id": "Q59",
       "precision@5": 0.2,
       "recall@5": 1.0,
-      "mrr": 0.25
+      "mrr": 0.2
     },
     {
       "query_id": "Q60",
       "precision@5": 0.4,
       "recall@5": 1.0,
-      "mrr": 0.5
+      "mrr": 0.3333333333333333
     },
     {
       "query_id": "Q61",
@@ -388,7 +388,7 @@
       "query_id": "Q65",
       "precision@5": 0.2,
       "recall@5": 1.0,
-      "mrr": 0.5
+      "mrr": 0.3333333333333333
     },
     {
       "query_id": "Q66",
@@ -418,7 +418,7 @@
       "query_id": "Q70",
       "precision@5": 0.6,
       "recall@5": 1.0,
-      "mrr": 1.0
+      "mrr": 0.3333333333333333
     },
     {
       "query_id": "Q71",
@@ -442,7 +442,7 @@
       "query_id": "Q74",
       "precision@5": 0.6,
       "recall@5": 1.0,
-      "mrr": 0.5
+      "mrr": 1.0
     },
     {
       "query_id": "Q75",
@@ -472,7 +472,7 @@
       "query_id": "Q79",
       "precision@5": 0.8,
       "recall@5": 1.0,
-      "mrr": 1.0
+      "mrr": 0.5
     },
     {
       "query_id": "Q80",
@@ -514,7 +514,7 @@
       "query_id": "Q86",
       "precision@5": 0.2,
       "recall@5": 1.0,
-      "mrr": 1.0
+      "mrr": 0.5
     },
     {
       "query_id": "Q87",
@@ -562,7 +562,7 @@
       "query_id": "Q94",
       "precision@5": 0.4,
       "recall@5": 1.0,
-      "mrr": 0.5
+      "mrr": 0.25
     },
     {
       "query_id": "Q95",
@@ -586,13 +586,13 @@
       "query_id": "Q98",
       "precision@5": 0.2,
       "recall@5": 1.0,
-      "mrr": 0.25
+      "mrr": 0.2
     },
     {
       "query_id": "Q99",
       "precision@5": 0.2,
       "recall@5": 1.0,
-      "mrr": 1.0
+      "mrr": 0.5
     },
     {
       "query_id": "Q100",
@@ -604,7 +604,7 @@
   "summary": {
     "mean_precision@5": 0.324,
     "mean_recall@5": 0.58,
-    "mean_mrr": 0.4273,
+    "mean_mrr": 0.4288,
     "num_queries": 100
   }
 }

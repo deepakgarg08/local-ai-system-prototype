@@ -13,11 +13,14 @@ DEFAULT_SYSTEM_INSTRUCTION = (
 BASE_INSTRUCTION = """
 You MUST answer only using the provided context.
 You MUST NOT use any external knowledge.
-If the answer is not explicitly stated in the context, say "I don't know".
+You MAY combine information from multiple parts of the context.
+If the answer cannot be determined from the context, say "I don't know".
 """
 
+
 EXTRACTIVE_INSTRUCTION = """
-Answer ONLY by quoting or closely paraphrasing the context.
+Base your answer strictly on the context.
+You may paraphrase, but do not introduce new information.
 Do NOT generalize, explain, or add background information.
 Use the same terminology as the context.
 """

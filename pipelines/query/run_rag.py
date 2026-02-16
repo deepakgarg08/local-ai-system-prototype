@@ -34,7 +34,6 @@ from data.registry import CHUNKS, SECTIONS, DOCUMENTS, FILES
 
 # --- Observability schema for RAG events ---
 
-import time
 from observability.schema import build_rag_event
 from observability.logger import log_event
 
@@ -152,7 +151,7 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
     try:
         normalized_query = normalize_query(query)
         retrieved = retrieve_context_with_scores(normalized_query, k=top_k)
-        print(f"Retrieved {len(retrieved)} chunks with scores: {retrieved}")
+        print(f"Retrieved {len(retrieved)} chunks with scores: {retrieved[0] if retrieved else 'None'}")
         # ---------------------------------------------------------------------
         # 2. Build retrieval evidence objects (STEP 15)
         #    This creates a structured, explainable representation of retrieval
@@ -189,6 +188,9 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
             evidence=evidence,
             similarity_threshold=MIN_SIMILARITY_THRESHOLD,
         )
+
+        print("Max similarity:", max(item["similarity"] for item in retrieved))
+        print("Threshold:", MIN_SIMILARITY_THRESHOLD)
 
         # ---------------------------------------------------------------------
         # 4. Enforce grounding via relevance gate (hard stop, pre-LLM)
@@ -241,6 +243,18 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
         # 7. Assemble the final prompt
         #    The LLM never sees confidence, similarity scores, or gating logic
         # ---------------------------------------------------------------------
+        
+        print("Extractive only:", extractive_only)
+        print("Total tokens:", total_tokens)
+        print("Chunks:", len(context_chunks))
+        
+        print("\n=== RETRIEVED CONTEXT PREVIEW ===")
+        for i, c in enumerate(context_chunks):
+            print(f"\n--- CHUNK {i+1} ---\n")
+            print(c["text"][:800])
+        print("\n==================================\n")
+
+        
         prompt = assemble_prompt(
             query=query,
             context_chunks=context_chunks,
@@ -254,6 +268,9 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
         llm = get_llm()
         llm_backend = llm.__class__.__name__
         answer = llm.generate(prompt)
+        print("RAW LLM ANSWER:\n", answer)
+
+
 
 
         # ---------------------------------------------------------------------

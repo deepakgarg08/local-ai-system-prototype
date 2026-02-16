@@ -1,6 +1,6 @@
 {
   "mean_precision@5": 0.324,
   "mean_recall@5": 0.58,
-  "mean_mrr": 0.4273,
+  "mean_mrr": 0.4288,
   "num_queries": 100
 }

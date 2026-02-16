@@ -6,11 +6,10 @@ from pathlib import Path
 import json
 import faiss
 import numpy as np
-from sentence_transformers import SentenceTransformer
 from typing import List, Tuple
 from pipelines.confidence.scorer import score_confidence
 from typing import List, Dict
-
+from pipelines.embeddings.embedder import Embedder
 # Base project directory
 BASE_DIR = Path(__file__).resolve().parents[2]
 
@@ -21,10 +20,7 @@ PROCESSED_DIR = BASE_DIR / "data" / "processed"
 FAISS_INDEX_PATH = INDEX_DIR / "faiss.index"
 CHUNKS_PATH = PROCESSED_DIR / "chunks.json"
 
-# Load embedding model (MUST match indexing step)
-_embedding_model = SentenceTransformer(
-    "sentence-transformers/all-MiniLM-L6-v2"
-)
+_embedder = Embedder()
 
 # Load FAISS index
 _index = faiss.read_index(str(FAISS_INDEX_PATH))
@@ -65,29 +61,22 @@ def retrieve_context_with_scores(
     (cosine similarity)
     """
 
-    # Embed query (same normalization as indexing)
-    query_embedding = _embedding_model.encode(
-        [query],
-        normalize_embeddings=True,
-    )
+    # Embed query using unified embedder
+    query_embedding = _embedder.embed([query])
 
     distances, indices = _index.search(
         np.array(query_embedding, dtype="float32"),
         k,
     )
 
-    results: List[Tuple[str, float]] = []
+    results: List[Dict] = []
 
     for idx, distance in zip(indices[0], distances[0]):
         if idx == -1:
             continue
 
-        # For normalized vectors:
-        # cosine_similarity = distance
         similarity = float(distance)
 
-        chunk_text = _chunks[idx]["text"]
-        # results.append((chunk_text, similarity))
         results.append({
             "chunk_id": _chunks[idx]["chunk_id"],
             "similarity": similarity,
@@ -116,10 +105,7 @@ def retrieve_context_structured(
     """
 
     # Embed query
-    query_embedding = _embedding_model.encode(
-        [query],
-        normalize_embeddings=True,
-    )
+    query_embedding = _embedder.embed([query])
 
     distances, indices = _index.search(
         np.array(query_embedding, dtype="float32"),

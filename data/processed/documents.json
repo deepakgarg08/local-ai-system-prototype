@@ -8,7 +8,7 @@
     "version": null,
     "language": "en",
     "source_system": "local_fs",
-    "ingested_at": "2026-02-16T13:44:39.770609+00:00"
+    "ingested_at": "2026-02-16T17:40:57.022605+00:00"
   },
   {
     "document_id": "71249ae48d6a3e10",
@@ -19,7 +19,7 @@
     "version": null,
     "language": "en",
     "source_system": "local_fs",
-    "ingested_at": "2026-02-16T13:44:39.772516+00:00"
+    "ingested_at": "2026-02-16T17:40:57.024224+00:00"
   },
   {
     "document_id": "aabc365a10bc3ea2",
@@ -30,7 +30,7 @@
     "version": null,
     "language": "en",
     "source_system": "local_fs",
-    "ingested_at": "2026-02-16T13:44:39.773816+00:00"
+    "ingested_at": "2026-02-16T17:40:57.025931+00:00"
   },
   {
     "document_id": "208c02a8974d2545",
@@ -41,7 +41,7 @@
     "version": null,
     "language": "en",
     "source_system": "local_fs",
-    "ingested_at": "2026-02-16T13:44:39.775301+00:00"
+    "ingested_at": "2026-02-16T17:40:57.027636+00:00"
   },
   {
     "document_id": "f7fa2afec0860c4d",
@@ -52,6 +52,6 @@
     "version": null,
     "language": "en",
     "source_system": "local_fs",
-    "ingested_at": "2026-02-16T13:44:39.776261+00:00"
+    "ingested_at": "2026-02-16T17:40:57.028729+00:00"
   }
 ]

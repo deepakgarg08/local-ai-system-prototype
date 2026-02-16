@@ -42,7 +42,7 @@ class OpenAILLM(BaseLLM):
             "messages": [
                 {"role": "user", "content": prompt}
             ],
-            "temperature": 0.2,
+            # "temperature": 0.2,
         }
 
         response = requests.post(
