@@ -1,5 +1,6 @@
 Do Not Treat Code as Natural Language: Implications for
 Repository-Level Code Generation and Beyond
+
 MINH LE-ANH, FPT Software AI Center; Hanoi University of Science and Technology, Vietnam
 HUYEN NGUYEN, Hanoi University of Science and Technology, Vietnam
 AN KHANH TRAN, Hanoi University of Science and Technology, Vietnam
@@ -7,6 +8,9 @@ NAM LE HAI∗, Hanoi University of Science and Technology, Vietnam
 LINH NGO VAN, Hanoi University of Science and Technology, Vietnam
 NGHI D.Q. BUI, FPT Software AI Center, Vietnam
 BACH LE, The University of Melbourne, Australia
+
+arXiv:2602.11671v1  [cs.SE]  12 Feb 2026
+
 Large language models for code (CodeLLMs) have demonstrated remarkable success in standalone code com-
 pletion and generation, sometimes even surpassing human performance, yet their effectiveness diminishes in
 repository-level settings where cross-file dependencies and structural context are essential. Existing Retrieval-
@@ -25,11 +29,15 @@ with complex large repository context, show that Hydra achieves state-of-the-art
 and closed-source CodeLLMs. Notably, our method establishes a new state of the art in repository-level code
 generation, surpassing strongest baseline by over 5% in Pass@1 and even enabling smaller models to match or
 exceed the performance of much larger ones that rely on existing retrievers.
+
 CCS Concepts: • Software and its engineering →Automatic programming; • Information systems →
 Information retrieval; • Computing methodologies →Artificial intelligence.
+
 Additional Key Words and Phrases: Repository-Level Code Generation, Code Generation, Retrieval-Augmented
 Generation, Large Language Models
+
 ∗Nam Le Hai is the corresponding author
+
 Authors’ Contact Information: Minh Le-Anh, minhla4@fpt.com, FPT Software AI Center; Hanoi University of Science and
 Technology, Hanoi, Vietnam; Huyen Nguyen, huyen.nt235507@sis.hust.edu.vn, Hanoi University of Science and Technology,
 Hanoi, Vietnam; An Khanh Tran, khanh.ta225447@sis.hust.edu.vn, Hanoi University of Science and Technology, Hanoi,
@@ -37,6 +45,7 @@ Vietnam; Nam Le Hai, namlh@soict.hust.edu.vn, Hanoi University of Science and Te
 linhnv@soict.hust.edu.vn, Hanoi University of Science and Technology, Hanoi, Vietnam; Nghi D.Q. Bui, bdqnghi@gmail.com,
 FPT Software AI Center, Hanoi, Vietnam; Bach Le, bach.le@unimelb.edu.au, The University of Melbourne, Melbourne,
 Victoria, Australia.
+
 Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee
 provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the
 full citation on the first page. Copyrights for components of this work owned by others than the author(s) must be honored.
@@ -45,18 +54,21 @@ prior specific permission and/or a fee. Request permissions from permissions@acm
 © 2026 Copyright held by the owner/author(s). Publication rights licensed to ACM.
 ACM XXXX-XXXX/2026/2-ART
 https://doi.org/10.1145/3797144
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
-arXiv:2602.11671v1  [cs.SE]  12 Feb 2026
 
 
 2
 Minh et al.
+
 ACM Reference Format:
 Minh Le-Anh, Huyen Nguyen, An Khanh Tran, Nam Le Hai, Linh Ngo Van, Nghi D.Q. Bui, and Bach Le. 2026.
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond. 1, 1
 (February 2026), 24 pages. https://doi.org/10.1145/3797144
+
 1
 Introduction
+
 Large language models for code (CodeLLMs) have achieved impressive results in code completion
 and generation, but they typically operate within a single file or limited context [2, 5, 6, 26, 38, 46].
 In real-world software development, completing code often requires incorporating repository-level
@@ -68,6 +80,7 @@ empirical gains, bridging the gap in cross-file knowledge. Recent work has furth
 by designing better retrieval mechanisms and structured prompts for code LMs [49]. However,
 most existing approaches treat code as if it were natural language, directly borrowing techniques
 from the NLP domain. This leads to several key challenges that we aim to overcome.
+
 Limitations of Chunking-Based Indexing. Multiple prior code generation RAG-based systems
 index a codebase by breaking files into sequential chunks of code text [32, 47, 49, 52]. For example,
 files are split into fixed-size snippets (e.g. 20-line blocks) with sliding windows , which are then used
@@ -82,6 +95,7 @@ level code generation that often chunk files into continuous blocks [47, 49, 52]
 context that fully reflects this behavior. Treating code as flat text chunks ignores its hierarchical
 and dependency-driven structure, ultimately limiting retrieval effectiveness in repository-level
 tasks.
+
 Limitations of Similarity-Based Retrieval. Similarity-driven methods such as BM25, TF-IDF,
 Jaccard similarity, or embedding-based cosine search have been widely applied in document and
 code search [7, 15, 24, 29, 37], where the goal is to retrieve a semantically or lexically relevant
@@ -98,11 +112,13 @@ functions/classes that the code calls) yields significant gains in repository-le
 missing these dependencies leads to errors or redundant reimplementation. Gu et al. [14] further
 show that similarity-based retrieval “struggle to capture code semantics” and may even degrade
 generation quality by introducing noisy context, sometimes reducing accuracy. These findings
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 3
+
 underscore that while similarity retrieval is effective for code search, it might be insufficient for
 the task of code generation in repository-level settings.
 To bridge these gaps, we propose Hydra, a repository-level code generation framework that
@@ -110,6 +126,7 @@ explicitly exploits the structure and dependencies in a codebase. Specifically, 
 to retrieve and utilize repository context in a way that mirrors how developers themselves would
 navigate code, addressing the shortcomings identified above. Our contributions are summarized as
 follows:
+
 1○We present a method, Structure-aware indexing, to represent the entire repository as a hierar-
 chical tree of code components (such as functions, classes, and global variables). Rather than
 splitting files into arbitrary text chunks, we parse and index the code at the level of logical units.
@@ -135,10 +152,13 @@ that Hydra generalizes across model families and sizes. It achieves state-of-the
 surpassing the strongest baselines with close-sourced generator by more than 5%, and notably
 allows a 1.5B model to match or surpass a 7B model with existing retriever or no retrieval,
 effectively bridging a ∼4× size gap.
+
 2
 Background & Related Work
+
 2.1
 Large Language Models for Code
+
 The rise of large language models pretrained on code (CodeLLMs) has transformed code generation.
 Open-source like StarCoder [36] and CodeLlama [41] provided multilingual support and achieved
 state-of-the-art performance on benchmarks like MultiPL-E [4]. More recently, instruction-tuned
@@ -148,13 +168,16 @@ frontier further. OpenAI Codex [6] pioneered zero-shot code generation, later ex
 [1, 23] with code interpreter functionalities. Anthropic’s Claude 3 and Google’s Gemini [44, 45]
 also demonstrate strong reasoning and multilingual coding ability, with enhanced support for
 repository-level understanding and integration into developer workflows.
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 4
 Minh et al.
+
 2.2
 Retrieval-Augmented Generation
+
 Retrieval-Augmented Generation (RAG) [13, 43, 53] is a general framework that enhances generative
 models by providing them with external, task-relevant context. Instead of relying solely on a model’s
 parametric knowledge, RAG augments the input with information retrieved from a supporting
@@ -170,8 +193,10 @@ original prompt to form an enriched context. The generator, typically a large co
 or generating a new implementation. We can formalize this interaction for a code generation task.
 Given a prompt 𝑃and a knowledge corpus 𝐾representing the target repository, the final generated
 code, 𝐶final, is produced by the function:
+
 𝐶final = G(𝑃⊕R(𝑃, 𝐾))
 (1)
+
 where R(·) is the retrieval function that returns a set of relevant code chunks or documents
 from 𝐾. The operator ⊕denotes the augmentation (e.g. concatenate) process, where the retrieved
 information is integrated with the original prompt 𝑃. The generator function G(·) then synthesizes
@@ -179,13 +204,17 @@ the final code based on this augmented input.
 In most prior work, the retrieval component R(·) has been approached through either sparse
 syntactic methods, such as BM25, which rely on lexical overlap, or dense semantic methods, which
 leverage embedding similarity to capture semantic relatedness.
+
 (1) Syntactic sparse retrieval using BM25 [40], which relies on lexical overlap between the
 query 𝑞and the code snippet 𝑑.
-BM25(𝑞,𝑑) =
-∑︁
+
 𝑡∈𝑞
 IDF(𝑡) ·
 𝑓(𝑡,𝑑) · (𝑘1 + 1)
+
+BM25(𝑞,𝑑) =
+∑︁
+
 𝑓(𝑡,𝑑) + 𝑘1 ·
 
 1 −𝑏+ 𝑏·
@@ -193,6 +222,7 @@ IDF(𝑡) ·
 avgdl
 
 (2)
+
 where:
 • 𝑘1 is a saturation parameter controlling the impact of term frequency (typically 1.2 ≤𝑘1 ≤
 2.0), 𝑏is the length-normalization parameter (0 ≤𝑏≤1),
@@ -202,21 +232,26 @@ pretrained encoder (e.g., UniXCoder [15] or CodeBERT [12]), which maps both the 
 and candidate document 𝑑into vector representations. A similarity score (commonly cosine
 similarity) is then computed between these vectors to rank and retrieve the most relevant
 snippets.
+
 cosine_sim(𝑞,𝑑) =
 𝑞· 𝑑
 ∥𝑞∥· ∥𝑑∥
 (3)
+
 where ∥· ∥denotes the L2 norm (also called the Euclidean norm) of a vector.
+
 2.3
 Repository-Level Code Generation
 Recent advances in Large Language Models (LLMs) have demonstrated remarkable progress in
 standalone code generation, where the goal is to produce a self-contained function or snippet
 given a natural language description or partial code [2, 6, 20, 37]. While impressive, such settings
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 5
+
 often oversimplify real-world software development, where code rarely exists in isolation. In
 practice, completing or generating code usually requires access to repository-level context-including
 functions, classes, modules, and APIs defined across multiple files. This has drawn increasing
@@ -246,11 +281,15 @@ While these techniques have demonstrated promising results, they also highlight 
 sistent challenges in the field: non-adaptive chunking methods that lack sufficient semantic-level
 understanding of code structure, and naive similarity measures incapable of capturing the functional
 relationships among programming elements.
+
 3
 Approach
+
 3.1
 Overview
+
 Figure 1 provides an overview of the proposed approach, which operates as follows:
+
 (1) It begins with a task description (e.g., an incomplete function) and a repository as inputs. The
 repository is parsed into fine-grained components (e.g., classes, functions, variables) using an
 AST parser, which preserves both the overall tree structure of the repository and the complete
@@ -264,26 +303,40 @@ These two sources are then merged to form a unified context that includes both d
 definitions and representative usage examples.
 (3) Finally, the enriched context is concatenated with the task description and passed into a
 generator model (e.g., LLMs) to produce the completed code.
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 6
 Minh et al.
+
+Hydra
+
+Relevant Code Snippets
+
 Task description
-Repository
+
+Dependency-aware
+
 Indexed codebase
+
+Retriever
+
+Similarity-based Retriever
+
 Structure-
 aware indexing
-Relevant Code Snippets
+
+Repository
+
 Generator 
-Dependency-aware
-Retriever
-Similarity-based Retriever
-Hydra
+
 Fig. 1. Overview of our workflow. The approach integrates structure-aware indexing, dependency-aware
 retrieval, and hybrid context construction to support repository-level code generation.
+
 3.2
 Structure-aware Indexing
+
 Unlike prior approaches that segment the codebase into arbitrary text chunks, our method preserves
 the semantic and structural integrity of the repository. Instead of viewing code as flat text, we
 treat it as a hierarchy of components derived from the program’s Abstract Syntax Tree (AST)
@@ -291,9 +344,11 @@ using Python’s ast1 module. This allows us to represent the codebase as a grap
 each node corresponds to a fine-grained unit of code, and edges capture the relationships among
 them (e.g., imports or usage links). Specifically, we focus on three fundamental structures that are
 ubiquitous across programming languages:
+
 • Function nodes, representing individual function or method implementations.
 • Class nodes, encapsulating class definitions and their member methods.
 • Variable nodes, including global or module-level variables that influence program behavior.
+
 Each node preserves the complete implementation content of the corresponding component,
 rather than fragmenting it across multiple chunks. For example, a function node contains the entire
 body of the function, ensuring that retrieval always yields a self-contained and executable unit.
@@ -308,53 +363,92 @@ This design enables more accurate and contextually faithful retrieval for reposi
 generation. It ensures that the model can access the precise functions, classes, or variables required to
 complete a task, while maintaining their full definitions and preserving the hierarchical organization
 of the codebase.
+
 1https://docs.python.org/3/library/ast.html
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 7
-#CHUNK 1
-#CHUNK 2
-...
-content
-random.shuffle(chars)
-#convert the shuffled list to str
-return ''.join(chars)
+
 Chunking-
+
+Structure-
+
 based
 Indexing
-Repo
-File 1
-File 2
-File 3
-File m
-...
-...
-...
-...
-content
-def strip_html() -> str:
-   ...
-   return r.sub('', input_string)
-Function nodes
-Variable nodes
-Class nodes
-#CHUNK n
-Repo
-Structure-
+
 Aware
 Indexing
-import connection
+
 content
+
+content
+
+def strip_html() -> str:
+
+random.shuffle(chars)
+
+   ...
+
+#convert the shuffled list to str
+
+Repo
+
+Repo
+
+   return r.sub('', input_string)
+
+return ''.join(chars)
+
+Function nodes
+
+File 1
+
+...
+
+#CHUNK 1
+
+content
+
+Variable nodes
+
+#CHUNK 2
+
 CAMEL_CASE_REPLACE_RE =
+
+...
+
+File 2
+
 re.compile(r'([a-z]|[A-
+
 Z]+)(?=[A-Z])')
+
+Class nodes
+
+...
+
+File 3
+
+...
+
+...
+
+#CHUNK n
+
+File m
+
+import connection
+
 Fig. 2. Comparison of chunk-based indexing and structure-aware indexing. Our approach preserves full
 functions, classes, and variables as nodes with structural links, avoiding the fragmentation and noise of
 traditional chunking.
+
 3.3
 Dependency-Aware Retrieval
+
 Motivation. Previous methods commonly rely on NLP-inspired similarity-based retrieval, such
 as BM25 or embedding models like UniXCoder, to support RAG for repository-level code generation.
 While these methods can surface code snippets that are lexically or semantically similar, they are
@@ -369,6 +463,7 @@ confirms this gap: when relying solely on similarity-driven retrieval methods su
 UniXCoder, 40–60% of ground-truth dependencies required by the target function are missing from the
 retrieved context. This shortfall demonstrates that similarity-based retrieval alone fails to expose
 the fine-grained dependencies essential for accurate repository-level code generation.
+
 Solution Approach. To address this challenge, we introduce a lightweight dependency-aware
 retriever (DAR) that is fine-tuned to detect relevant dependencies for a given query (i.e., a function
 signature and its accompanying docstring, if available). Training this retriever requires a dataset of
@@ -379,16 +474,21 @@ preparation pipeline is detailed in Section 3.3.1. With this dataset, we fine-tu
 dependency detection as a binary classification task over query–candidate pairs. Specifically, the
 model is trained to predict whether a pair (𝑞,𝑑) corresponds to a valid dependency, as described in
 Section 3.3.2.
+
 3.3.1
 Training Dataset Construction.
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 8
 Minh et al.
+
 Algorithm 1 Training Data Construction
+
 Require: Filtered set of Python repositories 𝑅𝑓𝑖𝑙𝑡𝑒𝑟𝑒𝑑.
 Ensure: Training dataset 𝐷with (𝑞,𝑑+,𝑑−) triplets.
+
 1: 𝐷←∅
 2: for all repository 𝑟∈𝑅𝑓𝑖𝑙𝑡𝑒𝑟𝑒𝑑do
 3:
@@ -420,12 +520,14 @@ Append (𝑞𝑖,𝑑+
 end for
 12: end for
 13: return 𝐷
+
 Data Source. To construct a high-quality dataset for training our retriever, we collected Python
 repositories from GitHub that met the following criteria: each repository had at least 30 forks, 10
 stars, and a minimum of 5 Python files, resulting in 2,864 repositories. To avoid data contamination,
 we excluded any repositories that overlapped with the evaluation datasets. From this curated
 collection, we extracted all function, class, and variable blocks as in Section 3.2, ensuring that the
 dataset preserved the structural granularity of source code.
+
 Triplets Construction. The training data for our retriever is organized into triplets (𝑞,𝑑+,𝑑−).
 The detailed process is presented in Algorithm 1. To create the query𝑞, we extract function nodes set
 F𝑡𝑎𝑟𝑔𝑒𝑡from the crawled repositories and use their function signature together with the docstring
@@ -439,10 +541,12 @@ samples 𝑑−
 𝑖, to form (𝑞𝑖,𝑑+
 𝑖,𝑑−
 𝑖).
+
 3.3.2
 Retriever Fine-Tuning Strategy. Once the training dataset is constructed (Section 3.3.1), we
 fine-tune an encoder (UniXCoder [15]) to detect the true dependencies 𝑑+ for a given query 𝑞. We
 considered two alternative training strategies.
+
 (1) Contrastive learning: Following common practice in code search, one option is to optimize
 a contrastive loss, encouraging embeddings of (𝑞,𝑑+) pairs to be closer than (𝑞,𝑑−) pairs. At
 inference, retrieval is then performed via embedding similarity (e.g., cosine similarity). This
@@ -455,39 +559,55 @@ it proved unstable and failed to converge, as below discussion. We therefore ado
 classification strategy, which yields more reliable training dynamics and more accurate dependency
 detection. As a result, this process yielded a dataset of approximately 564, 740 data samples. The
 data is divided into train/validation/test splits with a ratio of 8:1:1.
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 9
-def snake_case_to_camel(...)
-    ...
-def camel_case_to_snake(...):
-    ...
-    if not is_string(input_string):
-        raise InvalidInputError(input_string)
-    if not is_camel_case(input_string):
-        return input_string
-   ...
+
+DAR
+
 def is_string(...):
     ...
+
+Query
+
+def snake_case_to_camel(...)
+    ...
+
 class InvalidInputError(...):
       ...
+
 def is_snake_case(...):
     ...
+
+Solution
+
 def snake_case_to_camel(...):
     ...
     if not is_string(input_string):
         raise InvalidInputError(input_string)
+
+BM25
+
+def camel_case_to_snake(...):
+    ...
+    if not is_string(input_string):
+        raise InvalidInputError(input_string)
+
     if not is_snake_case(input_string, separator):
         return input_string
+
+    if not is_camel_case(input_string):
+        return input_string
+   ...
+
     ...
-Query
-Solution
-DAR
-BM25
+
 Fig. 3. Example of retrieved results from DAR and BM25 for a query (incomplete function under generation)
 in the RepoExec dataset.
+
 Discussion. Our experiments with contrastive learning approach showed that the training
 process failed to converge. We attribute this failure to the query-dependent nature of code depen-
 dencies, which creates a contradictory optimization objective. During training, the same pair of
@@ -503,8 +623,10 @@ cies vastly outnumber positive ones, to prevent model bias, we downsampled the n
 exclusively within the training set to match the number of positive samples, creating a balanced 1:1
 ratio. The validation and test sets were kept in their original imbalanced state to ensure a realistic
 evaluation.
+
 3.4
 Hydra Retriever - A Hybrid Approach
+
 We hypothesize that dependency-aware retrieval provides the model with the essential “materials”
 needed to implement the target function. However, this retriever might overlook the signal of
 how these components should be used in practice (e.g., how to invoke a function or in which
@@ -519,11 +641,13 @@ To combine these strengths, we design Hydra Retriever, a hybrid retrieval strate
 integrates dependency-aware retrieval (DAR) with similarity-based retrieval (i.e., BM25). By merging
 these complementary contexts, Hydra provides the model with both the necessary building blocks
 and usage examples, yielding a more complete and effective context for code generation.
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 10
 Minh et al.
+
 Inference process of Hydra: During inference, the target function is passed through both the
 BM25 retriever and the DAR.
 • For BM25, we apply the standard formulation (Equation 2), following common practice by fixing
@@ -540,16 +664,23 @@ select the optimal threshold. This metric’s core function is to apply a penalt
 between recall1 and recall0, scaled by a coefficient 𝛼that reflects the class imbalance. The metric
 is defined as:
 BRP = recall1 −𝛼(recall1 −recall0)2
+
 The penalty coefficient is calculated based on the class distribution as
+
 𝛼=
 1
+
 ⌊𝑁class 1+𝑁class 0
+
 𝑁class 1
 ⌋
+
 We performed a grid search using BRP on the validation set, which was constructed in Section
 3.3.2 with 46,141 negative instances (false dependencies) and 10,333 positive samples (true
 dependencies). Due to the class imbalance, the value of 𝛼is thus determined to be 0.2.
+
 Table 1. BRP scores at different threshold values 𝑇on the validation set.
+
 Threshold
 0.15
 0.20
@@ -559,6 +690,7 @@ Threshold
 0.40
 0.45
 0.50
+
 BRP
 0.8829
 0.8852
@@ -568,32 +700,41 @@ BRP
 0.8755
 0.8660
 0.8522
+
 As shown in Table 1, a threshold of 0.25 yields the highest BRP score of 0.8861. Therefore, we
 select 𝑇= 0.25 for our Hydra Retriever during inference.
+
 4
 Experiment Setup
+
 4.1
 Research Questions and Setup
+
 Our evaluation investigates the following research questions:
+
 RQ1: How effective is Structure-Aware Indexing compared to Chunking-Based Indexing?
 ↩→Setup: For chunking-based indexing, we follow Zhang et al. [52] and segment each code file
 into fixed-size chunks of 2048 tokens with a 50% overlap. In contrast, structure-aware indexing
 is performed as described in Section 3.2. For both indexing strategies, we employ the same BM25
 retriever and Qwen2.5-Coder generator, and evaluate them on function-level code generation
 within a repository-level context.
+
 RQ2: How do different retrieval approaches affect repository-level code generation performance?
 ↩→Setup: In this RQ, we first evaluate the effectiveness of our proposed dependency-aware
 retriever (DAR) compared to prior similarity-based methods, including sparse retrieval with BM25
 and dense retrieval with UniXCoder, in correctly retrieving the dependencies required to complete
 a function. For fairness, both strategies are applied over structure-aware indexing and evaluated on
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 11
+
 the test set described in Section 3.3.1, together with two considered benchmarks. We then extend
 the comparison to assess how these three retrieval methodologies, together with Hydra, affect
 performance on the repository-level code generation task.
+
 RQ3: How effective is Hydra compared to existing state-of-the-art approaches for repository-level code
 generation?
 ↩→Setup: We compare Hydra against three state-of-the-art repository-level code generation
@@ -601,16 +742,19 @@ approaches—RepoCoder [52], RLCoder [47], and Repoformer [49] (Section 2.3); an
 their testing logs to provide a deeper assessment of output quality. In addition, we conduct an
 ablation study by removing functions, classes, and variables from Hydra’s search space to quantify
 the importance of granular components.
+
 RQ4: How does the computational cost of running Hydra compare to state-of-the-art approaches for
 repository-level code generation?
 ↩→Setup: We compare the retrieval time of Hydra against the baselines considered in RQ3 to
 demonstrate the practical efficiency of our approach. We report the mean, median, and maximum
 retrieval times across benchmarks to capture not only average efficiency but also the stability of
 each method under different query complexities.
+
 4.2
 Benchmarks, Generator Backbones and Metrics
 Benchmarks. In our evaluation, we utilize two recent benchmarks designed for repository-level
 code generation:
+
 • RepoExec [27], a benchmark designed for the evaluation of repository-level code generation,
 with a focus on executability, functional correctness, and dependency utilization. The bench-
 mark includes 355 problems. The core task challenges a model to generate code by effectively
@@ -626,6 +770,7 @@ Generator Backbones. For the generator models, we use the open-source Qwen2.5-Co
 with 1.5B and 7B parameters, as well as the closed-source GPT-4.1-mini [39]. This setup allows us to
 evaluate the adaptability of our method across different model types and scales. During generation,
 we employ nucleus sampling and generate 5 candidate outputs per query for all models.
+
 Metrics. To evaluate the functional correctness of the generated code, we employ the widely-
 adopted execution-based metric, Pass@k [6], with k ∈{1, 3, 5}. This metric assesses whether
 the generated code can successfully pass a set of predefined unit tests. In addition, we leverage
@@ -633,38 +778,31 @@ the Dependency Invocation Rate (DIR) introduced by Le Hai et al. [27] to evaluat
 generated code correctly calls the intended dependencies. This metric is computed as the size of
 the intersection between the set of dependencies invoked in the generated solution and those in
 the ground truth, divided by the total number of ground-truth dependencies.
+
 5
 Evaluation
+
 In this section, we present the empirical results of our investigation, along with an in-depth analysis
 of our findings regarding the research questions.
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 12
 Minh et al.
+
 class FileSystem(metaclass=abc.ABCMeta):
         ...
+
+Missing Context
+
+Qwen2.5-Coder-1.5B-Instruct Solution
+
+Ground-truth Callee
+
     def exists(self, path):
         ...
-    def isdir(self, path):
-        """
-        Return ``True`` if the location at ``path`` is a directory. 
-        If not, return ``False``.
-        ...
-        """
-        raise NotImplementedError("isdir() not implemented on {0}"\
-              .format(self.__class__.__name__))
-    def listdir(self, path):
-        """Return a list of files rooted in path.
-        ...
-        """
-        
-        raise NotImplementedError("listdir() not implemented on {0}"\
-        .format(self.__class__.__name__))
-    def move(self, path, dest):
-        ...
-    def rename_dont_move(self, path, dest):
-        ...
+
 def _list_existing(filesystem, glob, paths):
     ...
     if isinstance(paths, dict):
@@ -675,26 +813,55 @@ def _list_existing(filesystem, glob, paths):
                 elif filesystem.isfile(value):
                     existing_paths.add(value)
     ....
+
+Available Context Fed Into Generator
+
+    def isdir(self, path):
+        """
+        Return ``True`` if the location at ``path`` is a directory. 
+        If not, return ``False``.
+        ...
+        """
+        raise NotImplementedError("isdir() not implemented on {0}"\
+              .format(self.__class__.__name__))
+
+    def listdir(self, path):
+        """Return a list of files rooted in path.
+        ...
+        """
+        
+        raise NotImplementedError("listdir() not implemented on {0}"\
+        .format(self.__class__.__name__))
+
+Retrieved
+
+Chunk
+
 AttributeError: 'LocalFileSystem'
 object has no attribute 'isfile'
+
+    def move(self, path, dest):
+        ...
+
 Missing Context
-Qwen2.5-Coder-1.5B-Instruct Solution
-Available Context Fed Into Generator
-Missing Context
-Ground-truth Callee
-Retrieved
-Chunk
+
+    def rename_dont_move(self, path, dest):
+        ...
+
 Fig. 4. Example of contextual fragmentation under chunk-based retrieval. The retriever provides partial context
 (isdir, listdir) but misses the ground-truth dependency exists. As a result, the model hallucinates an
 isfile method, leading to an AttributeError.
+
 Table 2. Results of chunking-based vs. structure-aware context indexing on RepoExec and DevEval benchmarks
 with BM25 retriever, Qwen2.5-Coder-Instruct 1.5B and 7B versions as generator, reported in Pass@1/3/5.
+
 Model Size
 Benchmark
 Indexing Strategy
 Pass@1
 Pass@3
 Pass@5
+
 1.5B
 RepoExec
 Chunking-based Indexing
@@ -705,6 +872,7 @@ Structure-Aware Indexing
 12.39
 16.70
 18.02
+
 DevEval
 Chunking-based Indexing
 4.81
@@ -714,6 +882,7 @@ Structure-Aware Indexing
 10.32
 14.13
 15.89
+
 7B
 RepoExec
 Chunking-based Indexing
@@ -724,6 +893,7 @@ Structure-Aware Indexing
 20.79
 27.61
 30.14
+
 DevEval
 Chunking-based Indexing
 8.46
@@ -733,10 +903,12 @@ Structure-Aware Indexing
 16.67
 21.73
 23.78
+
 RQ1: How effective is Structure-Aware Indexing compared to Chunking-Based Indexing?
 To address this RQ, we evaluate repository-level code generation under two alternative context
 formulation strategies: chunking-base indexing and our proposed structure-aware context indexing.
 The results are presented in Table 2.
+
 Quantitative Findings. The results demonstrate a consistent and substantial advantage for
 structure-aware context indexing. Across both model scales (1.5B and 7B) and benchmarks (Re-
 poExec and DevEval), node-based context significantly outperforms chunk-based baselines. The
@@ -746,11 +918,13 @@ RepoExec, we also observe steady improvements of 3–6% in Pass@1, highlighting 
 is robust across repositories with diverse structures. These findings validate our hypothesis that
 preserving the syntactic and semantic integrity of code units yields a more coherent and complete
 view of the codebase, thereby improving the likelihood of correct generation.
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 13
+
 Qualitative Analysis: A Case Study on Contextual Fragmentation. Quantitative metrics
 alone cannot fully explain why chunking degrades retrieval quality. To illustrate the failure modes,
 Figure 4 presents a case study on completing the _list_existing function, which relies on
@@ -760,6 +934,7 @@ generates filesystem.isfile(path), a plausible but hallucinated method inferred 
 to isdir. The resulting AttributeError, illustrated in the traceback, is a direct consequence of
 semantic fragmentation: the retriever supplies incomplete and misleading context, which forces
 the model into an erroneous inference.
+
 [RQ1] Summary: Unlike natural language, code cannot be reliably segmented into arbitrary
 chunks without breaking logical boundaries. Chunk-based indexing often fragments depen-
 dencies, yielding incomplete or misleading context that leads models to hallucinate calls and
@@ -767,20 +942,25 @@ produce incorrect code. Structure-aware context indexing instead preserves funct
 and variables as coherent units, providing a more faithful representation of the repository. This
 approach significantly improves retrieval quality and code generation, surpassing chunking-
 based strategies by a wide margin, with around 2× gains on DevEval.
+
 RQ2: How do different retrieval approaches affect repository-level code generation
 performance?
+
 Table 3. Comparison of retrieval methods. The top section shows overall performance in terms of Recall,
 Precision, and F1. The bottom section provides a fine-grained breakdown of Recall by different dependency
 types, functions (FRecall), classes (CRecall), and variables (VRecall)
+
 Retriever
 RepoExec
 DevEval
+
 Recall
 Precision
 F1
 Recall
 Precision
 F1
+
 Sparse Retriever
 0.5378
 0.0809
@@ -802,12 +982,14 @@ Dependency-aware Retriever
 0.8884
 0.1559
 0.2652
+
 FRecall
 CRecall
 VRecall
 FRecall
 CRecall
 VRecall
+
 Sparse Retriever
 0.6522
 0.6667
@@ -829,6 +1011,7 @@ Dependency-aware Retriever
 0.8718
 0.9194
 0.8812
+
 First, we evaluate the effectiveness of the proposed Dependency-Aware Retrieval (DAR) in com-
 parison to sparse and dense retrieval methods for acquiring the dependencies required to implement
 a target function. Experiments are conducted on our constructed test dataset (Sections 3.3.1 and
@@ -841,18 +1024,22 @@ insight into how effectively the retriever selects useful materials for the gene
 Table 3 reports the performance of sparse, dense, and dependency-aware retrieval (DAR) in
 detecting true dependencies. On RepoExec, both sparse and dense retrievers achieve moderate
 recall (around 0.53–0.55), but their very low precision (<0.09) shows that many retrieved candidates
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 14
 Minh et al.
+
 Table 4. Code generation results with different retrieval strategies on RepoExec and DevEval benchmarks
 using Qwen2.5-Coder models (1.5B and 7B) as generator. Results are reported in Pass@1/3/5 and Dependency
 Invocation Rate (DIR).
+
 Model Size
 Retriever
 RepoExec
 DevEval
+
 Pass@1
 Pass@3
 Pass@5
@@ -860,7 +1047,7 @@ DIR
 Pass@1
 Pass@3
 Pass@5
-1.5B
+
 Sparse Retriever
 12.39
 16.70
@@ -893,7 +1080,9 @@ Hydra Retriever
 10.71
 14.50
 16.05
-7B
+
+1.5B
+
 Sparse Retriever
 20.79
 27.61
@@ -926,6 +1115,9 @@ Hydra Retriever
 17.27
 22.44
 24.44
+
+7B
+
 are spurious. In contrast, DAR reaches a recall of 0.92, substantially higher than either baseline,
 confirming its ability to capture the majority of ground-truth dependencies. Although precision
 remains modest, this trade-off is acceptable: for code generation, failing to retrieve true dependencies
@@ -959,42 +1151,63 @@ Coder models (1.5B and 7B). We can observe that DAR achieves consistently higher
 scores than similarity-based retrievers, indicating that providing true dependencies offers greater
 value to the generator than merely retrieving lexically or semantically similar snippets. Besides,
 it also achieves higher DIR compared to sparse and dense methods (e.g., 43.81 vs. 39.9 at 1.5B,
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 15
+
 Fig. 5. Case study comparing the generated code by Hydra and text-based retrieval on task_id 18 (RepoExec).
+
 (a) Target Function Prompt
+
 1 def is_url(input_string: Any, allowed_schemes: Optional[List[str]] = None) -> bool:
+
 2
 """
+
 3
 Check if a string is a valid URL.
+
 4
 [...]
+
 5
 """
+
 (b) Solution generated with Hydra
+
 1 def is_url(input_string: Any, allowed_schemes: Optional[List[str]] = None) -> bool:
+
 2
 [...]
+
 3
 if not is_full_string(input_string):
+
 4
 return False
+
 5
 [...]
+
 (c) Solution generated with BM25
+
 1 def is_url(input_string: Any, allowed_schemes: Optional[List[str]] = None) -> bool:
+
 2
 [...]
+
 3
 if not isinstance(input_string, str):
+
 4
 raise InvalidInputError(input_string)
+
 5
 [...]
+
 and 52.24 vs. 46–49 at 7B), confirming its superior ability to recover true dependencies, thereby
 reducing the risk of code smells and technical debt. However, the performance gap remains modest,
 suggesting that similarity-based context still provides complementary value. Indeed, the hybrid
@@ -1006,6 +1219,7 @@ and 7B models, respectively, outperforming all baselines. These results demonstr
 based context complements dependency context by providing signals on how dependencies are
 used, thereby helping the generator produce code that is both functionally correct and aligned with
 the current repository state, further strengthening our hypothesis and discussion in Section 3.4.
+
 Case Study: We demonstrate Hydra’s robustness over text-based retrievers through a case study
 in Figure 5. In RepoExec (task_id 18), completing is_url requires validating that the input is a
 proper string via the auxiliary function is_full_string. Hydra, using DAR, successfully retrieves
@@ -1013,11 +1227,13 @@ this dependency, allowing the LLM to reuse the existing API and produce a correc
 In contrast, similarity-based retrievers miss this function, forcing the LLM to re-implement the logic
 and often deviate from the intended behavior. This highlights Hydra ’s advantage in retrieving
 critical dependencies that text-based retrievers overlook.
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 16
 Minh et al.
+
 [RQ2] Summary: Similarity-based retrieval methods, such as sparse retrieval or dense retrieval
 with a general encoder, frequently overlook a substantial portion of required dependencies-
 particularly variables and classes. In contrast, the proposed Dependency-Aware Retrieval (DAR)
@@ -1026,8 +1242,10 @@ Furthermore, DAR consistently achieves higher Pass@k and DIR than similarity-bas
 showing that true dependencies provide greater value to the generator and help reduce risks such
 as code smells and technical debt. Nonetheless, similarity-based context still adds complementary
 usage signals, and the hybrid Hydra Retriever leverages both to achieve the strongest results.
+
 RQ3: How effective is Hydra compared to existing state-of-the-art approaches for
 repository-level code generation?
+
 Hydra vs. Baselines. Table 5 compares Hydra with several representative baselines, including
 RepoCoder, RepoFormer, and RLCoder, as well as no-context generation. Across all model families
 and sizes, Hydra consistently delivers the best performance, establishing itself as a new state
@@ -1045,6 +1263,7 @@ even exceeds RepoFormer on DevEval with a 7B model (15.72 vs. 14.82 and 10.71 vs
 Pass@1, respectively). This demonstrates that high-quality retrieval can narrow or even bridge the
 performance gap between small and large models, highlighting the potential value of our approach
 in resource-constrained settings.
+
 Failure Modes of Generated Code. We further investigate the failure modes of generated code
 and present the error statistics in Figure 6. Compared to baselines (No Context, RepoCoder, Repo-
 Former, and RLCoder), Hydra significantly reduces critical errors such as NameError, TypeError,
@@ -1059,29 +1278,34 @@ in place, the generated functions are more likely to run and reach assertion che
 logical mismatches rather than failing prematurely due to missing symbols. This trade-off suggests
 that Hydra shifts errors from structural failures toward more nuanced behavioral validation,
 reflecting an important step toward generating executable and repository-consistent code.
+
 Ablation study. To comprehend the individual contributions of each component type to Hydra’s
 effectiveness, we conduct an ablation study by systematically removing function-level, class-level,
 and variable-level retrieval from the search space. Table 6 presents the results across both bench-
 marks using Qwen2.5-Coder-1.5B-Instruct and Qwen2.5-Coder-7B-Instruct. Here, “w/o-Function”,
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 17
+
 Table 5. Comparison of Hydra with prior retrieval-based approaches and no-context baselines. Results are
 reported in Pass@1/3/5 using close sourced GPT-4.1 mini and open source Qwen2.5-Coder-1.5B and 7B
 Instruct models.
+
 Generator
 Method
 RepoExec
 DevEval
+
 Pass@1
 Pass@3
 Pass@5
 Pass@1
 Pass@3
 Pass@5
-GPT-4.1 mini
+
 No Context
 21.58
 24.42
@@ -1117,7 +1341,9 @@ Hydra
 31.91
 35.56
 36.99
-QwenCoder-1.5B-Instruct
+
+GPT-4.1 mini
+
 No Context
 5.75
 8.31
@@ -1153,7 +1379,9 @@ Hydra
 10.71
 14.50
 16.05
-QwenCoder-7B-Instruct
+
+QwenCoder-1.5B-Instruct
+
 No Context
 13.30
 17.04
@@ -1189,8 +1417,91 @@ Hydra
 17.27
 22.44
 24.44
+
+QwenCoder-7B-Instruct
+
 Fig. 6. Distribution of error types in generated code for different repository-level code generation methods,
 evaluated with Qwen2.5-Coder-1.5B-Instruct on RepoExec.
+
+651
+
+Hydra (Ours)
+No Context
+RepoCoder
+RepoFormer
+RLCoder
+
+599
+
+600
+
+585
+
+538
+
+528
+
+493
+
+489
+
+500
+
+Error counts
+
+400
+
+364
+
+351
+
+300
+
+283
+
+221
+
+217
+
+195
+
+190
+
+200
+
+179
+
+172
+
+163
+
+161
+
+152
+
+138
+
+100
+
+96
+
+100
+
+81
+
+75
+
+68
+71
+
+69
+
+55
+
+54
+
+52
+
 AssertionError
 NameError
 TypeError
@@ -1198,48 +1509,7 @@ AttributeError
 SyntaxError
 ValueError
 0
-100
-200
-300
-400
-500
-600
-Error counts
-651
-283
-179
-138
-68
-71
-585
-489
-217
-163
-55
-81
-528
-493
-221
-172
-75
-54
-599
-351
-195
-161
-96
-52
-538
-364
-152
-190
-100
-69
-Hydra (Ours)
-No Context
-RepoCoder
-RepoFormer
-RLCoder
+
 “w/o-Class”, and “w/o-Variable” denote variants where function-level, class-level, and variable-level
 components are respectively removed from the search space of Hydra. From Table 6, we observe
 that removing any retrieval granularity consistently degrades performance across both bench-
@@ -1247,24 +1517,28 @@ marks and model scales. On RepoExec and DevEval, ablating function-level and cla
 leads to a pronounced performance drop, with Pass@1 decreasing by up to approximately 4%.
 In contrast, ablating variable-level retrieval results in a comparatively smaller degradation, with
 Pass@1 typically dropping by around 1-2%. These results indicate that function- and class-level
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 18
 Minh et al.
+
 Table 6. Ablation study evaluating the contribution of different granular retrieval components in Hydra,
 including function-level, class-level, and variable-level retrieval.
+
 Benchmark
 Method
 QwenCoder-1.5B-Instruct
 QwenCoder-7B-Instruct
+
 Pass@1
 Pass@3
 Pass@5
 Pass@1
 Pass@3
 Pass@5
-RepoExec
+
 Hydra
 15.72
 21.30
@@ -1293,7 +1567,9 @@ w/o-Variable
 21.01
 28.17
 30.42
-DevEval
+
+RepoExec
+
 Hydra
 10.71
 14.50
@@ -1322,8 +1598,12 @@ w/o-Variable
 15.72
 20.07
 21.81
+
+DevEval
+
 retrieval provide more essential API and structural signals, while variable-level retrieval plays a
 complementary role.
+
 [RQ3] Summary: Hydra establishes a new state of the art in repository-level code generation,
 consistently surpassing baselines such as RepoCoder, RepoFormer, and RLCoder across models
 and benchmarks. Its hybrid design, combining dependency-aware retrieval, similarity-based
@@ -1334,6 +1614,7 @@ more executable and repository-consistent code. Additionally, The ablation study
 Hydra benefits from all granular retrieval components, with function- and class-level retrieval
 contributing most, while variable-level retrieval provides complementary gains that further
 improve generation quality.
+
 RQ4: How does the computational cost of running Hydra compare to state-of-the-art
 approaches for repository-level code generation?
 In this RQ, we evaluate the retrieval latency of different methods to assess their practicality for
@@ -1353,16 +1634,20 @@ latencies, reflecting the overhead when retrieval is triggered.
 By comparison, our proposed Hydra achieves consistently low latency while maintaining stable
 performance across queries, owing to its context-aware retrieval design. Instead of exhaustively
 scanning the entire repository, Hydra anchors retrieval on call-graph dependencies at the function
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 19
+
 Table 7. Latency comparison (in milliseconds per example) of different repository-level code generation
 methods. Results are reported in terms of minimum, maximum, mean, and median latency.
+
 Method
 RepoExec
 DevEval
+
 Min
 Max
 Mean
@@ -1371,6 +1656,7 @@ Min
 Max
 Mean
 Median
+
 RLCoder
 91.71
 2927.08
@@ -1407,6 +1693,7 @@ Hydra
 21234.01
 432.86
 221.22
+
 and file levels, restricting the search space to the current file and its imported modules (via import
 connections in Figure 2). This is particularly effective in practice, as many target functions reside
 in leaf files that do not import other modules, resulting in a very small candidate pool or even no
@@ -1422,12 +1709,16 @@ codebases, this gap becomes increasingly pronounced as repositories scale. Conse
 delivers substantial retrieval speedups without sacrificing generation quality, making it well-suited
 for practical repository-level code generation scenarios where both accuracy and low latency are
 critical.
+
 [RQ4] Summary: Hydra delivers both state-of-the-art accuracy and the lowest, most stable
 latency by anchoring retrieval on dependencies and narrowing the search space to relevant files.
+
 6
 Threats to Validity
+
 Our study, while demonstrating the effectiveness of Hydra, is subject to several potential threats
 to internal and external validity.
+
 6.1
 Internal validity
 Retriever Backbone Choice: A potential threat lies in the choice of backbone model for the
@@ -1436,22 +1727,26 @@ While UniXCoder provides a strong baseline and stable convergence in our setting
 backbones (e.g., CodeBERT [12], GraphCodeBERT [16], or newer code-specific encoders) might
 lead to different retrieval effectiveness. As a result, our conclusions about retriever performance
 may be partly tied to this specific backbone choice.
+
 Data Contamination: For the Hydra retriever, we filter out any repositories that overlap with
 the evaluation datasets during training data construction, preventing direct data leakage. Besides,
 we computed the entropy of DAR’s predictions on RepoExec and DevEval. The relatively high
 average entropy (0.3634 on RepoExec and 0.4035 on DevEval, with a maximum of 0.6) suggests
 that DAR is not biased toward memorized patterns and is minimally affected by potential data
 contamination. Regarding the risk of generator (LLMs) being pretrained on the evaluation data, we
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 20
 Minh et al.
+
 empirically show that plain LLMs without Hydra’s retrieval module perform substantially worse
 than Hydra across all settings. In particular, removing retrieval leads to performance drops of
 over 10% on the QwenCoder variants and over 20% on GPT-4.1-mini. These results indicate that
 Hydra’s performance gains primarily stem from its retrieval mechanism rather than memorization,
 mitigating the potential data contamination.
+
 6.2
 External validity
 Scope Limited to Python Benchmarks: Our experiments are restricted to Python and two
@@ -1460,13 +1755,16 @@ settings, results may not directly generalize to other programming languages, ec
 repository structures. The focus on function-level generation, while aligned with benchmark
 design, also narrows the scope, leaving the effectiveness of Hydra for higher-level tasks (e.g., class
 or module generation) as future work.
+
 Limited choice of LLMs: Our experiments involve two types of LLMs as the generator: Qwen2.5-
 Coder and GPT-4.1 mini. Although our method is model-agnostic, evaluation on a broader range
 of models lies beyond the scope of this work. We believe, however, that our selected models
 are representative, covering both state-of-the-art open-source and closed-source LLMs for code
 generation.
+
 7
 Conclusion
+
 In this work, we introduced Hydra, a framework for repository-level code generation that leverages
 structure-aware indexing, dependency-aware retrieval, and a hybrid strategy combining depen-
 dencies with similarity-based signals. Experiments on two challenging benchmarks, RepoExec
@@ -1480,19 +1778,24 @@ latency evaluation demonstrate that Hydra achieves practical efficiency by restr
 to dependency-localized context rather than repository-wide scanning. Overall, these findings
 highlight the importance of moving beyond NLP-inspired chunking and similarity retrieval toward
 dependency-centered approaches for practical and reliable repository-level code generation.
+
 8
 Data Availability
 A replication package that contains the source code and datasets for this paper is available at
 https://github.com/solis-team/Hydra
+
 Acknowledgement
 Nam Le Hai was funded by the PhD Scholarship Programme of Vingroup Innovation Foundation
 (VINIF), VinUniversity, code VINIF.2025.TS68.
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 21
+
 References
+
 [1] Josh Achiam, Steven Adler, Sandhini Agarwal, Lama Ahmad, Ilge Akkaya, Florencia Leoni Aleman, Diogo Almeida,
 Janko Altenschmidt, Sam Altman, Shyamal Anadkat, et al. 2023. Gpt-4 technical report. arXiv preprint arXiv:2303.08774
 (2023).
@@ -1548,11 +1851,13 @@ https://arxiv.org/abs/2312.10997
 [14] Wenchao Gu, Juntao Chen, Yanlin Wang, Tianyue Jiang, Xingzhe Li, Mingwei Liu, Xilin Liu, Yuchi Ma, and Zibin
 Zheng. 2025. What to Retrieve for Effective Retrieval-Augmented Code Generation? An Empirical Study and Beyond.
 arXiv preprint arXiv:2503.20589 (2025).
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 22
 Minh et al.
+
 [15] Daya Guo, Shuai Lu, Nan Duan, Yanlin Wang, Ming Zhou, and Jian Yin. 2022. UniXcoder: Unified Cross-Modal
 Pre-training for Code Representation. In Proceedings of the 60th Annual Meeting of the Association for Computational
 Linguistics (Volume 1: Long Papers), ACL 2022, Dublin, Ireland, May 22-27, 2022, Smaranda Muresan, Preslav Nakov, and
@@ -1610,11 +1915,13 @@ Fan. 2024. REPOFUSE: Repository-Level Code Completion with Fused Dual Context. a
 https://arxiv.org/abs/2402.14323
 [33] Dianshu Liao, Shidong Pan, Xiaoyu Sun, Xiaoxue Ren, Qing Huang, Zhenchang Xing, Huan Jin, and Qinying Li. 2024.
 $\mathbf{Aˆ{3}}$A3-CodGen: A Repository-Level Code Generation Framework for Code Reuse With Local-Aware,
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 23
+
 Global-Aware, and Third-Party-Library-Aware. IEEE Trans. Software Eng. 50, 12 (2024), 3369–3384. doi:10.1109/TSE.
 2024.3486195
 [34] Tianyang Liu, Canwen Xu, and Julian J. McAuley. 2024. RepoBench: Benchmarking Repository-Level Code Auto-
@@ -1672,11 +1979,13 @@ Xie. 2024. Codereval: A benchmark of pragmatic code generation with generative p
 of the 46th IEEE/ACM International Conference on Software Engineering. 1–12.
 [52] Fengji Zhang, Bei Chen, Yue Zhang, Jacky Keung, Jin Liu, Daoguang Zan, Yi Mao, Jian-Guang Lou, and Weizhu Chen.
 2023. RepoCoder: Repository-Level Code Completion Through Iterative Retrieval and Generation. In Proceedings
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
 
 24
 Minh et al.
+
 of the 2023 Conference on Empirical Methods in Natural Language Processing, EMNLP 2023, Singapore, December 6-
 10, 2023, Houda Bouamor, Juan Pino, and Kalika Bali (Eds.). Association for Computational Linguistics, 2471–2484.
 doi:10.18653/V1/2023.EMNLP-MAIN.151
@@ -1684,4 +1993,5 @@ doi:10.18653/V1/2023.EMNLP-MAIN.151
 Zhang, Jie Jiang, and Bin Cui. 2024.
 Retrieval-Augmented Generation for AI-Generated Content: A Survey.
 arXiv:2402.19473 [cs.CV] https://arxiv.org/abs/2402.19473
+
 , Vol. 1, No. 1, Article . Publication date: February 2026.

@@ -17,17 +17,17 @@ def run():
         retrieved = retrieve_context_structured(q["query"], k=5)
 
         print("\n==============================")
-        print("QUERY ID:", q["id"])
-        print("QUERY:", q["query"])
-        print("RETRIEVED IDS:")
+        # print("QUERY ID:", q["id"])
+        # print("QUERY:", q["query"])
+        # print("RETRIEVED IDS:")
         retrieved_ids = [c["id"] for c in retrieved]
-        for c in retrieved:
-            print(" -", c["id"])
+        # for c in retrieved:
+        #     print(" -", c["id"])
         
 
         rel = relevance.get(q["id"], [])
         print("EXPECTED IDS:", rel)
-        print("==============================\n")
+        # print("==============================\n")
       
         results.append({
             "query_id": q["id"],

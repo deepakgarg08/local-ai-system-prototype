@@ -8,5 +8,6 @@ uv run python -m pipelines.chunking.chunk_sections
 uv run python -m pipelines.indexing.build_index
 uv run python -m evaluation.runner.run_retrieval_eval
 
+uv run python -m pipelines.etl
 
 python run_pdf_parser.py

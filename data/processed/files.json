@@ -1,52 +1,52 @@
 [
   {
-    "file_id": "4dbcc593bc6d163f17d599dce40143f74e2dcdf738cbfc8a745cb908599e6de0",
+    "file_id": "f363f57181612769a6df80f19928874d0a51ddc94a582b51d9bf916122c59835",
     "path": "data/raw/pdf/rag_papers/2602.11581v1.txt",
     "filename": "2602.11581v1.txt",
     "extension": ".txt",
     "category": "pdf",
-    "size_bytes": 74165,
-    "last_modified": 1771246232.1472385,
-    "checksum_sha256": "4dbcc593bc6d163f17d599dce40143f74e2dcdf738cbfc8a745cb908599e6de0"
+    "size_bytes": 74154,
+    "last_modified": 1771249478.8680012,
+    "checksum_sha256": "f363f57181612769a6df80f19928874d0a51ddc94a582b51d9bf916122c59835"
   },
   {
-    "file_id": "56841544b43e4f4ec4ea0e7a4098b990569a79289b0d5e4ddd4dd5fe0b80e0a2",
+    "file_id": "d8b78d16b7fb8845499d7e6f58c4c10c4df366217fd93183b9723014946357fc",
     "path": "data/raw/pdf/rag_papers/2602.11671v1.txt",
     "filename": "2602.11671v1.txt",
     "extension": ".txt",
     "category": "pdf",
-    "size_bytes": 87867,
-    "last_modified": 1771246232.3892386,
-    "checksum_sha256": "56841544b43e4f4ec4ea0e7a4098b990569a79289b0d5e4ddd4dd5fe0b80e0a2"
+    "size_bytes": 88177,
+    "last_modified": 1771249479.1060016,
+    "checksum_sha256": "d8b78d16b7fb8845499d7e6f58c4c10c4df366217fd93183b9723014946357fc"
   },
   {
-    "file_id": "e9c6611731c9dc352077a5570e2d18bd93996cf06d49439e826465f8ca738b97",
+    "file_id": "09a8cf8ca0448905ce857ebaceb45b69eafdb8bfb85e0d9f785be92d9d469f2a",
     "path": "data/raw/pdf/rag_papers/2602.11746v1.txt",
     "filename": "2602.11746v1.txt",
     "extension": ".txt",
     "category": "pdf",
-    "size_bytes": 120692,
-    "last_modified": 1771246232.594239,
-    "checksum_sha256": "e9c6611731c9dc352077a5570e2d18bd93996cf06d49439e826465f8ca738b97"
+    "size_bytes": 120660,
+    "last_modified": 1771249479.3020017,
+    "checksum_sha256": "09a8cf8ca0448905ce857ebaceb45b69eafdb8bfb85e0d9f785be92d9d469f2a"
   },
   {
-    "file_id": "e9c6611731c9dc352077a5570e2d18bd93996cf06d49439e826465f8ca738b97",
+    "file_id": "09a8cf8ca0448905ce857ebaceb45b69eafdb8bfb85e0d9f785be92d9d469f2a",
     "path": "data/raw/pdf/rag_papers/RAG1.txt",
     "filename": "RAG1.txt",
     "extension": ".txt",
     "category": "pdf",
-    "size_bytes": 120692,
-    "last_modified": 1771246232.7952392,
-    "checksum_sha256": "e9c6611731c9dc352077a5570e2d18bd93996cf06d49439e826465f8ca738b97"
+    "size_bytes": 120660,
+    "last_modified": 1771249479.501002,
+    "checksum_sha256": "09a8cf8ca0448905ce857ebaceb45b69eafdb8bfb85e0d9f785be92d9d469f2a"
   },
   {
-    "file_id": "abf4a15fa75279d9a3a39d5f7f629ccdc20e9f1a8102b46fd5191ed0db17f415",
+    "file_id": "9a1c6cdb4f1d87cf575bdef66ab1dc49b2812663153f63ee1dc4a654b8da2110",
     "path": "data/raw/pdf/rag_papers/RAG2.txt",
     "filename": "RAG2.txt",
     "extension": ".txt",
     "category": "pdf",
-    "size_bytes": 59168,
-    "last_modified": 1771246232.8912392,
-    "checksum_sha256": "abf4a15fa75279d9a3a39d5f7f629ccdc20e9f1a8102b46fd5191ed0db17f415"
+    "size_bytes": 59148,
+    "last_modified": 1771249479.596002,
+    "checksum_sha256": "9a1c6cdb4f1d87cf575bdef66ab1dc49b2812663153f63ee1dc4a654b8da2110"
   }
 ]

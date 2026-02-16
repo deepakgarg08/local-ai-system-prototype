@@ -6,13 +6,70 @@ Quan Cheng Laboratory
 Beijing, China
 tyt24@mails.tsinghua.edu.cn
 
+Shuo Miao
+DCST, Tsinghua University
+Beijing, China
+
+Weihang Su
+DCST, Tsinghua University
+Beijing, China
+
 Yiqun Liu
 DCST, Tsinghua University
 Beijing, China
 
+Qingyao Ai*
+Quan Cheng Laboratory
+DCST, Tsinghua University
+Beijing, China
+aiqy@tsinghua.edu.cn
+
 arXiv:2602.11581v1  [cs.IR]  12 Feb 2026
 
 Abstract
+
+Classical IR systems based on relevance ranking have been proven
+to be highly effective for ad-hoc retrieval tasks in which the user
+seeks documents that are topically relevant to a query [17, 34, 38,
+53]. Even with the advent of conversational search [31, 37] and
+session search [5, 6] systems where models can exploit the user
+feedback or context information, the dominant interaction para-
+digm remains largely unchanged: systems return a ranked list of
+results, and users manually inspect, synthesize, and reason over the
+retrieved information to complete their tasks [23]. This paradigm
+is well crafted to support naive information finding, where infor-
+mation needs can be solved by examining one or a few relevant
+documents that contain the answers to the user’s questions.
+However, real-world information needs of users often go beyond
+naive information finding [2, 30, 42, 48]. In domains such as law,
+finance, scientific research, and political analysis, users often pose
+analytical, exploratory, and decision-oriented questions that require
+synthesizing evidence across sources, performing comparisons or
+aggregations, and drawing reasoned conclusions [12, 25]. For in-
+stance, queries such as "What was the total number of theft incidents
+reported on public transit over the past year?" or "How did News A
+influence Stock B?" may not be able to find answers from one or
+a few documents, but requires collecting heterogeneous evidence,
+aligning it along temporal or causal dimensions, and applying multi-
+step reasoning to synthesize the final answer. We refer to these
+types of needs as analytical information needs. Historically,
+to solve analytical problems, users must rely on a labor-intensive
+workflow: issuing multiple search queries against search engines
+or databases, manually filtering and validating retrieved materials,
+and incrementally assembling evidence to support an analysis. This
+process is not only time-consuming and cognitively demanding,
+but also difficult to scale and reproduce.
+Fortunately, recent advances in large language models (LLMs) [1,
+3, 10, 14, 50, 52] have provided new opportunities for analytical in-
+formation needs. The integration of LLMs with IR systems, through
+paradigms such as retrieval-augmented generation (RAG) [4, 11,
+15, 19, 43, 44], search agents [7, 16, 21, 22], and tool-augmented
+reasoning frameworks [20, 27, 33], has substantially expanded the
+scope of tasks that modern IR systems can do. Similar to humans,
+LLMs can understand both the deep semantics of text and filter doc-
+uments based on the needs of input queries with complex reasoning
+processes. They have the potential to largely replace human efforts
+in analytical tasks, fully automate the labor-intensive workflow
 
 Analytical information needs, such as trend analysis and causal
 impact assessment, are prevalent across various domains including
@@ -60,66 +117,13 @@ These needs span a broad spectrum, ranging from simple fact
 lookup, complex exploratory and decision making process [29, 42].
 
 
-Shuo Miao
-DCST, Tsinghua University
-Beijing, China
-
-Weihang Su
-DCST, Tsinghua University
-Beijing, China
-
-Qingyao Ai*
-Quan Cheng Laboratory
-DCST, Tsinghua University
-Beijing, China
-aiqy@tsinghua.edu.cn
-
-Classical IR systems based on relevance ranking have been proven
-to be highly effective for ad-hoc retrieval tasks in which the user
-seeks documents that are topically relevant to a query [17, 34, 38,
-53]. Even with the advent of conversational search [31, 37] and
-session search [5, 6] systems where models can exploit the user
-feedback or context information, the dominant interaction para-
-digm remains largely unchanged: systems return a ranked list of
-results, and users manually inspect, synthesize, and reason over the
-retrieved information to complete their tasks [23]. This paradigm
-is well crafted to support naive information finding, where infor-
-mation needs can be solved by examining one or a few relevant
-documents that contain the answers to the user’s questions.
-However, real-world information needs of users often go beyond
-naive information finding [2, 30, 42, 48]. In domains such as law,
-finance, scientific research, and political analysis, users often pose
-analytical, exploratory, and decision-oriented questions that require
-synthesizing evidence across sources, performing comparisons or
-aggregations, and drawing reasoned conclusions [12, 25]. For in-
-stance, queries such as "What was the total number of theft incidents
-reported on public transit over the past year?" or "How did News A
-influence Stock B?" may not be able to find answers from one or
-a few documents, but requires collecting heterogeneous evidence,
-aligning it along temporal or causal dimensions, and applying multi-
-step reasoning to synthesize the final answer. We refer to these
-types of needs as analytical information needs. Historically,
-to solve analytical problems, users must rely on a labor-intensive
-workflow: issuing multiple search queries against search engines
-or databases, manually filtering and validating retrieved materials,
-and incrementally assembling evidence to support an analysis. This
-process is not only time-consuming and cognitively demanding,
-but also difficult to scale and reproduce.
-Fortunately, recent advances in large language models (LLMs) [1,
-3, 10, 14, 50, 52] have provided new opportunities for analytical in-
-formation needs. The integration of LLMs with IR systems, through
-paradigms such as retrieval-augmented generation (RAG) [4, 11,
-15, 19, 43, 44], search agents [7, 16, 21, 22], and tool-augmented
-reasoning frameworks [20, 27, 33], has substantially expanded the
-scope of tasks that modern IR systems can do. Similar to humans,
-LLMs can understand both the deep semantics of text and filter doc-
-uments based on the needs of input queries with complex reasoning
-processes. They have the potential to largely replace human efforts
-in analytical tasks, fully automate the labor-intensive workflow
-
-
 Conference acronym ’XX, June 03–05, 2018, Woodstock, NY
 Yiteng Tu, Shuo Miao, Weihang Su, Yiqun Liu, and Qingyao Ai*
+
+2
+Scope, Objectives, and Positioning
+2.1
+Analytical Information Needs
 
 that used to be necessary, and shift IR systems from an information
 finding tool to a true problem-solving system.
@@ -174,12 +178,6 @@ core components and interactions required to support analytical
 search. We outline open research challenges and future directions,
 and hope to attract more community efforts to look into this critical
 and relatively underexplored area of information retrieval.
-
-
-2
-Scope, Objectives, and Positioning
-2.1
-Analytical Information Needs
 
 A defining characteristic of analytical search lies in the nature of
 the information needs it seeks to address. Analytical informa-
@@ -258,6 +256,30 @@ actionable conclusions, and the answers must be inherently con-
 tingent, context-dependent, and justified through transparent
 reasoning over evidence.
 
+recall of analytically critical evidence, while managing noise and
+scale, constitutes a central retrieval challenge.
+• Reasoning-intensive Fusion. Even when relevant evidence is
+successfully collected, it still requires fusion strategies that go
+beyond simple aggregation or summarization. People or systems
+must perform multi-step reasoning operations such as filtering,
+temporal alignment, comparison across alternatives, causal attri-
+bution, trend extrapolation, or trade-off analysis. These reasoning-
+based fusion steps often depend on intermediate representations
+and partial results, sometimes with the aid of external tools,
+rather than a single pass over retrieved content. Designing fusion
+mechanisms that are robust to incomplete or partially conflicting
+evidence is also a major challenge.
+• Rigorous Conclusion Verification. Analytical conclusions are
+rarely self-evident from individual pieces of evidence. Instead,
+they must be validated through consistency checking, cross-
+source corroboration, or even sensitivity analysis. Conflicting
+evidence, data quality issues, or ambiguous causal signals are
+common in real-world analytical tasks. As a result, it imposes
+strong requirements on verification: systems must not only gen-
+erate conclusions, but also assess whether those conclusions are
+sufficiently supported, identify potential weaknesses, and, when
+necessary, trigger additional retrieval or revision.
+
 Together, these categories illustrate the breadth and complexity
 of analytical information needs. More importantly, they expose a
 set of fundamental challenges that arise when attempting to resolve
@@ -267,6 +289,20 @@ information needs does not stem from any single component, but
 from the compounded challenges distributed across the entire ana-
 lytical workflow—from query understanding to evidence retrieval,
 fusion, and validation:
+
+2.2
+Analytical Search
+
+Analytical search is the search paradigm that aims to resolve analyt-
+ical information needs by explicitly modeling reasoning demands,
+retrieving and organizing evidence for analysis, and producing ver-
+ifiable conclusions through structured, multi-step problem-solving.
+Unlike traditional information retrieval systems that prioritize top-
+ical relevance and ranked document lists, analytical search treats
+search as an end-to-end analytical process. Its objective is not
+merely to surface potentially relevant information, but to support
+users in constructing justified conclusions through evidence-backed
+reasoning. This shift gives rise to several characteristics:
 
 • Implicit and Complex Analytical Intent. Analytical infor-
 mation needs are frequently expressed in natural language that
@@ -299,45 +335,6 @@ statistical reports, policy documents, or unstructured narratives,
 each requiring different retrieval strategies. Moreover, analyti-
 cally important evidence may not be topically prominent, making
 precision-oriented top-𝑘retrieval insufficient. Ensuring sufficient
-
-
-recall of analytically critical evidence, while managing noise and
-scale, constitutes a central retrieval challenge.
-• Reasoning-intensive Fusion. Even when relevant evidence is
-successfully collected, it still requires fusion strategies that go
-beyond simple aggregation or summarization. People or systems
-must perform multi-step reasoning operations such as filtering,
-temporal alignment, comparison across alternatives, causal attri-
-bution, trend extrapolation, or trade-off analysis. These reasoning-
-based fusion steps often depend on intermediate representations
-and partial results, sometimes with the aid of external tools,
-rather than a single pass over retrieved content. Designing fusion
-mechanisms that are robust to incomplete or partially conflicting
-evidence is also a major challenge.
-• Rigorous Conclusion Verification. Analytical conclusions are
-rarely self-evident from individual pieces of evidence. Instead,
-they must be validated through consistency checking, cross-
-source corroboration, or even sensitivity analysis. Conflicting
-evidence, data quality issues, or ambiguous causal signals are
-common in real-world analytical tasks. As a result, it imposes
-strong requirements on verification: systems must not only gen-
-erate conclusions, but also assess whether those conclusions are
-sufficiently supported, identify potential weaknesses, and, when
-necessary, trigger additional retrieval or revision.
-
-2.2
-Analytical Search
-
-Analytical search is the search paradigm that aims to resolve analyt-
-ical information needs by explicitly modeling reasoning demands,
-retrieving and organizing evidence for analysis, and producing ver-
-ifiable conclusions through structured, multi-step problem-solving.
-Unlike traditional information retrieval systems that prioritize top-
-ical relevance and ranked document lists, analytical search treats
-search as an end-to-end analytical process. Its objective is not
-merely to surface potentially relevant information, but to support
-users in constructing justified conclusions through evidence-backed
-reasoning. This shift gives rise to several characteristics:
 
 • Conclusion-oriented. The primary goal of analytical search is
 not to retrieve isolated facts, but to generate conclusions that
@@ -381,6 +378,33 @@ is particularly critical in high-stakes domains such as policy anal-
 ysis, finance, law, and scientific inquiry, where unsupported or
 hallucinated outputs are unacceptable.
 
+analytical questions with the explicit goal of reaching a correct
+and verifiable conclusion. Rather than maximizing coverage, an-
+alytical search emphasizes sufficiency and relevance of evidence
+with respect to a specific analytical objective. The task structure is
+therefore markedly different. Deep research tasks are often loosely
+structured and evolve dynamically during execution, with stop-
+ping criteria that are implicit, heuristic, or user-driven. Analytical
+search tasks, by contrast, are explicitly structured, with clear ana-
+lytical goals, decomposed sub-tasks, and well-defined termination
+conditions-such as satisfying evidential requirements or completing
+a reasoning chain.
+Differences also emerge in how reasoning and evidence are han-
+dled. In deep research systems, reasoning is typically implicit and
+narrative-driven, embedded within long-form synthesis that prior-
+itizes coherence and readability. Evidence is often aggregated de-
+scriptively rather than interrogated analytically. Analytical search
+instead requires explicit, step-wise reasoning tightly coupled with
+evidence selection, transformation, and validation. Each reason-
+ing step is expected to serve a functional role in advancing the
+analysis, rather than contributing to a general narrative. Accord-
+ingly, the evaluation focus diverges. Deep research systems are
+commonly assessed based on usefulness, coverage, and readability
+of the synthesized output. Analytical search systems, by contrast,
+are evaluated on the correctness of conclusions, the completeness
+of critical evidence, and the traceability of the reasoning process
+that leads from query to conclusion.
+
 2.3
 Differences with Existing Search Paradigms
 
@@ -417,44 +441,6 @@ result, analytical search systems must explicitly model reasoning
 demand and evidential roles—capabilities that are largely outside
 the design scope of conventional RAG pipelines.
 
-2.3.2
-Analytical Search vs. Deep Research.
-Deep research [13, 22, 54] systems are designed to support open-
-ended exploration and knowledge accumulation, often aiming to
-produce comprehensive reports, background summaries, or literature-
-style syntheses. Their primary objective is breadth and coverage:
-gathering diverse perspectives, accumulating information across
-sources, and presenting coherent narratives that assist human un-
-derstanding. Analytical search, in contrast, targets well-defined
-
-
-analytical questions with the explicit goal of reaching a correct
-and verifiable conclusion. Rather than maximizing coverage, an-
-alytical search emphasizes sufficiency and relevance of evidence
-with respect to a specific analytical objective. The task structure is
-therefore markedly different. Deep research tasks are often loosely
-structured and evolve dynamically during execution, with stop-
-ping criteria that are implicit, heuristic, or user-driven. Analytical
-search tasks, by contrast, are explicitly structured, with clear ana-
-lytical goals, decomposed sub-tasks, and well-defined termination
-conditions-such as satisfying evidential requirements or completing
-a reasoning chain.
-Differences also emerge in how reasoning and evidence are han-
-dled. In deep research systems, reasoning is typically implicit and
-narrative-driven, embedded within long-form synthesis that prior-
-itizes coherence and readability. Evidence is often aggregated de-
-scriptively rather than interrogated analytically. Analytical search
-instead requires explicit, step-wise reasoning tightly coupled with
-evidence selection, transformation, and validation. Each reason-
-ing step is expected to serve a functional role in advancing the
-analysis, rather than contributing to a general narrative. Accord-
-ingly, the evaluation focus diverges. Deep research systems are
-commonly assessed based on usefulness, coverage, and readability
-of the synthesized output. Analytical search systems, by contrast,
-are evaluated on the correctness of conclusions, the completeness
-of critical evidence, and the traceability of the reasoning process
-that leads from query to conclusion.
-
 2.3.3
 Analytical Search vs. Agentic Databases.
 Agentic databases and database agents [12, 46, 47] represent an-
@@ -481,6 +467,16 @@ across multiple data modalities and tools. Query execution is only
 one component in a broader analytical pipeline whose ultimate
 goal is not data access per se, but evidence-based problem solving.
 
+2.3.2
+Analytical Search vs. Deep Research.
+Deep research [13, 22, 54] systems are designed to support open-
+ended exploration and knowledge accumulation, often aiming to
+produce comprehensive reports, background summaries, or literature-
+style syntheses. Their primary objective is breadth and coverage:
+gathering diverse perspectives, accumulating information across
+sources, and presenting coherent narratives that assist human un-
+derstanding. Analytical search, in contrast, targets well-defined
+
 3
 Conceptual Framework
 
@@ -493,99 +489,17 @@ mapping from query to answer, analytical search should support
 Analytical Search
 Conference acronym ’XX, June 03–05, 2018, Woodstock, NY
 
+Supplement & Optimize Index based on Analytical Results
+
 Retrieval Module
 
 Query Module
 
-Retrieval Index Library
-
-Intent & Constraint 
-
-Extraction
-
-Natural 
-Language 
-
-Task Decomposition
-
-Unstructured 
-
-Text
-
-Query
-
-Sparse / Dense
-
-Conditional 
-
-Retrieval
-
-Filtering
-
-Query Reformulation
-
-Multi-channel Recall
-
-Database/ 
-
-Principle: Coverage > Precision
-
-Task Planning
-
-Corpus
-
-Evidence Standardization 
-
-& Alignment
-
-Candidate 
-Evidence Set
-(Minimize Redundancy)
-
-Structured 
-Analysis Plan
-
-end-to-end analytical problem solving, in which intermediate task
-structures, evidence states, and reasoning steps are explicit and
-integral to system behavior. At a high level, analytical search can
-be viewed as an analytical workflow that transforms a user’s natu-
-ral language query into an explainable and verifiable conclusion.
-This workflow proceeds through a sequence of stages: analytical
-query →task modeling →evidence retrieval →fusion →verification
-→conclusion (as shown in Figure 1). Each stage serves a distinct
-module and produces explicit intermediate representations that can
-be inspected, revised, or validated. By separating what needs to
-be solved, what evidence is required, how evidence is fused, and
-how conclusions are justified, this workflow enables transparency,
-controllability, and robustness when addressing complex analyt-
-ical information needs. In this section, we present a conceptual
-framework that operationalizes this workflow, comprising four
-core components: query modeling, evidence retrieval, reasoning-
-intensive fusion, and adaptive verification, which collectively form
-a coordinated system for evidence-grounded analytical problem-
-solving. It distinguishes analytical search from conventional IR
-systems that largely collapse analysis into relevance ranking.
-
-3.1
-Query Module
-
-The query module serves as the system’s entry point and is respon-
-sible for transforming complex, ambiguous, informal, or underspec-
-ified natural language queries into explicit analytical (sub-)task
-structures that the system can execute. Additionally, analytical
-queries are often characterized by implicit intent, unspoken con-
-straints, and non-expert terminology. Therefore, the query module
-must go beyond keyword interpretation or intent classification and
-instead construct a structured analytical plan that captures both
-what the user is asking and what must be done to answer it. Its
-core capabilities include:
-
-
-Supplement & Optimize Index based on Analytical Results
-
 Fusion Module
 
 Verification Module
+
+Retrieval Index Library
 
 Process 
 Consistency 
@@ -597,14 +511,25 @@ Evidence Selection &
 
 Pruning
 
+Intent & Constraint 
+
 Check
 
 Check
+
+Extraction
 
 Passed?
 Yes
 
+Natural 
+Language 
+
 Evidence Aggregation 
+
+Task Decomposition
+
+Unstructured 
 
 Structured 
 
@@ -612,29 +537,64 @@ Structured
 
 No
 
+Text
+
 Data
 
+Query
+
+Sparse / Dense
+
+Conditional 
+
 Per-evidence LLM 
+
+Retrieval
+
+Filtering
+
+Query Reformulation
 
 Verification
 
 Multi-step Reasoning
 
+Multi-channel Recall
+
 Accepted?
+
+Database/ 
+
+Principle: Coverage > Precision
+
+Task Planning
+
+Corpus
 
 Yes
 No
+
+Evidence Standardization 
 
 Temporal
 Quantitative
 
 Logic
 
+& Alignment
+
 Quantitative Results
 
 Traceable Conclusion
 
 Supporting Evidence 
+
+Candidate 
+Evidence Set
+(Minimize Redundancy)
+
+Structured 
+Analysis Plan
 
 Uncertainty
 
@@ -659,6 +619,27 @@ reasoning are well-posed.
 retrieval paradigms, or analytical tools are appropriate for each
 sub-task and how they should be orchestrated.
 
+end-to-end analytical problem solving, in which intermediate task
+structures, evidence states, and reasoning steps are explicit and
+integral to system behavior. At a high level, analytical search can
+be viewed as an analytical workflow that transforms a user’s natu-
+ral language query into an explainable and verifiable conclusion.
+This workflow proceeds through a sequence of stages: analytical
+query →task modeling →evidence retrieval →fusion →verification
+→conclusion (as shown in Figure 1). Each stage serves a distinct
+module and produces explicit intermediate representations that can
+be inspected, revised, or validated. By separating what needs to
+be solved, what evidence is required, how evidence is fused, and
+how conclusions are justified, this workflow enables transparency,
+controllability, and robustness when addressing complex analyt-
+ical information needs. In this section, we present a conceptual
+framework that operationalizes this workflow, comprising four
+core components: query modeling, evidence retrieval, reasoning-
+intensive fusion, and adaptive verification, which collectively form
+a coordinated system for evidence-grounded analytical problem-
+solving. It distinguishes analytical search from conventional IR
+systems that largely collapse analysis into relevance ranking.
+
 The output of the query module is not simply rewritten queries,
 but an executable analytical plan that guides subsequent stages.
 
@@ -681,9 +662,26 @@ analytical search adopts a recall-oriented perspective, ensuring
 that all potentially relevant evidence needed for analysis is available
 downstream. Moreover, retrieval is no longer confined to a single
 
+3.1
+Query Module
+
+The query module serves as the system’s entry point and is respon-
+sible for transforming complex, ambiguous, informal, or underspec-
+ified natural language queries into explicit analytical (sub-)task
+structures that the system can execute. Additionally, analytical
+queries are often characterized by implicit intent, unspoken con-
+straints, and non-expert terminology. Therefore, the query module
+must go beyond keyword interpretation or intent classification and
+instead construct a structured analytical plan that captures both
+what the user is asking and what must be done to answer it. Its
+core capabilities include:
+
 
 Conference acronym ’XX, June 03–05, 2018, Woodstock, NY
 Yiteng Tu, Shuo Miao, Weihang Su, Yiqun Liu, and Qingyao Ai*
+
+3.5
+An Illustrative End-to-End Example
 
 document type or data modality; instead, it operates over heteroge-
 neous sources, encompassing unstructured text, semi-structured
@@ -695,6 +693,30 @@ across sources so that evidence can be meaningfully compared, ag-
 gregated, or reasoned over. This module thus constructs an evidence
 space tailored to the analytical task, rather than merely returning a
 ranked list of documents.
+
+To illustrate how the proposed modules interact in practice, consider
+the query "Did the introduction of traffic cameras reduce pedestrian
+accidents in City X over the past five years?" The query module
+first reconstructs its implicit structure by identifying the interven-
+tion variable (i.e., "camera deployment"), the outcome variable (i.e.,
+"pedestrian accident frequency"), the temporal scope, and the need
+for a before-and-after comparison with potential control factors. It
+decomposes the task into sub-steps, including determining the cam-
+era deployment timeline, retrieving structured accident statistics,
+collecting relevant environment variables, and other contextual
+information. The retrieval module then conducts recall-oriented,
+multi-path evidence acquisition. For example, it may obtain struc-
+tured data through executable database queries (e.g., Text-to-SQL
+for yearly accident counts) and use sparse and dense retrieval meth-
+ods to collect unstructured reports and policy documents. The
+fusion module then performs temporal alignment and quantitative
+aggregation, and invokes external analytical tools if needed (e.g.,
+statistical testing or regression) to estimate whether accident rates
+significantly declined after camera deployment. Finally, the verifi-
+cation module checks the logical consistency, evidential sufficiency,
+and cross-source agreements on the evidence, triggering additional
+retrieval if necessary, and produces a traceable and confidence-
+calibrated conclusion.
 
 3.3
 Fusion Module
@@ -723,8 +745,43 @@ reduces the risk of hallucination and enables robust, explainable
 analytical problem solving, clearly distinguishing analytical search
 from purely generative approaches.
 
+4
+Potential Research Directions and Challenges
+
+Based on the conceptual framework introduced above, this section
+outlines key research directions for realizing analytical search in
+practice, together with the fundamental challenges that shape their
+realization. We discuss a set of methodological perspectives and
+their accompanying challenges and believe that addressing these
+intertwined opportunities and constraints is central to building
+robust, scalable, and accountable analytical search systems.
+
+4.1
+Reasoning as Sequential Decision Making
+
 3.4
 Verification Module
+
+From a methodological perspective, analytical search can be natu-
+rally formulated as a sequential decision-making problem, in which
+the system incrementally constructs an analytical solution through
+a series of interdependent reasoning actions. Rather than view-
+ing query understanding, retrieval planning, evidence fusion, and
+verification as loosely coupled stages optimized in isolation, ana-
+lytical search treats them as a coordinated reasoning process that
+spans the entire analytical workflow. At each step, the system must
+decide how to interpret and decompose the query, from which
+data source and in what manner the evidence is retrieved, how to
+calculate and fuse the current evidence, and whether the current
+conclusions require further validation or revision. Within this for-
+mulation, analytical search can be viewed as an agent interacting
+with an environment composed of heterogeneous data sources,
+retrieval tools, intermediate evidence states, and evolving reason-
+ing contexts. Actions correspond to analytical decisions such as
+query decomposition and reformulation, retrieval planning and
+control, evidence selection and aggregation, analytical inference,
+and adaptive triggering of verification. The state captures the cur-
+rent analytical context, including the task structure derived from
 
 Verification is not an optional add-on in analytical search; it is
 an intrinsic system component. Because analytical conclusions
@@ -749,69 +806,6 @@ balances rigor and efficiency, ensuring reliability without unneces-
 sary computational overhead.
 
 
-3.5
-An Illustrative End-to-End Example
-
-To illustrate how the proposed modules interact in practice, consider
-the query "Did the introduction of traffic cameras reduce pedestrian
-accidents in City X over the past five years?" The query module
-first reconstructs its implicit structure by identifying the interven-
-tion variable (i.e., "camera deployment"), the outcome variable (i.e.,
-"pedestrian accident frequency"), the temporal scope, and the need
-for a before-and-after comparison with potential control factors. It
-decomposes the task into sub-steps, including determining the cam-
-era deployment timeline, retrieving structured accident statistics,
-collecting relevant environment variables, and other contextual
-information. The retrieval module then conducts recall-oriented,
-multi-path evidence acquisition. For example, it may obtain struc-
-tured data through executable database queries (e.g., Text-to-SQL
-for yearly accident counts) and use sparse and dense retrieval meth-
-ods to collect unstructured reports and policy documents. The
-fusion module then performs temporal alignment and quantitative
-aggregation, and invokes external analytical tools if needed (e.g.,
-statistical testing or regression) to estimate whether accident rates
-significantly declined after camera deployment. Finally, the verifi-
-cation module checks the logical consistency, evidential sufficiency,
-and cross-source agreements on the evidence, triggering additional
-retrieval if necessary, and produces a traceable and confidence-
-calibrated conclusion.
-
-4
-Potential Research Directions and Challenges
-
-Based on the conceptual framework introduced above, this section
-outlines key research directions for realizing analytical search in
-practice, together with the fundamental challenges that shape their
-realization. We discuss a set of methodological perspectives and
-their accompanying challenges and believe that addressing these
-intertwined opportunities and constraints is central to building
-robust, scalable, and accountable analytical search systems.
-
-4.1
-Reasoning as Sequential Decision Making
-
-From a methodological perspective, analytical search can be natu-
-rally formulated as a sequential decision-making problem, in which
-the system incrementally constructs an analytical solution through
-a series of interdependent reasoning actions. Rather than view-
-ing query understanding, retrieval planning, evidence fusion, and
-verification as loosely coupled stages optimized in isolation, ana-
-lytical search treats them as a coordinated reasoning process that
-spans the entire analytical workflow. At each step, the system must
-decide how to interpret and decompose the query, from which
-data source and in what manner the evidence is retrieved, how to
-calculate and fuse the current evidence, and whether the current
-conclusions require further validation or revision. Within this for-
-mulation, analytical search can be viewed as an agent interacting
-with an environment composed of heterogeneous data sources,
-retrieval tools, intermediate evidence states, and evolving reason-
-ing contexts. Actions correspond to analytical decisions such as
-query decomposition and reformulation, retrieval planning and
-control, evidence selection and aggregation, analytical inference,
-and adaptive triggering of verification. The state captures the cur-
-rent analytical context, including the task structure derived from
-
-
 Analytical Search
 Conference acronym ’XX, June 03–05, 2018, Woodstock, NY
 
@@ -819,6 +813,10 @@ the query, the evidence collected so far, intermediate reasoning re-
 sults, and confidence estimates. This perspective explicitly models
 analytical reasoning as a controlled, multi-step process rather than
 an implicit by-product of text generation.
+
+integrating verification into the reasoning loop, the system bal-
+ances rigor and efficiency, avoiding both premature conclusions
+and unnecessary computation.
 
 4.1.1
 Structural Design.
@@ -872,11 +870,6 @@ when confidence is low, evidence is conflicting, or conclusions carry
 high stakes. Verification actions may include consistency check-
 ing across evidence sources, validation of intermediate results, or
 backtracking to earlier stages to acquire additional evidence. By
-
-
-integrating verification into the reasoning loop, the system bal-
-ances rigor and efficiency, avoiding both premature conclusions
-and unnecessary computation.
 
 4.1.2
 Training Strategies and Challenges.
@@ -954,6 +947,29 @@ reach, but how to reason efficiently and reliably toward them, re-
 inforcing the view that training is inseparable from the system’s
 sequential reasoning formulation.
 
+ensures determinism and correctness for analytically critical op-
+erations such as filtering, grouping, and aggregation, which are
+difficult to approximate reliably through text-based retrieval alone.
+On the other hand, for unstructured data, analytical search employs
+sparse and dense retrieval methods to construct a broad candidate
+evidence set. Sparse retrieval [34, 38] is effective for capturing exact
+matches, domain-specific terminology, and named entities, while
+dense retrieval [17, 53] provides semantic generalization across
+paraphrases and contextual variations. Given the recall-first objec-
+tive, these methods are used in a complementary manner to max-
+imize coverage. However, since high recall inevitably introduces
+noise, the system can incorporate a subsequent re-ranking [32, 35]
+stage that evaluates candidates not merely by topical relevance,
+but by their reasoning value—that is, their potential contribution
+to analytical reasoning, such as supporting comparisons, tempo-
+ral alignment, or causal inference in the fusion module. Together,
+these structured and unstructured retrieval paths form a unified,
+recall-oriented retrieval framework tailored to analytical search. By
+explicitly embracing recall as the dominant objective and routing
+queries through modality-appropriate retrieval strategies, it estab-
+lishes a robust evidential foundation upon which reliable reasoning
+and verifiable conclusions can be built.
+
 4.2
 Recall-Oriented Multi-Path Retrieval
 
@@ -978,47 +994,6 @@ evidence is present in the candidate pool. Consequently, analytical
 search systems must prioritize evidential completeness, even at the
 cost of admitting additional noise that can later be filtered through
 reasoning and verification.
-
-4.2.1
-Retrieval Routing.
-To support this objective, analytical search adopts a multi-path
-retrieval strategy, in which different retrieval mechanisms are in-
-voked depending on the structure of the query and the nature
-of the underlying data. Rather than relying on a single retrieval
-paradigm, the system dynamically routes sub-tasks through spe-
-cialized retrieval paths that are best suited to their evidential re-
-quirements. For structured data, analytical search emphasizes pre-
-cise, executable retrieval. When the analytical task involves counts,
-aggregations, or well-defined constraints, such as incident statis-
-tics or financial indicators, the system first transforms natural lan-
-guage sub-queries into structured representations through a Text-
-to-SQL [9, 24, 26, 36] model. These structured queries are then
-executed directly against databases, enabling accurate retrieval of
-quantitative evidence with well-defined semantics. This pathway
-
-
-ensures determinism and correctness for analytically critical op-
-erations such as filtering, grouping, and aggregation, which are
-difficult to approximate reliably through text-based retrieval alone.
-On the other hand, for unstructured data, analytical search employs
-sparse and dense retrieval methods to construct a broad candidate
-evidence set. Sparse retrieval [34, 38] is effective for capturing exact
-matches, domain-specific terminology, and named entities, while
-dense retrieval [17, 53] provides semantic generalization across
-paraphrases and contextual variations. Given the recall-first objec-
-tive, these methods are used in a complementary manner to max-
-imize coverage. However, since high recall inevitably introduces
-noise, the system can incorporate a subsequent re-ranking [32, 35]
-stage that evaluates candidates not merely by topical relevance,
-but by their reasoning value—that is, their potential contribution
-to analytical reasoning, such as supporting comparisons, tempo-
-ral alignment, or causal inference in the fusion module. Together,
-these structured and unstructured retrieval paths form a unified,
-recall-oriented retrieval framework tailored to analytical search. By
-explicitly embracing recall as the dominant objective and routing
-queries through modality-appropriate retrieval strategies, it estab-
-lishes a robust evidential foundation upon which reliable reasoning
-and verifiable conclusions can be built.
 
 4.2.2
 Challenges.
@@ -1047,6 +1022,23 @@ manner. Addressing these challenges is crucial for ensuring that
 recall-oriented multi-path retrieval serves as an enabler, rather than
 a bottleneck, for efficient and reliable analytical reasoning.
 
+4.2.1
+Retrieval Routing.
+To support this objective, analytical search adopts a multi-path
+retrieval strategy, in which different retrieval mechanisms are in-
+voked depending on the structure of the query and the nature
+of the underlying data. Rather than relying on a single retrieval
+paradigm, the system dynamically routes sub-tasks through spe-
+cialized retrieval paths that are best suited to their evidential re-
+quirements. For structured data, analytical search emphasizes pre-
+cise, executable retrieval. When the analytical task involves counts,
+aggregations, or well-defined constraints, such as incident statis-
+tics or financial indicators, the system first transforms natural lan-
+guage sub-queries into structured representations through a Text-
+to-SQL [9, 24, 26, 36] model. These structured queries are then
+executed directly against databases, enabling accurate retrieval of
+quantitative evidence with well-defined semantics. This pathway
+
 4.3
 Dynamic and Task-Aware Index
 Organization
@@ -1061,6 +1053,9 @@ the index itself evolves in response to real analytical workloads.
 
 Analytical Search
 Conference acronym ’XX, June 03–05, 2018, Woodstock, NY
+
+4.4
+Evaluation Principles
 
 In this paradigm, the index embodies long-term analytical priors,
 capturing accumulated knowledge about what kinds of information
@@ -1116,10 +1111,6 @@ ing and reasoning if not carefully controlled. Therefore, balancing
 adaptability with stability, ensuring that index evolution captures
 durable analytical value rather than transient patterns, remains a
 key challenge for deploying analytical search at scale.
-
-
-4.4
-Evaluation Principles
 
 Evaluating analytical search systems requires moving beyond tradi-
 tional relevance-based metrics that dominate classical IR evaluation.
@@ -1196,58 +1187,6 @@ Together, these considerations position evaluation not merely as
 a benchmarking exercise but as a significant component of ana-
 lytical search system design, shaping how systems reason, justify
 conclusions, and expose uncertainty.
-
-5
-Conclusions
-
-In this paper, we introduce a novel search paradigm, analytical
-search, which represents a distinct and increasingly important
-information-seeking paradigm that cannot be adequately addressed
-by traditional relevance-oriented IR systems or by straightforward
-combinations of retrieval and generation. By formalizing analyti-
-cal information needs, articulating a new analytical search para-
-digm, and presenting a conceptual system framework together with
-research directions and challenges, we highlight how analytical
-search shifts the focus from naive information finding to evidence-
-grounded problem solving, from answer fluency to conclusion cor-
-rectness, and from static retrieval to reasoning-aware analytical
-workflows. More broadly, analytical search serves as a unifying
-framework across information retrieval, natural language process-
-ing, and database systems, bringing together retrieval, reasoning,
-structured querying, and verification under a common analytical
-objective. As complex analytical information needs continue to pro-
-liferate across various domains, addressing analytical queries and
-building analytical search systems are both foundational challenges
-and critical opportunities for the IR community. We therefore call
-on the community to recognize analytical search as a first-class
-research problem and to invest in its systematic study.
-
-Acknowledgments
-
-This work is supported by the Research Project of Quan Cheng
-Laboratory, China (Grant No. QCL20250105)
-
-References
-
-[1] Josh Achiam, Steven Adler, Sandhini Agarwal, Lama Ahmad, Ilge Akkaya, Floren-
-cia Leoni Aleman, Diogo Almeida, Janko Altenschmidt, Sam Altman, Shyamal
-Anadkat, et al. 2023. Gpt-4 technical report. arXiv preprint arXiv:2303.08774
-(2023).
-[2] Qingyao Ai, Ting Bai, Zhao Cao, Yi Chang, Jiawei Chen, Zhumin Chen, Zhiyong
-Cheng, Shoubin Dong, Zhicheng Dou, Fuli Feng, et al. 2023. Information retrieval
-meets large language models: a strategic report from chinese ir community. AI
-open 4 (2023), 80–90.
-[3] Jinze Bai, Shuai Bai, Yunfei Chu, Zeyu Cui, Kai Dang, Xiaodong Deng, Yang Fan,
-Wenbin Ge, Yu Han, Fei Huang, et al. 2023. Qwen technical report. arXiv preprint
-arXiv:2309.16609 (2023).
-[4] Sebastian Borgeaud, Arthur Mensch, Jordan Hoffmann, Trevor Cai, Eliza Ruther-
-ford, Katie Millican, George Bm Van Den Driessche, Jean-Baptiste Lespiau, Bog-
-dan Damoc, Aidan Clark, et al. 2022. Improving language models by retrieving
-from trillions of tokens. In International conference on machine learning. PMLR,
-2206–2240.
-[5] Jia Chen, Jiaxin Mao, Yiqun Liu, Min Zhang, and Shaoping Ma. 2019. TianGong-
-ST: A new dataset with large-scale refined real-world web search sessions. In
-
 
 Proceedings of the 28th ACM International Conference on Information and Knowl-
 edge Management. 2485–2488.
@@ -1329,6 +1268,57 @@ Endowment 18, 12 (2025), 5466–5471.
 ming Pan, Yujiu Yang, Yixin Cao, Aixin Sun, Hany Awadalla, et al. 2024. Scia-
 gent: Tool-augmented language models for scientific reasoning. arXiv preprint
 arXiv:2402.11451 (2024).
+
+5
+Conclusions
+
+In this paper, we introduce a novel search paradigm, analytical
+search, which represents a distinct and increasingly important
+information-seeking paradigm that cannot be adequately addressed
+by traditional relevance-oriented IR systems or by straightforward
+combinations of retrieval and generation. By formalizing analyti-
+cal information needs, articulating a new analytical search para-
+digm, and presenting a conceptual system framework together with
+research directions and challenges, we highlight how analytical
+search shifts the focus from naive information finding to evidence-
+grounded problem solving, from answer fluency to conclusion cor-
+rectness, and from static retrieval to reasoning-aware analytical
+workflows. More broadly, analytical search serves as a unifying
+framework across information retrieval, natural language process-
+ing, and database systems, bringing together retrieval, reasoning,
+structured querying, and verification under a common analytical
+objective. As complex analytical information needs continue to pro-
+liferate across various domains, addressing analytical queries and
+building analytical search systems are both foundational challenges
+and critical opportunities for the IR community. We therefore call
+on the community to recognize analytical search as a first-class
+research problem and to invest in its systematic study.
+
+Acknowledgments
+
+This work is supported by the Research Project of Quan Cheng
+Laboratory, China (Grant No. QCL20250105)
+
+References
+
+[1] Josh Achiam, Steven Adler, Sandhini Agarwal, Lama Ahmad, Ilge Akkaya, Floren-
+cia Leoni Aleman, Diogo Almeida, Janko Altenschmidt, Sam Altman, Shyamal
+Anadkat, et al. 2023. Gpt-4 technical report. arXiv preprint arXiv:2303.08774
+(2023).
+[2] Qingyao Ai, Ting Bai, Zhao Cao, Yi Chang, Jiawei Chen, Zhumin Chen, Zhiyong
+Cheng, Shoubin Dong, Zhicheng Dou, Fuli Feng, et al. 2023. Information retrieval
+meets large language models: a strategic report from chinese ir community. AI
+open 4 (2023), 80–90.
+[3] Jinze Bai, Shuai Bai, Yunfei Chu, Zeyu Cui, Kai Dang, Xiaodong Deng, Yang Fan,
+Wenbin Ge, Yu Han, Fei Huang, et al. 2023. Qwen technical report. arXiv preprint
+arXiv:2309.16609 (2023).
+[4] Sebastian Borgeaud, Arthur Mensch, Jordan Hoffmann, Trevor Cai, Eliza Ruther-
+ford, Katie Millican, George Bm Van Den Driessche, Jean-Baptiste Lespiau, Bog-
+dan Damoc, Aidan Clark, et al. 2022. Improving language models by retrieving
+from trillions of tokens. In International conference on machine learning. PMLR,
+2206–2240.
+[5] Jia Chen, Jiaxin Mao, Yiqun Liu, Min Zhang, and Shaoping Ma. 2019. TianGong-
+ST: A new dataset with large-scale refined real-world web search sessions. In
 
 
 Analytical Search
@@ -1412,7 +1402,6 @@ Bowen Yu, Chang Gao, Chengen Huang, Chenxu Lv, et al. 2025. Qwen3 technical
 report. arXiv preprint arXiv:2505.09388 (2025).
 [53] Jingtao Zhan, Jiaxin Mao, Yiqun Liu, Min Zhang, and Shaoping Ma. 2020. Rep-
 bert: Contextualized text embeddings for first-stage retrieval. arXiv preprint
-
 
 arXiv:2006.15498 (2020).
 [54] Wenlin Zhang, Xiaopeng Li, Yingyi Zhang, Pengyue Jia, Yichao Wang, Huifeng

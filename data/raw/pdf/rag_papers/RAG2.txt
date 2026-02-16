@@ -1,6 +1,19 @@
 AttentionRetriever: Attention Layers are Secretly Long Document
 Retrievers
 
+David Jiahao Fu1, Lam Thanh Do1, Jiayu Li1, Kevin Chen-Chuan Chang1
+
+1University of Illinois Urbana-Champaign
+{jiahaof4, lamdo, jiayul11, kcchang}@illinois.edu
+
+the model to find a subset D′ from a user-provided
+long document D such that |D′| ≪|D| and D′ is
+sufficient and necessary to answer the input query
+q. However, existing retrieval models are not tai-
+lored for long document retrieval and overlook the
+following three types of dependencies in long doc-
+uments:
+
 Abstract
 
 Retrieval augmented generation (RAG) has
@@ -24,6 +37,26 @@ while remaining as efficient as dense retrieval
 models.
 
 arXiv:2602.12278v1  [cs.IR]  12 Feb 2026
+
+• Contextual dependency. Since long docu-
+ments are generally coherent, context is often
+required to resolve issues like coreference and
+word ambiguity, which are crucial for deter-
+mining the relevance of chunks. For example,
+in a document discussing Chicago, the author
+might use "the city" to refer to "Chicago", but
+this reference is clear only if the context is
+provided.
+
+• Causal dependency. The query may involve
+intermediate answers from the document that
+are needed to reach the final answer. For the
+same document about Chicago, an example
+query would be "What was the population
+of Chicago when the Great Fire happened?",
+where the intermediate answer "the Great Fire
+happened in 1871" is needed to find the chunk
+containing the final answer.
 
 1
 Introduction
@@ -50,40 +83,6 @@ processing time by shortening the input length.
 In the RAG pipeline, the retrieval model needs to
 perform long document retrieval, which requires
 
-
-David Jiahao Fu1, Lam Thanh Do1, Jiayu Li1, Kevin Chen-Chuan Chang1
-
-1University of Illinois Urbana-Champaign
-{jiahaof4, lamdo, jiayul11, kcchang}@illinois.edu
-
-the model to find a subset D′ from a user-provided
-long document D such that |D′| ≪|D| and D′ is
-sufficient and necessary to answer the input query
-q. However, existing retrieval models are not tai-
-lored for long document retrieval and overlook the
-following three types of dependencies in long doc-
-uments:
-
-• Contextual dependency. Since long docu-
-ments are generally coherent, context is often
-required to resolve issues like coreference and
-word ambiguity, which are crucial for deter-
-mining the relevance of chunks. For example,
-in a document discussing Chicago, the author
-might use "the city" to refer to "Chicago", but
-this reference is clear only if the context is
-provided.
-
-• Causal dependency. The query may involve
-intermediate answers from the document that
-are needed to reach the final answer. For the
-same document about Chicago, an example
-query would be "What was the population
-of Chicago when the Great Fire happened?",
-where the intermediate answer "the Great Fire
-happened in 1871" is needed to find the chunk
-containing the final answer.
-
 • Query dependency. Text chunks providing
 background information, like the one contain-
 ing "the Great Fire happened in 1871" in the
@@ -100,60 +99,6 @@ Modeling the first two dependencies requires
 a more advanced retrieval model that can build
 
 1
-
-
-context-aware representations and update the em-
-beddings as additional contextual information is
-available. We found that the attention layers in
-transformer models perfectly match both require-
-ments. Since attention layers calculate the repre-
-sentations of each token by aggregating informa-
-tion from other tokens, they are essentially cross-
-encoders that embed contextual information into
-the representation of each token, providing more
-abundant semantic information compared to ex-
-isting embedding-based retrieval models. Further-
-more, as the representations are propagated through
-layers, they are also dynamically adjusted based on
-contextual information gathered in previous layers
-to encode causal dependencies.
-It is also intuitive to use attention layers as re-
-trievers because the attention operations are essen-
-tially calculating similarity scores. In each atten-
-tion layer of the transformer model, the attention
-score assigned to the j-th token by the i-th token is
-calculated as the weighted dot product between the
-key vector kj and the query vector qi, which is iden-
-tical to similarity calculation of embedding models.
-Moreover, attention computation is performed on
-two sets of embeddings q and k, which allows the
-attention layers to perform a broader range of tasks
-other than semantic similarity search by adjusting
-the embeddings.
-However, training a transformer model for re-
-trieval is very expensive. Ye et al. (2025) found
-that the last layer in the Qwen-2 model shows high
-retrieval accuracy without any additional training,
-implying the possibility of directly employing pre-
-trained LLMs to estimate relevance with attention
-scores. However, their experiments were very lim-
-ited and the findings might not generalize to other
-attention layers and other LLMs. More importantly,
-since pretrained LLMs suffer from accuracy and
-efficiency issues with long context, it is also crucial
-to find out whether attention scores can be effi-
-ciently calculated and still achieve high retrieval
-accuracy with long context.
-Therefore, we conducted careful analysis (Sec-
-tion 3) to verify if attention layers in pretrained
-LLMs can be effective and efficient training-free re-
-trievers. Our analysis showed that attention scores
-are more precise than outputs in collecting rele-
-vant information and suffer less from the lost-in-
-the-middle problem, validating the effectiveness
-of using LLMs for retrieval tasks despite that they
-face various issues in long context tasks. More-
-over, existing attention approximation methods for
 
 
 LLMs can be directly applied to this approach,
@@ -209,8 +154,66 @@ sisting of different types of documents with an av-
 erage length of over 100,000 words and various
 types of queries (Section 5). To the best of our
 
+context-aware representations and update the em-
+beddings as additional contextual information is
+available. We found that the attention layers in
+transformer models perfectly match both require-
+ments. Since attention layers calculate the repre-
+sentations of each token by aggregating informa-
+tion from other tokens, they are essentially cross-
+encoders that embed contextual information into
+the representation of each token, providing more
+abundant semantic information compared to ex-
+isting embedding-based retrieval models. Further-
+more, as the representations are propagated through
+layers, they are also dynamically adjusted based on
+contextual information gathered in previous layers
+to encode causal dependencies.
+It is also intuitive to use attention layers as re-
+trievers because the attention operations are essen-
+tially calculating similarity scores. In each atten-
+tion layer of the transformer model, the attention
+score assigned to the j-th token by the i-th token is
+calculated as the weighted dot product between the
+key vector kj and the query vector qi, which is iden-
+tical to similarity calculation of embedding models.
+Moreover, attention computation is performed on
+two sets of embeddings q and k, which allows the
+attention layers to perform a broader range of tasks
+other than semantic similarity search by adjusting
+the embeddings.
+However, training a transformer model for re-
+trieval is very expensive. Ye et al. (2025) found
+that the last layer in the Qwen-2 model shows high
+retrieval accuracy without any additional training,
+implying the possibility of directly employing pre-
+trained LLMs to estimate relevance with attention
+scores. However, their experiments were very lim-
+ited and the findings might not generalize to other
+attention layers and other LLMs. More importantly,
+since pretrained LLMs suffer from accuracy and
+efficiency issues with long context, it is also crucial
+to find out whether attention scores can be effi-
+ciently calculated and still achieve high retrieval
+accuracy with long context.
+Therefore, we conducted careful analysis (Sec-
+tion 3) to verify if attention layers in pretrained
+LLMs can be effective and efficient training-free re-
+trievers. Our analysis showed that attention scores
+are more precise than outputs in collecting rele-
+vant information and suffer less from the lost-in-
+the-middle problem, validating the effectiveness
+of using LLMs for retrieval tasks despite that they
+face various issues in long context tasks. More-
+over, existing attention approximation methods for
+
 2
 
+
+Figure 1: Overview of AttentionRetriever.
+
+2
+Related Works
 
 knowledge, this is the first retrieval dataset that fea-
 tures documents with lengths exceeding the context
@@ -229,29 +232,6 @@ datasets where contextual information is generally
 not needed, further demonstrating its effectiveness
 in long document retrieval tasks.
 In summary, our contributions are as follows:
-
-• We propose AttentionRetriever, which lever-
-ages the attention mechanism and entity-based
-retrieval to perform context-aware long docu-
-ment retrieval and decide the scope of retrieval
-based on the query;
-
-• We perform empirical analysis on the attention
-mechanism in pretrained LLMs, verifying the
-effectiveness of using attention maps for re-
-trieval tasks and its capability of dynamically
-updating embeddings across layers;
-
-• We construct a new long document retrieval
-dataset consisting of extremely long docu-
-ments to compare the retrieval accuracy of
-our proposed method and various baselines.
-
-
-Figure 1: Overview of AttentionRetriever.
-
-2
-Related Works
 
 2.1
 Long Document Retrieval
@@ -278,6 +258,18 @@ been proposed to address the problem of long docu-
 ment retrieval. However, they still failed to address
 the challenges of causal and query dependencies.
 
+• We propose AttentionRetriever, which lever-
+ages the attention mechanism and entity-based
+retrieval to perform context-aware long docu-
+ment retrieval and decide the scope of retrieval
+based on the query;
+
+• We perform empirical analysis on the attention
+mechanism in pretrained LLMs, verifying the
+effectiveness of using attention maps for re-
+trieval tasks and its capability of dynamically
+updating embeddings across layers;
+
 2.2
 Context Window Length Extension
 
@@ -289,6 +281,11 @@ An et al., 2024; Jin et al., 2024; Xu et al., 2025;
 Liu et al., 2025) proposed to map OOD indices to
 in-distribution indices to avoid the problem. To
 reduce the computational cost when processing
+
+• We construct a new long document retrieval
+dataset consisting of extremely long docu-
+ments to compare the retrieval accuracy of
+our proposed method and various baselines.
 
 3
 
@@ -316,6 +313,13 @@ model and concluded that high attention scores are
 given to tokens relevant to the query. However, no
 existing work has explored the potential of employ-
 ing attention layers in LLMs for retrieval.
+
+(a) Average ranks of the gold paragraph for each subquery
+over all queries in the dataset. The layer achieving the highest
+average rank for each subquery is marked at the top of each
+line. The subqueries are ordered by dependencies, where
+subquery 1 does not depend on any other subqueries while
+subquery 4 could depend on any other subqueries.
 
 3
 Observations
@@ -347,30 +351,6 @@ aged over all attention heads. Formally, given the
 attention map A ∈RH×Td×Tq, the paragraph score
 scorep is calculated as:
 
-H
-X
-
- 
-1
-H
-
-!
-
-scorep =
-max
-sl≤t≤sr,1≤tq≤Tq
-
-h=1
-Ah,t,tq
-
-
-(a) Average ranks of the gold paragraph for each subquery
-over all queries in the dataset. The layer achieving the highest
-average rank for each subquery is marked at the top of each
-line. The subqueries are ordered by dependencies, where
-subquery 1 does not depend on any other subqueries while
-subquery 4 could depend on any other subqueries.
-
 (b) The quartic approximation of the average ranks.
 
 Figure 2: Results of attention analysis.
@@ -394,10 +374,61 @@ rankings. From Figure 2a, we found that only cer-
 tain attention layers can achieve high retrieval
 accuracy, and they are mostly in the second half
 
+H
+X
+
+ 
+1
+H
+
+!
+
+scorep =
+max
+sl≤t≤sr,1≤tq≤Tq
+
+h=1
+Ah,t,tq
+
 4
 
 
+as the base model and employed Cascading KV
+Cache (Willette et al., 2025) as the context exten-
+sion method, and tested on documents with approx-
+imately 100,000 tokens.
+Figure 3 shows the results of our experiments.
+Figure 3a reveals that the count does not decrease
+when the needle is in the middle of the document,
+indicating that attention layers are less affected
+by the lost-in-the-middle problem. Figure 3b
+also demonstrates that the approximation method
+can be effective in our proposed pipeline because
+it can even find needles much more accurately than
+full attention. Based on these observations, we
+proposed our attention-based retrieval approach,
+which will be outlined in the next section.
+
 (a) Retrieval accuracy for attention layers.
+
+4
+Method
+
+4.1
+Overview
+
+Our proposed retrieval model is summarized in Fig-
+ure 1. We leverage a pretrained LLM to assign a
+score for each sentence in the document based on
+attention maps of the LLM (Subsection 4.2). Mean-
+while, we also employ a dense embedding model
+to calculate a separate score for each sentence by
+similarity between the sentence embedding the and
+query embedding to further improve retrieval accu-
+racy (Subsection 4.3). We then use these two sets
+of scores to find relevant entities and perform an
+entity-based retrieval to obtain the outputs (Subsec-
+tion 4.4).
 
 (b) Retrieval accuracy for attention layers with Cascading KV
 Cache.
@@ -425,42 +456,6 @@ mine whether the attention layers can find the nee-
 dles, we calculated the number of attention heads
 where the highest attention score is assigned to
 the needle. We selected Llama-3.2-3B-Instruct
-
-
-as the base model and employed Cascading KV
-Cache (Willette et al., 2025) as the context exten-
-sion method, and tested on documents with approx-
-imately 100,000 tokens.
-Figure 3 shows the results of our experiments.
-Figure 3a reveals that the count does not decrease
-when the needle is in the middle of the document,
-indicating that attention layers are less affected
-by the lost-in-the-middle problem. Figure 3b
-also demonstrates that the approximation method
-can be effective in our proposed pipeline because
-it can even find needles much more accurately than
-full attention. Based on these observations, we
-proposed our attention-based retrieval approach,
-which will be outlined in the next section.
-
-4
-Method
-
-4.1
-Overview
-
-Our proposed retrieval model is summarized in Fig-
-ure 1. We leverage a pretrained LLM to assign a
-score for each sentence in the document based on
-attention maps of the LLM (Subsection 4.2). Mean-
-while, we also employ a dense embedding model
-to calculate a separate score for each sentence by
-similarity between the sentence embedding the and
-query embedding to further improve retrieval accu-
-racy (Subsection 4.3). We then use these two sets
-of scores to find relevant entities and perform an
-entity-based retrieval to obtain the outputs (Subsec-
-tion 4.4).
 
 4.2
 Attention for Sentence Scoring
@@ -497,6 +492,23 @@ formally, given a sentence s spanning over tokens
 sl, . . . , sr, the attention score of the sentence as is
 computed as follows:
 
+and use them to find these indirectly relevant text
+chunks.
+Specifically, we use SpaCy (Honnibal et al.,
+2020) to extract the entities in each sentence, and
+assign a relevance score to each entity based on the
+scores of the sentences it appears in to find the most
+relevant entities. Since relevant entities should only
+appear in relevant sentences, we calculate the rel-
+evance score of entities by the average relevance
+scores of the sentences.
+Since we obtained both attention scores and em-
+bedding scores and the attention score and embed-
+ding score are not directly comparable, we perform
+retrieval on each score separately and combine the
+results with equal weights. With a top_k value of
+k, we first retrieve ⌈k
+
 H
 X
 
@@ -524,9 +536,23 @@ the pipeline, we only apply it when the length of
 the document exceeds the context window limit of
 the base LLM.
 
+2⌉entities and sentences with
+the highest attention scores and ⌊k
+
+2⌋entities and
+sentences with the highest embedding scores. The
+union of these two sets of entities and sentences is
+the collection of all selected entities and sentences.
+For each selected sentence, we retrieve the para-
+graph it belongs to, while for each selected entity,
+we retrieve all paragraphs containing the entity.
+
 4.3
 Sentence Embedding for Multi-view
 Similarity Search
+
+5
+Dataset Construction
 
 Attention-based similarity estimation provides a
 token-level measurement of the relevance to the
@@ -543,53 +569,6 @@ the query embedding query embedding Eq = f(q).
 The sentence embedding score es for each sentence
 s is calculated as the cosine similarity between its
 embedding Es and query embedding Eq:
-
-es =
-Es · Eq
-||Es||||Eq||
-
-4.4
-Entity-based Retrieval
-
-In long document retrieval, it is insufficient to only
-retrieve the most relevant text chunks because long
-documents are typically coherent and other chunks
-could provide additional background information
-about the query. Since chunks mentioning the enti-
-ties relevant to the query can usually provide use-
-ful information, we find the most relevant entities
-
-
-and use them to find these indirectly relevant text
-chunks.
-Specifically, we use SpaCy (Honnibal et al.,
-2020) to extract the entities in each sentence, and
-assign a relevance score to each entity based on the
-scores of the sentences it appears in to find the most
-relevant entities. Since relevant entities should only
-appear in relevant sentences, we calculate the rel-
-evance score of entities by the average relevance
-scores of the sentences.
-Since we obtained both attention scores and em-
-bedding scores and the attention score and embed-
-ding score are not directly comparable, we perform
-retrieval on each score separately and combine the
-results with equal weights. With a top_k value of
-k, we first retrieve ⌈k
-
-2⌉entities and sentences with
-the highest attention scores and ⌊k
-
-2⌋entities and
-sentences with the highest embedding scores. The
-union of these two sets of entities and sentences is
-the collection of all selected entities and sentences.
-For each selected sentence, we retrieve the para-
-graph it belongs to, while for each selected entity,
-we retrieve all paragraphs containing the entity.
-
-5
-Dataset Construction
 
 Since the average length of documents in existing
 retrieval datasets are very limited, we collected a
@@ -609,8 +588,23 @@ Qasper (Dasigi et al., 2021), and LongBench (Bai
 et al., 2024), we found that most questions in the
 datasets fall into the following four categories:
 
+es =
+Es · Eq
+||Es||||Eq||
+
 • Single-hop: the question can be answered
 with a single piece of information.
+
+4.4
+Entity-based Retrieval
+
+In long document retrieval, it is insufficient to only
+retrieve the most relevant text chunks because long
+documents are typically coherent and other chunks
+could provide additional background information
+about the query. Since chunks mentioning the enti-
+ties relevant to the query can usually provide use-
+ful information, we find the most relevant entities
 
 • Comparison: the question requires compari-
 son between two or more pieces of informa-
@@ -620,58 +614,6 @@ tion from multiple paragraphs.
 ple single-hop questions, and the LLM needs
 
 6
-
-
-Sparse Models
-
-Dense Models
-
-Autoregressive Models
-
-AttentionRetriever (Ours)
-
-Table 1: Comparison of proposed method and baselines on single-document retrieval datasets, where best and
-second best results are marked in bold and underline, respectively.
-
-to answer each sub-question in sequence to
-arrive at the final answer.
-
-• Summarization: the question requires sum-
-marizing information from multiple locations
-throughout the document.
-
-Therefore, to ensure our dataset includes all
-these four types of queries, we manually gener-
-ated a query for each of these four types of queries
-for each document we collected, and annotated the
-corresponding answer and relevant paragraphs. We
-denote our dataset as LongBench-v2-Retrieval for
-the rest of the paper. A comparison of our dataset
-and other long document retrieval datasets can be
-found in Appendix A, which shows that the docu-
-ments in our new dataset are significantly longer
-than other retrieval datasets and some of them even
-exceed the context window length of most LLMs
-(Dubey et al., 2024; Jiang et al., 2023; Zhang et al.,
-2025).
-
-6
-Experiments
-
-6.1
-Experimental Setup
-
-To comprehensively evaluate the effectiveness
-and efficiency of our proposed method, we con-
-ducted our experiment on both long document re-
-trieval tasks and long document question answering
-(QA) tasks with the retrieval-augmented generation
-(RAG) setting.
-Baselines.
-We compared AttentionRetriever
-with the following three types of existing retrieval
-models that can be applied to long document re-
-trieval:
 
 
 QASA
@@ -689,6 +631,8 @@ Average Length
 2548.97
 106025.49
 
+Sparse Models
+
 BM25
 0.3795
 0.2304
@@ -697,6 +641,8 @@ BM25
 0.3055
 0.3126
 0.3194
+
+Dense Models
 
 DPR
 0.2181
@@ -755,6 +701,8 @@ GritLM
 0.3398
 0.3965
 
+Autoregressive Models
+
 SPScanner
 0.4604
 0.3712
@@ -763,6 +711,8 @@ SPScanner
 0.4237
 0.4188
 0.4088
+
+AttentionRetriever (Ours)
 
 LLaMA-3.2 3B
 0.5584
@@ -781,6 +731,12 @@ Qwen-2.5 3B
 0.3215
 0.5102
 
+Table 1: Comparison of proposed method and baselines on single-document retrieval datasets, where best and
+second best results are marked in bold and underline, respectively.
+
+to answer each sub-question in sequence to
+arrive at the final answer.
+
 (a) Sparse retrieval model BM25 (Robertson and
 Zaragoza, 2009);
 
@@ -795,6 +751,25 @@ DPR
 7B (Zhang et al., 2024), GritLM-7B (Muen-
 nighoff et al., 2025), and Qwen3-7B (Zhang
 et al., 2025);
+
+• Summarization: the question requires sum-
+marizing information from multiple locations
+throughout the document.
+
+Therefore, to ensure our dataset includes all
+these four types of queries, we manually gener-
+ated a query for each of these four types of queries
+for each document we collected, and annotated the
+corresponding answer and relevant paragraphs. We
+denote our dataset as LongBench-v2-Retrieval for
+the rest of the paper. A comparison of our dataset
+and other long document retrieval datasets can be
+found in Appendix A, which shows that the docu-
+ments in our new dataset are significantly longer
+than other retrieval datasets and some of them even
+exceed the context window length of most LLMs
+(Dubey et al., 2024; Jiang et al., 2023; Zhang et al.,
+2025).
 
 (c) Long document retrieval model SPScanner-
 1.3B (Cao et al., 2025);
@@ -822,6 +797,24 @@ the baselines on the test sets of these benchmarks.
 For LongBench-v2-Retrieval and RepLiQA, we
 used the full datasets because the dataset splits are
 not provided.
+
+6
+Experiments
+
+6.1
+Experimental Setup
+
+To comprehensively evaluate the effectiveness
+and efficiency of our proposed method, we con-
+ducted our experiment on both long document re-
+trieval tasks and long document question answering
+(QA) tasks with the retrieval-augmented generation
+(RAG) setting.
+Baselines.
+We compared AttentionRetriever
+with the following three types of existing retrieval
+models that can be applied to long document re-
+trieval:
 
 7
 
@@ -862,26 +855,6 @@ ber of evidences of the datasets we used are below
 used vLLM (Kwon et al., 2023) for efficient gen-
 eration. We performed all our experiments on a
 single NVIDIA A40 GPU.
-
-6.2
-Main Results
-
-Table 1 and 2 present the retrieval performance
-of baselines and AttentionRetriever on single-
-document and multi-document retrieval datasets,
-respectively. For simplicity, we only included the
-results with top_k value of 3, while the results
-of other top_k values can be found in Appendix
-C. Our proposed method significantly outperforms
-the baselines across all single-document retrieval
-datasets, while achieving a similar performance
-with baselines on multi-document datasets, which
-is not the primary target of our method. How-
-ever, we also noticed a significant performance
-drop of AttentionRetriever-Qwen on LongBench-
-v2-Retrieval dataset compared to other dataset,
-which could indicate that Qwen-2.5 model does not
-
 
 HotpotQA
 2WikiMultihopQA
@@ -984,8 +957,27 @@ types of long documents and retrieval cannot col-
 lect all pieces of information required to answer
 the question.
 
+6.2
+Main Results
+
 7
 Conclusion
+
+Table 1 and 2 present the retrieval performance
+of baselines and AttentionRetriever on single-
+document and multi-document retrieval datasets,
+respectively. For simplicity, we only included the
+results with top_k value of 3, while the results
+of other top_k values can be found in Appendix
+C. Our proposed method significantly outperforms
+the baselines across all single-document retrieval
+datasets, while achieving a similar performance
+with baselines on multi-document datasets, which
+is not the primary target of our method. How-
+ever, we also noticed a significant performance
+drop of AttentionRetriever-Qwen on LongBench-
+v2-Retrieval dataset compared to other dataset,
+which could indicate that Qwen-2.5 model does not
 
 In this paper, we introduced AttentionRetriever,
 a training-free context-aware retrieval model that
@@ -1007,6 +999,10 @@ document retrieval scenarios.
 
 Limitations
 
+Context is Gold to find the Gold Passage: Evaluat-
+ing and Training Contextual Document Embeddings.
+CoRR, abs/2505.24782. ArXiv: 2505.24782.
+
 We identified several major limitations of our work.
 Firstly, our proposed method requires a sufficiently
 large LLM (around 3 billion parameters) to per-
@@ -1020,58 +1016,6 @@ of manual labeling, the size of the retrieval dataset
 we constructed is limited and can be sensitive to
 outliers, causing the evaluation results to be inac-
 curate.
-
-References
-
-Chenxin An, Fei Huang, Jun Zhang, Shansan Gong,
-Xipeng Qiu, Chang Zhou, and Lingpeng Kong. 2024.
-Training-Free Long-Context Scaling of Large Lan-
-guage Models. In Forty-first International Confer-
-ence on Machine Learning, ICML 2024, Vienna, Aus-
-tria, July 21-27, 2024. OpenReview.net.
-
-Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Ben-
-gio. 2015. Neural Machine Translation by Jointly
-Learning to Align and Translate. In 3rd International
-Conference on Learning Representations, ICLR 2015,
-San Diego, CA, USA, May 7-9, 2015, Conference
-Track Proceedings.
-
-Yushi Bai, Xin Lv, Jiajie Zhang, Hongchang Lyu,
-Jiankai Tang, Zhidian Huang, Zhengxiao Du, Xiao
-Liu, Aohan Zeng, Lei Hou, Yuxiao Dong, Jie Tang,
-and Juanzi Li. 2024. LongBench: A Bilingual, Mul-
-titask Benchmark for Long Context Understanding.
-In Proceedings of the 62nd Annual Meeting of the
-Association for Computational Linguistics (Volume
-1: Long Papers), ACL 2024, Bangkok, Thailand, Au-
-gust 11-16, 2024, pages 3119–3137. Association for
-Computational Linguistics.
-
-Yushi Bai, Shangqing Tu, Jiajie Zhang, Hao Peng, Xi-
-aozhi Wang, Xin Lv, Shulin Cao, Jiazheng Xu, Lei
-Hou, Yuxiao Dong, Jie Tang, and Juanzi Li. 2025.
-LongBench v2: Towards Deeper Understanding and
-Reasoning on Realistic Long-context Multitasks. In
-Proceedings of the 63rd Annual Meeting of the As-
-sociation for Computational Linguistics (Volume 1:
-Long Papers), ACL 2025, Vienna, Austria, July 27 -
-August 1, 2025, pages 3639–3664. Association for
-Computational Linguistics.
-
-Weili Cao, Jianyou Wang, Youze Zheng, Longtian Bao,
-Qirui Zheng, Taylor Berg-Kirkpatrick, Ramamohan
-Paturi, and Leon Bergen. 2025. Single-Pass Doc-
-ument Scanning for Question Answering. CoRR,
-abs/2504.03101. ArXiv: 2504.03101.
-
-Max Conti, Manuel Faysse, Gautier Viaud, Antoine
-Bosselut, Céline Hudelot, and Pierre Colombo. 2025.
-
-
-Context is Gold to find the Gold Passage: Evaluat-
-ing and Training Contextual Document Embeddings.
-CoRR, abs/2505.24782. ArXiv: 2505.24782.
 
 Pradeep Dasigi, Kyle Lo, Iz Beltagy, Arman Cohan,
 Noah A. Smith, and Matt Gardner. 2021. A Dataset
@@ -1091,6 +1035,8 @@ first International Conference on Machine Learning,
 ICML 2024, Vienna, Austria, July 21-27, 2024. Open-
 Review.net.
 
+References
+
 Kuicai Dong, Derrick-Goh-Xin Deik, Yi Lee, Hao
 Zhang, Xiangyang Li, Cong Zhang, and Yong Liu.
 2024.
@@ -1101,6 +1047,20 @@ Linguistics: EMNLP 2024, Miami, Florida, USA,
 November 12-16, 2024, pages 2673–2691. Associa-
 tion for Computational Linguistics.
 
+Chenxin An, Fei Huang, Jun Zhang, Shansan Gong,
+Xipeng Qiu, Chang Zhou, and Lingpeng Kong. 2024.
+Training-Free Long-Context Scaling of Large Lan-
+guage Models. In Forty-first International Confer-
+ence on Machine Learning, ICML 2024, Vienna, Aus-
+tria, July 21-27, 2024. OpenReview.net.
+
+Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Ben-
+gio. 2015. Neural Machine Translation by Jointly
+Learning to Align and Translate. In 3rd International
+Conference on Learning Representations, ICLR 2015,
+San Diego, CA, USA, May 7-9, 2015, Conference
+Track Proceedings.
+
 Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey,
 Abhishek Kadian, Ahmad Al-Dahle, Aiesha Letman,
 Akhil Mathur, Alan Schelten, Amy Yang, Angela
@@ -1109,6 +1069,17 @@ Archi Mitra, Archie Sravankumar, Artem Korenev,
 Arthur Hinsvark, Arun Rao, Aston Zhang, and 82
 others. 2024. The Llama 3 Herd of Models. CoRR,
 abs/2407.21783. ArXiv: 2407.21783.
+
+Yushi Bai, Xin Lv, Jiajie Zhang, Hongchang Lyu,
+Jiankai Tang, Zhidian Huang, Zhengxiao Du, Xiao
+Liu, Aohan Zeng, Lei Hou, Yuxiao Dong, Jie Tang,
+and Juanzi Li. 2024. LongBench: A Bilingual, Mul-
+titask Benchmark for Long Context Understanding.
+In Proceedings of the 62nd Annual Meeting of the
+Association for Computational Linguistics (Volume
+1: Long Papers), ACL 2024, Bangkok, Thailand, Au-
+gust 11-16, 2024, pages 3119–3137. Association for
+Computational Linguistics.
 
 Zafeirios Fountas, Martin Benfeghoul, Adnan Oomer-
 jee, Fenia Christopoulou, Gerasimos Lampouras,
@@ -1119,6 +1090,17 @@ CoRR, abs/2407.09450. ArXiv: 2407.09450.
 gkamradt. gkamradt/LLMTest_needleinahaystack: Do-
 ing simple retrieval from LLM models at various
 context lengths to measure accuracy.
+
+Yushi Bai, Shangqing Tu, Jiajie Zhang, Hao Peng, Xi-
+aozhi Wang, Xin Lv, Shulin Cao, Jiazheng Xu, Lei
+Hou, Yuxiao Dong, Jie Tang, and Juanzi Li. 2025.
+LongBench v2: Towards Deeper Understanding and
+Reasoning on Realistic Long-context Multitasks. In
+Proceedings of the 63rd Annual Meeting of the As-
+sociation for Computational Linguistics (Volume 1:
+Long Papers), ACL 2025, Vienna, Austria, July 27 -
+August 1, 2025, pages 3639–3664. Association for
+Computational Linguistics.
 
 Michael Günther, Isabelle Mohr, Bo Wang, and Han
 Xiao. 2024. Late Chunking: Contextual Chunk Em-
@@ -1134,12 +1116,24 @@ COLING 2020, Barcelona, Spain (Online), Decem-
 ber 8-13, 2020, pages 6609–6625. International Com-
 mittee on Computational Linguistics.
 
+Weili Cao, Jianyou Wang, Youze Zheng, Longtian Bao,
+Qirui Zheng, Taylor Berg-Kirkpatrick, Ramamohan
+Paturi, and Leon Bergen. 2025. Single-Pass Doc-
+ument Scanning for Question Answering. CoRR,
+abs/2504.03101. ArXiv: 2504.03101.
+
 Matthew Honnibal, Ines Montani, Sofie Van Lan-
 deghem, and Adriane Boyd. 2020. spaCy: Industrial-
 strength Natural Language Processing in Python.
 
+Max Conti, Manuel Faysse, Gautier Viaud, Antoine
+Bosselut, Céline Hudelot, and Pierre Colombo. 2025.
+
 9
 
+
+Representations, ICLR 2025, Singapore, April 24-28,
+2025. OpenReview.net.
 
 Albert Q. Jiang, Alexandre Sablayrolles, Arthur Men-
 sch, Chris Bamford, Devendra Singh Chaplot, Diego
@@ -1149,6 +1143,23 @@ nard Lavaud, Marie-Anne Lachaux, Pierre Stock,
 Teven Le Scao, Thibaut Lavril, Thomas Wang, Timo-
 thée Lacroix, and William El Sayed. 2023. Mistral
 7B. CoRR, abs/2310.06825. ArXiv: 2310.06825.
+
+Yi Lu, Jing Nathan Yan, Songlin Yang, Justin T. Chiu,
+Siyu Ren, Fei Yuan, Wenting Zhao, Zhiyong Wu, and
+Alexander M. Rush. 2024. A Controlled Study on
+Long Context Extension and Generalization in LLMs.
+CoRR, abs/2409.12181. ArXiv: 2409.12181.
+
+Adyasha Maharana, Dong-Ho Lee, Sergey Tulyakov,
+Mohit Bansal, Francesco Barbieri, and Yuwei Fang.
+2024. Evaluating Very Long-Term Conversational
+Memory of LLM Agents.
+In Proceedings of the
+62nd Annual Meeting of the Association for Compu-
+tational Linguistics (Volume 1: Long Papers), ACL
+2024, Bangkok, Thailand, August 11-16, 2024, pages
+13851–13870. Association for Computational Lin-
+guistics.
 
 Hongye Jin, Xiaotian Han, Jingfeng Yang, Zhimeng
 Jiang, Zirui Liu, Chia-Yuan Chang, Huiyuan Chen,
@@ -1168,69 +1179,6 @@ Natural Language Processing, EMNLP 2020, Online,
 November 16-20, 2020, pages 6769–6781. Associa-
 tion for Computational Linguistics.
 
-Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, Ying
-Sheng, Lianmin Zheng, Cody Hao Yu, Joseph E.
-Gonzalez, Hao Zhang, and Ion Stoica. 2023. Ef-
-ficient Memory Management for Large Language
-Model Serving with PagedAttention. In Proceedings
-of the ACM SIGOPS 29th Symposium on Operating
-Systems Principles.
-
-Yoonjoo Lee, Kyungjae Lee, Sunghyun Park, Dasol
-Hwang, Jaehyeon Kim, Hong-In Lee, and Moontae
-Lee. 2023. QASA: Advanced Question Answering
-on Scientific Articles. In International Conference
-on Machine Learning, ICML 2023, 23-29 July 2023,
-Honolulu, Hawaii, USA, volume 202 of Proceedings
-of Machine Learning Research, pages 19036–19052.
-PMLR.
-
-Patrick S. H. Lewis, Ethan Perez, Aleksandra Pik-
-tus, Fabio Petroni, Vladimir Karpukhin, Naman
-Goyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih,
-Tim Rocktäschel, Sebastian Riedel, and Douwe
-Kiela. 2020. Retrieval-Augmented Generation for
-Knowledge-Intensive NLP Tasks. In Advances in
-Neural Information Processing Systems 33: Annual
-Conference on Neural Information Processing Sys-
-tems 2020, NeurIPS 2020, December 6-12, 2020,
-virtual.
-
-Nelson F. Liu, Kevin Lin, John Hewitt, Ashwin Paran-
-jape, Michele Bevilacqua, Fabio Petroni, and Percy
-Liang. 2024. Lost in the Middle: How Language
-Models Use Long Contexts. Trans. Assoc. Comput.
-Linguistics, 12:157–173.
-
-Xiaoran Liu, Ruixiao Li, Zhigeng Liu, Qipeng Guo,
-Yuerong Song, Kai Lv, Hang Yan, Linlin Li, Qun
-Liu, and Xipeng Qiu. 2025. ReAttention: Training-
-Free Infinite Context with Finite Attention Scope. In
-The Thirteenth International Conference on Learning
-
-10
-
-
-Representations, ICLR 2025, Singapore, April 24-28,
-2025. OpenReview.net.
-
-Yi Lu, Jing Nathan Yan, Songlin Yang, Justin T. Chiu,
-Siyu Ren, Fei Yuan, Wenting Zhao, Zhiyong Wu, and
-Alexander M. Rush. 2024. A Controlled Study on
-Long Context Extension and Generalization in LLMs.
-CoRR, abs/2409.12181. ArXiv: 2409.12181.
-
-Adyasha Maharana, Dong-Ho Lee, Sergey Tulyakov,
-Mohit Bansal, Francesco Barbieri, and Yuwei Fang.
-2024. Evaluating Very Long-Term Conversational
-Memory of LLM Agents.
-In Proceedings of the
-62nd Annual Meeting of the Association for Compu-
-tational Linguistics (Volume 1: Long Papers), ACL
-2024, Bangkok, Thailand, August 11-16, 2024, pages
-13851–13870. Association for Computational Lin-
-guistics.
-
 João Monteiro, Pierre-André Noël, Étienne Marcotte,
 Sai Rajeswar Mudumba, Valentina Zantedeschi,
 David Vázquez, Nicolas Chapados, Chris Pal, and
@@ -1243,9 +1191,26 @@ ence on Neural Information Processing Systems 2024,
 NeurIPS 2024, Vancouver, BC, Canada, December
 10 - 15, 2024.
 
+Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, Ying
+Sheng, Lianmin Zheng, Cody Hao Yu, Joseph E.
+Gonzalez, Hao Zhang, and Ion Stoica. 2023. Ef-
+ficient Memory Management for Large Language
+Model Serving with PagedAttention. In Proceedings
+of the ACM SIGOPS 29th Symposium on Operating
+Systems Principles.
+
 John X. Morris and Alexander M. Rush. 2024. Contex-
 tual Document Embeddings. CoRR, abs/2410.02525.
 ArXiv: 2410.02525.
+
+Yoonjoo Lee, Kyungjae Lee, Sunghyun Park, Dasol
+Hwang, Jaehyeon Kim, Hong-In Lee, and Moontae
+Lee. 2023. QASA: Advanced Question Answering
+on Scientific Articles. In International Conference
+on Machine Learning, ICML 2023, 23-29 July 2023,
+Honolulu, Hawaii, USA, volume 202 of Proceedings
+of Machine Learning Research, pages 19036–19052.
+PMLR.
 
 Niklas Muennighoff, Hongjin Su, Liang Wang, Nan
 Yang, Furu Wei, Tao Yu, Amanpreet Singh, and
@@ -1264,10 +1229,27 @@ ing, EMNLP 2022, Abu Dhabi, United Arab Emirates,
 December 7-11, 2022, pages 9844–9855. Association
 for Computational Linguistics.
 
+Patrick S. H. Lewis, Ethan Perez, Aleksandra Pik-
+tus, Fabio Petroni, Vladimir Karpukhin, Naman
+Goyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih,
+Tim Rocktäschel, Sebastian Riedel, and Douwe
+Kiela. 2020. Retrieval-Augmented Generation for
+Knowledge-Intensive NLP Tasks. In Advances in
+Neural Information Processing Systems 33: Annual
+Conference on Neural Information Processing Sys-
+tems 2020, NeurIPS 2020, December 6-12, 2020,
+virtual.
+
 OpenAI. 2023.
 GPT-4 Technical Report.
 CoRR,
 abs/2303.08774. ArXiv: 2303.08774.
+
+Nelson F. Liu, Kevin Lin, John Hewitt, Ashwin Paran-
+jape, Michele Bevilacqua, Fabio Petroni, and Percy
+Liang. 2024. Lost in the Middle: How Language
+Models Use Long Contexts. Trans. Assoc. Comput.
+Linguistics, 12:157–173.
 
 OpenAI. 2025. GPT-5 System Card. Technical report.
 
@@ -1275,16 +1257,35 @@ Stephen E. Robertson and Hugo Zaragoza. 2009. The
 Probabilistic Relevance Framework: BM25 and Be-
 yond. Found. Trends Inf. Retr., 3(4):333–389.
 
+Xiaoran Liu, Ruixiao Li, Zhigeng Liu, Qipeng Guo,
+Yuerong Song, Kai Lv, Hang Yan, Linlin Li, Qun
+Liu, and Xipeng Qiu. 2025. ReAttention: Training-
+Free Infinite Context with Finite Attention Scope. In
+The Thirteenth International Conference on Learning
+
 Ning Shang, Li Lyna Zhang, Siyuan Wang, Gaokai
 Zhang, Gilsinia Lopez, Fan Yang, Weizhu Chen, and
 Mao Yang. 2025. LongRoPE2: Near-Lossless LLM
 Context Window Scaling. CoRR, abs/2502.20082.
 ArXiv: 2502.20082.
 
+10
+
 
 Qi Sun, Marc Pickett, Aakash Kumar Nain, and Llion
 Jones. 2024. Transformer Layers as Painters. CoRR,
 abs/2407.09298. ArXiv: 2407.09298.
+
+Zhilin Yang, Peng Qi, Saizheng Zhang, Yoshua Ben-
+gio, William W. Cohen, Ruslan Salakhutdinov, and
+Christopher D. Manning. 2018.
+HotpotQA: A
+Dataset for Diverse, Explainable Multi-hop Question
+Answering. In Proceedings of the 2018 Conference
+on Empirical Methods in Natural Language Process-
+ing, Brussels, Belgium, October 31 - November 4,
+2018, pages 2369–2380. Association for Computa-
+tional Linguistics.
 
 Harsh Trivedi, Niranjan Balasubramanian, Tushar
 Khot, and Ashish Sabharwal. 2022. \unicode9835
@@ -1300,7 +1301,25 @@ Networks for NLP, BlackboxNLP@ACL 2019, Flo-
 rence, Italy, August 1, 2019, pages 63–76. Associa-
 tion for Computational Linguistics.
 
+Xiaoju Ye, Zhichun Wang, and Jingyuan Wang. 2025.
+
+Infinite Retrieval: Attention Enhanced LLMs in
+Long-Context Processing. CoRR, abs/2502.12962.
+ArXiv: 2502.12962.
+
 Kexin Wang, Nils Reimers, and Iryna Gurevych. 2024.
+
+Xin Zhang, Yanzhao Zhang, Dingkun Long, Wen Xie,
+Ziqi Dai, Jialong Tang, Huan Lin, Baosong Yang,
+Pengjun Xie, Fei Huang, Meishan Zhang, Wenjie Li,
+and Min Zhang. 2024. mGTE: Generalized Long-
+Context Text Representation and Reranking Models
+for Multilingual Text Retrieval. In Proceedings of
+the 2024 Conference on Empirical Methods in Natu-
+ral Language Processing: EMNLP 2024 - Industry
+Track, Miami, Florida, USA, November 12-16, 2024,
+pages 1393–1412. Association for Computational
+Linguistics.
 
 DAPR: A Benchmark on Document-Aware Passage
 Retrieval. In Proceedings of the 62nd Annual Meet-
@@ -1315,6 +1334,13 @@ Exponential Context Extension via Cascading KV
 Cache. In The Thirteenth International Conference
 on Learning Representations, ICLR 2025, Singapore,
 April 24-28, 2025. OpenReview.net.
+
+Yanzhao Zhang, Mingxin Li, Dingkun Long, Xin Zhang,
+Huan Lin, Baosong Yang, Pengjun Xie, An Yang,
+Dayiheng Liu, Junyang Lin, Fei Huang, and Jingren
+Zhou. 2025. Qwen3 Embedding: Advancing Text
+Embedding and Reranking Through Foundation Mod-
+els. CoRR, abs/2506.05176. ArXiv: 2506.05176.
 
 Chaojun Xiao, Pengle Zhang, Xu Han, Guangxuan Xiao,
 Yankai Lin, Zhengyan Zhang, Zhiyuan Liu, Song
@@ -1331,6 +1357,13 @@ trieval. In 9th International Conference on Learning
 Representations, ICLR 2021, Virtual Event, Austria,
 May 3-7, 2021. OpenReview.net.
 
+A
+Details of LongBench-v2-Retrieval
+
+A.1
+Comparison with Existing Long
+Document Retrieval Datasets
+
 Xinhao Xu, Jiaxin Li, Hui Chen, Zijia Lin, Jungong
 Han, and Guiguang Ding. 2025. Extending LLM
 Context Window with Adaptive Grouped Positional
@@ -1341,60 +1374,6 @@ ACL 2025, Vienna, Austria, July 27 - August 1, 2025,
 pages 573–587. Association for Computational Lin-
 guistics.
 
-An Yang, Baosong Yang, Beichen Zhang, Binyuan
-Hui, Bo Zheng, Bowen Yu, Chengyuan Li, Dayi-
-heng Liu, Fei Huang, Haoran Wei, Huan Lin, Jian
-Yang, Jianhong Tu, Jianwei Zhang, Jianxin Yang, Ji-
-axi Yang, Jingren Zhou, Junyang Lin, Kai Dang, and
-22 others. 2024. Qwen2.5 Technical Report. CoRR,
-abs/2412.15115. ArXiv: 2412.15115.
-
-11
-
-
-Zhilin Yang, Peng Qi, Saizheng Zhang, Yoshua Ben-
-gio, William W. Cohen, Ruslan Salakhutdinov, and
-Christopher D. Manning. 2018.
-HotpotQA: A
-Dataset for Diverse, Explainable Multi-hop Question
-Answering. In Proceedings of the 2018 Conference
-on Empirical Methods in Natural Language Process-
-ing, Brussels, Belgium, October 31 - November 4,
-2018, pages 2369–2380. Association for Computa-
-tional Linguistics.
-
-Xiaoju Ye, Zhichun Wang, and Jingyuan Wang. 2025.
-
-Infinite Retrieval: Attention Enhanced LLMs in
-Long-Context Processing. CoRR, abs/2502.12962.
-ArXiv: 2502.12962.
-
-Xin Zhang, Yanzhao Zhang, Dingkun Long, Wen Xie,
-Ziqi Dai, Jialong Tang, Huan Lin, Baosong Yang,
-Pengjun Xie, Fei Huang, Meishan Zhang, Wenjie Li,
-and Min Zhang. 2024. mGTE: Generalized Long-
-Context Text Representation and Reranking Models
-for Multilingual Text Retrieval. In Proceedings of
-the 2024 Conference on Empirical Methods in Natu-
-ral Language Processing: EMNLP 2024 - Industry
-Track, Miami, Florida, USA, November 12-16, 2024,
-pages 1393–1412. Association for Computational
-Linguistics.
-
-Yanzhao Zhang, Mingxin Li, Dingkun Long, Xin Zhang,
-Huan Lin, Baosong Yang, Pengjun Xie, An Yang,
-Dayiheng Liu, Junyang Lin, Fei Huang, and Jingren
-Zhou. 2025. Qwen3 Embedding: Advancing Text
-Embedding and Reranking Through Foundation Mod-
-els. CoRR, abs/2506.05176. ArXiv: 2506.05176.
-
-A
-Details of LongBench-v2-Retrieval
-
-A.1
-Comparison with Existing Long
-Document Retrieval Datasets
-
 Table 3 compares the lengths and number of evi-
 dences of existing long document retrieval datasets
 with our newly constructed dataset. The average
@@ -1403,12 +1382,30 @@ larger than other existing datasets, while the av-
 erage number of evidences is also larger than most
 datasets we compared with.
 
+An Yang, Baosong Yang, Beichen Zhang, Binyuan
+Hui, Bo Zheng, Bowen Yu, Chengyuan Li, Dayi-
+heng Liu, Fei Huang, Haoran Wei, Huan Lin, Jian
+Yang, Jianhong Tu, Jianwei Zhang, Jianxin Yang, Ji-
+axi Yang, Jingren Zhou, Junyang Lin, Kai Dang, and
+22 others. 2024. Qwen2.5 Technical Report. CoRR,
+abs/2412.15115. ArXiv: 2412.15115.
+
 A.2
 Example Queries
 
 The following are example queries for each type in
 our constructed dataset:
 
+11
+
+
+Dataset
+Size
+Avg Length
+Max Length
+Avg Paragraph Count
+Max Paragraph Count
+Avg Number of Evidences
 
 QASA (Lee et al., 2023)
 518
@@ -1466,43 +1463,6 @@ across all splits.
 
 Example Single-hop Query
 
-Question: According to the Report of the In-
-dependent High-Level Expert Group on Cli-
-mate Finance, what is the estimated annual
-spend on the transformation of the energy
-system and investing in sustainable agricul-
-ture for emerging markets and developing
-countries by 2030?
-Answer: Around $2.4 trillion per year.
-
-Example Comparison Query
-
-Question: Did Czechia receive more fund-
-ing under EU cohesion policy in 2014-2020
-compared to 2007-2013?
-Answer: No
-
-Example Composition Query
-
-Question: What are the outstanding health
-features of the product that had over 2.5
-million shipments within three months of
-its launch?
-Answer: Improved Activity Rings and the
-Stay Fit app to help users build healthier
-lifestyles.
-
-12
-
-
-Dataset
-Size
-Avg Length
-Max Length
-Avg Paragraph Count
-Max Paragraph Count
-Avg Number of Evidences
-
 Example Summarization Query
 
 Question: What are the current challenges
@@ -1518,6 +1478,15 @@ the go is missing. Moreover, online auction
 of an entire virtual cluster, including VMs
 and the network in-between, has not been
 studied.
+
+Question: According to the Report of the In-
+dependent High-Level Expert Group on Cli-
+mate Finance, what is the estimated annual
+spend on the transformation of the energy
+system and investing in sustainable agricul-
+ture for emerging markets and developing
+countries by 2030?
+Answer: Around $2.4 trillion per year.
 
 B
 Detailed Attention Analysis
@@ -1540,11 +1509,38 @@ since LLMs tend to focus on subqueries depending
 on other subqueries in later layers so that necessary
 information has been collected before the layers.
 
+Example Comparison Query
+
+Question: Did Czechia receive more fund-
+ing under EU cohesion policy in 2014-2020
+compared to 2007-2013?
+Answer: No
+
+Example Composition Query
+
+Question: What are the outstanding health
+features of the product that had over 2.5
+million shipments within three months of
+its launch?
+Answer: Improved Activity Rings and the
+Stay Fit app to help users build healthier
+lifestyles.
+
+12
+
+
+Figure 7: The quartic approximation of the average
+ranks in Figure 6.
 
 Figure 4: Average ranks of the gold paragraph for each
 subquery over all queries in the dataset for LLaMA-3.2
 3B. The layer achieving the highest average rank for
 each subquery is marked at the top of each line.
+
+Figure 8: Average ranks of the gold paragraph for each
+subquery over all queries in the dataset for Mistral 7B.
+The layer achieving the highest average rank for each
+subquery is marked at the top of each line.
 
 Figure 5: The quartic approximation of the average
 ranks in Figure 4.
@@ -1554,24 +1550,25 @@ subquery over all queries in the dataset for Qwen-2.5
 3B. The layer achieving the highest average rank for
 each subquery is marked at the top of each line.
 
-13
-
-
-Figure 7: The quartic approximation of the average
-ranks in Figure 6.
-
-Figure 8: Average ranks of the gold paragraph for each
-subquery over all queries in the dataset for Mistral 7B.
-The layer achieving the highest average rank for each
-subquery is marked at the top of each line.
-
 Figure 9: The quartic approximation of the average
 ranks in Figure 8.
+
+13
 
 
 C
 Full Evaluation Results on Retrieval
 Datasets
+
+You are an AI assistant. User will you give
+you a task. Your goal is to complete the task
+as faithfully as you can.
+Article: {text}
+You are given an article and a question. An-
+swer the question as concisely as you can,
+using a single phrase or sentence if possible.
+Question: {question}
+Answer:
 
 The full evaluation results on retrieval datasets with
 different values of top_k can be found in Table
@@ -1629,39 +1626,6 @@ ments:
 14
 
 
-You are an AI assistant. User will you give
-you a task. Your goal is to complete the task
-as faithfully as you can.
-Article: {text}
-You are given an article and a question. An-
-swer the question as concisely as you can,
-using a single phrase or sentence if possible.
-Question: {question}
-Answer:
-
-
-Sparse Models
-
-BM25
-
-Dense Models
-
-DPR
-
-Autoregressive Models
-
-SPScanner
-
-AttentionRetriever (Ours)
-
-LLaMA-3.2 3B
-
-Table 4: Comparison of proposed method and baselines on single-document retrieval datasets with different choices
-of top_k values, where best and second best results are marked in bold and underline, respectively.
-
-15
-
-
 QASA
 Qasper
 RepLiQA
@@ -1676,6 +1640,10 @@ Average Length
 1298.13
 2548.97
 106025.49
+
+Sparse Models
+
+BM25
 
 top_k=1
 0.4530
@@ -1709,6 +1677,10 @@ top_k=5
 0.2572
 0.2703
 0.2665
+
+Dense Models
+
+DPR
 
 top_k=1
 0.1979
@@ -1947,6 +1919,10 @@ top_k=5
 0.3055
 0.3234
 
+Autoregressive Models
+
+SPScanner
+
 top_k=1
 0.4551
 0.3232
@@ -1979,6 +1955,10 @@ top_k=5
 0.3893
 0.3605
 0.3596
+
+AttentionRetriever (Ours)
+
+LLaMA-3.2 3B
 
 top_k=1
 0.5477
@@ -2047,6 +2027,25 @@ top_k=5
 0.3416
 0.4904
 
+Table 4: Comparison of proposed method and baselines on single-document retrieval datasets with different choices
+of top_k values, where best and second best results are marked in bold and underline, respectively.
+
+15
+
+
+RepLiQA
+ConditionalQA
+NaturalQuestions
+Qasper
+QASA
+LongBench-v2-Retrieval
+Average Length
+970.50
+1298.13
+2438.86
+3442.26
+4665.09
+106025.49
 
 BM25
 0.0034
@@ -2129,6 +2128,19 @@ AttentionRetriever-Qwen-2.5 3B
 Table 5: Comparison of efficiency of proposed method and baselines on single-document retrieval datasets. The
 efficiency is measured in average processing time (both indexing and retrieval) in number of seconds for each
 sample.
+
+Qasper
+MultiFieldQA
+NarrativeQA
+Average
+F-1
+Avg Token Count
+F-1
+Avg Token Count
+F-1
+Avg Token Count
+F-1
+Avg Token Count
 
 Llama-3.1 8B
 
@@ -2290,6 +2302,21 @@ Table 6: Comparison of proposed method and baselines on question answering tasks
 using the full context to answer the question, while RAG only uses the text chunks retrieved by the specified method
 to answer the question.
 
+QASA
+Qasper
+RepLiQA
+ConditonalQA
+NaturalQuestions
+LongBench-v2-Retrieval
+Average
+Average Length
+4665.09
+3442.26
+970.50
+1298.13
+2548.97
+106025.49
+
 AttentionRetriever
 0.5584
 0.4618
@@ -2330,49 +2357,6 @@ proposed approach.
 16
 
 
-RepLiQA
-ConditionalQA
-NaturalQuestions
-Qasper
-QASA
-LongBench-v2-Retrieval
-Average Length
-970.50
-1298.13
-2438.86
-3442.26
-4665.09
-106025.49
-
-Qasper
-MultiFieldQA
-NarrativeQA
-Average
-F-1
-Avg Token Count
-F-1
-Avg Token Count
-F-1
-Avg Token Count
-F-1
-Avg Token Count
-
-QASA
-Qasper
-RepLiQA
-ConditonalQA
-NaturalQuestions
-LongBench-v2-Retrieval
-Average
-Average Length
-4665.09
-3442.26
-970.50
-1298.13
-2548.97
-106025.49
-
-
 Figure 10: Detailed average ranks for different types of
 queries.
 Figure 11: Detailed average ranks for different types of
@@ -2381,11 +2365,7 @@ queries.
 17
 
 
-
-
 Figure 12: Detailed average ranks for different types of
 queries.
 
 18
-
-

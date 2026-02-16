@@ -60,7 +60,6 @@ def main():
     total_files = 0
     single_column = 0
     two_column = 0
-    ocr_count = 0
     total_text_length = 0
 
     # --------------------------------------------------------
@@ -76,39 +75,21 @@ def main():
         logger.info(f"Parsing: {pdf_path}")
 
         try:
-            text, layout_info = parse_pdf(str(pdf_path))
+            parsed = parse_pdf(str(pdf_path))
+
+            text = parsed["text"]
+            columns_detected = parsed.get("columns_detected", 1)
+            pages = parsed.get("pages", None)
 
             output_path.write_text(text, encoding="utf-8")
 
-            # ------------------------------------------------
-            # Existing Per-File Print Output (UNCHANGED)
-            # ------------------------------------------------
-
-            print("\n----------------------------------------")
-            print(f"Processing: {relative_path}")
-            print(f"Saved to: {output_path.relative_to(PROJECT_ROOT)}")
-            print(f"Pages: {layout_info.get('pages', 'N/A')}")
-            print("Method: native")
-            print("OCR Used: False")
-            print(f"Text Length: {len(text)}")
-            print(f"Columns Detected: {layout_info['columns_detected']}")
-            print(f"Left Blocks: {layout_info['left_blocks']}")
-            print(f"Right Blocks: {layout_info['right_blocks']}")
-            print("----------------------------------------\n")
-
-            # ------------------------------------------------
-            # Collect Structured Metrics
-            # ------------------------------------------------
-
             file_entry = {
                 "file_name": str(relative_path),
-                "pages": layout_info.get("pages", None),
-                "method": "native",
-                "ocr_used": False,
+                "pages": pages,
+                "method": parsed.get("method", "native"),
+                "ocr_used": parsed.get("ocr_used", False),
                 "text_length": len(text),
-                "columns_detected": layout_info["columns_detected"],
-                "left_blocks": layout_info["left_blocks"],
-                "right_blocks": layout_info["right_blocks"]
+                "columns_detected": columns_detected
             }
 
             report["files"].append(file_entry)
@@ -116,7 +97,7 @@ def main():
             total_files += 1
             total_text_length += len(text)
 
-            if layout_info["columns_detected"] == 1:
+            if columns_detected == 1:
                 single_column += 1
             else:
                 two_column += 1
@@ -133,7 +114,6 @@ def main():
             "total_files": total_files,
             "single_column": single_column,
             "two_column": two_column,
-            "ocr_used": ocr_count,
             "total_text_length": total_text_length,
             "avg_text_length": total_text_length // total_files
         }
@@ -143,11 +123,8 @@ def main():
         with open(output_report_file, "w", encoding="utf-8") as f:
             json.dump(report, f, indent=2)
 
-        # Keep summary visible in console
-        print("\n===== PDF Parsing Summary =====")
+        # 🔹 Only ONE final print (as requested)
         print(json.dumps(report["summary"], indent=2))
-        print(f"\nReport saved to: {output_report_file}")
-        print("================================\n")
 
 
 if __name__ == "__main__":

@@ -63,3 +63,5 @@ rag-ingest = "pipelines.ingestion.ingest_txt:main"
 rag-chunk = "pipelines.chunking.chunk_sections:main"
 rag-index = "pipelines.indexing.build_index:main"
 rag-eval = "evaluation.runner.run_retrieval_eval:run"
+index = "pipelines.etl:main"
+
