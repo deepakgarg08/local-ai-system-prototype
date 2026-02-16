@@ -48,6 +48,7 @@ https://doi.org/10.1145/3797144
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 arXiv:2602.11671v1  [cs.SE]  12 Feb 2026
 
+
 2
 Minh et al.
 ACM Reference Format:
@@ -99,6 +100,7 @@ show that similarity-based retrieval “struggle to capture code semantics” an
 generation quality by introducing noisy context, sometimes reducing accuracy. These findings
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
+
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 3
 underscore that while similarity retrieval is effective for code search, it might be insufficient for
@@ -147,6 +149,7 @@ frontier further. OpenAI Codex [6] pioneered zero-shot code generation, later ex
 also demonstrate strong reasoning and multilingual coding ability, with enhanced support for
 repository-level understanding and integration into developer workflows.
 , Vol. 1, No. 1, Article . Publication date: February 2026.
+
 
 4
 Minh et al.
@@ -211,6 +214,7 @@ standalone code generation, where the goal is to produce a self-contained functi
 given a natural language description or partial code [2, 6, 20, 37]. While impressive, such settings
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
+
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 5
 often oversimplify real-world software development, where code rarely exists in isolation. In
@@ -262,6 +266,7 @@ definitions and representative usage examples.
 generator model (e.g., LLMs) to produce the completed code.
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
+
 6
 Minh et al.
 Task description
@@ -305,6 +310,7 @@ complete a task, while maintaining their full definitions and preserving the hie
 of the codebase.
 1https://docs.python.org/3/library/ast.html
 , Vol. 1, No. 1, Article . Publication date: February 2026.
+
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 7
@@ -376,6 +382,7 @@ Section 3.3.2.
 3.3.1
 Training Dataset Construction.
 , Vol. 1, No. 1, Article . Publication date: February 2026.
+
 
 8
 Minh et al.
@@ -450,6 +457,7 @@ detection. As a result, this process yielded a dataset of approximately 564, 740
 data is divided into train/validation/test splits with a ratio of 8:1:1.
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
+
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 9
 def snake_case_to_camel(...)
@@ -512,6 +520,7 @@ integrates dependency-aware retrieval (DAR) with similarity-based retrieval (i.e
 these complementary contexts, Hydra provides the model with both the necessary building blocks
 and usage examples, yielding a more complete and effective context for code generation.
 , Vol. 1, No. 1, Article . Publication date: February 2026.
+
 
 10
 Minh et al.
@@ -579,6 +588,7 @@ and dense retrieval with UniXCoder, in correctly retrieving the dependencies req
 a function. For fairness, both strategies are applied over structure-aware indexing and evaluated on
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
+
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 11
 the test set described in Section 3.3.1, together with two considered benchmarks. We then extend
@@ -628,6 +638,7 @@ Evaluation
 In this section, we present the empirical results of our investigation, along with an in-depth analysis
 of our findings regarding the research questions.
 , Vol. 1, No. 1, Article . Publication date: February 2026.
+
 
 12
 Minh et al.
@@ -737,6 +748,7 @@ preserving the syntactic and semantic integrity of code units yields a more cohe
 view of the codebase, thereby improving the likelihood of correct generation.
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
+
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 13
 Qualitative Analysis: A Case Study on Contextual Fragmentation. Quantitative metrics
@@ -830,6 +842,7 @@ Table 3 reports the performance of sparse, dense, and dependency-aware retrieval
 detecting true dependencies. On RepoExec, both sparse and dense retrievers achieve moderate
 recall (around 0.53–0.55), but their very low precision (<0.09) shows that many retrieved candidates
 , Vol. 1, No. 1, Article . Publication date: February 2026.
+
 
 14
 Minh et al.
@@ -948,6 +961,7 @@ value to the generator than merely retrieving lexically or semantically similar 
 it also achieves higher DIR compared to sparse and dense methods (e.g., 43.81 vs. 39.9 at 1.5B,
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
+
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 15
 Fig. 5. Case study comparing the generated code by Hydra and text-based retrieval on task_id 18 (RepoExec).
@@ -1001,6 +1015,7 @@ and often deviate from the intended behavior. This highlights Hydra ’s advanta
 critical dependencies that text-based retrievers overlook.
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
+
 16
 Minh et al.
 [RQ2] Summary: Similarity-based retrieval methods, such as sparse retrieval or dense retrieval
@@ -1049,6 +1064,7 @@ effectiveness, we conduct an ablation study by systematically removing function-
 and variable-level retrieval from the search space. Table 6 presents the results across both bench-
 marks using Qwen2.5-Coder-1.5B-Instruct and Qwen2.5-Coder-7B-Instruct. Here, “w/o-Function”,
 , Vol. 1, No. 1, Article . Publication date: February 2026.
+
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 17
@@ -1233,6 +1249,7 @@ In contrast, ablating variable-level retrieval results in a comparatively smalle
 Pass@1 typically dropping by around 1-2%. These results indicate that function- and class-level
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
+
 18
 Minh et al.
 Table 6. Ablation study evaluating the contribution of different granular retrieval components in Hydra,
@@ -1338,6 +1355,7 @@ performance across queries, owing to its context-aware retrieval design. Instead
 scanning the entire repository, Hydra anchors retrieval on call-graph dependencies at the function
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
+
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 19
 Table 7. Latency comparison (in milliseconds per example) of different repository-level code generation
@@ -1426,6 +1444,7 @@ that DAR is not biased toward memorized patterns and is minimally affected by po
 contamination. Regarding the risk of generator (LLMs) being pretrained on the evaluation data, we
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
+
 20
 Minh et al.
 empirically show that plain LLMs without Hydra’s retrieval module perform substantially worse
@@ -1469,6 +1488,7 @@ Acknowledgement
 Nam Le Hai was funded by the PhD Scholarship Programme of Vingroup Innovation Foundation
 (VINIF), VinUniversity, code VINIF.2025.TS68.
 , Vol. 1, No. 1, Article . Publication date: February 2026.
+
 
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 21
@@ -1529,6 +1549,7 @@ https://arxiv.org/abs/2312.10997
 Zheng. 2025. What to Retrieve for Effective Retrieval-Augmented Code Generation? An Empirical Study and Beyond.
 arXiv preprint arXiv:2503.20589 (2025).
 , Vol. 1, No. 1, Article . Publication date: February 2026.
+
 
 22
 Minh et al.
@@ -1591,6 +1612,7 @@ https://arxiv.org/abs/2402.14323
 $\mathbf{Aˆ{3}}$A3-CodGen: A Repository-Level Code Generation Framework for Code Reuse With Local-Aware,
 , Vol. 1, No. 1, Article . Publication date: February 2026.
 
+
 Do Not Treat Code as Natural Language: Implications for Repository-Level Code Generation and Beyond
 23
 Global-Aware, and Third-Party-Library-Aware. IEEE Trans. Software Eng. 50, 12 (2024), 3369–3384. doi:10.1109/TSE.
@@ -1651,6 +1673,7 @@ of the 46th IEEE/ACM International Conference on Software Engineering. 1–12.
 [52] Fengji Zhang, Bei Chen, Yue Zhang, Jacky Keung, Jin Liu, Daoguang Zan, Yi Mao, Jian-Guang Lou, and Weizhu Chen.
 2023. RepoCoder: Repository-Level Code Completion Through Iterative Retrieval and Generation. In Proceedings
 , Vol. 1, No. 1, Article . Publication date: February 2026.
+
 
 24
 Minh et al.

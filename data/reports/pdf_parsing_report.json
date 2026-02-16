@@ -1,0 +1,62 @@
+{
+  "summary": {
+    "total_files": 5,
+    "single_column": 1,
+    "two_column": 4,
+    "ocr_used": 0,
+    "total_text_length": 460194,
+    "avg_text_length": 92038
+  },
+  "files": [
+    {
+      "file_name": "rag_papers/2602.11581v1.pdf",
+      "pages": null,
+      "method": "native",
+      "ocr_used": false,
+      "text_length": 73972,
+      "columns_detected": 2,
+      "left_blocks": 42,
+      "right_blocks": 42
+    },
+    {
+      "file_name": "rag_papers/2602.11671v1.pdf",
+      "pages": null,
+      "method": "native",
+      "ocr_used": false,
+      "text_length": 86786,
+      "columns_detected": 1,
+      "left_blocks": 17,
+      "right_blocks": 18
+    },
+    {
+      "file_name": "rag_papers/2602.11746v1.pdf",
+      "pages": null,
+      "method": "native",
+      "ocr_used": false,
+      "text_length": 120192,
+      "columns_detected": 2,
+      "left_blocks": 30,
+      "right_blocks": 31
+    },
+    {
+      "file_name": "rag_papers/RAG1.pdf",
+      "pages": null,
+      "method": "native",
+      "ocr_used": false,
+      "text_length": 120192,
+      "columns_detected": 2,
+      "left_blocks": 30,
+      "right_blocks": 31
+    },
+    {
+      "file_name": "rag_papers/RAG2.pdf",
+      "pages": null,
+      "method": "native",
+      "ocr_used": false,
+      "text_length": 59052,
+      "columns_detected": 2,
+      "left_blocks": 20,
+      "right_blocks": 20
+    }
+  ]
+}

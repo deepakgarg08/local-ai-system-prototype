@@ -10,7 +10,7 @@ local_ai_system_prototype.egg-info/
 # Nothing ignored here intentionally
 
 # Indexes (generated later)
-data/indexes/
+# data/indexes/
 
 # Models & vector stores (never commit)
 models/

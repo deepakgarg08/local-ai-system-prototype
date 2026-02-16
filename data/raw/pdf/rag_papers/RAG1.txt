@@ -1,8 +1,7 @@
-Leveraging Language Models to Discover Evidence-Based Actions
-for OSS Sustainability
-Nafiz Imtiaz Khan∗, Vladimir Filkov
-Department of Computer Science, University of California, Davis, CA 95616, USA
 Abstract
+
+arXiv:2602.11746v1  [cs.SE]  12 Feb 2026
+
 When
 successful,
 Open
@@ -40,14 +39,25 @@ ing OSS projects toward sustainability.
 Keywords:
 Research Actionable, Open Source
 Software, Sustainability, Literature Review
+
 1
 Introduction
+
 Open Source Software (OSS) underpins a multi-
 billion-dollar global ecosystem and is a foundational
 component of modern software systems. Most large
 technology companies rely extensively on OSS in their
 production infrastructure. A recent Harvard Business
+
 ∗Corresponding author: nikhan@ucdavis.edu
+
+
+Leveraging Language Models to Discover Evidence-Based Actions
+for OSS Sustainability
+
+Nafiz Imtiaz Khan∗, Vladimir Filkov
+Department of Computer Science, University of California, Davis, CA 95616, USA
+
 School report estimates that recreating the OSS com-
 ponents currently embedded in commercial software
 would cost approximately $8.8 trillion [1]. This fig-
@@ -94,8 +104,9 @@ are often abstract or indirectly measurable signals of
 project health. They tell maintainers what might be
 going wrong, but not what to do about it. As a re-
 sult, there remains a critical gap between sustainabil-
+
 1
-arXiv:2602.11746v1  [cs.SE]  12 Feb 2026
+
 
 ity prediction and actionable intervention: even when
 a model forecasts that a project is at risk, maintain-
@@ -165,6 +176,8 @@ to 829 OSS papers from top SE conference venues
 ReACTs organized into practice-oriented categories
 that can be mapped to project health signals via the
 APEX sustainability framework.
+
+
 Contributions and Relation to Prior Work.
 This study builds on and substantially extends prior
 work presented in a FSE-IVR idea paper [8]. That
@@ -174,6 +187,7 @@ preselected socio-technical features from [6].
 The
 present work makes four key advances over that
 preliminary study:
+
 1. Corpus-scale LLM-based extraction:
 We
 scale ReACT extraction from 186 manually-
@@ -188,6 +202,7 @@ Shot,
 Chain-of-Thought,
 Reason+Action) to
 identify the best-performing combination.
+
 2. Two-layer refinement and reliability vali-
 dation:
 We introduce an automated pipeline
@@ -198,6 +213,7 @@ dence statements, and evaluate each ReACT for
 soundness and precision, yielding 1,922 validated
 ReACTs, of which 1,312 meet strict quality cri-
 teria.
+
 3. Category-level organization:
 Rather than
 mapping to fixed predictive features, we organize
@@ -207,6 +223,7 @@ dards and Maintainability, Community Collab-
 oration) that directly correspond to maintainer
 actions and can be flexibly connected to project
 states.
+
 4. Operational integration with ASFI: We
 demonstrate practical applicability through de-
 tailed case studies of Apache Software Founda-
@@ -215,6 +232,7 @@ ACTs can be selected based on APEX-identified
 sustainability turning points to provide targeted,
 evidence-based guidance during critical project
 phases.
+
 Together, these contributions move beyond man-
 ual, feature-bound actionables toward a scalable, re-
 producible, and actionable bridge between OSS re-
@@ -225,13 +243,17 @@ can use to guide OSS projects toward sustainability,
 grounded in decades of empirical software engineering
 research and validated through rigorous LLM-based
 extraction and refinement.
+
 2
+
 
 2
 Background
+
 2.0.1
 Language Models for Software Engi-
 neering
+
 With the emergence of open-source LLMs, SE re-
 searchers and developers are utilizing LLMs for vari-
 ous SE tasks. According to a survey study by Zheng
@@ -269,9 +291,11 @@ developer assistance tasks.
 The above studies point to the LLMs’ effectiveness
 in handling a wide variety of software engineering
 tasks and data.
+
 2.0.2
 Language Models for Evidence Extrac-
 tion
+
 LLMs are being employed in various domains to ex-
 tract evidence from documents and scientific liter-
 ature.
@@ -285,6 +309,8 @@ by Huang et al. [16] extracted structured informa-
 tion from over 1000 lung cancer and 191 pediatric
 osteosarcoma pathology reports.
 The authors uti-
+
+
 lized ChatGPT-3.5 (gpt-3.5-turbo-16k) through Ope-
 nAI’s API for batch querying. The evaluation showed
 ChatGPT-3.5 achieved 89% overall accuracy for lung
@@ -319,8 +345,10 @@ and published literature. However, no such research
 has been conducted in SE to extract evidence or infor-
 mation from SE literature or technical reports, high-
 lighting a plausibility and urgency for exploration.
+
 3
 Research Questions
+
 LLMs have shown potential in various tasks, but their
 ability to extract actionable insights from the scien-
 tific literature remains under-explored. Given their
@@ -330,25 +358,31 @@ are both relevant and useful for enhancing practices.
 Understanding their efficacy in this domain can un-
 lock new avenues for automating knowledge extrac-
 tion from research articles.
+
 RQ1
 Can we use LLMs to effectively de-
 rive evidence-based actionable recommendations
 from scientific literature?
+
 When LLMs generate actionable recommenda-
 tions, the quantity and quality of these outputs are
 crucial.
 Poor-quality actionables can mislead both
+
 3
+
 
 practitioners and researchers, underscoring the im-
 portance of evaluating whether LLM-derived recom-
 mendations meet the necessary standards for practi-
 cal use in enhancing OSS sustainability.
+
 RQ2: How many evidence-based actionable rec-
 ommendations can LLMs derive from scientific
 literature published in top SE venues (ICSE and
 FSE) in the domain of OSS, and what is the
 reliability of those derived actionables?
+
 Even if LLMs can generate high-quality action-
 ables, their value depends on their implementation in
 real-world settings. The gap between theoretical rec-
@@ -358,16 +392,21 @@ actionables can be effectively integrated into software
 engineering practices, e.g, through existing traces or
 workflow monitoring tools, is vital for achieving tan-
 gible improvements in OSS projects.
+
 RQ3 How can the actionables be presented
 meaningfully in practice?
+
 4
 Methodology
+
 Here, we describe a number of diverse methods we
 utilize to answer our research questions. The overall
 study methodology is presented through a conceptual
 diagram in Fig. 1.
+
 4.1
 Selection of Relevant Articles
+
 Most SE researchers present their best work at pres-
 tigious conferences. Thus, our focus is on publica-
 tions in top-tier SE conference venues. Specifically,
@@ -387,10 +426,14 @@ selection criteria.
 We included only those articles
 whose titles or abstracts contained the strings “Open
 Source” or “OSS,” which resulted in 569 ICSE articles
+
+
 and 260 FSE. Thus, our dataset comprises those 829
 conference articles.
+
 4.2
 ReACT Definition and Examples
+
 Before describing our extraction methodology, we
 first clarify what constitutes a ReACT (Researched
 Actionable). A ReACT is a concise, evidence-based
@@ -398,51 +441,70 @@ recommendation extracted from peer-reviewed soft-
 ware engineering research that specifies a concrete
 action maintainers can take to improve OSS project
 health. Each ReACT consists of three components:
+
 1. Action: A clear, implementable practice (e.g.,
 “Implement automated code linting in the CI
 pipeline”)
+
 2. Impact: The stated effect on project outcomes
 (e.g., “Reduces code review time and improves
 code quality”)
+
 3. Evidence: The empirical basis from the source
 study (e.g., “Empirical analysis of OSS projects
 showed reduction in defect density”)
+
 Example ReACT 1 (Complete: Both Action
 & Impact Present):
+
 • Action: “Encourage mentors to provide feedback
 on pull requests (PRs) by acknowledging their
 efforts and contributions”
+
 • Impact: “Increases newcomer retention and ac-
 celerates their path to becoming regular contrib-
 utors”
+
 • Evidence: “Mixed-methods study of 12 Apache
 projects found that acknowledged newcomers
 were 2.3× more likely to make subsequent con-
 tributions”
+
 • Source: Feng et al. [22]
+
 Example ReACT 2 (Action-only, no explicit
 impact):
+
 • Action: “Consider synchronizing branches before
 applying refactorings that are likely to be incom-
 patible with changes made in parallel”
+
 • Impact: (Not explicitly stated in source article)
+
 • Evidence: “Analysis of 10,000+ merge scenarios
 in 30 projects showed that pre-synchronization
 reduced merge conflicts by 41%”
+
 • Source: Oliveira et al. [23]
+
 These examples illustrate that not all extracted Re-
 ACTs are equally complete or actionable, motivating
 our two-layer refinement and reliability assessment
 process (described below).
+
 4
+
 
 4.3
 LLMs Task Definition
+
 To address the RQs, we defined three specific tasks
 while adopting an experimental consideration, which
 are discussed as follows:
+
 4.3.1
 ReACT Derivation
+
 In this task, LLMs were provided with a prompt and
 the full text of an article, along with instructions for
 extracting ReACTs. The ReACTs are the basic units
@@ -464,8 +526,10 @@ ACT derivation task. The top-performing LLM and
 prompting technique was then applied to the full
 dataset of 829 articles of this study to derive all Re-
 ACTs.
+
 4.3.2
 ReACT Refinement
+
 To improve the derived ReACTs, we implemented a
 refinement layer aimed at identifying relevant infor-
 mation about them. This layer extracts “impact” and
@@ -474,34 +538,44 @@ tionables are backed by sufficient contextual informa-
 tion. It also filters hallucinated ReACTs, those gen-
 erated by the LLM but not actually present in the
 source article.
+
 4.3.3
 ReACT Reliability Assessment
+
 This task involved assessing the reliability of the final-
 ized, refined ReACTs using predefined criteria. The
 purpose of this task is to ensure whether the gener-
 ated ReACTs are logically consistent (soundness) and
 directly adaptable (preciseness).
+
 4.3.4
 Experimental Consideration
+
 In our study, we performed all experiments while
 keeping a constant model temperature (temp = 0).
 Temperature in the context of LLMs is a hyperparam-
 eter that controls the randomness of the model’s out-
 put [24]. A lower temperature (closer to 0) makes the
+
+
 model’s responses more deterministic and focused,
 while a higher temperature increases randomness and
 creativity. The other hyperparameters of the model,
 such as: top_p, top_k, min_p, and repeat_penalty
 were kept at default values.
+
 4.4
 Evaluation Metrics
+
 Due to the lack of standardized evaluation measures
 for LLMs, we use a variety of metrics to evaluate
 both the LLM performance and the reliability of the
 predictions.
+
 4.4.1
 LLM Performance: Metrics for Model
 Selection
+
 For selecting the best-performing LLM and prompt-
 ing technique on our small labeled set, we em-
 ployed four quantitative evaluation metrics inspired
@@ -542,87 +616,83 @@ study) calculates the geometric mean of n-gram pre-
 cisions up to 4-grams [31]. This metric captures local
 fluency and adequacy by measuring the overlap of
 short word sequences (up to 4 words long) between
+
 5
+
+
+paper  
+set - icse+f se 
+
+sel ect ed ar t icl es (n=829)
+
+(n= 7593)
+
+sel ect ed ar t icl es (n=10)
 
 paper  
 Set - f r om 
 pr ior  r eact  
 st udy (n=186)
-paper  
-set - icse+f se 
-(n= 7593)
-sel ect ed ar t icl es (n=829)
+
+l l m 1
+
+l abel ed 
+dat aset  
+
 manual  
 annot at ion
-l l m 1
+
 l l m 2
-l l m 3
-l l m 4
-t echnique 1
-t echnique 2
-t echnique 3
-pr ompt ing
-l l ms
-expl or at ion of  dif f er ent  l l ms- pr omt s
-l abel ed 
-dat aset  
+
 (n=10)
-sel ect ed ar t icl es (n=10)
-Best - per f or ming
-l l m
-t ehnique
-l abel ed 
-dat aset  
-(n=829)
+
+l l m 3
+
+l l m 4
+
 1st  phase
 (impact  and 
-evidence 
-ext r act ion)
-best  per f or ming l l m
-f ol l ow- up pr ompt ing
+
 2nd phase
 (soundness and 
+
+evidence 
+ext r act ion)
+
 pr eciseness 
 assignment )
+
+l abel ed 
+dat aset  
+
 best  per f or ming l l m
+
+best  per f or ming l l m
+
+(n=829)
+
 f ol l ow- up pr ompt ing
-act ionabl e set
-r eact , impact , evidence, 
-soundess, pr eciseness
-manual  
-val idit y 
-checking
-sel ect ed ar t icl es (n=100)
-manual  
-assignment  
-of   
-cat egor ies
-case st udies
-pr oj ect  1
-pr oj ect  2
-pr oj ect  specif ic 
-act ionabl es
-act ionabl es f or  asf i 
-pr oj ect  1
-act ionabl es f or  asf i 
-pr oj ect  2
+
+f ol l ow- up pr ompt ing
+
 ASFI
 act ionabl e 
+
+manual  
+assignment  
+
+pr oj ect  1
+
 wit h 
 cat egor ies
-mapping 
-bet ween 
-pr oj ect  
-st at us and 
+
+of   
 cat egor ies
-achieved 
-r q1
-achieved 
-r q2
-achieved 
-r q3
-Figure 1: Conceptual Diagram Illustrating the Methodology
+
+pr oj ect  2
+
 the generated text and reference translations.
+
 ROUGE-L. ROUGE-L (Recall-Oriented Under-
 study for Gisting Evaluation - Longest Common Sub-
 sequence) measures the longest common subsequence
@@ -630,6 +700,7 @@ between the generated output and reference text [32].
 Unlike n-gram-based metrics, ROUGE-L captures
 sentence-level structure and allows for word order
 flexibility.
+
 BERTScore.
 BERTScore leverages pre-trained
 BERT embeddings to assess the semantic similarity
@@ -639,6 +710,7 @@ our study, we utilized the BERT-base-uncased [34]
 variant of BERT, which has 12 layers and 768 hid-
 den units; “uncased” means that the model does not
 differentiate between uppercase and lowercase letters.
+
 METEOR. METEOR (Metric for Evaluation of
 Translation with Explicit ORdering) incorporates lin-
 guistic features to capture semantic equivalence and
@@ -646,11 +718,80 @@ structural adequacy [35]. Its flexible matching strat-
 egy accounts for exact matches, stemming, synonymy,
 and paraphrasing, which provides a more nuanced
 evaluation of semantic similarity.
+
+
+expl or at ion of  dif f er ent  l l ms- pr omt s
+
+pr ompt ing
+l l ms
+
+Best - per f or ming
+
+l l m
+
+t echnique 1
+
+achieved 
+
+r q1
+
+t ehnique
+
+t echnique 2
+
+t echnique 3
+
+sel ect ed ar t icl es (n=100)
+
+manual  
+val idit y 
+checking
+
+achieved 
+
+act ionabl e set
+
+r q2
+
+r eact , impact , evidence, 
+
+soundess, pr eciseness
+
+case st udies
+
+pr oj ect  specif ic 
+
+mapping 
+bet ween 
+
+act ionabl es
+
+achieved 
+
+act ionabl es f or  asf i 
+
+pr oj ect  
+st at us and 
+
+r q3
+
+pr oj ect  1
+
+cat egor ies
+
+act ionabl es f or  asf i 
+
+pr oj ect  2
+
+Figure 1: Conceptual Diagram Illustrating the Methodology
+
 4.4.2
 ReACT Reliability Assessment
+
 To assess the final set of ReACTs, we measure their
 reliability using two metrics: Soundness and Precise-
 ness.
+
 Soundness. A ReACT is sound if it makes logi-
 cal sense and has no contradictions. This means that
 all parts of the recommendation work together con-
@@ -663,6 +804,7 @@ without onboarding newcomers”- is considered an un-
 sound ReACT because adding features without test-
 ing can hurt user satisfaction, and not onboarding
 newcomers can reduce support quality.
+
 Preciseness. A ReACT is precise if it is clear and
 easy to follow. It should be specific and leave no room
 for confusion. For example, “To attract newcomers,
@@ -672,18 +814,23 @@ On the
 contrary, “To attract core developers, ensure high code
 quality”- is considered imprecise as it does not explain
 how to ensure high code quality.
+
 6
+
 
 4.5
 LLM Selection
+
 Hugging Face is one of the best platforms for hosting
 LLMs [36]. However, it is quite challenging to identify
 the most suitable set of models for a specific task,
 given the vast number of models available on Hugging
 Face. Thus, to address this challenge, we considered
 several factors.
+
 4.5.1
 Selection Criteria
+
 Privacy. As maintaining the privacy of the papers
 is of paramount importance in our study, we selected
 LLMs that can be run locally without internet re-
@@ -728,10 +875,14 @@ and context win-
 dow), we identified four models as potential can-
 didates: Llama3-8B, Mixtral-8x7B, MistralLite-7B,
 and Mistral-Nemo-12B.
+
 4.5.2
 Selected Models
+
 Llama3-8B. Developed by Meta [45], Llama3 8B is
 a language model with 8 billion parameters and a
+
+
 default context size of 8k tokens [46]. We utilized the
 version of the model which has a context window of
 32k tokens [47] and is contributed by Nurture AI [48].
@@ -756,8 +907,10 @@ Mistral-Nemo-12B. The model Mistral-Nemo
 of 128k tokens [54]. Its large parameter count and
 substantial context window contribute to its robust
 performance across diverse NLP benchmarks [55].
+
 4.6
 Prompt Engineering
+
 A prompt in LLM is the input text or instruction
 given to the model to elicit a specific response or gen-
 erate relevant output [56]. In this study, we adapted
@@ -776,8 +929,10 @@ plicable), as they can significantly boost the perfor-
 mance of LLMs on generative tasks [59].
 We have performed prompt engineering for each of
 our defined tasks, which are described as follows:
+
 4.6.1
 ReACT Derivation
+
 For this task, inspired by prior studies [60, 61],
 we adapted three prompting techniques: Zero-Shot,
 Chain-of-Thought, and Reason+Action, which are
@@ -786,7 +941,9 @@ Zero-Shot. Zero-Shot prompting allows LLMs to
 leverage general knowledge and tackle new problems
 based solely on task descriptions [62]. The Zero-Shot
 prompt used in our study contains 76 tokens, and the
+
 7
+
 
 structure of the prompt is provided in Section 1.1 of
 the Appendix.
@@ -848,6 +1005,8 @@ Reason+Action
 prompting
 approach
 em-
+
+
 ployed in this study follows a structure similar to
 CoT prompting. The prompt is organized into a se-
 ries of thought, action, and observation cycles, which
@@ -866,8 +1025,10 @@ the models are instructed to remove the duplicates);
 and Confidence Scoring, where each recommendation
 is assigned a confidence score on a scale of 0 to 1, ac-
 companied by a brief explanation.
+
 4.6.2
 ReACT Refinement
+
 ReACTs are evidence-based and should provide a tan-
 gible action when implemented.
 While our initial
@@ -896,42 +1057,55 @@ the articles. Initially, the content of the article was
 provided to the model, followed by a series of ques-
 tions.
 Explicit Prompt Sequence:
+
 1. Hallucination Check: “Answer YES or NO
 only. Does the article explicitly mention the fol-
 lowing actionable: [ReACT text]?”
+
 • If NO →discard ReACT (classified as hal-
 lucinated)
 • If YES →proceed to impact extraction
+
 2. Impact Extraction:
 “Answer YES or NO
 only.
 Does the article explicitly state the im-
+
 8
+
 
 pact(s) on open-source projects if this actionable
 is adopted?”
+
 • If YES →“What impact(s) does the article
 indicate would result from adopting this ac-
 tionable? Provide the exact statement.”
+
 • If NO →classify as “actionable without im-
 pact”
+
 3. Evidence Extraction: “Answer YES or NO
 only. Does the article provide any empirical evi-
 dence to support its claims regarding the stated
 impact(s)?”
+
 • If YES →“Describe the empirical evidence
 presented in the article that supports the
 claim that the recommended action will
 produce the stated impact(s).”
+
 • If NO →classify as “actionable without ev-
 idence”
+
 This ReACT refinement process, utilizing a se-
 quence of follow-up prompts, effectively eliminates
 hallucinated ReACTs and ensures that the action-
 ables are substantiated with both impact and evi-
 dence (if available).
+
 4.6.3
 ReACT Reliability Assessment
+
 Based on the definition of ReACT reliability, here
 also, we designed a follow-up prompt to assess
 whether a particular ReACT is Sound and Precise.
@@ -939,36 +1113,48 @@ The flowchart for this reliability analysis is shown in
 Fig. 4. In this phase as well, we utilized the winner
 LLM from task one.
 Explicit Prompt Sequence:
+
 1. Soundness Assessment: First, we provide the
 model with the definition of “SOUND” (as spec-
 ified in Section 4.4.1): “A ReACT is sound if it
 makes logical sense, has no contradictions, and
 all parts of the recommendation work together
 consistently.”
+
 Then we ask: “Answer YES or NO only. Given
 the definition of SOUND, can the following ac-
 tion be considered SOUND: [ReACT text]?”
+
 • If YES →“What is your rationale for con-
 sidering the action SOUND?”
+
 • If NO →“What is your rationale for con-
 sidering the action UNSOUND?”
+
 2. Preciseness Assessment:
 Next, we present
 the definition of “PRECISE”: “A ReACT is pre-
 cise if it is clear, easy to follow, specific, and
 leaves no room for confusion.”
+
+
 Then we ask: “Answer YES or NO only. Given
 the definition of PRECISE, can the following ac-
 tion be considered PRECISE: [ReACT text]?”
+
 • If YES →“What is your rationale for con-
 sidering the action PRECISE?”
+
 • If NO →“What is your rationale for con-
 sidering the action IMPRECISE?”
+
 This follow-up prompting process for ReACT qual-
 ity assessment ensures that each ReACT meets our
 defined quality standards.
+
 4.7
 Development of the LLM Pipeline
+
 This section details the development process of the
 LLM pipeline used in our study. For designing the
 pipeline, we considered that LLMs can hallucinate
@@ -1011,126 +1197,217 @@ perceives the context of the entire article before de-
 riving ReACTs.
 The text chunks undergo a cleaning process where
 the “ACKNOWLEDGEMENT” and “REFERENCE”
+
 9
 
-...........
-Split the articles 
-in Chunks
-...........
-KnowledgeBase
-Chroma DB
-Converting to 
-Embedding
-Semantic 
-Search
-FOUND
-NOT FOUND
-Prompt
+
 LLM
 ReACTs
-PDF of 
-Articles
-...........
-Vector 
+
+Converting to 
+
+Prompt
+
 Embedding
+
 No Relevent Info
-Ranked Result
-+
-PDF of Article 1
-Semantic 
-Index
-PDF of Article 2
-PDF of Article 3
-PDF of Article n
+
 Article to Text 
+
 Chunk 
 Conversion
-Text Chunk to 
-Embedding 
-Conversion
-Embedding 1
-Embedding 2
-Embedding 3
-Embedding n
-Text Chunk 1
-Text Chunk 2
-Text Chunk 3
-Text Chunk n
+
+PDF of Article 1
+
+PDF of Article 2
+
+Split the articles 
+
+PDF of 
+Articles
+
+PDF of Article 3
+
+in Chunks
+
+...........
+
+PDF of Article n
+
 Figure 2: Architecture of the proposed RAG pipeline (Adapted from EvidenceBot [68])
+
 PDF of Article
+
 Answer "YES" or "N O" only. 
-Does the article explicitly 
-mention Actionable X ?
+
 D iscard 
 Actionable
+
+Does the article explicitly 
+
+N O
+
+mention Actionable X ?
+
+YES
+
+Classify as 
+Actionable 
+
 Answer "YES" or "N O" only. 
 Does the article explicitly state the 
+
+N O
+
+without 
+IM PACT
+
 impact(s) on open-source projects 
+
 if actionable X  is adopted?
+
+YES
+
+What impact(s) does the article 
+
+Stated 
+Im pact(s)
+
+indicate would result from 
+
+adopting actionable X ?
+
+Classify as 
+Actionable 
+
 Answer "YES" or "N O" only. 
 Does the article provide any empirical 
+
+N O
+
+without 
+EVIDEN CE
+
 evidence to support its claims 
 regarding the stated impact(s)?
-What impact(s) does the article 
-indicate would result from 
-adopting actionable X ?
+
+YES
+
+Em pirical 
+Evidence
+
  Describe the empirical evidence 
 presented in the article that supports the 
 claim that the recommended action will 
+
 produce the stated impact(s).
-YES
-YES
-Stated 
-Im pact(s)
-Em pirical 
-Evidence
-YES
-N O
-Classify as 
-Actionable 
-without 
-IM PACT
-Classify as 
-Actionable 
-without 
-EVIDEN CE
-N O
-N O
+
 Figure 3: Flowchart of the Follow-Up Prompting Technique
 for ReACT Refinement
+
+
+Ranked Result
++
+
+FOUND
+
+Chroma DB
+
+Vector 
+Embedding
+
+Semantic 
+
+KnowledgeBase
+
+Search
+
+NOT FOUND
+
+Text Chunk to 
+
+Embedding 
+Conversion
+
+Embedding 1
+
+Text Chunk 1
+
+Embedding 2
+
+Text Chunk 2
+
+Semantic 
+
+Embedding 3
+
+Text Chunk 3
+
+Index
+
+...........
+
+...........
+
+Embedding n
+
+Text Chunk n
+
 Actionable
+
 [Definition SOU N D]
 Answer "YES" or "N O" 
 only. Given the definition 
 of SOU N D, can the action 
+
 be considered SOU N D?
-[Defination PRECISE]
-Answer "YES" or "N O" 
-only. Given the 
-definition of PRECISE, 
-can the action be 
-considered PRECISE?
-What is your rationale 
-for considering the 
-action SOU N D?
-What is your rationale 
-for considering the 
-action PRECISE?
+
 YES
+
+What is your rationale 
+
+N O
+
 Rationale 
 for Being 
 SOUN D
+
+for considering the 
+
+action SOU N D?
+
+[Defination PRECISE]
+
+Answer "YES" or "N O" 
+
+only. Given the 
+definition of PRECISE, 
+
+can the action be 
+considered PRECISE?
+
+YES
+
 Rationale 
 for Being 
 PRECISE
-YES
+
+N O
+
+What is your rationale 
+
+for considering the 
+
+action PRECISE?
+
 LOOP EN D S
-N O
-N O
+
 Figure 4: Flowchart of the Follow-Up Prompt-
 ing Technique for ReACT Reliability Assess-
 ment
+
 10
+
 
 sections are removed as they are irrelevant for Re-
 ACT derivation. The cleaned text chunks are then
@@ -1163,8 +1440,10 @@ of the article.
 The pipeline is designed for single-
 article processing and does not support simultaneous
 multi-article queries.
+
 4.7.1
 Independence of Pipeline Stages
+
 Although we use the same model across all three
 pipeline stages, each stage operates as an indepen-
 dent, stateless function call. In the extraction stage,
@@ -1192,8 +1471,11 @@ its training, these tendencies will manifest across all
 stages.
 We address this through human validation
 (Section 4.8).
+
+
 4.8
 Sanity Check
+
 In this step, we manually evaluated the performance
 of the winner LLM from task one in refining and as-
 sessing ReACTs (tasks 2 and 3). After the accom-
@@ -1229,8 +1511,10 @@ the disagreements were resolved, we got the final hu-
 man labeling/gold annotation, which we compared
 with the LLM’s actual response for performing the
 sanity check.
+
 4.9
 Categorization of ReACTs
+
 To provide OSS project-specific ReACTs to the devel-
 oper community, we categorized them into eight dis-
 tinct categories: a) New Contributor Onboarding and
@@ -1245,7 +1529,9 @@ in-depth discussion and careful consideration of the
 specific needs of OSS projects. The categories’ def-
 initions and the criteria for categorization (i.e., the
 conditions qualifying a ReACT for inclusion in a par-
+
 11
+
 
 ticular category) are provided in Section 2 of the Ap-
 pendix.
@@ -1258,8 +1544,10 @@ sanity check, the quality of these annotations was as-
 sessed using the IAA score. Following the annotation
 process, both researchers collaboratively resolved any
 disagreements through discussion.
+
 4.10
 Case Studies
+
 We conducted case studies with marginal projects
 to demonstrate how ReACTs can be effectively ap-
 plied to support the development of OSS projects.
@@ -1302,6 +1590,8 @@ in the Apache mailing list [83], while technical net-
 works represent developers’ code contributions to dif-
 ferent file types. The activity data of the tool include
 month-wise social and technical network, number of
+
+
 emails, commits, contributors, etc. The tool employs
 an LSTM model trained on 18 socio-technical fea-
 tures to generate month-by-month graduation prob-
@@ -1314,11 +1604,13 @@ a downturn. Using APEX, users can explore project
 data over time, compare different projects, and an-
 alyze sustainability turning points. The tool can be
 publicly accessed at this link.
+
 5
 RESULTS
 AND
 DISCUS-
 SION
+
 5.1
 RQ1:
 Can we use LLMs to ef-
@@ -1327,6 +1619,7 @@ tionable
 recommendations
 from
 the scientific literature?
+
 Summary: Among four LLMs and three prompt-
 ing techniques evaluated on our small labeled set
 of 10 papers (42 annotated ReACTs), Mixtral-8x7B
@@ -1364,7 +1657,9 @@ Conversely,
 Llama3-8B
 consistently
 performed
+
 12
+
 
 poorly across all metrics and prompting techniques.
 Its low scores indicate that this model struggles
@@ -1378,6 +1673,7 @@ Given the small size and author-annotated nature
 of the labeled set, this comparison should be inter-
 preted as a pragmatic model-selection heuristic, not
 a definitive ranking of LLM capabilities
+
 RQ1 Findings: LLMs can be used to derive ac-
 tionable recommendations from scientific articles.
 Among the evaluated models and prompting tech-
@@ -1387,6 +1683,7 @@ with the Chain-of-Thought prompting method
 achieved the best performance by a large margin
 across all metrics, establishing it as our selected
 configuration for full-scale extraction.
+
 5.2
 RQ2:
 How many evidence-based
@@ -1396,6 +1693,7 @@ ature published in top SE venues
 (ICSE and FSE) in the domain of
 OSS, and what is the reliability of
 those derived actionables?
+
 Summary:
 From 829 ICSE/FSE papers, we ex-
 tracted 2,023 candidate ReACTs. After filtering 101
@@ -1420,6 +1718,8 @@ did not produce any ReACTs—either because they
 did not focus on actionable practices or because
 their findings were too abstract for concrete extrac-
 tion. The model’s self-confidence score for ReACT
+
+
 derivation averaged 0.8, with a standard deviation of
 0.1436. In total, this initial layer of analysis resulted
 in the extraction of 2,023 ReACTs, or approximately
@@ -1475,9 +1775,12 @@ results of this analysis revealed that out of the 1,922
 ReACTs, only 21 (1.1%) were classified as Unsound,
 while 1,901 (98.9%) were classified as Sound.
 Ad-
+
 13
 
+
 Table 1: Performance Analysis of ReACT Derivations Across Different LLMs and Prompting Techniques
+
 Model
 Prompt
 Technique
@@ -1485,6 +1788,7 @@ BLEU-4
 METEOR
 ROUGE-L
 BERT
+
 Llama3-8b
 Zero Shot
 0.04
@@ -1501,6 +1805,7 @@ Reason+Action
 0.16
 0.09
 0.47
+
 Mixtral-8x7b
 Zero Shot
 0.38
@@ -1517,6 +1822,7 @@ Reason+Action
 0.17
 0.10
 0.46
+
 MistralLite-7b
 Zero Shot
 0.44
@@ -1533,6 +1839,7 @@ Reason+Action
 0.30
 0.27
 0.57
+
 Mistral Nemo-12B
 Zero Shot
 0.10
@@ -1549,6 +1856,7 @@ Reason+Action
 0.14
 0.07
 0.43
+
 ditionally, 226 ReACTs (11.8%) were categorized as
 Imprecise, with 1,697 (88.2%) classified as Precise.
 Interestingly, 8 ReACTs were found to be both Un-
@@ -1558,8 +1866,10 @@ ing. Overall, we identified 1,312 ReACTs (68.3% of
 validated ReACTs) as complete, meeting all criteria:
 SOUND, PRECISE, and having explicit mentions of
 both impact and evidence.
+
 5.2.1
 Human Validation and Sanity Check
+
 To validate the efficacy of our study’s methodology,
 we conducted a manual evaluation of the ReACTs as
 described in Section 4.8. This process involved se-
@@ -1587,6 +1897,8 @@ varied in form across papers. Soundness achieved a
 The near-perfect agreement on impact and precise-
 ness—underscores the robustness and efficacy of our
 two-layer refinement and reliability assessment ap-
+
+
 proach in extracting and analyzing ReACTs from aca-
 demic literature.
 It is important to clarify what these high sound-
@@ -1603,6 +1915,7 @@ ensure project sustainability. Preciseness reflects lin-
 guistic clarity and operational specificity, rather than
 contextual fit or empirical strength beyond what is
 reported in the source study.
+
 RQ2 Findings:
 We identified 1,922 validated
 ReACTs from 829 ICSE/FSE papers. Of these,
@@ -1615,14 +1928,18 @@ pact and evidence), constituting our complete Re-
 ACT catalog. Human validation on 100 stratified-
 sampled ReACTs showed 87–100% agreement
 with LLM classifications.
+
 5.3
 RQ3: How can the actionables be
 presented meaningfully in prac-
 tice?
+
 Summary: We organized 1,922 ReACTs into eight
 practice-oriented categories and demonstrated their
 practical application through case studies of two
+
 14
+
 
 ASFI projects. The case studies show how maintain-
 ers can use APEX to identify sustainability turning
@@ -1634,8 +1951,10 @@ ACTs into practice-oriented categories, then per-
 formed case studies on projects from the ASFI us-
 ing the APEX tool to demonstrate how ReACTs can
 guide real-world OSS projects toward sustainability.
+
 5.3.1
 Categorization of ReACTs
+
 We manually categorized the ReACTs into eight pre-
 defined categories as described in Section 4.9. The
 consistency of the annotation was evaluated with
@@ -1646,6 +1965,7 @@ ACTs and the quality of that support. A summary
 of these statistics is provided in Table 2.
 Several notable patterns emerge from this catego-
 rization:
+
 • Distribution: The majority of ReACTs were
 assigned to the category Automated Testing
 and Quality Assurance (n=607, 31.6%), while
@@ -1655,6 +1975,7 @@ Onboarding and Involvement category (n=60,
 This distribution reflects the historical
 focus of OSS research on technical quality prac-
 tices over community-building practices.
+
 • Completeness Variability:
 The percentage
 of Complete ReACTs (those meeting all qual-
@@ -1673,18 +1994,22 @@ rity of automated practices research versus socio-
 technical community research, or it may indicate
 that technical practices are easier to operational-
 ize into concrete actions.
+
 • Evidence Backing: ReACTs backed by evi-
 dence ranged from 60% (Community Collabora-
 tion and Engagement) to 95% (CI/CD and De-
 vOps Automation).
 The lower evidence rates
 in community-oriented categories may reflect
+
+
 the methodological challenges of empirically val-
 idating social interventions in volunteer OSS
 contexts, whereas technical practices (testing,
 CI/CD) can be more readily evaluated through
 quantitative metrics (build times, defect rates,
 etc.).
+
 Across all categories, the percentage of Sound Re-
 ACTs was consistently high (98–100%), indicating
 that nearly all extracted recommendations are log-
@@ -1696,12 +2021,14 @@ mentation. The variability in LLM confidence scores
 was minimal, consistently ranging between 77% and
 81%, indicating stable model confidence across differ-
 ent practice areas.
+
 5.3.2
 Case
 Studies:
 Operationalizing
 Re-
 ACTs with APEX
+
 We selected two projects for case studies to illus-
 trate how ReACTs can be operationalized in prac-
 tice. These case studies are intended as exploratory
@@ -1722,6 +2049,7 @@ Maintainer Workflow for Using ReACTs: We
 describe a workflow that project maintainers can fol-
 low to select and implement ReACTs based on sus-
 tainability signals:
+
 Step 1: Identify Turning Points.
 Using APEX’s
 graduation forecast visualization, maintainers iden-
@@ -1734,39 +2062,20 @@ turn interval includes two months before and two
 months after the turning point. Thus, the downturn
 interval for CommonsRDF spans months 1–5, while
 for Tamaya it spans months 37–41.
+
 15
 
-Table 2: Summary of ReACT Derivations Across Various ReACT categories; The table presents a breakdown
-of the total number of articles contributed to a category, ReACTs for each category, along with the percentage
-of those which are SOUND, PRECISE, contain empirical evidence, and have an impact. The ’Complete
-ReACTs’ column represents ReACTs that meet all these criteria. The notation (# (%)) indicates both the
-actual count of ReACTs and the percentage relative to the total number of ReACTs in that category. The
-final column shows the average LLM confidence score for each category.
+
+SOUND
+ReACTs
+(# (%))
+
 ReACT Category
 # of
 Articles
 # of
 ReACTs
-SOUND
-ReACTs
-(# (%))
-PRECISE
-ReACTs
-(# (%))
-ReACTs
-with
-Impact
-(# (%))
-ReACTs
-with
-Evidence
-(# (%))
-Complete
-ReACTs
-(# (%))
-LLM
-Confidence
-Score (%)
+
 New Contributor Onboarding
 and Involvement
 43
@@ -1777,6 +2086,7 @@ and Involvement
 46 (76.67%)
 42 (70.00%)
 79.92
+
 Code Standards
 and Maintainability
 228
@@ -1787,6 +2097,7 @@ and Maintainability
 310 (78.68%)
 288 (73.10%)
 81.11
+
 Automated Testing
 and Quality Assurance
 309
@@ -1797,6 +2108,7 @@ and Quality Assurance
 481 (79.24%)
 431 (71.00%)
 80.83
+
 Community Collaboration
 and Engagement
 139
@@ -1807,6 +2119,7 @@ and Engagement
 146 (60.33%)
 131 (54.13%)
 78.47
+
 Documentation
 Practices
 133
@@ -1817,6 +2130,7 @@ Practices
 109 (63.01%)
 96 (55.49%)
 78.27
+
 Project Management
 and Governance
 94
@@ -1827,6 +2141,7 @@ and Governance
 105 (68.18%)
 92 (59.74%)
 77.32
+
 Security Best Practices
 and Legal Compliance
 81
@@ -1837,6 +2152,7 @@ and Legal Compliance
 131 (84.52%)
 115 (74.19%)
 80.35
+
 DevOps Automation
 and CI/CD
 87
@@ -1847,6 +2163,7 @@ and CI/CD
 130 (94.89%)
 117 (85.40%)
 80.69
+
 Step 2: Analyze Socio-Technical Signals.
 The
 APEX tool has a range slider feature that allows users
@@ -1858,6 +2175,7 @@ work), and code contribution patterns (technical net-
 work). Consequently, we selected the stated down-
 turn intervals for the projects and examined their
 socio-technical indicators.
+
 Step 3:
 Map Signals to ReACT Categories.
 Based on the observed deficits, maintainers can select
@@ -1868,6 +2186,7 @@ low contributions per developer suggest Code Stan-
 dards and Maintainability ReACTs; minimal collab-
 oration suggests Community Collaboration and En-
 gagement ReACTs.
+
 Step
 4:
 Select
@@ -1884,6 +2203,37 @@ to
 their project context, prioritizing Complete ReACTs
 (those with both impact and evidence) to maximize
 confidence in the intervention.
+
+
+Table 2: Summary of ReACT Derivations Across Various ReACT categories; The table presents a breakdown
+of the total number of articles contributed to a category, ReACTs for each category, along with the percentage
+of those which are SOUND, PRECISE, contain empirical evidence, and have an impact. The ’Complete
+ReACTs’ column represents ReACTs that meet all these criteria. The notation (# (%)) indicates both the
+actual count of ReACTs and the percentage relative to the total number of ReACTs in that category. The
+final column shows the average LLM confidence score for each category.
+
+ReACTs
+with
+Impact
+(# (%))
+
+ReACTs
+with
+Evidence
+(# (%))
+
+PRECISE
+ReACTs
+(# (%))
+
+Complete
+ReACTs
+(# (%))
+
+LLM
+Confidence
+Score (%)
+
 Step 5: Implement and Monitor.
 After imple-
 menting selected ReACTs, maintainers can monitor
@@ -1891,7 +2241,9 @@ subsequent metrics (months n + 1, n + 2, etc.) of the
 project to assess whether socio-technical indicators
 improve and whether the graduation forecast trajec-
 tory recovers.
+
 Case Study 1: CommonsRDF
+
 For the project CommonsRDF, APEX data dur-
 ing the downturn period (months 1–5) revealed that
 only seven individuals contributed to the social net-
@@ -1905,6 +2257,7 @@ tributions per developer during this time (averaging
 projects), highlighting the need for improved coding
 standards to reduce the challenges developers face
 when contributing to the project’s codebase.
+
 While the necessary interventions (recruit contrib-
 utors, improve code quality) are clear from APEX
 signals, implementing them is not straightforward.
@@ -1914,7 +2267,9 @@ OSS participation. Likewise, enhancing code quality
 is a complex and gradual process. This is where Re-
 ACTs provide actionable leverage. Actionables from
 the categories New Contributor Onboarding and In-
+
 16
+
 
 volvement and Code Standards and Maintainability
 offer evidence-based guidelines that developers can
@@ -1922,31 +2277,40 @@ follow to ensure long-term accomplishment of the re-
 quired tasks.
 Some of the ReACTs from our compiled catalog
 that could help the CommonsRDF project include:
+
 1. Encourage mentors to provide feedback
 on pull requests (PRs) by acknowledging
 their efforts and contributions (New Con-
 tributor Onboarding and Involvement)
+
 • Impact: Increases newcomer retention and
 accelerates their path to becoming regular
 contributors
+
 • Evidence:
 Mixed-methods study of 12
 Apache projects found that acknowledged
 newcomers were 2.3× more likely to make
 subsequent contributions
+
 • Source: Feng et al. [22]
+
 2. Consider synchronizing branches before
 applying refactorings that are likely to be
 incompatible with changes made in paral-
 lel (Code Standards and Maintainability)
+
 • Impact: Reduces merge conflicts and inte-
 gration overhead, making it easier for de-
 velopers to contribute
+
 • Evidence: Analysis of 10,000+ merge sce-
 narios in 30 projects showed that pre-
 synchronization reduced merge conflicts by
 41%
+
 • Source: Oliveira et al. [23]
+
 Expected Outcome:
 By implementing these
 ReACTs, CommonsRDF
@@ -1968,6 +2332,8 @@ developers on the technical side. Of the two techni-
 cally active contributors, one individual is responsible
 for 98% of the commits, while the other contributes
 only 2%. This extreme concentration indicates a lack
+
+
 of distributed ownership and knowledge sharing—a
 critical vulnerability for project sustainability.
 Therefore, during Tamaya’s downturn phase, im-
@@ -1979,19 +2345,24 @@ These evidence-based recommendations
 can support the project in overcoming its current
 challenges. Specific ReACTs that Tamaya could have
 adopted during this phase include:
+
 1. Develop a clear code of conduct that out-
 lines expectations for behavior within the
 community (New Contributor Onboarding and
 Involvement)
+
 • Impact: Establishes safe, inclusive environ-
 ment that attracts diverse contributors
+
 • Evidence:
 Analysis of GitHub projects
 showed that adoption of codes of conduct
 correlated with 15% increase in contributor
 diversity and 22% reduction in negative in-
 teractions
+
 • Source: Zhao et al. [85]
+
 2. Incorporate gamification approaches, such
 as
 awarding
@@ -2004,16 +2375,20 @@ centivize
 community-oriented
 initiatives
 (Community Collaboration and Engagement)
+
 • Impact:
 Increases engagement and mo-
 tivates contributions through recognition
 mechanisms
+
 • Evidence:
 Controlled study with 50 OSS
 projects found that gamification increased
 participation by 28% and sustained engage-
 ment over 6+ months
+
 • Source: Miller et al. [86]
+
 Counterfactual
 Reflection:
 Historically,
@@ -2040,24 +2415,38 @@ study illustrates how the ReACT catalog provides
 maintainers with concrete, evidence-based options
 at critical junctures—options that did not exist in a
 structured, accessible form before this work.
+
 17
 
-D ownturn 
-Interval
+
 Less Num ber of Contributors
 Less Technical Contributions Per D eveloper
+
 (a)
-Less Num ber of Contributors
-D ownturn 
-Interval
+
 Less Collaboration am ong D evelopers
+
 (b)
+
+
+D ownturn 
+
+Interval
+
+D ownturn 
+
+Interval
+
+Less Num ber of Contributors
+
 Figure 5: Metrics for two marginal projects from ASFI: (a) graduated project CommonsRDF which almost
 failed, while (b) retired project Tamaya which almost succeeded. The screenshots are adopted from the
 APEX tool [84].
 The figures include annotations (in red) that analyze the factors contributing to the
 downturn.
+
 18
+
 
 It should be noted that these case studies serve
 as proof-of-concept demonstrations of how ReACTs
@@ -2070,6 +2459,7 @@ meaningfully connected to real project conditions,
 the question of whether their implementation leads
 to sustained improvements remains an open and im-
 portant direction for future empirical work
+
 RQ3 Findings:
 We present a systematic ap-
 proach detailing when and how actionable rec-
@@ -2084,8 +2474,10 @@ strate a concrete five-step maintainer workflow:
 lyze socio-technical signals, (3) map signals to
 ReACT categories, (4) select evidence-based Re-
 ACTs, and (5) implement and monitor outcomes.
+
 6
 Threats to Validity
+
 This study has the following limitations, each tied to
 specific methodological choices:
 Venue Selection and Generalizability.
@@ -2117,6 +2509,8 @@ no fine-tuning is performed and the model tackles
 new tasks by leveraging patterns and information pre-
 sented in the given prompt. However, LLM models
 can struggle with in-context learning by putting more
+
+
 focus on the later part of the input sequence [88], po-
 tentially biasing extraction toward conclusions and
 recommendations that typically appear near the end
@@ -2127,6 +2521,7 @@ cles and ReACTs. Fine-tuning allows the model to
 specialize in targeted extraction tasks, improving per-
 formance on domain-specific applications while main-
 taining general knowledge.
+
 Model and Hardware Constraints.
 Due to
 our hardware constraints (12 GB VRAM), we could
@@ -2149,6 +2544,7 @@ bined with advanced prompting techniques, perform
 in deriving actionable recommendations. Such mod-
 els may extract more nuanced ReACTs or better dis-
 ambiguate vague statements.
+
 Evaluation
 Metrics
 and
@@ -2180,10 +2576,13 @@ captures aspects like interpretability,
 robustness,
 and sensitivity to errors not fully covered by existing
 quantitative metrics.
+
 19
+
 
 7
 Ethics and Data Use
+
 All full-text PDFs were processed locally on our own
 server infrastructure, with no data transmitted to ex-
 ternal cloud services or APIs. This approach ensures
@@ -2202,8 +2601,10 @@ this study. The APEX tool used for case studies re-
 lies on publicly available Apache Software Founda-
 tion project data (mailing lists, commit logs), and no
 private or sensitive project information was accessed.
+
 8
 Conclusion
+
 This study presents a novel approach to enhancing
 OSS project sustainability through the application
 of LLMs for extracting actionable recommendations
@@ -2232,8 +2633,11 @@ ture research, including the exploration of long-term
 impacts of ReACT implementation and the develop-
 ment of dynamic recommendation systems based on
 real-time project metrics.
+
+
 9
 Data Availability Statement
+
 The
 complete
 datasets
@@ -2253,14 +2657,19 @@ For
 convenient access, the final set of actionable recom-
 mendations can also be accessed via the following
 web link:<Actionable-Set>
+
 10
 ACKNOWLEDGMENTS
+
 The research received funding from the National Sci-
 ence Foundation under Grant No. 2020751
+
 References
+
 [1] Rachel Layne. Open source software: The $9
 trillion resource companies take for granted,
 2024. Accessed: 2024-07-15.
+
 [2] Gitnux.
 Open
 source
@@ -2268,17 +2677,21 @@ software
 statistics.
 https://gitnux.org/
 open-source-software-statistics/, 2024.
+
 [3] Jailton Coelho and Marco Tulio Valente. Why
 modern open source projects fail. In Proceed-
 ings of the 2017 11th Joint meeting on foun-
 dations of software engineering, pages 186–196,
 2017.
+
 [4] Charles M Schweik and Robert C English. In-
 ternet success: a study of open-source software
 commons. MIT Press, 2012.
+
 [5] Amir Hossein Ghapanchi. Predicting software
 future sustainability: A longitudinal perspec-
 tive. Information Systems, 49:40–51, 2015.
+
 [6] Likang Yin, Zhuangzhi Chen, Qi Xuan, and
 Vladimir Filkov. Sustainability forecasting for
 apache incubator projects.
@@ -2287,6 +2700,7 @@ the 29th ACM joint meeting on european soft-
 ware engineering conference and symposium on
 the foundations of software engineering, pages
 1056–1067, 2021.
+
 [7] Wenxin Xiao, Hao He, Weiwei Xu, Yuxia
 Zhang, and Minghui Zhou. How early partic-
 ipation determines long-term sustained activ-
@@ -2296,7 +2710,9 @@ In Proceedings of the
 ing Conference and Symposium on the Foun-
 dations of Software Engineering, pages 29–41,
 2023.
+
 20
+
 
 [8] Nafiz Imtiaz Khan and Vladimir Filkov. From
 models to practice: Enhancing oss project sus-
@@ -2304,6 +2720,7 @@ tainability with evidence-based advice. In Com-
 panion Proceedings of the 32nd ACM Interna-
 tional Conference on the Foundations of Soft-
 ware Engineering, pages 457–461, 2024.
+
 [9] Alex Tamkin, Miles Brundage, Jack Clark,
 and Deep Ganguli.
 Understanding the ca-
@@ -2313,6 +2730,7 @@ and societal impact
 of large language models.
 arXiv preprint
 arXiv:2102.02503, 2021.
+
 [10] Ggaliwango Marvin, Nakayiza Hellen, Daudi
 Jjingo,
 and
@@ -2323,11 +2741,13 @@ els.
 In International conference on data
 intelligence and cognitive informatics, pages
 387–402. Springer, 2023.
+
 [11] Zibin Zheng, Kaiwen Ning, Jiachi Chen, Yan-
 lin Wang, Wenqing Chen, Lianghong Guo, and
 Weicheng Wang. Towards an understanding of
 large language models in software engineering
 tasks. arXiv preprint arXiv:2308.11396, 2023.
+
 [12] Sanka Rasnayaka,
 Guanlin Wang,
 Ridwan
@@ -2335,6 +2755,7 @@ Shariffdeen, and Ganesh Neelakanta Iyer. An
 empirical study on usage and perceptions of
 llms in a software engineering project. arXiv
 preprint arXiv:2401.16186, 2024.
+
 [13] Xinyi Hou, Yanjie Zhao, Yue Liu, Zhou Yang,
 Kailong Wang, Li Li, Xiapu Luo, David Lo,
 John Grundy, and Haoyu Wang.
@@ -2344,6 +2765,7 @@ A
 systematic literature review.
 arXiv preprint
 arXiv:2308.10620, 2023.
+
 [14] Zeerak Babar, Nafiz Imtiaz Khan, Muhammad
 Hassnain, and Vladimir Filkov.
 Open-source
@@ -2352,6 +2774,7 @@ Exchange. In Software Engineering for Emerg-
 ing Technologies, volume 2725 of Communi-
 cations in Computer and Information Science,
 pages 615–626. Springer, Cham, 2026.
+
 [15] Gerald
 Gartlehner,
 Leila
@@ -2368,6 +2791,8 @@ Erskine, et al. Data extraction for evidence syn-
 thesis using a large language model: A proof-
 of-concept study. Research Synthesis Methods,
 2024.
+
+
 [16] Jingwei Huang, Donghan M Yang, Ruichen
 Rong, Kuroush Nezafati, Colin Treager, Zhikai
 Chi, Shidan Wang, Xian Cheng, Yujia Guo,
@@ -2377,6 +2802,7 @@ of using chatgpt for extracting structured data
 from clinical notes.
 npj Digital Medicine,
 7(1):106, 2024.
+
 [17] Hiba Ahsan, Denis Jered McInerney, Jisoo
 Kim, Christopher Potter, Geoffrey Young, Sil-
 vio Amir, and Byron C Wallace.
@@ -2385,23 +2811,28 @@ evidence from ehrs with llms: Possibilities and
 challenges.
 arXiv preprint arXiv:2309.04550,
 2023.
+
 [18] Luc Patiny and Guillaume Godin. Automatic
 extraction of fair data from publications using
 llm. 2023.
+
 [19] Falwah Alhamed, Julia Ive, and Lucia Specia.
 Using large language models (llms) to extract
 evidence from pre-annotated social media data.
 In Proceedings of the 9th Workshop on Com-
 putational Linguistics and Clinical Psychology
 (CLPsych 2024), pages 232–237, 2024.
+
 [20] Boris Schauerte. Conference ranks. http://
 www.conferenceranks.com/, 2024. Accessed:
 2024-09-06.
+
 [21] Computing Research & Education.
 CORE
 Conference Portal - conference ranks. https://
 portal.core.edu.au/conf-ranks/, 2024. Ac-
 cessed: 2024-09-06.
+
 [22] Zixuan
 Feng,
 Amreeta
@@ -2414,25 +2845,30 @@ In Proceedings of the 30th ACM
 Joint European Software Engineering Confer-
 ence and Symposium on the Foundations of
 Software Engineering, pages 797–809, 2022.
+
 [23] André Oliveira, Vânia Neves, Alexandre Plas-
 tino, Ana Carla Bibiano, Alessandro Garcia,
 and Leonardo Murta. Do code refactorings in-
 fluence the merge effort? In 2023 IEEE/ACM
 45th International Conference on Software En-
 gineering (ICSE), pages 134–146. IEEE, 2023.
+
 [24] Matthew Renze and Erhan Guven.
 The ef-
 fect of sampling temperature on problem solv-
 ing in large language models.
 arXiv preprint
 arXiv:2402.05201, 2024.
+
 21
+
 
 [25] Toufique Ahmed, Christian Bird, Premkumar
 Devanbu, and Saikat Chakraborty.
 Study-
 ing llm performance on closed-and open-source
 data. arXiv preprint arXiv:2402.15100, 2024.
+
 [26] Yuvraj
 Virk,
 Premkumar
@@ -2454,6 +2890,7 @@ scores.
 arXiv
 preprint
 arXiv:2404.19318, 2024.
+
 [27] Bo Hu, Yannis Kalfoglou, Harith Alani, David
 Dupplaw, Paul Lewis, and Nigel Shadbolt. Se-
 mantic metrics. In Managing Knowledge in a
@@ -2461,10 +2898,12 @@ World of Networks: 15th International Confer-
 ence, EKAW 2006, Poděbrady, Czech Republic,
 October 2-6, 2006. Proceedings 15, pages 166–
 181. Springer, 2006.
+
 [28] Gavin Finnie and Zhaohao Sun. Similarity and
 metrics in case-based reasoning. International
 journal of intelligent systems, 17(3):273–287,
 2002.
+
 [29] Toufique Ahmed, Kunal Suresh Pai, Premku-
 mar Devanbu, and Earl Barr.
 Automatic
@@ -2477,6 +2916,7 @@ prompts (for code summarization). In Proceed-
 ings of the IEEE/ACM 46th International Con-
 ference on Software Engineering, pages 1–13,
 2024.
+
 [30] Ali Al-Kaswan,
 Toufique Ahmed,
 Maliheh
@@ -2488,6 +2928,7 @@ In 2023 IEEE Interna-
 tional Conference on Software Analysis, Evolu-
 tion and Reengineering (SANER), pages 260–
 271. IEEE, 2023.
+
 [31] Kishore Papineni, Salim Roukos, Todd Ward,
 and Wei-Jing Zhu.
 Bleu:
@@ -2496,14 +2937,18 @@ automatic evaluation of machine translation.
 In Proceedings of the 40th annual meeting of
 the Association for Computational Linguistics,
 pages 311–318, 2002.
+
 [32] Chin-Yew Lin. Rouge: A package for automatic
 evaluation of summaries. In Text summariza-
 tion branches out, pages 74–81, 2004.
+
 [33] Tianyi Zhang, Varsha Kishore, Felix Wu, Kil-
 ian Q Weinberger, and Yoav Artzi. Bertscore:
 Evaluating text generation with bert.
 arXiv
 preprint arXiv:1904.09675, 2019.
+
+
 [34] Google BERT.
 Bert-base,
 uncased model
@@ -2511,6 +2956,7 @@ on hugging face.
 https://huggingface.co/
 google-bert/bert-base-uncased, 2024. Ac-
 cessed: 2024-09-06.
+
 [35] Satanjeev Banerjee and Alon Lavie.
 Meteor:
 An automatic metric for mt evaluation with
@@ -2519,25 +2965,32 @@ In Proceedings of the acl workshop on intrin-
 sic and extrinsic evaluation measures for ma-
 chine translation and/or summarization, pages
 65–72, 2005.
+
 [36] Shashank Mohan Jain. Hugging face. In In-
 troduction to transformers for NLP: With the
 hugging face library and models to solve prob-
 lems, pages 51–67. Springer, 2022.
+
 [37] Meta. Meta, 2023. Accessed: September 11,
 2024.
+
 [38] Google.
 Google, 2024.
 Accessed: September
 11, 2024.
+
 [39] Microsoft. Microsoft official home page, 2024.
 Accessed: September 11, 2024.
+
 [40] x.ai. x.ai: Ai for scheduling and productivity,
 2024. Accessed: September 11, 2024.
+
 [41] Shengyu Zhang, Linfeng Dong, Xiaoya Li, Sen
 Zhang, Xiaofei Sun, Shuhe Wang, Jiwei Li,
 Runyi Hu, Tianwei Zhang, Fei Wu, et al. In-
 struction tuning for large language models: A
 survey. arXiv preprint arXiv:2308.10792, 2023.
+
 [42] Zahra Abbasiantaeb, Yifei Yuan, Evangelos
 Kanoulas, and Mohammad Aliannejadi.
 Let
@@ -2547,6 +3000,7 @@ conversational qa via zero-shot llm-to-llm inter-
 actions. In Proceedings of the 17th ACM Inter-
 national Conference on Web Search and Data
 Mining, pages 8–17, 2024.
+
 [43] Lei
 Zhang,
 Yunshui
@@ -2561,22 +3015,27 @@ ing real-world code completion with repository-
 level pretrained code llms.
 arXiv preprint
 arXiv:2406.18294, 2024.
+
 [44] Shengnan An, Zexiong Ma, Zeqi Lin, Nan-
 ning Zheng, and Jian-Guang Lou. Make your
 llm fully utilize the context.
 arXiv preprint
 arXiv:2404.16811, 2024.
+
 22
+
 
 [45] Inc. Meta Platforms. About meta - company in-
 formation. https://about.meta.com/, 2024.
 Accessed: 2024-09-06.
+
 [46] Hugo Touvron, Thibaut Lavril, Gautier Izac-
 ard, Xavier Martinet, Marie-Anne Lachaux,
 Timothée Lacroix, Baptiste Rozière, Naman
 Goyal, Eric Hambro, Faisal Azhar, et al. Llama:
 Open and efficient foundation language models.
 arXiv preprint arXiv:2302.13971, 2023.
+
 [47] NurtureAI.
 Meta
 llama
@@ -2593,29 +3052,35 @@ https://huggingface.co/NurtureAI/
 Meta-Llama-3-8B-Instruct-32k,
 2024.
 Accessed: 2024-09-06.
+
 [48] Nurture AI. Nurture ai - artificial intelligence
 solutions.
 https://nurture.ai/, 2024.
 Ac-
 cessed: 2024-09-06.
+
 [49] Mistral AI. Mistral ai - next-generation open
 models.
 https://mistral.ai/, 2024.
 Ac-
 cessed: 2024-09-06.
+
 [50] Albert Q Jiang, Alexandre Sablayrolles, An-
 toine Roux, Arthur Mensch, Blanche Savary,
 Chris Bamford, Devendra Singh Chaplot, Diego
 de las Casas, Emma Bou Hanna, Florian Bres-
 sand, et al. Mixtral of experts. arXiv preprint
 arXiv:2401.04088, 2024.
+
 [51] Amazon Web Services (AWS).
 Amazon web
 services - cloud computing services. https://
 aws.amazon.com/, 2024. Accessed: 2024-09-06.
+
 [52] Amazon MistralLite. Mistrallite model on hug-
 ging face. https://huggingface.co/amazon/
 MistralLite, 2024. Accessed: 2024-09-06.
+
 [53] Mistral
 AI.
 Discussion
@@ -2626,6 +3091,7 @@ model.
 https://huggingface.co/
 mistralai/Mistral-7B-v0.1/discussions/
 4, 2024. Accessed: 2024-09-06.
+
 [54] Mistral
 AI.
 Mistral-nemo
@@ -2636,6 +3102,7 @@ Mistral-Nemo-Instruct-2407,
 2024.
 Ac-
 cessed: 2024-09-08.
+
 [55] Mistral AI.
 Introducing mistral-nemo:
 A
@@ -2645,13 +3112,17 @@ model.
 https://
 mistral.ai/news/mistral-nemo/, 2024. Ac-
 cessed: 2024-09-08.
+
 [56] Qi Cheng, Liqiong Chen, Zhixing Hu, Juan
 Tang, Qiang Xu, and Binbin Ning.
 A novel
 prompting method for few-shot ner via llms.
+
+
 Natural Language Processing Journal,
 page
 100099, 2024.
+
 [57] Ggaliwango Marvin, Nakayiza Hellen, Daudi
 Jjingo,
 and
@@ -2662,10 +3133,12 @@ els.
 In International conference on data
 intelligence and cognitive informatics, pages
 387–402. Springer, 2023.
+
 [58] Sondos Mahmoud Bsharat, Aidar Myrzakhan,
 and Zhiqiang Shen. Principled instructions are
 all you need for questioning llama-1/2, gpt-
 3.5/4. arXiv preprint arXiv:2312.16171, 2023.
+
 [59] Cheng Li, Jindong Wang, Yixuan Zhang, Kai-
 jie Zhu, Wenxin Hou, Jianxun Lian, Fang
 Luo,
@@ -2676,6 +3149,7 @@ language models understand and can be en-
 hanced by emotional stimuli.
 arXiv preprint
 arXiv:2307.11760, 2023.
+
 [60] Sander
 Schulhoff,
 Michael
@@ -2689,23 +3163,27 @@ A systematic survey of prompting
 techniques.
 arXiv preprint arXiv:2406.06608,
 2024.
+
 [61] Satyavrat Gaur, Anjali Dagar, Aanchal Pu-
 nia, and Pushpendra Kumar. A brief study of
 prompting techniques for reasoning tasks. In
 NIELIT’s International Conference on Com-
 munication, Electronics and Digital Technolo-
 gies, pages 147–159. Springer, 2024.
+
 [62] Yinheng Li.
 A practical survey on zero-shot
 prompt design for in-context learning.
 arXiv
 preprint arXiv:2309.13205, 2023.
+
 [63] Jason Wei, Xuezhi Wang, Dale Schuurmans,
 Maarten Bosma, Fei Xia, Ed Chi, Quoc V Le,
 Denny Zhou, et al. Chain-of-thought prompt-
 ing elicits reasoning in large language models.
 Advances in neural information processing sys-
 tems, 35:24824–24837, 2022.
+
 [64] Alexandre Piché, Aristides Milios, Dzmitry
 Bahdanau,
 and
@@ -2716,14 +3194,18 @@ evaluation and self-prompting to improve the
 reliability of llms. In ICLR 2024 Workshop on
 Secure and Trustworthy Large Language Mod-
 els, 2024.
+
 [65] Jiefeng Chen, Jinsung Yoon, Sayna Ebrahimi,
 Sercan O Arik, Tomas Pfister, and Somesh Jha.
+
 23
+
 
 Adaptation with self-evaluation to improve se-
 lective prediction in llms.
 arXiv preprint
 arXiv:2310.11689, 2023.
+
 [66] Mudit
 Verma,
 Siddhant
@@ -2743,12 +3225,14 @@ agen-
 tic large language models.
 arXiv preprint
 arXiv:2405.13966, 2024.
+
 [67] Maciej P Polak and Dane Morgan.
 Extract-
 ing accurate materials data from research pa-
 pers with conversational language models and
 prompt engineering. Nature Communications,
 15(1):1569, 2024.
+
 [68] Nafiz Imtiaz Khan and Vladimir Filkov. Evi-
 dencebot: A privacy-preserving, customizable
 rag-based tool for enhancing large language
@@ -2756,6 +3240,7 @@ model interactions. In Proceedings of the 33rd
 ACM International Conference on the Foun-
 dations of Software Engineering, pages 1188–
 1192, 2025.
+
 [69] Gabrijela Perković, Antun Drobnjak, and Ivica
 Botički.
 Hallucinations
@@ -2766,24 +3251,29 @@ standing and addressing challenges.
 In 2024
 47th MIPRO ICT and Electronics Convention
 (MIPRO), pages 2084–2088. IEEE, 2024.
+
 [70] Yunfan Gao, Yun Xiong, Xinyu Gao, Kangx-
 iang Jia, Jinliu Pan, Yuxi Bi, Yi Dai, Jiawei
 Sun, and Haofen Wang. Retrieval-augmented
 generation for large language models: A sur-
 vey. arXiv preprint arXiv:2312.10997, 2023.
+
 [71] Jiawei Chen, Hongyu Lin, Xianpei Han, and
 Le Sun. Benchmarking large language models
 in retrieval-augmented generation. In Proceed-
 ings of the AAAI Conference on Artificial In-
 telligence, volume 38, pages 17754–17762, 2024.
+
 [72] PyPDF2 Project.
 Pypdf2 - a pure-python
 pdf
 library.
 https://pypi.org/project/
 PyPDF2/, 2024. Accessed: 2024-09-06.
+
 [73] Hugging Face. Instructor-large, 2024. Accessed:
 2024-09-08.
+
 [74] Hongjin Su, Weijia Shi, Jungo Kasai, Yizhong
 Wang, Yushi Hu, Mari Ostendorf, Wen-tau
 Yih, Noah A Smith, Luke Zettlemoyer, and
@@ -2791,11 +3281,14 @@ Tao Yu. One embedder, any task: Instruction-
 finetuned text embeddings.
 arXiv preprint
 arXiv:2212.09741, 2022.
+
 [75] LangChain.
 Langchain - building applica-
 tions with llms.
 https://www.langchain.
 com/, 2024. Accessed: 2024-09-06.
+
+
 [76] Christos
 H
 Papadimitriou,
@@ -2809,7 +3302,9 @@ In Proceedings of the seventeenth
 ACM SIGACT-SIGMOD-SIGART symposium
 on Principles of database systems, pages 159–
 168, 1998.
+
 [77] Chroma. Chroma, 2024. Accessed: 2024-09-08.
+
 [78] Xingrui Xie,
 Han Liu,
 Wenzhe Hou,
@@ -2819,17 +3314,21 @@ A brief survey of vector
 databases. In 2023 9th International Confer-
 ence on Big Data and Information Analytics
 (BigDIA), pages 364–371. IEEE, 2023.
+
 [79] Ron Artstein.
 Inter-annotator agreement.
 Handbook of linguistic annotation, pages 297–
 313, 2017.
+
 [80] Apache Incubator. Apache incubator. https:
 //incubator.apache.org/, 2024.
 Accessed:
 2024-09-09.
+
 [81] Apache Software Foundaion. Apache software
 foundaion. https://www.apache.org/, 2024.
 Accessed: 2024-08-01.
+
 [82] Anirudh
 Ramchandran,
 Likang
@@ -2840,9 +3339,11 @@ Exploring apache incubator
 project trajectories with apex. In Proceedings
 of the 19th international conference on mining
 software repositories, pages 333–337, 2022.
+
 [83] Apache Software Foundation. Apache mailing
 lists. https://www.apache.org/foundation/
 mailinglists. Accessed: September 12, 2024.
+
 [84] Anirudh
 Ramchandran,
 Likang
@@ -2853,6 +3354,7 @@ Exploring apache incubator
 project trajectories with apex. In Proceedings
 of the 19th international conference on mining
 software repositories, pages 333–337, 2022.
+
 [85] Zihe H Zhao.
 The distribution and dis-
 engagement of women contributors in open-
@@ -2867,6 +3369,7 @@ Software
 Engineering:
 Companion Proceedings (ICSE-
 Companion), pages 305–307. IEEE, 2023.
+
 [86] Courtney Miller, Christian Kästner, and Bog-
 dan Vasilescu. “we feel like we’re winging it:”
 a study on navigating open-source dependency
@@ -2874,7 +3377,9 @@ abandonment. In Proceedings of the 31st ACM
 Joint European Software Engineering Confer-
 ence and Symposium on the Foundations of
 Software Engineering, pages 1281–1293, 2023.
+
 24
+
 
 [87] Qingxiu Dong, Lei Li, Damai Dai, Ce Zheng,
 Zhiyong Wu, Baobao Chang, Xu Sun, Jingjing
@@ -2882,12 +3387,15 @@ Xu, and Zhifang Sui. A survey on in-context
 learning.
 arXiv preprint arXiv:2301.00234,
 2022.
+
 [88] Tianle Li, Ge Zhang, Quy Duc Do, Xiang Yue,
 and Wenhu Chen. Long-context llms struggle
 with long in-context learning. arXiv preprint
 arXiv:2404.02060, 2024.
+
 [89] X AI. Grok os blog post. https://x.ai/blog/
 grok-os, 2024. Accessed: 2024-09-06.
+
 [90] Mistral AI.
 Mixtral-8x22b-v0.1 model on
 hugging
@@ -2896,14 +3404,17 @@ https://huggingface.co/
 mistralai/Mixtral-8x22B-v0.1, 2024.
 Ac-
 cessed: 2024-09-06.
+
 [91] Databricks.
 Dbrx-base model on hugging
 face. https://huggingface.co/databricks/
 dbrx-base, 2024. Accessed: 2024-09-06.
+
 [92] Jieyi Long. Large language model guided tree-
 of-thought.
 arXiv preprint arXiv:2305.08291,
 2023.
+
 [93] Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak
 Shafran, Tom Griffiths, Yuan Cao, and Karthik
 Narasimhan.
@@ -2912,6 +3423,7 @@ Deliberate
 problem solving with large language models.
 Advances in Neural Information Processing
 Systems, 36, 2024.
+
 [94] Angeliki
 Lazaridou,
 Elena
@@ -2923,6 +3435,7 @@ few-shot prompting for open-domain question
 answering.
 arXiv preprint arXiv:2203.05115,
 2022.
+
 [95] Xinyi Hou, Yanjie Zhao, Yue Liu, Zhou Yang,
 Kailong Wang, Li Li, Xiapu Luo, David Lo,
 John Grundy, and Haoyu Wang.
@@ -2932,6 +3445,7 @@ A
 systematic literature review.
 arXiv preprint
 arXiv:2308.10620, 2023.
+
 [96] Guilherme
 Avelino,
 Eleni
@@ -2946,6 +3460,8 @@ In 2019 ACM/IEEE International
 Symposium on Empirical Software Engineering
 and Measurement (ESEM), pages 1–12. IEEE,
 2019.
+
+
 [97] Felipe Fronchetti, Igor Wiese, Gustavo Pinto,
 and Igor Steinmacher. What attracts newcom-
 ers to onboard on OSS projects? TL;DR: Pop-
@@ -2954,18 +3470,21 @@ In Open Source Systems: 15th IFIP
 WG 2.13 International Conference, OSS 2019,
 pages 91–103, Montreal, QC, Canada, 2019.
 Springer.
+
 [98] Gerardo Matturro, Karina Barrella, and Pa-
 tricia Benitez. Difficulties of newcomers join-
 ing software projects already in execution. In
 2017 International Conference on Computa-
 tional Science and Computational Intelligence
 (CSCI), pages 993–998. IEEE, 2017.
+
 [99] Bin Lin, Gregorio Robles, and Alexander Sere-
 brenik. Developer turnover in global, industrial
 open source projects: Insights from applying
 survival analysis. In 2017 IEEE 12th Interna-
 tional Conference on Global Software Engineer-
 ing (ICGSE), pages 66–75. IEEE, 2017.
+
 [100] Fabian Fagerholm, Alejandro S. Guinea, Jürgen
 Münch, and Jay Borenstein. The role of men-
 toring and project characteristics for onboard-
@@ -2973,11 +3492,13 @@ ing in open source software projects. In Pro-
 ceedings of the 8th ACM/IEEE International
 Symposium on Empirical Software Engineering
 and Measurement, pages 1–10. ACM, 2014.
+
 [101] Leonard Przybilla, Maximilian Rahn, Manuel
 Wiesche, and Helmut Krcmar. The more the
 merrier? The effect of size of core team sub-
 groups on success of open source projects.
 arXiv preprint, 2019.
+
 [102] Gillian J. Greene and Bernd Fischer.
 CV-
 Explorer: Identifying candidate developers by
@@ -2985,12 +3506,14 @@ mining and exploring their open source contri-
 butions. In Proceedings of the 31st IEEE/ACM
 International Conference on Automated Soft-
 ware Engineering, pages 804–809. ACM, 2016.
+
 [103] Emad Shihab, Zhen Ming Jiang, and Ahmed E.
 Hassan.
 Studying the use of developer IRC
 meetings in open source projects. In 2009 IEEE
 International Conference on Software Mainte-
 nance, pages 147–156. IEEE, 2009.
+
 [104] Gustavo
 Pinto,
 Igor
@@ -3006,7 +3529,9 @@ contributors. In 2016 IEEE 23rd International
 Conference on Software Analysis, Evolution,
 and Reengineering (SANER), volume 1, pages
 112–123. IEEE, 2016.
+
 25
+
 
 [105] Gregorio Robles, Jesus M. Gonzalez-Barahona,
 and Israel Herraiz. Evolution of the core team
@@ -3014,22 +3539,34 @@ of developers in libre software projects. In 2009
 6th IEEE International Working Conference on
 Mining Software Repositories, pages 167–170.
 IEEE, 2009.
+
+
 26
+
 
 A
 LLM Prompts
+
 This section outlines the various prompting techniques employed in the study. Here, TitleOfTheArticle is a
 string variable updated based on the actual title of the article. The highlighted portion (italic) in the prompt
 indicates the emotional stimuli, which was added at the bottom of each prompt.
+
 A.1
 Zero Shot
+
+A.2
+Chain-of-Thought
+
+A.3
+Reason + Action
+
+
 You have been entrusted with the complete article titled TitleOfTheArticle. Your objective is to metic-
 ulously extract actionable recommendations from this article. These recommendations should be aimed
 at enhancing the sustainability of open-source software projects.
 Your attention to detail in this task is crucial, as its successful completion holds significant importance
 for my career advancement.
-A.2
-Chain-of-Thought
+
 You have been given the full text of the article titled TitleOfTheArticle. Your task is to extract action-
 able recommendations from the article. An actionable recommendation is a practical, evidence-based
 suggestion that provides specific, clear steps or instructions which, when implemented, are expected to
@@ -3052,8 +3589,7 @@ indicating how confident you are in the effectiveness of the recommendation for 
 projects sustainable. Provide a brief explanation for your confidence level.
 Your attention to detail in this task is crucial, as its successful completion holds significant importance
 for my career advancement.
-A.3
-Reason + Action
+
 Thought 1: I have been given the article titled TitleOfTheArticle. My task is to extract actionable
 recommendations from the article. An actionable recommendation is a practical, evidence-based sug-
 gestion that provides specific, clear steps or instructions which, when implemented, are expected to
@@ -3066,7 +3602,28 @@ can help make open-source software projects more sustainable.
 Action 1: Carefully read each sentence of the article, focusing on identifying imperative sentences
 or phrases that give commands, make requests, or offer instructions to direct or persuade someone to
 perform a specific action.
+
 27
+
+
+B
+Definition of ReACT Categories
+
+B.1
+New Contributor Onboarding and Involvement
+
+B.2
+Code Standards and Maintainability
+
+B.3
+Automated Testing and Quality Assurance
+
+B.4
+Community Collaboration and Engagement
+
+Definition: This category deals with activities that foster collaboration, communication, and engagement
+within the OSS community. It includes practices for keeping the community active and involved.
+
 
 Observation 1: A list of potential actionable recommendations has been identified from the article.
 Thought 2: I need to extract the practical suggestions from the identified sentences and present
@@ -3088,61 +3645,52 @@ Observation 4: Confidence scores have been assigned to each recommendation in th
 with brief explanations.
 Your attention to detail in this task is crucial, as its successful completion holds significant importance
 for my career advancement.
-B
-Definition of ReACT Categories
-B.1
-New Contributor Onboarding and Involvement
+
 Definition: This category focuses on ensuring that new contributors can easily join, understand, and
 meaningfully contribute to the project.
 Criteria for Assignment: (a) Actionable facilitates the integration of new contributors by providing
 mentorship, onboarding materials, or simplifying the contribution process; (b) Actionable relates to improv-
 ing project documentation or offering better support mechanisms for first-time contributors; (c) Actionable
 helps build a welcoming, inclusive, and open culture for new participants.
-B.2
-Code Standards and Maintainability
+
 Definition: This category deals with ensuring that the codebase adheres to established standards, making
 it easier to maintain and scale. It includes efforts to ensure code readability, modularity, and compliance
 with coding best practices.
 Criteria for Assignment: (a) Actionable relates to improving the quality, readability, or structure of the
 codebase; (b) Actionable includes efforts to enforce coding guidelines, refactor code for better maintainability,
 or reduce technical debt; (c) Actionable includes the use of linters, formatters, or static code analysis tools.
-B.3
-Automated Testing and Quality Assurance
+
 Definition: This category focuses on ensuring the project’s robustness and reliability through automated
 testing practices, such as unit, integration, and end-to-end tests. It also includes broader quality assurance
 activities.
 Criteria for Assignment: (a) Actionable involves the implementation or improvement of automated
 testing frameworks and testing strategies; (b) Actionable includes practices that ensure the detection of bugs
 early in the development cycle and ensure high-quality releases.
-B.4
-Community Collaboration and Engagement
-Definition: This category deals with activities that foster collaboration, communication, and engagement
-within the OSS community. It includes practices for keeping the community active and involved.
+
 28
+
 
 Criteria for Assignment: (a) Actionable aims to improve communication between contributors, main-
 tainers, and users; (b) Actionable involves organizing community-driven events, discussions, or collaborations,
 as well as platforms to enhance transparency and teamwork; (c) Actionable relates to tools and processes
 for better community governance and decision-making.
+
 B.5
 Documentation Practices
-Definition: This category focuses on ensuring that the project’s documentation is thorough, up-to-date,
-and easily accessible. Documentation practices are crucial for both current and future contributors.
-Criteria for Assignment: (a) Actionable focuses on improving the quality, clarity, or accessibility of
-project documentation, such as user guides, API references, or contributor guides; (b) Actionable includes
-practices for keeping documentation synchronized with the codebase and ensuring it meets the needs of
-different stakeholders; (c) Actionable involves translation efforts or making documentation more accessible
-to non-expert audiences.
+
 B.6
 Project Management and Governance
+
 Definition: This category deals with the governance structure and project management practices that keep
 the project organized, transparent, and sustainable over the long term.
 Criteria for Assignment: (a) Actionable enhances the governance model, clarifies roles and responsi-
 bilities, or improves the decision-making process; (b) Actionable involves defining or refining processes for
 issue triaging, release management, or conflict resolution; (c) Actionable includes efforts to improve the
 transparency of project goals, progress, and decision-making.
+
 B.7
 Security Best Practices and Legal Compliance
+
 Definition: This category addresses efforts to secure the project and ensure compliance with relevant legal
 standards, such as licenses, data privacy laws, and security protocols.
 Criteria for Assignment: (a) Actionable focuses on improving the security posture of the project by
@@ -3150,8 +3698,30 @@ following best practices, addressing vulnerabilities, or conducting audits; (b) 
 compliance with open-source licenses, setting up contributor license agreements (CLAs), or aligning with
 data privacy regulations; (c) Actionable includes security measures such as dependency management, security
 audits, and secure coding practices.
+
 B.8
 CI/CD and DevOps Automation
+
+C
+Server Configuration
+
+We conducted all experiments on a dedicated local server with the configuration presented in Table 3.
+
+D
+ReACT Gold Annotations
+
+This section presents the manually annotated ReACTs extracted from 10 articles used for evaluating LLM
+performance.
+
+
+Definition: This category focuses on ensuring that the project’s documentation is thorough, up-to-date,
+and easily accessible. Documentation practices are crucial for both current and future contributors.
+Criteria for Assignment: (a) Actionable focuses on improving the quality, clarity, or accessibility of
+project documentation, such as user guides, API references, or contributor guides; (b) Actionable includes
+practices for keeping documentation synchronized with the codebase and ensuring it meets the needs of
+different stakeholders; (c) Actionable involves translation efforts or making documentation more accessible
+to non-expert audiences.
+
 Definition: This category deals with continuous integration and continuous deployment (CI/CD) processes
 that automate building, testing, and deployment pipelines. It also includes broader DevOps automation
 tasks.
@@ -3160,18 +3730,13 @@ faster, reliable, and automated releases; (b) Actionable relates to automating i
 containerization, or deployment to cloud environments; (c) Actionable includes the integration of DevOps
 practices that ensure smooth, automated, and repeatable processes for software development, testing, and
 deployment.
-C
-Server Configuration
-We conducted all experiments on a dedicated local server with the configuration presented in Table 3.
-D
-ReACT Gold Annotations
-This section presents the manually annotated ReACTs extracted from 10 articles used for evaluating LLM
-performance.
+
 29
 
-Table 3: Server Configuration
+
 Component
 Specification
+
 CPU
 AMD Ryzen 9 5900X (12-core, 24-thread)
 RAM
@@ -3182,115 +3747,185 @@ Storage
 2 TB NVMe SSD
 OS
 Ubuntu 22.04 LTS
+
 D.1
 Article 1
-“On the abandonment and survival of open source projects: An empirical investigation” by Avelino et al. [96].
-Derived Actionables:
-1. Project maintainers should strive to increase the number of Truck Factor (TF) developers to reduce the
-risk of project abandonment.
-2. Projects should seek alternative backing, such as company-based support, to prevent or reduce the
-chances of TF developer detachments (TFDDs).
-3. Open source communities should foster a friendly and active environment to attract and retain new
-contributors.
+
 4. Project owners should ensure that their repositories are easily accessible.
-5. Project maintainers should implement and adhere to well-known software engineering principles and
-practices to make it easier for new developers to contribute.
-6. Open source projects should consider using popular programming languages to attract a wider pool of
-potential contributors.
-7. Project maintainers should be aware of and mitigate common barriers faced by new contributors, par-
-ticularly the lack of time and experience.
-8. Open source communities should promote and share successful cases of projects overcoming TFDDs to
-motivate developers to actively contribute to projects at risk.
-9. Project maintainers should regularly assess the risk of abandonment by TF developers and take proactive
-measures to ensure project continuity.
-10. Projects should implement continuous integration practices to facilitate contributions from new devel-
-opers.
-11. Project maintainers should strive to keep the codebase clean and well-designed to make it easier for new
-contributors to understand and work with the project.
+
 12. Projects should consider implementing a code review process to maintain code quality.
+
 D.2
 Article 2
+
 “What attracts newcomers to onboard on OSS projects? TL;DR: Popularity” by Fronchetti et al. [97].
 Derived Actionables:
+
 1. Reduce the time taken to review and merge pull requests.
+
 2. Use multiple programming languages in the project.
+
 3. Maintain the project over a longer period of time to increase its age.
+
+
+Table 3: Server Configuration
+
+“On the abandonment and survival of open source projects: An empirical investigation” by Avelino et al. [96].
+Derived Actionables:
+
+1. Project maintainers should strive to increase the number of Truck Factor (TF) developers to reduce the
+risk of project abandonment.
+
+2. Projects should seek alternative backing, such as company-based support, to prevent or reduce the
+chances of TF developer detachments (TFDDs).
+
+3. Open source communities should foster a friendly and active environment to attract and retain new
+contributors.
+
+5. Project maintainers should implement and adhere to well-known software engineering principles and
+practices to make it easier for new developers to contribute.
+
+6. Open source projects should consider using popular programming languages to attract a wider pool of
+potential contributors.
+
+7. Project maintainers should be aware of and mitigate common barriers faced by new contributors, par-
+ticularly the lack of time and experience.
+
+8. Open source communities should promote and share successful cases of projects overcoming TFDDs to
+motivate developers to actively contribute to projects at risk.
+
+9. Project maintainers should regularly assess the risk of abandonment by TF developers and take proactive
+measures to ensure project continuity.
+
+10. Projects should implement continuous integration practices to facilitate contributions from new devel-
+opers.
+
+11. Project maintainers should strive to keep the codebase clean and well-designed to make it easier for new
+contributors to understand and work with the project.
+
 30
 
+
 4. Have a larger number of integrators (contributors with rights to merge pull requests).
+
 5. Choose a popular main programming language for the project.
+
 6. Select an appropriate software application domain for the project.
+
 D.3
 Article 3
+
 “Difficulties of newcomers joining software projects already in execution” by Matturro et al. [98].
 Derived Actionables:
+
 1. Assign an experienced team member to coach and guide the newcomer.
+
 2. Follow up with newcomers on both success and failure.
+
 3. Hold training sessions for newcomers.
+
 4. Maintain concise, updated, accessible documentation.
-5. Grant the newcomer freedom: Encourage and allow them to express opinions, propose changes, and
-share personal viewpoints to foster a comfortable environment.
-6. Establish a personalized integration plan: Outline a gradual assignment of tasks and responsibilities for
-seamless incorporation.
+
 D.4
 Article 4
+
+2. Ensure developers maintain both code developed by others and their own code.
+
+3. Assign more code maintenance tasks to developers who primarily write new code.
+
+5. Encourage early contribution to the project, as developers who join earlier tend to stay longer.
+
+D.5
+Article 5
+
+1. Provide onboarding support and help newcomers to make their first contribution.
+
+
+5. Grant the newcomer freedom: Encourage and allow them to express opinions, propose changes, and
+share personal viewpoints to foster a comfortable environment.
+
+6. Establish a personalized integration plan: Outline a gradual assignment of tasks and responsibilities for
+seamless incorporation.
+
 “Developer turnover in global, industrial open source projects: Insights from applying survival analysis” by
 Lin et al. [99].
 Derived Actionables:
+
 1. Provide better onboarding assistance for newcomers to help them become more engaged in the project.
-2. Ensure developers maintain both code developed by others and their own code.
-3. Assign more code maintenance tasks to developers who primarily write new code.
+
 4. Give coding tasks to developers who mainly work on documentation to increase their chances of staying
 in the project.
-5. Encourage early contribution to the project, as developers who join earlier tend to stay longer.
+
 6. Implement strategies to manage growing code complexity, as it can form an obstacle for new developers’
 contributions.
-D.5
-Article 5
+
 “The role of mentoring and project characteristics for onboarding in open source software projects” by Fager-
 holm et al. [100].
 Derived Actionables:
-1. Provide onboarding support and help newcomers to make their first contribution.
+
 31
+
 
 D.6
 Article 6
+
+3. Implement strategies to increase the visibility and recognition of high-reputation contributors.
+
+4. Create opportunities for core members to focus on issue-related activities.
+
+6. Address common barriers faced by newcomers, such as identifying where to start contributing.
+
+10. Implement mechanisms to track and analyze the content and quality of contributions.
+
+D.7
+Article 7
+
+D.8
+Article 8
+
+“Studying the use of developer IRC meetings in open source projects” by Shihab et al. [103].
+Derived Actionables: No actionable recommendation could be derived from the article.
+
+D.9
+Article 9
+
+“More common than you think: An in-depth study of casual contributors” by Pinto et al. [104].
+Derived Actionables: No actionable recommendation could be derived from the article.
+
+D.10
+Article 10
+
+“Evolution of the core team of developers in libre software projects” by Robles et al. [105].
+Derived Actionables: No actionable recommendation could be derived from the article.
+
+
 “The more the merrier? The effect of size of core team subgroups on success of open source projects” by
 Przybilla et al. [101].
 Derived Actionables:
+
 1. Projects should implement mechanisms to motivate and support long-term, consistent participation
 from key developers.
+
 2. Encourage experienced developers to guide and support newcomers, particularly through issue-related
 activities like commenting on and resolving issues.
-3. Implement strategies to increase the visibility and recognition of high-reputation contributors.
-4. Create opportunities for core members to focus on issue-related activities.
+
 5. Be cautious about having too many extensively contributing core members. Balance the core team to
 avoid creating the impression of a closed circle that might deter new contributors.
-6. Address common barriers faced by newcomers, such as identifying where to start contributing.
+
 7. Analyze and potentially steer the configuration of subgroups within the project based on factors like
 reputation, issue focus, contribution extent, and persistence.
+
 8. Consider implementing formal collaborator status or other metrics to make reputation more visible and
 meaningful to outsiders.
+
 9. Focus on creating a supportive environment that aligns with core OSS values, such as learning oppor-
 tunities and the ability to make meaningful contributions.
-10. Implement mechanisms to track and analyze the content and quality of contributions.
+
 11. Develop strategies to signal ongoing project activity and future maintenance to attract and retain
 contributors.
-D.7
-Article 7
+
 “CVExplorer: Identifying candidate developers by mining and exploring their open source contributions” by
 Greene & Fischer [102].
 Derived Actionables: No actionable recommendation could be derived from the article.
-D.8
-Article 8
-“Studying the use of developer IRC meetings in open source projects” by Shihab et al. [103].
-Derived Actionables: No actionable recommendation could be derived from the article.
-D.9
-Article 9
-“More common than you think: An in-depth study of casual contributors” by Pinto et al. [104].
-Derived Actionables: No actionable recommendation could be derived from the article.
-D.10
-Article 10
-“Evolution of the core team of developers in libre software projects” by Robles et al. [105].
-Derived Actionables: No actionable recommendation could be derived from the article.
+
 32

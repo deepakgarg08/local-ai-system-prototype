@@ -8,9 +8,12 @@ dependencies = [
     "annotated-types==0.7.0",
     "faiss-cpu>=1.13.2",
     "fastapi>=0.128.0",
+    "httpcore>=1.0.9",
+    "httpx>=0.28.1",
     "loguru==0.7.3",
     "markdown-it-py==4.0.0",
     "mdurl==0.1.2",
+    "ollama>=0.6.1",
     "pillow>=12.1.0",
     "pydantic==2.12.5",
     "pydantic-core==2.41.5",
@@ -50,3 +53,13 @@ filterwarnings = [
 # filterwarnings = [
 #     "ignore:.*SwigPy.*:DeprecationWarning",
 # ]
+
+[tool.uv]
+package = true
+
+[project.scripts]
+rag-parse = "tools.run_pdf_parser:main"
+rag-ingest = "pipelines.ingestion.ingest_txt:main"
+rag-chunk = "pipelines.chunking.chunk_sections:main"
+rag-index = "pipelines.indexing.build_index:main"
+rag-eval = "evaluation.runner.run_retrieval_eval:run"
