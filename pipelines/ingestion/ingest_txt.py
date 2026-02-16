@@ -4,7 +4,7 @@ import json
 import hashlib
 from pathlib import Path
 from datetime import datetime, timezone
-import uuid
+from pipelines.utils.id_utils import generate_document_id, generate_section_id
 
 RAW_DIR = Path("data/raw")
 OUT_DIR = Path("data/processed")
@@ -38,7 +38,7 @@ def ingest_txt(path: Path, category: str):
         "checksum_sha256": file_id,
     })
 
-    document_id = str(uuid.uuid4())
+    document_id = document_id = generate_document_id(str(path))
 
     documents.append({
         "document_id": document_id,
@@ -53,10 +53,14 @@ def ingest_txt(path: Path, category: str):
     })
 
     text = path.read_text(encoding="utf-8").strip()
-
+    section_id = generate_section_id(
+            document_id,
+            section_title=path.stem
+        )
+    
     if text:
         sections.append({
-            "section_id": str(uuid.uuid4()),
+            "section_id": section_id,
             "document_id": document_id,
             "section_title": path.stem,
             "section_path": path.stem,

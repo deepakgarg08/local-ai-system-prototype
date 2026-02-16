@@ -35,9 +35,39 @@ def run():
             "recall@5": recall_at_k(retrieved_ids, rel, 5),
             "mrr": reciprocal_rank(retrieved_ids, rel)
         })
+        
+            # ---------------------------
+    # Aggregate Metrics
+    # ---------------------------
 
-    with open("evaluation/reports/retrieval_metrics.json", "w") as f:
-        json.dump(results, f, indent=2)
+    total_queries = len(results)
+
+    mean_precision = sum(r["precision@5"] for r in results) / total_queries
+    mean_recall = sum(r["recall@5"] for r in results) / total_queries
+    mean_mrr = sum(r["mrr"] for r in results) / total_queries
+
+    summary = {
+        "mean_precision@5": round(mean_precision, 4),
+        "mean_recall@5": round(mean_recall, 4),
+        "mean_mrr": round(mean_mrr, 4),
+        "num_queries": total_queries
+    }
+
+    print("\n===== AGGREGATED METRICS =====")
+    for k, v in summary.items():
+        print(f"{k}: {v}")
+    print("==============================\n")
+    
+    final_output = {
+        "per_query": results,
+        "summary": summary
+    }
+
+    with open("evaluation/reports/summary_metrics.json", "w") as f:
+        json.dump(final_output, f, indent=2)
+    
+    with open("evaluation/reports/retrieval_metrics_overall.json", "w") as f:
+        json.dump(summary, f, indent=2)
 
 if __name__ == "__main__":
     run()

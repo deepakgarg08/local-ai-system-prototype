@@ -1,5 +1,5 @@
 import json
-import uuid
+import hashlib
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -14,6 +14,7 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 TARGET_CHARS = 1000
 OVERLAP_CHARS = 150
+from pipelines.utils.id_utils import generate_chunk_id
 
 def now():
     return datetime.now(timezone.utc).isoformat()
@@ -51,7 +52,6 @@ def split_text(text: str):
 
     return final_chunks
 
-
 def main():
     sections = json.loads(SECTIONS_PATH.read_text())
     chunks = []
@@ -65,7 +65,7 @@ def main():
 
         for idx, chunk_text in enumerate(split_chunks):
             chunks.append({
-                "chunk_id": str(uuid.uuid4()),
+                "chunk_id": generate_chunk_id(section["document_id"],section["section_id"],idx),
                 "section_id": section["section_id"],
                 "document_id": section["document_id"],
                 "chunk_index": idx,

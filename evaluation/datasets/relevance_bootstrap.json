@@ -1,90 +1,2202 @@
 {
   "Q1": [
     {
-      "chunk_id": "020b167c-20d0-460d-9541-c09d426f3b89",
-      "preview": "Company Overview\n\nACME Systems GmbH is a fictional enterprise used for internal AI system testing.\n\nMission:\nDeliver reliable, secure, and scalable enterprise software solutions.\n\nCore Values:\n- Quali"
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
     },
     {
-      "chunk_id": "7be955b0-252b-4828-b5c8-c6fae3fd24e1",
-      "preview": "IT Security Policy\n\nPurpose:\nThis document defines basic IT security principles for ACME Systems GmbH.\n\nKey Rules:\n1. All systems must use strong authentication.\n2. Sensitive data must be stored encry"
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
     },
     {
-      "chunk_id": "9d10acfe-65c9-451c-b6ca-af16100be542",
-      "preview": "ERP System Functional Specification\nVersion: 1.2\nRelease Date: 15.06.2024\n\n1. Introduction\nThis document describes the functional requirements of the ERP system.\n\n2. User Management\n- User creation\n- "
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
     },
     {
-      "chunk_id": "595c3a4f-a6a5-410c-a07a-64389a5ec20f",
-      "preview": "Employee Onboarding Guide\n\nWelcome to ACME Systems GmbH.\n\nStep 1: Account Setup\n- Receive login credentials\n- Change initial password\n\nStep 2: System Access\n- Review assigned roles\n- Request additiona"
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
     },
     {
-      "chunk_id": "a36c46a6-82da-4e30-b589-be4d98c1c2c5",
-      "preview": "Service Agreement\n\nParties:\nService Provider: ACME Systems GmbH\nClient: Example Client Ltd.\n\nContract Start Date: 01.01.2024\nContract Duration: 24 months\n\nTermination:\nEither party may terminate the c"
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
     }
   ],
   "Q2": [
     {
-      "chunk_id": "9d10acfe-65c9-451c-b6ca-af16100be542",
-      "preview": "ERP System Functional Specification\nVersion: 1.2\nRelease Date: 15.06.2024\n\n1. Introduction\nThis document describes the functional requirements of the ERP system.\n\n2. User Management\n- User creation\n- "
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
     },
     {
-      "chunk_id": "a36c46a6-82da-4e30-b589-be4d98c1c2c5",
-      "preview": "Service Agreement\n\nParties:\nService Provider: ACME Systems GmbH\nClient: Example Client Ltd.\n\nContract Start Date: 01.01.2024\nContract Duration: 24 months\n\nTermination:\nEither party may terminate the c"
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
     },
     {
-      "chunk_id": "020b167c-20d0-460d-9541-c09d426f3b89",
-      "preview": "Company Overview\n\nACME Systems GmbH is a fictional enterprise used for internal AI system testing.\n\nMission:\nDeliver reliable, secure, and scalable enterprise software solutions.\n\nCore Values:\n- Quali"
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
     },
     {
-      "chunk_id": "7be955b0-252b-4828-b5c8-c6fae3fd24e1",
-      "preview": "IT Security Policy\n\nPurpose:\nThis document defines basic IT security principles for ACME Systems GmbH.\n\nKey Rules:\n1. All systems must use strong authentication.\n2. Sensitive data must be stored encry"
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
     },
     {
-      "chunk_id": "595c3a4f-a6a5-410c-a07a-64389a5ec20f",
-      "preview": "Employee Onboarding Guide\n\nWelcome to ACME Systems GmbH.\n\nStep 1: Account Setup\n- Receive login credentials\n- Change initial password\n\nStep 2: System Access\n- Review assigned roles\n- Request additiona"
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
     }
   ],
   "Q3": [
     {
-      "chunk_id": "7be955b0-252b-4828-b5c8-c6fae3fd24e1",
-      "preview": "IT Security Policy\n\nPurpose:\nThis document defines basic IT security principles for ACME Systems GmbH.\n\nKey Rules:\n1. All systems must use strong authentication.\n2. Sensitive data must be stored encry"
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
     },
     {
-      "chunk_id": "595c3a4f-a6a5-410c-a07a-64389a5ec20f",
-      "preview": "Employee Onboarding Guide\n\nWelcome to ACME Systems GmbH.\n\nStep 1: Account Setup\n- Receive login credentials\n- Change initial password\n\nStep 2: System Access\n- Review assigned roles\n- Request additiona"
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
     },
     {
-      "chunk_id": "020b167c-20d0-460d-9541-c09d426f3b89",
-      "preview": "Company Overview\n\nACME Systems GmbH is a fictional enterprise used for internal AI system testing.\n\nMission:\nDeliver reliable, secure, and scalable enterprise software solutions.\n\nCore Values:\n- Quali"
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
     },
     {
-      "chunk_id": "a36c46a6-82da-4e30-b589-be4d98c1c2c5",
-      "preview": "Service Agreement\n\nParties:\nService Provider: ACME Systems GmbH\nClient: Example Client Ltd.\n\nContract Start Date: 01.01.2024\nContract Duration: 24 months\n\nTermination:\nEither party may terminate the c"
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
     },
     {
-      "chunk_id": "9d10acfe-65c9-451c-b6ca-af16100be542",
-      "preview": "ERP System Functional Specification\nVersion: 1.2\nRelease Date: 15.06.2024\n\n1. Introduction\nThis document describes the functional requirements of the ERP system.\n\n2. User Management\n- User creation\n- "
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
     }
   ],
   "Q4": [
     {
-      "chunk_id": "a36c46a6-82da-4e30-b589-be4d98c1c2c5",
-      "preview": "Service Agreement\n\nParties:\nService Provider: ACME Systems GmbH\nClient: Example Client Ltd.\n\nContract Start Date: 01.01.2024\nContract Duration: 24 months\n\nTermination:\nEither party may terminate the c"
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
     },
     {
-      "chunk_id": "7be955b0-252b-4828-b5c8-c6fae3fd24e1",
-      "preview": "IT Security Policy\n\nPurpose:\nThis document defines basic IT security principles for ACME Systems GmbH.\n\nKey Rules:\n1. All systems must use strong authentication.\n2. Sensitive data must be stored encry"
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
     },
     {
-      "chunk_id": "595c3a4f-a6a5-410c-a07a-64389a5ec20f",
-      "preview": "Employee Onboarding Guide\n\nWelcome to ACME Systems GmbH.\n\nStep 1: Account Setup\n- Receive login credentials\n- Change initial password\n\nStep 2: System Access\n- Review assigned roles\n- Request additiona"
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
     },
     {
-      "chunk_id": "9d10acfe-65c9-451c-b6ca-af16100be542",
-      "preview": "ERP System Functional Specification\nVersion: 1.2\nRelease Date: 15.06.2024\n\n1. Introduction\nThis document describes the functional requirements of the ERP system.\n\n2. User Management\n- User creation\n- "
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
     },
     {
-      "chunk_id": "020b167c-20d0-460d-9541-c09d426f3b89",
-      "preview": "Company Overview\n\nACME Systems GmbH is a fictional enterprise used for internal AI system testing.\n\nMission:\nDeliver reliable, secure, and scalable enterprise software solutions.\n\nCore Values:\n- Quali"
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q5": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q6": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q7": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q8": [
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    }
+  ],
+  "Q9": [
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q10": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q11": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q12": [
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    }
+  ],
+  "Q13": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q14": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q15": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q16": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q17": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q18": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q19": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q20": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q21": [
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    }
+  ],
+  "Q22": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q23": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q24": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q25": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q26": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q27": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q28": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q29": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q30": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q31": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q32": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q33": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    }
+  ],
+  "Q34": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q35": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q36": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    }
+  ],
+  "Q37": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q38": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    }
+  ],
+  "Q39": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q40": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q41": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q42": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q43": [
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q44": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q45": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q46": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q47": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q48": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q49": [
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q50": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q51": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q52": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q53": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q54": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q55": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    }
+  ],
+  "Q56": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q57": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q58": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q59": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q60": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q61": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q62": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q63": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q64": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q65": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q66": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q67": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q68": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q69": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    }
+  ],
+  "Q70": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q71": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q72": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q73": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q74": [
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q75": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q76": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q77": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q78": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q79": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q80": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q81": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q82": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q83": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q84": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q85": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q86": [
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q87": [
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q88": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q89": [
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q90": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q91": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q92": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q93": [
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    }
+  ],
+  "Q94": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    }
+  ],
+  "Q95": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q96": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q97": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q98": [
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q99": [
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    }
+  ],
+  "Q100": [
+    {
+      "chunk_id": "bac559c9394e8d91",
+      "preview": "Analytical Search\nYiteng Tu\nDCST, Tsinghua University\nQuan Cheng Laboratory\nBeijing, China\ntyt24@mails.tsinghua.edu.cn\nShuo Miao\nDCST, Tsinghua University\nBeijing, China\nWeihang Su\nDCST, Tsinghua Univ"
+    },
+    {
+      "chunk_id": "94a7eb2ae6ed6a8d",
+      "preview": "s beyond tradi-\ntional IR (+LLM) pipelines. Instead of treating search as a single-step\nmapping from query to answer, analytical search should supportAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
+    },
+    {
+      "chunk_id": "04237c924d050ef9",
+      "preview": "e potential to largely replace human efforts\nin analytical tasks, fully automate the labor-intensive workflow\narXiv:2602.11581v1  [cs.IR]  12 Feb 2026Conference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "afd9faed98fffdf6",
+      "preview": "sub-question, supporting a\nhypothesis, or constraining an inference. Conversely, evidence\nthat appears only weakly related at the surface level may beConference acronym \u2019XX, June 03\u201305, 2018, Woodstoc"
+    },
+    {
+      "chunk_id": "0dd82a1e91b184b1",
+      "preview": "n what should be\ndone under specific constraints or objectives. In analytical search,\nprescriptive queries often build upon descriptive and predictiveAnalytical Search\nConference acronym \u2019XX, June 03\u2013"
     }
   ]
 }

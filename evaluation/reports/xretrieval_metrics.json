@@ -1,0 +1,26 @@
+[
+  {
+    "query_id": "Q1",
+    "precision@5": 0.2,
+    "recall@5": 1.0,
+    "mrr": 1.0
+  },
+  {
+    "query_id": "Q2",
+    "precision@5": 0.2,
+    "recall@5": 1.0,
+    "mrr": 1.0
+  },
+  {
+    "query_id": "Q3",
+    "precision@5": 0.2,
+    "recall@5": 1.0,
+    "mrr": 1.0
+  },
+  {
+    "query_id": "Q4",
+    "precision@5": 0.2,
+    "recall@5": 1.0,
+    "mrr": 1.0
+  }
+]
