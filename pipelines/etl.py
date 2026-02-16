@@ -6,7 +6,8 @@ STAGES = [
     "tools.run_pdf_parser",
     "pipelines.ingestion.ingest_txt",
     "pipelines.chunking.chunk_sections",
-    "pipelines.indexing.build_index",
+    "pipelines.indexing.build_index",            # Chunk-level index
+    "pipelines.indexing.build_document_index",  # STEP 34: Document-level index
     "evaluation.runner.run_retrieval_eval",
 ]
 

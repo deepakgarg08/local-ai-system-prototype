@@ -41,8 +41,10 @@ def retrieve_context(query: str, k: int = 4) -> List[str]:
 
 def retrieve_context_with_scores(
     query: str,
-    k: int = 4
-) -> List[Tuple[str, float]]:
+    k: int = 4,
+    allowed_document_ids: list[str] | None = None
+    ):
+
     """
     Retrieve top-k chunks WITH similarity scores.
 
@@ -70,12 +72,22 @@ def retrieve_context_with_scores(
     )
 
     results: List[Dict] = []
-
+    allowed_document_ids: List[str] | None = None
+    length_of_allowed_document_ids = 0
+    
     for idx, distance in zip(indices[0], distances[0]):
         if idx == -1:
             continue
 
         similarity = float(distance)
+        chunk = _chunks[idx]
+
+    # 🔥 STEP 34: Document-level filtering
+        if allowed_document_ids is not None:
+            if chunk["document_id"] not in allowed_document_ids:
+                length_of_allowed_document_ids += 1
+                print(length_of_allowed_document_ids, "skipped due to document filter")
+                continue
 
         results.append({
             "chunk_id": _chunks[idx]["chunk_id"],

@@ -12,6 +12,7 @@ from pipelines.query.relevance import (
     is_context_relevant,
     MIN_SIMILARITY_THRESHOLD,
 )
+from pipelines.query.document_retriever import retrieve_top_documents
 
 # --- Prompting ---
 from pipelines.prompting.assemble_prompt import assemble_prompt
@@ -133,8 +134,15 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
 
 
     # --- Basic input validation ---
-    if not query or not query.strip():
-        raise ValueError("Query must be a non-empty string")
+    if query is None:
+        raise ValueError("Query cannot be None")
+
+    if not isinstance(query, str):
+        raise TypeError("Query must be a string")
+
+    if not query.strip():
+        raise ValueError("Query must be non-empty")
+
 
     answer: str | None = None
     llm_backend: str | None = None
@@ -149,8 +157,17 @@ def run_rag(query: str, top_k: int = 4) -> RAGResult:
     #    (scores are used internally only, never exposed to the LLM)
     # ---------------------------------------------------------------------
     try:
+        
         normalized_query = normalize_query(query)
-        retrieved = retrieve_context_with_scores(normalized_query, k=top_k)
+        top_documents = retrieve_top_documents(normalized_query, top_n=3)
+        print("Top documents:", top_documents)
+
+        retrieved = retrieve_context_with_scores(
+            normalized_query,
+            k=top_k,
+            allowed_document_ids=top_documents
+        )
+                
         print(f"Retrieved {len(retrieved)} chunks with scores: {retrieved[0] if retrieved else 'None'}")
         # ---------------------------------------------------------------------
         # 2. Build retrieval evidence objects (STEP 15)
